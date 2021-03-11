@@ -2,6 +2,7 @@
 
 ./sol.sh
 
+
 cd build
 
 tvm_linker compile DensRoot.code -a DensRoot.abi.json -o DensRoot.tvc --lib stdlib_sol.tvm

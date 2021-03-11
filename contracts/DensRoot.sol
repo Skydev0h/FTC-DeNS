@@ -27,6 +27,8 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     mapping(address => TempData) temp_lookup;
     uint32 last_gc = 0;
 
+    mapping(string => uint32) reserved;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Constructor
 
@@ -78,6 +80,18 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // Reserved names
+
+    function reserveName(string name, uint32 until) external override onlyOwner {
+        if (until == 1) until = 0xFFFFFFFF; // permanent
+        emit nameReserved(name, until);
+        if (until < now) {
+            delete reserved[name];
+        } else
+            reserved[name] = until;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Resolve contract address by name (IResolver)
 
     function _resolve(string name, uint8 type_id, address parent) internal view returns(address) {
@@ -98,10 +112,9 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
         return _resolve(name, PlatformTypes.Certificate, address(this));
     }
 
-    function resolveRPC(string name, address cert) external view responsible override returns(address) {
+    function resolveRPC(string name, address cert, uint8 ptype) external view responsible override returns(address) {
         if (cert == address(0)) cert = address(this);
-        return {value: 0, bounce: false, flag: MsgFlag.MsgBalance}
-            _resolve(name, PlatformTypes.Certificate, cert);
+        return {value: 0, bounce: false, flag: MsgFlag.MsgBalance} _resolve(name, ptype, cert);
     }
 
     function resolveSub(string name, address cert) external view override returns(address) {
@@ -116,7 +129,7 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     // Registration flow. This is surely some crazy ping pong.
 
     function RXHash(RegRequestX rx) pure private inline returns(uint128) {
-        TvmBuilder b; b.store(rx); return uint128(tvm.hash(b.toCell()));
+        TvmBuilder b; b.store(rx); return uint128(tvm.hash(b.toCell()) % (2 ** 128));
     }
 
     function gc() external onlyOwner {
@@ -132,19 +145,27 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
         // Check duration
         if (request.duration < 1) fail = Errors.TOO_LOW_DURATION;
         if (request.duration > DeNS.MaxDurationValue) fail = Errors.TOO_HIGH_DURATION;
-        // Check forbidden characters . and /, also disallow control characters (< 32, 127 [<-])
-        TvmBuilder b; b.store(request.name); TvmSlice s = b.toSlice().loadRefAsSlice();
-        if (s.bits() % 8 != 0) fail = Errors.INVALID_STRLEN;
-        else if (s.bits() == 0) fail = Errors.INVALID_STRLEN;
-        else {
-            uint8 c = 0;
-            while (s.bits() > 0) {
-                c = s.loadUnsigned(8);
-                if ((c < 32) || (c == 46) || (c == 47) || (c == 127)) {
-                    fail = Errors.FORBIDDEN_CHARS;
-                    break;
+        if (fail == 0) {
+            // Check forbidden characters . and /, also disallow control characters (< 32, 127 [<-])
+            TvmBuilder b; b.store(request.name); TvmSlice s = b.toSlice().loadRefAsSlice();
+            if (s.bits() % 8 != 0) fail = Errors.INVALID_STRLEN;
+            else if (s.bits() == 0) fail = Errors.INVALID_STRLEN;
+            else {
+                uint8 c = 0;
+                while (s.bits() > 0) {
+                    c = s.loadUnsigned(8);
+                    if ((c < 32) || (c == 46) || (c == 47) || (c == 127)) {
+                        fail = Errors.FORBIDDEN_CHARS;
+                        break;
+                    }
                 }
             }
+        }
+        if (fail == 0) {
+            optional(uint32) resn = reserved.fetch(request.name);
+            if (resn.hasValue())
+                if (resn.get() > now)
+                    fail = Errors.RESERVED_NAME;
         }
         if (fail != 0) {
             emit regNameRejected(msg.sender, request.name, request.duration, fail);
@@ -329,7 +350,8 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Owner
 
-    function getOwner() external view override returns(uint256) { return owner; }
+    function getOwner() external view responsible override returns(uint256) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} owner; }
 
     function transferOwner(uint256 new_owner) external override onlyOwner {
         emit prepareOwnerTransfer(new_owner);
@@ -343,7 +365,8 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
         owner = pending_owner; pending_owner = 0;
     }
 
-    function getPendingOwner() external view override returns(uint256) { return pending_owner; }
+    function getPendingOwner() external view responsible override returns(uint256) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} pending_owner; }
 
     modifier onlyOwner() {
         require(msg.pubkey() == owner, Errors.NOT_MY_OWNER);
@@ -383,6 +406,8 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
 
     event regNameRequest(address sender, string name, uint32 duration);
     event regNameRejected(address sender, string name, uint32 duration, uint8 reason);
+
+    event nameReserved(string name, uint32 until);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

@@ -56,6 +56,15 @@
 			]
 		},
 		{
+			"name": "reserveName",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"until","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "resolve",
 			"inputs": [
 				{"name":"name","type":"bytes"}
@@ -69,7 +78,8 @@
 			"inputs": [
 				{"name":"_answer_id","type":"uint32"},
 				{"name":"name","type":"bytes"},
-				{"name":"cert","type":"address"}
+				{"name":"cert","type":"address"},
+				{"name":"ptype","type":"uint8"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}
@@ -213,6 +223,7 @@
 		{
 			"name": "getOwner",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"uint256"}
@@ -236,6 +247,7 @@
 		{
 			"name": "getPendingOwner",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"uint256"}
@@ -444,6 +456,15 @@
 				{"name":"name","type":"bytes"},
 				{"name":"duration","type":"uint32"},
 				{"name":"reason","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "nameReserved",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"until","type":"uint32"}
 			],
 			"outputs": [
 			]

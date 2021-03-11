@@ -29,6 +29,7 @@ library Errors {
     uint8 constant INCORRECT_HASH    = 107;
     uint8 constant ALREADY_REVEALED  = 108;
     uint8 constant NOT_PARENT        = 109;
+    uint8 constant RESERVED_NAME     = 110;
     uint8 constant EXPIRED           = 111;
     // ------------------------------------
     uint8 constant TOO_LOW_DURATION  = 201;

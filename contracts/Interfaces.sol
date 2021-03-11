@@ -16,8 +16,9 @@ interface IDensRoot is IDataStructs {
     function installCertificate(TvmCell code) external;
     function installPlatform(TvmCell code) external;
     function regName(uint32 callbackFunctionId, RegRequest request) external;
+    function reserveName(string name, uint32 until) external;
     function resolve(string name) external view returns(address);
-    function resolveRPC(string name, address cert) external view responsible returns(address);
+    function resolveRPC(string name, address cert, uint8 ptype) external view responsible returns(address);
     function resolveSub(string name, address cert) external view returns(address);
     function requestCertificateUpgrade() external;
     function subCertRequest(string name, string subname, address _owner, uint32 expiry) external;
@@ -26,12 +27,12 @@ interface IDensRoot is IDataStructs {
 
 interface IDensCertificate is IDataStructs {
     function auctionProcess(address new_owner, uint32 new_expiry) external responsible returns(bool);
-    function getExpiry() external view returns(uint32);
-    function getName() external view returns(string);
-    function getParent() external view returns(address);
-    function getRegistered() external view returns(uint32);
-    function getRoot() external view returns(address);
-    function getValue() external view returns(address);
+    function getExpiry() external view responsible returns(uint32);
+    function getName() external view responsible returns(string);
+    function getParent() external view responsible returns(address);
+    function getRegistered() external view responsible returns(uint32);
+    function getRoot() external view responsible returns(address);
+    function getValue() external view responsible returns(address);
     function inquiryExpiry(uint128 rhash) external view responsible returns(uint128, uint32);
     function prolong(uint32 length) external;
     function requestUpgrade() external view;
@@ -39,6 +40,7 @@ interface IDensCertificate is IDataStructs {
     function setValue(address new_value) external;
     function subCertRequest(string subname, uint32 subexpiry) external view;
     function subCertSynchronize(string subname, uint32 subexpiry) external view;
+    function whois() external view responsible returns(Whois);
     function withdraw(address dest, uint128 value) external pure;
 }
 
@@ -61,15 +63,15 @@ interface IUpgradable {    function upgrade(TvmCell code) external;    }
 
 interface ITransferOwnerInt {
     function acceptOwner() external;
-    function getOwner() external view returns(address);
-    function getPendingOwner() external view returns(address);
+    function getOwner() external view responsible returns(address);
+    function getPendingOwner() external view responsible returns(address);
     function transferOwner(address new_owner) external;
 }
 
 interface ITransferOwnerExt {
     function acceptOwner() external;
-    function getOwner() external view returns(uint256);
-    function getPendingOwner() external view returns(uint256);
+    function getOwner() external view responsible returns(uint256);
+    function getPendingOwner() external view responsible returns(uint256);
     function transferOwner(uint256 new_owner) external;
 }
 

@@ -33,6 +33,8 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     uint32 public registered;
     uint32 public expiry;
 
+    mapping(uint8 => address) public values;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Constructor - can't be constructed directly, must be installed to a platform
 
@@ -89,14 +91,16 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // ISetOwnerInt only by root
 
-    function getOwner() external view override returns(address) { return owner; }
+    function getOwner() external view responsible override returns(address) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} owner; }
     function setOwner(address new_owner) external override onlyRoot retRem {
         owner = new_owner; value = address(0); emit ownerForceChanged(new_owner); }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // ITransferOwnerInt by owner
 
-    function getPendingOwner() external view override returns(address) { return pending_owner; }
+    function getPendingOwner() external view responsible override returns(address) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} pending_owner; }
     function transferOwner(address new_owner) external override onlyOwner retRem {
         emit prepareOwnerTransfer(new_owner); pending_owner = new_owner; }
 
@@ -115,32 +119,40 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDensCertificate get and set address
 
-    function getValue() external view override returns(address) { return value; }
+    function getValue() external view responsible override returns(address) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} value; }
     function setValue(address new_value) external override onlyOwner retRem {
         value = new_value; emit modified(new_value); }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDensCertificate get and set expiry
 
-    function getExpiry() external view override returns(uint32) { return expiry; }
+    function getExpiry() external view responsible override returns(uint32) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} expiry; }
     function setExpiry(uint32 _expiry) external override onlyRoot retRem {
         expiry = _expiry; emit expiryChanged(expiry, false); }
     function prolong(uint32 length) external override onlyRoot retRem {
         if (expiry == 0) expiry = now; expiry += length; emit expiryChanged(expiry, true);
     }
 
-    function getRegistered() external view override returns(uint32) { return registered; }
+    function getRegistered() external view responsible override returns(uint32) { return registered; }
 
     function inquiryExpiry(uint128 rhash) external view responsible override returns(uint128, uint32) {
-        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} (rhash, expiry);
-    }
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} (rhash, expiry); }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDensCertificate read-only getters
 
-    function getParent() external view override returns(address) { return parent; }
-    function getRoot() external view override returns(address) { return root; }
-    function getName() external view override returns(string) { return name; }
+    function getParent() external view responsible override returns(address) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} parent; }
+    function getRoot() external view responsible  override returns(address) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} root; }
+    function getName() external view responsible override returns(string) {
+        return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} name; }
+
+    function whois() external view responsible override returns(Whois) {
+        return Whois(name, owner, parent, value, registered, expiry);
+    }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Auction process

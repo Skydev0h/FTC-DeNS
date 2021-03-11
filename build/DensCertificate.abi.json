@@ -52,6 +52,7 @@
 		{
 			"name": "getOwner",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}
@@ -68,6 +69,7 @@
 		{
 			"name": "getPendingOwner",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}
@@ -100,6 +102,7 @@
 		{
 			"name": "getValue",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}
@@ -116,6 +119,7 @@
 		{
 			"name": "getExpiry",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"uint32"}
@@ -140,6 +144,7 @@
 		{
 			"name": "getRegistered",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"uint32"}
@@ -159,6 +164,7 @@
 		{
 			"name": "getParent",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}
@@ -167,6 +173,7 @@
 		{
 			"name": "getRoot",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"address"}
@@ -175,9 +182,19 @@
 		{
 			"name": "getName",
 			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"value0","type":"bytes"}
+			]
+		},
+		{
+			"name": "whois",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"components":[{"name":"name","type":"bytes"},{"name":"owner","type":"address"},{"name":"parent","type":"address"},{"name":"value","type":"address"},{"name":"registered","type":"uint32"},{"name":"expiry","type":"uint32"}],"name":"value0","type":"tuple"}
 			]
 		},
 		{
@@ -253,6 +270,14 @@
 			],
 			"outputs": [
 				{"name":"expiry","type":"uint32"}
+			]
+		},
+		{
+			"name": "values",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"values","type":"map(uint8,address)"}
 			]
 		}
 	],

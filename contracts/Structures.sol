@@ -26,4 +26,13 @@ interface IDataStructs {
         uint32 expiry;
     }
 
+    struct Whois {
+        string name;
+        address owner;
+        address parent;
+        address value;
+        uint32 registered;
+        uint32 expiry;
+    }
+
 }

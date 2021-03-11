@@ -110,6 +110,12 @@ echo "[!] Root account address: $addr"
 acnf=$($tcli account "$addr" | grep -c 'Account not found' )
 
 if [[ "$acnf" != "0" ]]; then
+  ./tx.sh "$addr" 10
+fi
+
+acnf=$($tcli account "$addr" | grep -c 'Account not found' )
+
+if [[ "$acnf" != "0" ]]; then
   echo "[!] The account does not exist yet. Prior to deploying you need to send some tokens to it."
   echo "!!! Please send some tokens to the account with address above and re-run the deployment script."
   exit 2

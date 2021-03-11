@@ -1,4 +1,4 @@
-import tonos_ts4.ts4 as ts4
+import tonos_ts4.ts4 as ts4, json
 
 eq = ts4.eq
 bt = 1000000
@@ -6,6 +6,7 @@ bt = 1000000
 ts4.set_verbose(True)
 ts4.set_tests_path('build/')
 ts4.G_WARN_ON_UNEXPECTED_ANSWERS = True
+ts4.core.trace_on()
 # ts4.G_STOP_AT_CRASH = False
 
 print("==================== Initialization ====================")
@@ -124,29 +125,29 @@ ts4.dispatch_messages()
 print("\n==================== Check 'hel' cert ====================")
 
 cc = ts4.BaseContract('DensCertificate', None, address=caddr, nickname='HelloCert')
-print(cc.call_getter('getRoot'))
-print(cc.call_getter('getOwner'))
+print(cc.call_getter('root'))
+print(cc.call_getter('owner'))
 
 print("\n==================== Test 'hel' setValue ====================")
 
 test4.call_method('setValue', {'dest': caddr, 'value': caddr})
 ts4.dispatch_messages()
 
-print(cc.call_getter('getValue'))
+print(cc.call_getter('value'))
 
 print("\n==================== Test transfer ownership ====================")
 
 test4.call_method('transferOwner', {'dest': caddr, 'new_owner': test.address()})
 ts4.dispatch_messages()
 
-print(cc.call_getter('getOwner'))
-print(cc.call_getter('getPendingOwner'))
+print(cc.call_getter('owner'))
+print(cc.call_getter('pending_owner'))
 
 test.call_method('acceptOwner', {'dest': caddr})
 ts4.dispatch_messages()
 
-print(cc.call_getter('getOwner'))
-print(cc.call_getter('getPendingOwner'))
+print(cc.call_getter('owner'))
+print(cc.call_getter('pending_owner'))
 
 print("\n==================== Test subcertificate ====================")
 
@@ -157,14 +158,14 @@ suba = root.call_getter('resolveSub', {'name': '737562', 'cert': caddr})
 print(suba)
 
 sc = ts4.BaseContract('DensCertificate', None, address=suba, nickname='SubCert')
-print(sc.call_getter('getRoot'))
-print(sc.call_getter('getOwner'))
-print(sc.call_getter('getParent'))
+print(sc.call_getter('root'))
+print(sc.call_getter('owner'))
+print(sc.call_getter('parent'))
 
 test.call_method('setValue', {'dest': suba, 'value': test3.address()})
 ts4.dispatch_messages()
 
-print(sc.call_getter('getValue'))
+print(sc.call_getter('value'))
 
 test.call_method('transferOwner', {'dest': caddr, 'new_owner': test2.address()})
 ts4.dispatch_messages()
@@ -172,11 +173,11 @@ ts4.dispatch_messages()
 test2.call_method('acceptOwner', {'dest': caddr})
 ts4.dispatch_messages()
 
-print(cc.call_getter('getOwner'))
-print(sc.call_getter('getOwner'))
+print(cc.call_getter('owner'))
+print(sc.call_getter('owner'))
 
 test2.call_method('syncSubCertificate', {'dest': caddr, 'name': '737562', 'expiry': 0})
 ts4.dispatch_messages()
 
-print(cc.call_getter('getOwner'))
-print(sc.call_getter('getOwner'))
+print(cc.call_getter('owner'))
+print(sc.call_getter('owner'))
