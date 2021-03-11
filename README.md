@@ -1,2 +1,2 @@
-# FTC-DeNS
-FreeTON Contest - Decentralized Name Service
+# FreeTON Contest - Decentralized Name Service
+
