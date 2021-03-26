@@ -111,7 +111,7 @@ function InputNumber() {
 }
 
 function ToHex() {
-  HEX=$(xxd -pu <<< "$1")
+  HEX=$(echo -n "$1" | xxd -c 1000000 -pu)
   export HEX
 }
 
@@ -121,6 +121,12 @@ function GetResult() {
   if [ "$#" -ge 2 ]; then
     RES=$(echo "$RES" | jq -r "$2")
   fi
+  export RES
+  return 0
+}
+
+function Resolve() {
+  RES=$(echo "$1" | jq -r "$2")
   export RES
   return 0
 }
@@ -171,7 +177,7 @@ function MResolve() {
     crumb="$crumb/$piece"
     echo "[.] Resolving $crumb certificate address..."
     ToHex "$piece"
-    GetResult "$($tcli run --abi $abi "$root" resolveRPC "{$aid0,\"name\":\"$HEX\",\"cert\":\"$parent\",\"ptype\":0}")" '.value0'
+    GetResult "$($tcli run --abi $abi "$root" resolveRPC "{$aid0,\"name\":\"$HEX\",\"cert\":\"$parent\",\"ptype\":1}")" '.value0'
     if [[ "$RES" == "" ]]; then
       echo "[!] Failed when resolving $piece element"
       return
@@ -180,12 +186,21 @@ function MResolve() {
     parent="$RES"
   done
   echo "[*] Final certificate address: $parent"
-  GetResult "$($tcli run --abi $cabi "$parent" whois "{}")" '.'
+  GetResult "$($tcli run --abi $cabi "$parent" whois "{$aid0}")" '.value0'
   if [[ "$RES" == "" ]]; then
     echo "[!] Failed to inquiry information about the certificate!"
     return
   fi
-  echo "$RES"
+  info="$RES"
+  Resolve "$info" ".owner"
+  echo "[.] Certificate owned by $RES"
+  Resolve "$info" ".expiry"
+  expires="$RES"
+  Resolve "$info" ".registered"
+  registr="$RES"
+  echo "[.] Registered at $(date -d "@$registr"), expires at $(date -d "@$expires")"
+  Resolve "$info" ".value"
+  echo "[*] Certificate value is: $RES"
 }
 
 # ======================================================================================================================
@@ -312,7 +327,30 @@ function MRootDeploy() {
 }
 
 function MRootReconfigure() {
-  echo "[!] Not implemented yet"
+  InputText "[?] Please enter a domain name to reconfigure: "
+  if [[ "$TEXT" == "" ]]; then
+    echo "[!] No domain name entered"
+    return
+  fi
+  echo '[*] Enter 0 for permanent domain or lifetime in years'
+  InputNumber '[?] Enter domain lifetime in years: '
+  if [[ "$NUMBER" == "" ]]; then
+    echo "[!] No correct lifetime entered"
+    return
+  fi
+  InputAddress "[?] Enter new domain owner address: "
+  if [[ "$ADDRESS" == "" ]]; then
+    echo "[!] No correct owner address entered"
+    return
+  fi
+  ToHex "$TEXT"
+  now=$(date +%s)
+  exp=4294967295
+  if [[ "$NUMBER" != "0" ]]; then
+    exp=$((now + 365*24*60*60*NUMBER))
+  fi
+  echo "[>] Reconfiguring $TEXT domain with expiration $exp and owner $ADDRESS"
+  $tcli call --abi $abi --sign $rkf "$addr" directlyReconfigure '{"name":"'"$HEX"'","_owner":"'"$ADDRESS"'","expiry":'"$exp"'}'
 }
 
 function MRootWithdraw() {

@@ -233,7 +233,7 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
                 parent: address(this)
             }
         }();
-        p.initialize(auction_code, address(0));
+        p.initialize{flag:MsgFlag.AddTranFees}(auction_code, address(0));
         // state_rx[rhash] = reqx;
         emit auctionDeployed(reqx.r.name, reqx.r.duration, reqx.sender, address(p));
         IDensAuction(address(p)).inquiryRequest{value: 0, bounce: true,
@@ -323,9 +323,9 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
                 name: name,
                 parent: parent
             },
-            flag: 1
+            flag: MsgFlag.AddTranFees
         }();
-        p.initialize(certificate_code, _owner);
+        p.initialize{flag:MsgFlag.AddTranFees}(certificate_code, _owner);
         IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy}(_owner, expiry);
         emit certificateDeployed(name, _owner, expiry, parent, address(p));
         return p;
