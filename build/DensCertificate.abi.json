@@ -271,14 +271,6 @@
 			"outputs": [
 				{"name":"expiry","type":"uint32"}
 			]
-		},
-		{
-			"name": "values",
-			"inputs": [
-			],
-			"outputs": [
-				{"name":"values","type":"map(uint8,address)"}
-			]
 		}
 	],
 	"data": [

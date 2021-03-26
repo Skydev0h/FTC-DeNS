@@ -51,6 +51,10 @@ test2 = ts4.BaseContract('DensTest', {'_root': root.address()}, nickname='Test2'
 test3 = ts4.BaseContract('DensTest', {'_root': root.address()}, nickname='Test3', override_address=ts4.Address('0:' + (64 * '3')))
 test4 = ts4.BaseContract('DensTest', {'_root': root.address()}, nickname='Test4', override_address=ts4.Address('0:' + (64 * '4')))
 
+print("\n==================== Perform directlyDeploy 'test' on root ====================")
+root.call_method_signed('directlyDeploy', {"name":"74657374","_owner":"0:16727aa2069d16b632d596ea411647c32a176cb3bc970c72080d9a0647e9eebd","expiry":1648327562})
+ts4.dispatch_messages()
+
 print("\n==================== Perform regName 'hel' on root ====================")
 
 auct = root.call_getter('auction', {'name': '68656c'})

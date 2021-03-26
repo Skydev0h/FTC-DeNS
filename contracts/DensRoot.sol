@@ -331,6 +331,19 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
         return p;
     }
 
+    // For reserved names and playing with the contracts
+    function directlyDeploy(string name, address _owner, uint32 expiry) external override onlyOwner returns (address) {
+        return deployCertificate(name, _owner, expiry, address(this));
+    }
+
+    // For playing with the contracts
+    function directlyReconfigure(string name, address _owner, uint32 expiry) external override onlyOwner returns (address) {
+        address p = _resolve(name, PlatformTypes.Certificate, address(this));
+        IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy}(_owner, expiry);
+        emit certificateReconfigured(name, _owner, expiry, address(p));
+        return p;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Sub-certificates
 
@@ -398,6 +411,8 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     event receivedAuction(uint128 amount);
     event certificateDeployed(string name, address owner, uint32 expiry, address parent, address cert);
     event auctionDeployed(string name, uint32 duration, address sender, address auct);
+
+    event certificateReconfigured(string name, address owner, uint32 expiry, address cert);
 
     event auctionSuccess(string name, address winner, uint32 expiry, address auct);
     event auctionFail(string name, address auct);

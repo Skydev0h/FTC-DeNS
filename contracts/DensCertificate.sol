@@ -33,7 +33,7 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     uint32 public registered;
     uint32 public expiry;
 
-    mapping(uint8 => address) public values;
+    // mapping(uint8 => address) public values;
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Constructor - can't be constructed directly, must be installed to a platform
@@ -145,7 +145,7 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
 
     function getParent() external view responsible override returns(address) {
         return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} parent; }
-    function getRoot() external view responsible  override returns(address) {
+    function getRoot() external view responsible override returns(address) {
         return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} root; }
     function getName() external view responsible override returns(string) {
         return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} name; }
@@ -157,8 +157,8 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Auction process
 
-    function auctionProcess(address new_owner, uint32 new_expiry) external responsible override returns(bool) {
-        if (owner != new_owner) { value = address(0); owner = new_owner; }
+    function auctionProcess(address new_owner, uint32 new_expiry) external responsible override onlyRoot returns(bool) {
+        if (owner != new_owner) { value = address(0); owner = new_owner; pending_owner = address(0); }
         expiry = new_expiry;
         emit auctionSet(new_owner, new_expiry);
         return {value: 0, bounce: true, flag: MsgFlag.MsgBalance} true;

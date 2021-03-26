@@ -199,6 +199,28 @@
 			]
 		},
 		{
+			"name": "directlyDeploy",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"_owner","type":"address"},
+				{"name":"expiry","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "directlyReconfigure",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"_owner","type":"address"},
+				{"name":"expiry","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
 			"name": "subCertRequest",
 			"inputs": [
 				{"name":"name","type":"bytes"},
@@ -408,6 +430,17 @@
 				{"name":"duration","type":"uint32"},
 				{"name":"sender","type":"address"},
 				{"name":"auct","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certificateReconfigured",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"owner","type":"address"},
+				{"name":"expiry","type":"uint32"},
+				{"name":"cert","type":"address"}
 			],
 			"outputs": [
 			]

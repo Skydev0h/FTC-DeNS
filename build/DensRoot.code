@@ -2871,6 +2871,309 @@ XCHG s4
 BLKDROP 4
 ; end function deployCertificate
 
+.globl	directlyDeploy
+.public	directlyDeploy
+.type	directlyDeploy, @function
+GETGLOB 1
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+; Decode input parameters
+; Decode name
+LDREF
+; Decode _owner
+LDMSGADDRQ
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+; Decode expiry
+LDUQ 32
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 32
+}
+IFNOT
+ENDS
+;; param: name
+;; param: _owner
+;; param: expiry
+; modifier onlyOwner
+GETGLOB 5
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	PUSHINT 0
+}
+IF
+;; ==
+;; push identifier owner
+GETGLOB 13
+EQUAL
+THROWIFNOT 100
+ACCEPT
+; function directlyDeploy
+;; return
+;; push identifier name
+PUSH S2
+;; push identifier _owner
+PUSH S2
+;; push identifier expiry
+PUSH S2
+MYADDR
+CALL $deployCertificate_internal$
+;; emitting 1 value(s)
+PUSH S4
+EQINT -1
+PUSHCONT {
+	PUSH S6
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 96
+	STZEROES
+	STSLICECONST 0
+	STSLICECONST 0
+	STSLICECONST x91a2cf87
+	PUSH S1
+	STSLICER
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	PUSH S1
+	INDEX 2
+	GETGLOB 9
+	BLKSWAP 1, 3
+	INDEX 1
+	NEWC
+	PUSHINT 2
+	STZEROES
+	STI 1
+	PUSHINT 3
+	STZEROES
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 104
+	STZEROES
+	STSLICECONST 0
+	STSLICECONST 0
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	PUSH S1
+	STSLICER
+	ENDC
+	GETGLOB 4
+	INDEX 4
+	SENDRAWMSG
+}
+IFELSE
+DROP
+; end function directlyDeploy
+BLKDROP 3
+; end modifier onlyOwner
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
+.globl	directlyReconfigure
+.public	directlyReconfigure
+.type	directlyReconfigure, @function
+GETGLOB 1
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+; Decode input parameters
+; Decode name
+LDREF
+; Decode _owner
+LDMSGADDRQ
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
+; Decode expiry
+LDUQ 32
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 32
+}
+IFNOT
+ENDS
+;; param: name
+;; param: _owner
+;; param: expiry
+; modifier onlyOwner
+GETGLOB 5
+DUP
+ISNULL
+PUSHCONT {
+	DROP
+	PUSHINT 0
+}
+IF
+;; ==
+;; push identifier owner
+GETGLOB 13
+EQUAL
+THROWIFNOT 100
+ACCEPT
+; function directlyReconfigure
+;; push identifier name
+PUSH S2
+PUSHINT 1
+MYADDR
+CALL $_resolve_internal$
+;; decl: p
+;; Remote call IDensCertificate.auctionProcess
+;; push identifier p
+DUP
+NEWC
+STSLICECONST x62_
+STSLICE
+PUSHSLICE x3989680000000000000000000000000004_
+STSLICER
+STSLICECONST 0
+STSLICECONST 0
+STSLICECONST x5a0198ac
+STSLICECONST x58279a46
+;; new_owner
+;; push identifier _owner
+PUSH S3
+STSLICER
+;; new_expiry
+;; push identifier expiry
+PUSH S2
+STUR 32
+ENDC
+PUSHINT 0
+SENDRAWMSG
+;; emit certificateReconfigured
+NEWC
+PUSHSLICE xc0000000000000000000000002_
+STSLICER
+STSLICECONST 0
+STSLICECONST 0
+STSLICECONST x0c9e0fc3
+;; name
+;; push identifier name
+PUSH S4
+STREFR
+;; owner
+;; push identifier _owner
+PUSH S3
+STSLICER
+;; expiry
+;; push identifier expiry
+PUSH S2
+STUR 32
+;; cert
+;; push identifier p
+PUSH S1
+STSLICER
+ENDC
+PUSHINT 0
+SENDRAWMSG
+;; return
+;; emitting 1 value(s)
+PUSH S4
+EQINT -1
+PUSHCONT {
+	PUSH S6
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 96
+	STZEROES
+	STSLICECONST 0
+	STSLICECONST 0
+	STSLICECONST xc76de20d
+	PUSH S1
+	STSLICER
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	PUSH S1
+	INDEX 2
+	GETGLOB 9
+	BLKSWAP 1, 3
+	INDEX 1
+	NEWC
+	PUSHINT 2
+	STZEROES
+	STI 1
+	PUSHINT 3
+	STZEROES
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 104
+	STZEROES
+	STSLICECONST 0
+	STSLICECONST 0
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	PUSH S1
+	STSLICER
+	ENDC
+	GETGLOB 4
+	INDEX 4
+	SENDRAWMSG
+}
+IFELSE
+DROP
+; end function directlyReconfigure
+BLKDROP 3
+; end modifier onlyOwner
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
 .globl	subCertRequest
 .public	subCertRequest
 .type	subCertRequest, @function

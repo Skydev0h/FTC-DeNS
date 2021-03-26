@@ -74,5 +74,6 @@ You can always run the debot using `run_debot.sh` script or just by calling `ton
 
 As of now in order to control and interact with the system you need to use `tonos-cli` tool in shell. I have attempted to write a Debot, but due to some bug it fails the way it shouldn't fail (calling `resolveRPC` directly with same parameters on root works, while debot call crashes for some reason).
 
-Deployment of root and configuration of platform, certificate and auction codes is done automatically by `deploy_root.sh` script. Likewise, you can deploy debot with `deploy_debot.sh` and start it later using `run_debot.sh` scripts. Initially, it was planned that contracts would be interacted using debots, however, it turned out that they crash for some reason. Therefore, as of now, interaction can be done directly using `tonos-cli` tool.
+Deployment of root and configuration of platform, certificate and auction codes is done automatically by `deploy_root.sh` script. Likewise, you can deploy debot with `deploy_debot.sh` and start it later using `run_debot.sh` scripts. Initially, it was planned that contracts would be interacted using debots, however, it turned out that they crash for some reason.
 
+Please use `interact.sh` to interact with the system. It has debot-like menu system but is implemented using scripts. 

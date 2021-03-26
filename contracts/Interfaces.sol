@@ -11,6 +11,8 @@ interface IDensRoot is IDataStructs {
     function auctionProcessCallback(uint128 rhash, bool res, uint32 expiry) external;
     function certAuctProcessCallback(bool res) external;
     function certificateProcessCallback(uint128 rhash, uint32 expiry) external;
+    function directlyDeploy(string name, address _owner, uint32 expiry) external returns (address);
+    function directlyReconfigure(string name, address _owner, uint32 expiry) external returns (address);
     function ensureExpiry(string name, uint32 expiry) external view;
     function installAuction(TvmCell code) external;
     function installCertificate(TvmCell code) external;
