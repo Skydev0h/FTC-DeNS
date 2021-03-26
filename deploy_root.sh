@@ -61,30 +61,31 @@ if [[ -f "$solc" ]]; then
   mv ./*.code ../build/
   mv ./*.json ../build/
   cd .. || exit
+
+  if [[ -f "$link" ]]; then
+    cd build || exit
+    echo "[*] Linking contracts..."
+    $link compile DensRoot.code -a DensRoot.abi.json -o DensRoot.tvc --lib stdlib_sol.tvm >/dev/null
+    $link compile DensPlatform.code -a DensPlatform.abi.json -o DensPlatform.tvc --lib stdlib_sol.tvm >/dev/null
+    $link compile DensCertificate.code -a DensCertificate.abi.json -o DensCertificate.tvc --lib stdlib_sol.tvm >/dev/null
+    $link compile DensAuction.code -a DensAuction.abi.json -o DensAuction.tvc --lib stdlib_sol.tvm >/dev/null
+
+    echo "Extracting code for installation..."
+    $link decode --tvc DensPlatform.tvc > dens_platform.txt
+    $link decode --tvc DensCertificate.tvc > dens_certificate.txt
+    $link decode --tvc DensAuction.tvc > dens_auction.txt
+
+    cat dens_platform.txt | grep 'code:' | cut -d' ' -f3 > code_plat.txt
+    cat dens_certificate.txt | grep 'code:' | cut -d' ' -f3 > code_cert.txt
+    cat dens_auction.txt | grep 'code:' | cut -d' ' -f3 > code_auct.txt
+
+    cd .. || exit
+  else
+    echo "[-] Linking contracts and extracting code skipped"
+  fi
+
 else
-  echo "[-] Building contracts skipped"
-fi
-
-if [[ -f "$link" ]]; then
-  cd build || exit
-  echo "[*] Linking contracts..."
-  $link compile DensRoot.code -a DensRoot.abi.json -o DensRoot.tvc --lib stdlib_sol.tvm >/dev/null
-  $link compile DensPlatform.code -a DensPlatform.abi.json -o DensPlatform.tvc --lib stdlib_sol.tvm >/dev/null
-  $link compile DensCertificate.code -a DensCertificate.abi.json -o DensCertificate.tvc --lib stdlib_sol.tvm >/dev/null
-  $link compile DensAuction.code -a DensAuction.abi.json -o DensAuction.tvc --lib stdlib_sol.tvm >/dev/null
-
-  echo "Extracting code for installation..."
-  $link decode --tvc DensPlatform.tvc > dens_platform.txt
-  $link decode --tvc DensCertificate.tvc > dens_certificate.txt
-  $link decode --tvc DensAuction.tvc > dens_auction.txt
-
-  cat dens_platform.txt | grep 'code:' | cut -d' ' -f3 > code_plat.txt
-  cat dens_certificate.txt | grep 'code:' | cut -d' ' -f3 > code_cert.txt
-  cat dens_auction.txt | grep 'code:' | cut -d' ' -f3 > code_auct.txt
-
-  cd .. || exit
-else
-  echo "[-] Linking contracts and extracting code skipped"
+  echo "[-] Building and linking contracts skipped"
 fi
 
 c_plat=$(cat build/code_plat.txt)

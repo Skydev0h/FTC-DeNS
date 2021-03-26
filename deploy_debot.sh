@@ -59,19 +59,20 @@ if [[ -f "$solc" ]]; then
   mv ./*.code ../build/
   mv ./*.json ../build/
   cd .. || exit
-else
-  echo "[-] Building contracts skipped"
-fi
 
-if [[ -f "$link" ]]; then
-  cd build || exit
-  echo "[*] Linking contracts..."
-  $link compile DensRoot.code -a DensRoot.abi.json -o DensRoot.tvc --lib stdlib_sol.tvm >/dev/null
-  $link compile DensDebot.code -a DensDebot.abi.json -o DensDebot.tvc --lib stdlib_sol.tvm >/dev/null
+  if [[ -f "$link" ]]; then
+    cd build || exit
+    echo "[*] Linking contracts..."
+    $link compile DensRoot.code -a DensRoot.abi.json -o DensRoot.tvc --lib stdlib_sol.tvm >/dev/null
+    $link compile DensDebot.code -a DensDebot.abi.json -o DensDebot.tvc --lib stdlib_sol.tvm >/dev/null
 
-  cd .. || exit
+    cd .. || exit
+  else
+    echo "[-] Linking contracts skipped"
+  fi
+
 else
-  echo "[-] Linking contracts skipped"
+  echo "[-] Building and linking contracts skipped"
 fi
 
 tvc=build/DensDebot.tvc
