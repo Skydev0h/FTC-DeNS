@@ -344,17 +344,24 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
         return p;
     }
 
+    // Temporarily required until Debot is working. May be useful anyway.
+    function generateHash(uint256 amount, uint128 nonce) external override returns(uint256) {
+        TvmBuilder b; b.store(amount, nonce);
+        uint256 rhash = tvm.hash(b.toCell());
+        return rhash;
+    }
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Sub-certificates
 
-    function subCertRequest(string name, string subname, address _owner, uint32 expiry) external override {
-        require(msg.sender == _resolve(name, PlatformTypes.Certificate, address(this)), Errors.INVALID_ADDRESS);
+    function subCertRequest(string name, string subname, address _owner, uint32 expiry, address _par) external override {
+        require(msg.sender == _resolve(name, PlatformTypes.Certificate, _par), Errors.INVALID_ADDRESS);
         address p = deployCertificate(subname, _owner, expiry, msg.sender);
         p.transfer({value: 0, bounce: false, flag: MsgFlag.MsgBalance});
     }
 
-    function subCertSync(string name, string subname, address _owner, uint32 expiry) external override {
-        require(msg.sender == _resolve(name, PlatformTypes.Certificate, address(this)), Errors.INVALID_ADDRESS);
+    function subCertSync(string name, string subname, address _owner, uint32 expiry, address _par) external override {
+        require(msg.sender == _resolve(name, PlatformTypes.Certificate, _par), Errors.INVALID_ADDRESS);
         address p = _resolve(subname, PlatformTypes.Certificate, msg.sender);
         IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy}(_owner, expiry);
         msg.sender.transfer({value: 0, bounce: false, flag: MsgFlag.MsgBalance});

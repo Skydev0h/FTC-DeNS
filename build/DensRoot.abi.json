@@ -221,12 +221,23 @@
 			]
 		},
 		{
+			"name": "generateHash",
+			"inputs": [
+				{"name":"amount","type":"uint256"},
+				{"name":"nonce","type":"uint128"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
 			"name": "subCertRequest",
 			"inputs": [
 				{"name":"name","type":"bytes"},
 				{"name":"subname","type":"bytes"},
 				{"name":"_owner","type":"address"},
-				{"name":"expiry","type":"uint32"}
+				{"name":"expiry","type":"uint32"},
+				{"name":"_par","type":"address"}
 			],
 			"outputs": [
 			]
@@ -237,7 +248,8 @@
 				{"name":"name","type":"bytes"},
 				{"name":"subname","type":"bytes"},
 				{"name":"_owner","type":"address"},
-				{"name":"expiry","type":"uint32"}
+				{"name":"expiry","type":"uint32"},
+				{"name":"_par","type":"address"}
 			],
 			"outputs": [
 			]

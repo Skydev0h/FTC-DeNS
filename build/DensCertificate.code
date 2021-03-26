@@ -434,15 +434,16 @@ STSLICE
 PUSHINT 109
 STZEROES
 STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5de12836
+STSLICECONST 1
+NEWC
+STSLICECONST x31286ebd
 ;; name
 ;; push identifier name
 GETGLOB 11
 STREFR
 ;; subname
 ;; push identifier subname
-PUSH S2
+PUSH S3
 STREFR
 ;; _owner
 ;; push identifier owner
@@ -452,9 +453,14 @@ STSLICER
 ;; push identifier expiry
 GETGLOB 17
 ;; push identifier subexpiry
-PUSH S2
+PUSH S3
 MAX
 STUR 32
+;; _par
+;; push identifier parent
+GETGLOB 13
+STSLICER
+STBREFR
 ENDC
 PUSHINT 64
 SENDRAWMSG
@@ -522,15 +528,16 @@ STSLICE
 PUSHINT 109
 STZEROES
 STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x537adfc3
+STSLICECONST 1
+NEWC
+STSLICECONST x7f48e93f
 ;; name
 ;; push identifier name
 GETGLOB 11
 STREFR
 ;; subname
 ;; push identifier subname
-PUSH S2
+PUSH S3
 STREFR
 ;; _owner
 ;; push identifier owner
@@ -540,9 +547,14 @@ STSLICER
 ;; push identifier expiry
 GETGLOB 17
 ;; push identifier subexpiry
-PUSH S2
+PUSH S3
 MAX
 STUR 32
+;; _par
+;; push identifier parent
+GETGLOB 13
+STSLICER
+STBREFR
 ENDC
 PUSHINT 64
 SENDRAWMSG

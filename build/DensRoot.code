@@ -3174,6 +3174,127 @@ CALLREF {
 TRUE
 SETGLOB 7
 
+.globl	generateHash
+.public	generateHash
+.type	generateHash, @function
+GETGLOB 1
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+; Decode input parameters
+; Decode amount
+LDUQ 256
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 256
+}
+IFNOT
+; Decode nonce
+LDUQ 128
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 128
+}
+IFNOT
+ENDS
+;; param: amount
+;; param: nonce
+; function generateHash
+NEWC
+;; decl: b
+; expValue
+DUP
+; end expValue
+;; push identifier amount
+PUSH S3
+STUR 256
+;; push identifier nonce
+PUSH S2
+STUR 128
+; colValue
+NIP
+; end colValue
+;; push identifier b
+DUP
+ENDC
+HASHCU
+;; decl: rhash
+;; return
+XCHG s3
+BLKDROP 3
+;; emitting 1 value(s)
+PUSH S1
+EQINT -1
+PUSHCONT {
+	PUSH S3
+	CTOS
+	LDU 2
+	LDMSGADDR
+	DROP
+	NIP
+	NEWC
+	STSLICECONST xc
+	STSLICE
+	PUSHINT 96
+	STZEROES
+	STSLICECONST 0
+	STSLICECONST 0
+	STSLICECONST xce3403b9
+	PUSH S1
+	STUR 256
+	ENDC
+	PUSHINT 0
+	SENDRAWMSG
+}
+PUSHCONT {
+	GETGLOB 4
+	DUP
+	INDEX 3
+	PUSH S1
+	INDEX 2
+	GETGLOB 9
+	BLKSWAP 1, 3
+	INDEX 1
+	NEWC
+	PUSHINT 2
+	STZEROES
+	STI 1
+	PUSHINT 3
+	STZEROES
+	STSLICE
+	SWAP
+	STGRAMS
+	STDICT
+	PUSHINT 104
+	STZEROES
+	STSLICECONST 0
+	STSLICECONST 0
+	GETGLOB 4
+	INDEX 5
+	STUR 32
+	PUSH S1
+	STUR 256
+	ENDC
+	GETGLOB 4
+	INDEX 4
+	SENDRAWMSG
+}
+IFELSE
+DROP
+; end function generateHash
+CALLREF {
+	CALL $c7_to_c4$
+}
+TRUE
+SETGLOB 7
+
 .globl	subCertRequest
 .public	subCertRequest
 .type	subCertRequest, @function
@@ -3207,27 +3328,39 @@ PUSHCONT {
 	LDU 32
 }
 IFNOT
+; Decode _par
+LDMSGADDRQ
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
 ENDS
 ;; param: name
 ;; param: subname
 ;; param: _owner
 ;; param: expiry
+;; param: _par
 ; function subCertRequest
 ;; get member sender
 GETGLOB 9
 ;; push identifier name
-PUSH S4
+PUSH S5
 PUSHINT 1
-MYADDR
+;; push identifier _par
+PUSH S3
 CALL $_resolve_internal$
 SDEQ
 THROWIFNOT 103
 ;; push identifier subname
-PUSH S2
+PUSH S3
 ;; push identifier _owner
-PUSH S2
+PUSH S3
 ;; push identifier expiry
-PUSH S2
+PUSH S3
 ;; get member sender
 GETGLOB 9
 CALL $deployCertificate_internal$
@@ -3245,7 +3378,7 @@ STSLICECONST 0
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 5
+BLKDROP 6
 ; end function subCertRequest
 CALLREF {
 	CALL $c7_to_c4$
@@ -3286,23 +3419,35 @@ PUSHCONT {
 	LDU 32
 }
 IFNOT
+; Decode _par
+LDMSGADDRQ
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDMSGADDR
+}
+IFNOT
 ENDS
 ;; param: name
 ;; param: subname
 ;; param: _owner
 ;; param: expiry
+;; param: _par
 ; function subCertSync
 ;; get member sender
 GETGLOB 9
 ;; push identifier name
-PUSH S4
+PUSH S5
 PUSHINT 1
-MYADDR
+;; push identifier _par
+PUSH S3
 CALL $_resolve_internal$
 SDEQ
 THROWIFNOT 103
 ;; push identifier subname
-PUSH S2
+PUSH S3
 PUSHINT 1
 ;; get member sender
 GETGLOB 9
@@ -3322,11 +3467,11 @@ STSLICECONST x5a0198ac
 STSLICECONST x58279a46
 ;; new_owner
 ;; push identifier _owner
-PUSH S3
+PUSH S4
 STSLICER
 ;; new_expiry
 ;; push identifier expiry
-PUSH S2
+PUSH S3
 STUR 32
 ENDC
 PUSHINT 0
@@ -3344,7 +3489,7 @@ STSLICECONST 0
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 5
+BLKDROP 6
 ; end function subCertSync
 CALLREF {
 	CALL $c7_to_c4$

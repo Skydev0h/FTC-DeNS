@@ -79,13 +79,13 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     function subCertRequest(string subname, uint32 subexpiry) external view override onlyOwner {
         emit subCertRequested(subname, subexpiry);
         IDensRoot(root).subCertRequest{value: 0, bounce: false, flag: MsgFlag.MsgBalance}
-            (name, subname, owner, math.max(expiry, subexpiry));
+            (name, subname, owner, math.max(expiry, subexpiry), parent);
     }
 
     function subCertSynchronize(string subname, uint32 subexpiry) external view override onlyOwner {
         emit subCertSynchronized(subname, subexpiry);
         IDensRoot(root).subCertSync{value: 0, bounce: false, flag: MsgFlag.MsgBalance}
-            (name, subname, owner, math.max(expiry, subexpiry));
+            (name, subname, owner, math.max(expiry, subexpiry), parent);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

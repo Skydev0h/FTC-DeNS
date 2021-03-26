@@ -14,6 +14,7 @@ interface IDensRoot is IDataStructs {
     function directlyDeploy(string name, address _owner, uint32 expiry) external returns (address);
     function directlyReconfigure(string name, address _owner, uint32 expiry) external returns (address);
     function ensureExpiry(string name, uint32 expiry) external view;
+    function generateHash(uint256 amount, uint128 nonce) external returns(uint256);
     function installAuction(TvmCell code) external;
     function installCertificate(TvmCell code) external;
     function installPlatform(TvmCell code) external;
@@ -23,8 +24,8 @@ interface IDensRoot is IDataStructs {
     function resolveRPC(string name, address cert, uint8 ptype) external view responsible returns(address);
     function resolveSub(string name, address cert) external view returns(address);
     function requestCertificateUpgrade() external;
-    function subCertRequest(string name, string subname, address _owner, uint32 expiry) external;
-    function subCertSync(string name, string subname, address _owner, uint32 expiry) external;
+    function subCertRequest(string name, string subname, address _owner, uint32 expiry, address _par) external;
+    function subCertSync(string name, string subname, address _owner, uint32 expiry, address _par) external;
 }
 
 interface IDensCertificate is IDataStructs {

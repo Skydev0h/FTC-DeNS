@@ -37,6 +37,8 @@ aabi=build/DensAuction.abi.json
 rkf=root.keys.json
 aid0='"_answer_id":0'
 zero='0x0000000000000000000000000000000000000000000000000000000000000000'
+zeroaddr='0:0000000000000000000000000000000000000000000000000000000000000000'
+cert_addr=''
 
 addr=$($tcli genaddr build/DensRoot.tvc build/DensRoot.abi.json --setkey $rkf | grep 'Raw address' | awk '{print $3}')
 echo "[*] Root account address: $addr"
@@ -53,26 +55,26 @@ function InputAddress() {
   elems=${#entered[@]}
   if (( elems != 2 )); then
     echo 'Incorrect address format, please use format workchainId(0/-1):hexAddress(64 hex chars)'
-    return 0
+    return 1
   fi
   WCID=${entered[0]}
   if [[ "$WCID" != "0" && "$WCID" != "-1" ]]; then
     echo 'Incorrect workchain ID, please use 0 or -1 before :'
-    return 0
+    return 1
   fi
   ADDR=${entered[1]}
   ALEN=${#ADDR}
   if [[ "$ALEN" != 64 ]]; then
     echo 'Incorrect address length, please use 64 hex characters'
-    return 0
+    return 1
   fi
   if ! [[ "$ADDR" =~ ^[0-9A-Fa-f]{64}$ ]] ; then
     echo "Incorrect address format, please use 64 hex characters"
-    return 0
+    return 1
   fi
   ADDRESS="$WCID:$ADDR"
   export WCID ADDR ADDRESS
-  return 1
+  return 0
 }
 
 function InputPubKey() {
@@ -81,11 +83,11 @@ function InputPubKey() {
   read -r -p "$1" entered
   if ! [[ "$entered" =~ ^[0-9A-Fa-f]{64}$ ]] ; then
     echo "Incorrect pubkey format, please use 64 hex characters"
-    return 0
+    return 1
   fi
   PUBKEY="$entered"
   export PUBKEY
-  return 1
+  return 0
 }
 
 function InputText() {
@@ -94,7 +96,7 @@ function InputText() {
   read -r -p "$1" entered
   TEXT="$entered"
   export TEXT
-  return 1
+  return 0
 }
 
 function InputNumber() {
@@ -103,11 +105,11 @@ function InputNumber() {
   read -r -p "$1" entered
   if [[ ! "$entered" =~ ^[0-9]+$ ]] ; then
     echo "[!] Invalid entered number format"
-    return 0
+    return 1
   fi
   NUMBER="$entered"
   export NUMBER
-  return 1
+  return 0
 }
 
 function ToHex() {
@@ -125,6 +127,28 @@ function GetResult() {
   return 0
 }
 
+function GetBody() {
+  BODY=""
+  export BODY
+  BODY=$(echo "$1" | grep "Message body" | awk '{print $3}')
+  return 0
+}
+
+function ProcessBody() {
+  if [[ -f "box/keys.json" ]]; then
+    echo "[#] Found keys.json in box, carrying out the transaction automatically from the box"
+    echo "[.] Sending the following message body:"
+    echo "$1"
+    echo "[.] to the destination address $2"
+    ./tx.sh "$2" 1 "$1"
+  else
+    echo "[!] Please provide the following internal message body to the transaction sending routine of your wallet:"
+    echo "$1"
+    echo "[!] Destination address is $2"
+  fi
+  return 0
+}
+
 function Resolve() {
   RES=$(echo "$1" | jq -r "$2")
   export RES
@@ -136,7 +160,8 @@ function Resolve() {
 function MainMenu() {
   # echo "Root address: $addr"
   PS3='[/] Please select an option: '
-  options=("Resolve an address" "Root actions" "Certificate actions" "Auction actions" "Set root address" "Quit")
+  options=("Resolve an address" "Root actions" "Certificate actions" "Auction actions" \
+           "Request name registration" "Set root address" "Quit")
   select opt in "${options[@]}"
   do
       case $opt in
@@ -152,6 +177,9 @@ function MainMenu() {
           "Auction actions")
               echo "[>] Entering auction operation mode"
               MAuction; break; ;;
+          "Request name registration")
+              echo "[>] Entering name registration mode"
+              MRegName; break; ;;
           "Set root address")
               echo "[>] Configuring root address"
               MRootAddress; break; ;;
@@ -192,10 +220,14 @@ function MResolve() {
     return
   fi
   info="$RES"
-  Resolve "$info" ".owner"
-  echo "[.] Certificate owned by $RES"
   Resolve "$info" ".expiry"
   expires="$RES"
+  now=$(date +%s)
+  if [ "$now" -gt "$expires" ]; then
+    echo "[!!! >>>] WARNING: CERTIFICATE IS EXPIRED [<<< !!!]"
+  fi
+  Resolve "$info" ".owner"
+  echo "[.] Certificate owned by $RES"
   Resolve "$info" ".registered"
   registr="$RES"
   echo "[.] Registered at $(date -d "@$registr"), expires at $(date -d "@$expires")"
@@ -354,20 +386,199 @@ function MRootReconfigure() {
 }
 
 function MRootWithdraw() {
-  echo "[!] Not implemented yet"
+  InputAddress "[?] Where to withdraw funds to: "
+  if [[ "$ADDRESS" == "" ]]; then
+    echo "[!] No correct withdrawal address entered"
+    return
+  fi
+  InputNumber '[?] How many Tons you want to withdraw: '
+  if [[ "$NUMBER" == "" ]]; then
+    echo "[!] No correct withdrawal amount entered"
+    return
+  fi
+  $tcli call --abi $abi --sign $rkf "$addr" withdraw '{"dest":"'"$ADDRESS"'","value":'"$NUMBER"'000000000}'
+  echo "[*] Notice: withdrawal may fail if resulting balance is lower than required threshold"
 }
 
 # ======================================================================================================================
 
 function MCertificate() {
+  InputAddress "[?] Please enter certificate address to work with: "
+  if [[ "$ADDRESS" == "" ]]; then
+    return
+  fi
+  export cert_addr="$ADDRESS"
   PS3='[/certificate/] Please select an option: '
-  echo "[!] Not implemented yet"
+  options=("Query information" "Set value" "Transfer owner" "Accept owner transfer" "Create subcertificate" \
+           "Sync subcertificate" "Request code upgrade" "Withdraw excess funds" "Return")
+  select opt in "${options[@]}"
+  do
+      case $opt in
+          "Query information")
+              echo "[>] Querying certificate information"
+              MCertificateQuery; ;;
+          "Set value")
+              echo "[>] Entering value modification mode"
+              MCertificateSetValue; ;;
+          "Transfer owner")
+              echo "[>] Entering owner transfer configuration mode"
+              MCertificateTransferOwner; ;;
+          "Accept owner transfer")
+              echo "[>] Attempting to accept owner transfer"
+              MCertificateAcceptOwner; ;;
+          "Create subcertificate")
+              echo "[>] Entering subcertificate creation mode"
+              MCertificateSubCreate; ;;
+          "Sync subcertificate")
+              echo "[>] Entering subcertificate synchronization mode"
+              MCertificateSubSync; ;;
+          "Request code upgrade")
+              echo "[>] Attempting to request code upgrade from root"
+              MCertificateRequestUpgrade; ;;
+          "Return")
+              echo "[<] Returning to main menu"
+              return; ;;
+          *) echo "[!] Invalid option $REPLY";;
+      esac
+  done
+}
+
+function MCertificateQuery() {
+  echo "[.] Querying certificate information for $cert_addr"
+  GetResult "$($tcli run --abi $cabi "$cert_addr" whois "{$aid0}")" '.value0'
+  if [[ "$RES" == "" ]]; then
+    echo "[!] Failed to obtain information"
+    return
+  fi
+  info="$RES"
+  GetResult "$($tcli run --abi $cabi "$cert_addr" root "{}")" '.root'
+  echo "[-] Root contract: $RES"
+  Resolve "$info" ".name" && echo "[-] Encoded name (hex): $RES"
+  Resolve "$info" ".owner" && echo "[-] Current owner: $RES"
+  GetResult "$($tcli run --abi $cabi "$cert_addr" pending_owner "{}")" '.pending_owner'
+  echo "[-] Pending owner: $RES"
+  Resolve "$info" ".parent" && echo "[-] Parent contract: $RES"
+  Resolve "$info" ".value" && echo "[-] Target address (value): $RES"
+  Resolve "$info" ".registered" && echo "[-] Registered at: ($RES) $(date -d "@$RES")"
+  Resolve "$info" ".expiry" && echo "[-] Expires at: ($RES) $(date -d "@$RES")"
+}
+
+function MCertificateSetValue() {
+  InputAddress "[?] Please enter new certificate value: "
+  if [[ "$ADDRESS" == "" ]]; then
+    echo "[!] No correct value address entered"
+    echo "Are you sure you want to reset value to zero?"
+    echo "Type in 0 in the next prompt to confirm."
+    InputNumber "[#] Type 0 to confirm value reset: "
+    if [[ "$NUMBER" != "0" ]]; then
+      echo "[!] Aborted"
+      return
+    fi
+    ADDRESS="$zeroaddr"
+  fi
+  GetBody "$($tcli body --abi build/DensCertificate.abi.json setValue '{"new_value":"'"$ADDRESS"'"}')"
+  ProcessBody "$BODY" "$cert_addr"
+}
+
+function MCertificateTransferOwner() {
+  InputAddress "[?] Please enter new certificate owner address: "
+  if [[ "$ADDRESS" == "" ]]; then
+    echo "[!] No correct new owner address entered"
+    echo "Are you sure you want to cancel transfer procedure?"
+    echo "Type in 0 in the next prompt to confirm."
+    InputNumber "[#] Type 0 to confirm cancelling owner transfer: "
+    if [[ "$NUMBER" != "0" ]]; then
+      echo "[!] Aborted"
+      return
+    fi
+    ADDRESS="$zeroaddr"
+  fi
+  GetBody "$($tcli body --abi build/DensCertificate.abi.json transferOwner '{"new_owner":"'"$ADDRESS"'"}')"
+  ProcessBody "$BODY" "$cert_addr"
+}
+
+function MCertificateAcceptOwner() {
+  GetBody "$($tcli body --abi build/DensCertificate.abi.json acceptOwner '{}')"
+  ProcessBody "$BODY" "$cert_addr"
+}
+
+function MCertificateSubCreate() {
+  InputText "[?] Please enter a subdomain name to deploy: "
+  if [[ "$TEXT" == "" ]]; then
+    echo "[!] No subdomain name entered"
+    return
+  fi
+  echo '[*] Enter 0 for permanent subdomain or lifetime in years'
+  InputNumber '[?] Enter subdomain lifetime in years: '
+  if [[ "$NUMBER" == "" ]]; then
+    echo "[!] No correct lifetime entered"
+    return
+  fi
+  ToHex "$TEXT"
+  now=$(date +%s)
+  exp=4294967295
+  if [[ "$NUMBER" != "0" ]]; then
+    exp=$((now + 365*24*60*60*NUMBER))
+  fi
+  echo "[>] Deploying $TEXT subdomain with expiration $exp"
+  GetBody "$($tcli body --abi build/DensCertificate.abi.json subCertRequest '{"subname":"'"$HEX"'","subexpiry":'"$exp"'}')"
+  ProcessBody "$BODY" "$cert_addr"
+}
+
+function MCertificateSubSync() {
+  InputText "[?] Please enter a subdomain name to synchronize: "
+  if [[ "$TEXT" == "" ]]; then
+    echo "[!] No subdomain name entered"
+    return
+  fi
+  echo '[*] Enter 0 for permanent subdomain or lifetime in years'
+  InputNumber '[?] Enter subdomain lifetime in years: '
+  if [[ "$NUMBER" == "" ]]; then
+    echo "[!] No correct lifetime entered"
+    return
+  fi
+  ToHex "$TEXT"
+  now=$(date +%s)
+  exp=4294967295
+  if [[ "$NUMBER" != "0" ]]; then
+    exp=$((now + 365*24*60*60*NUMBER))
+  fi
+  echo "[>] Deploying $TEXT subdomain with expiration $exp"
+  GetBody "$($tcli body --abi build/DensCertificate.abi.json subCertSynchronize '{"subname":"'"$HEX"'","subexpiry":'"$exp"'}')"
+  ProcessBody "$BODY" "$cert_addr"
+}
+
+function MCertificateRequestUpgrade() {
+  GetBody "$($tcli body --abi build/DensCertificate.abi.json requestUpgrade '{}')"
+  ProcessBody "$BODY" "$cert_addr"
+}
+
+function MCertificateWithdraw() {
+  InputAddress "[?] Where to withdraw funds to: "
+  if [[ "$ADDRESS" == "" ]]; then
+    echo "[!] No correct withdrawal address entered"
+    return
+  fi
+  InputNumber '[?] How many Tons you want to withdraw: '
+  if [[ "$NUMBER" == "" ]]; then
+    echo "[!] No correct withdrawal amount entered"
+    return
+  fi
+  GetBody "$($tcli body --abi build/DensCertificate.abi.json withdraw '{"dest":"'"$ADDRESS"'","value":'"$NUMBER"'000000000}')"
+  ProcessBody "$BODY" "$cert_addr"
+  echo "[*] Notice: withdrawal may fail if resulting balance is lower than required threshold"
 }
 
 # ======================================================================================================================
 
 function MAuction() {
   PS3='[/auction/] Please select an option: '
+  echo "[!] Not implemented yet"
+}
+
+# ======================================================================================================================
+
+function MRegName() {
   echo "[!] Not implemented yet"
 }
 
