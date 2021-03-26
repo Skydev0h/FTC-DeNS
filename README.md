@@ -77,3 +77,9 @@ As of now in order to control and interact with the system you need to use `tono
 Deployment of root and configuration of platform, certificate and auction codes is done automatically by `deploy_root.sh` script. Likewise, you can deploy debot with `deploy_debot.sh` and start it later using `run_debot.sh` scripts. Initially, it was planned that contracts would be interacted using debots, however, it turned out that they crash for some reason.
 
 Please use `interact.sh` to interact with the system. It has debot-like menu system but is implemented using scripts. 
+
+### Using automatic box to send messages
+
+In order to conveniently automatically send messages from a safe multisig contract for contract deployment and during interaction you need to generate `keys.json` in the `box` folder, then correctly deploy the SafeMultisigWallet contract in the `box` and provide it adequate funds for all the manipulations.
+
+Otherwise you will need to supply Tons for deployment manually, and provide the generated encoded message body to the transaction sending routine of wallet of your choice.
