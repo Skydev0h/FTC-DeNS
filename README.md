@@ -9,6 +9,20 @@ This is an implementation of DeNS elements according to the [contest specificati
 
 [Interaction](#interaction)
 
+## Important points
+
+First of all, I would like to provide several things, that differentiate this contract the most.
+
+I will abbreviate `DensClass` as `D-Class` to make it a little shorter *and cooler*.
+
+* The most interesting thing in this implementation is existence of thin `D-Platform` middleware smart contract. It has bare minimum amount of code and has some necessary static parameters to build the tree structure (`root`, `type_id`, `name`, `parent`). The code of required contract is instantly installed over this platform right after deployment.
+* The smart contracts (`D-Certificate`, `D-Auction`) cannot be deployed directly and are installed exclusively by upgrading the `D-Platform` smart contract (`type_id` = `1` for `D-Certificate` and `2` for `D-Auction`)
+* Therefore, it is possible to update the `D-Certificate` code (image for new deployments and updating existing certificates) and `D-Auction` (image for new deployments) code and with that do not update the `D-Platform` code - because of this all addresses will not change and still can be deployed and resolved to the same old addresses - no need for code version history
+* The code (images) is kept only in the `D-Root`, subcertificate deployment is carried out by calling a special function in the `D-Root` by the `D-Certificate`, which is instigated by calling a special command in the certificate by it's owner. Also, certificate can ask root to update itself (send new version of code). This way it is not necessary to store image in each certificate, and still, certificate can deploy new subcertificates by asking root to do that.
+* Contracts do not accept payments directly (to prevent errorneous transfers), it is possible to explicitly call `addBalance` function with an internal message to add funds to the smart contract balance
+* Transfer of ownership is secure (with confirmation to prevent errors), root is owned by pubkey, while certificates are owned by a smart contract (address), it is done this way because of some specifics of calling of methods and deployment
+* It is possible to reserve address and specify reserve expiry date, reserve and unreserve are done by owner of root, I couldn't find a pluggable SMV implementation for voting system.
+
 ## Summary
 
 The implementation consists of several smart contracts that are responsible for specific area in the system.
