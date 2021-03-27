@@ -14,7 +14,7 @@ interface IDensRoot is IDataStructs {
     function directlyDeploy(string name, address _owner, uint32 expiry) external returns (address);
     function directlyReconfigure(string name, address _owner, uint32 expiry) external returns (address);
     function ensureExpiry(string name, uint32 expiry) external view;
-    function generateHash(uint256 amount, uint128 nonce) external returns(uint256);
+    function generateHash(uint128 amount, uint256 nonce) external returns(uint256);
     function installAuction(TvmCell code) external;
     function installCertificate(TvmCell code) external;
     function installPlatform(TvmCell code) external;

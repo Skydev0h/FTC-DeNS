@@ -345,7 +345,7 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     }
 
     // Temporarily required until Debot is working. May be useful anyway.
-    function generateHash(uint256 amount, uint128 nonce) external override returns(uint256) {
+    function generateHash(uint128 amount, uint256 nonce) external override returns(uint256) {
         TvmBuilder b; b.store(amount, nonce);
         uint256 rhash = tvm.hash(b.toCell());
         return rhash;

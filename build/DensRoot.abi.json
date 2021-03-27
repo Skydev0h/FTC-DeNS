@@ -223,8 +223,8 @@
 		{
 			"name": "generateHash",
 			"inputs": [
-				{"name":"amount","type":"uint256"},
-				{"name":"nonce","type":"uint128"}
+				{"name":"amount","type":"uint128"},
+				{"name":"nonce","type":"uint256"}
 			],
 			"outputs": [
 				{"name":"value0","type":"uint256"}

@@ -39,6 +39,9 @@ aid0='"_answer_id":0'
 zero='0x0000000000000000000000000000000000000000000000000000000000000000'
 zeroaddr='0:0000000000000000000000000000000000000000000000000000000000000000'
 cert_addr=''
+auct_addr=''
+lrdn=''
+lrda=''
 
 addr=$($tcli genaddr build/DensRoot.tvc build/DensRoot.abi.json --setkey $rkf | grep 'Raw address' | awk '{print $3}')
 echo "[*] Root account address: $addr"
@@ -135,16 +138,20 @@ function GetBody() {
 }
 
 function ProcessBody() {
+  value="1"
+  if [[ "$3" != "" ]]; then
+    value="$3"
+  fi
   if [[ -f "box/keys.json" ]]; then
     echo "[#] Found keys.json in box, carrying out the transaction automatically from the box"
     echo "[.] Sending the following message body:"
     echo "$1"
     echo "[.] to the destination address $2"
-    ./tx.sh "$2" 1 "$1"
+    ./tx.sh "$2" "$value" "$1"
   else
     echo "[!] Please provide the following internal message body to the transaction sending routine of your wallet:"
     echo "$1"
-    echo "[!] Destination address is $2"
+    echo "[!] Destination address is $2, please send at least $value Tons"
   fi
   return 0
 }
@@ -233,6 +240,9 @@ function MResolve() {
   echo "[.] Registered at $(date -d "@$registr"), expires at $(date -d "@$expires")"
   Resolve "$info" ".value"
   echo "[*] Certificate value is: $RES"
+  lrdn="$crumb"
+  lrda="$parent"
+  export lrdn lrda
 }
 
 # ======================================================================================================================
@@ -403,9 +413,17 @@ function MRootWithdraw() {
 # ======================================================================================================================
 
 function MCertificate() {
+  if [[ "$lrdn" != "" ]]; then
+    echo "[*] You can just press enter to use latest resolved certificate (for $lrdn)"
+  fi
   InputAddress "[?] Please enter certificate address to work with: "
   if [[ "$ADDRESS" == "" ]]; then
-    return
+    if [[ "$lrdn" == "" ]]; then
+      return
+    fi
+    echo "[#] Using last resolved domain name: $lrdn"
+    echo "[#] Substituting address: $lrda"
+    ADDRESS="$lrda"
   fi
   export cert_addr="$ADDRESS"
   PS3='[/certificate/] Please select an option: '
@@ -476,7 +494,7 @@ function MCertificateSetValue() {
     fi
     ADDRESS="$zeroaddr"
   fi
-  GetBody "$($tcli body --abi build/DensCertificate.abi.json setValue '{"new_value":"'"$ADDRESS"'"}')"
+  GetBody "$($tcli body --abi $cabi setValue '{"new_value":"'"$ADDRESS"'"}')"
   ProcessBody "$BODY" "$cert_addr"
 }
 
@@ -493,12 +511,12 @@ function MCertificateTransferOwner() {
     fi
     ADDRESS="$zeroaddr"
   fi
-  GetBody "$($tcli body --abi build/DensCertificate.abi.json transferOwner '{"new_owner":"'"$ADDRESS"'"}')"
+  GetBody "$($tcli body --abi $cabi transferOwner '{"new_owner":"'"$ADDRESS"'"}')"
   ProcessBody "$BODY" "$cert_addr"
 }
 
 function MCertificateAcceptOwner() {
-  GetBody "$($tcli body --abi build/DensCertificate.abi.json acceptOwner '{}')"
+  GetBody "$($tcli body --abi $cabi acceptOwner '{}')"
   ProcessBody "$BODY" "$cert_addr"
 }
 
@@ -521,7 +539,7 @@ function MCertificateSubCreate() {
     exp=$((now + 365*24*60*60*NUMBER))
   fi
   echo "[>] Deploying $TEXT subdomain with expiration $exp"
-  GetBody "$($tcli body --abi build/DensCertificate.abi.json subCertRequest '{"subname":"'"$HEX"'","subexpiry":'"$exp"'}')"
+  GetBody "$($tcli body --abi $cabi subCertRequest '{"subname":"'"$HEX"'","subexpiry":'"$exp"'}')"
   ProcessBody "$BODY" "$cert_addr"
 }
 
@@ -544,12 +562,12 @@ function MCertificateSubSync() {
     exp=$((now + 365*24*60*60*NUMBER))
   fi
   echo "[>] Deploying $TEXT subdomain with expiration $exp"
-  GetBody "$($tcli body --abi build/DensCertificate.abi.json subCertSynchronize '{"subname":"'"$HEX"'","subexpiry":'"$exp"'}')"
+  GetBody "$($tcli body --abi $cabi subCertSynchronize '{"subname":"'"$HEX"'","subexpiry":'"$exp"'}')"
   ProcessBody "$BODY" "$cert_addr"
 }
 
 function MCertificateRequestUpgrade() {
-  GetBody "$($tcli body --abi build/DensCertificate.abi.json requestUpgrade '{}')"
+  GetBody "$($tcli body --abi $cabi requestUpgrade '{}')"
   ProcessBody "$BODY" "$cert_addr"
 }
 
@@ -564,7 +582,7 @@ function MCertificateWithdraw() {
     echo "[!] No correct withdrawal amount entered"
     return
   fi
-  GetBody "$($tcli body --abi build/DensCertificate.abi.json withdraw '{"dest":"'"$ADDRESS"'","value":'"$NUMBER"'000000000}')"
+  GetBody "$($tcli body --abi $cabi withdraw '{"dest":"'"$ADDRESS"'","value":'"$NUMBER"'000000000}')"
   ProcessBody "$BODY" "$cert_addr"
   echo "[*] Notice: withdrawal may fail if resulting balance is lower than required threshold"
 }
@@ -572,14 +590,222 @@ function MCertificateWithdraw() {
 # ======================================================================================================================
 
 function MAuction() {
+  if [[ "$root" == "" ]]; then
+    echo "[!] Root address not set! Please configure root address first!"
+    return
+  fi
+  InputText "[?] Please enter domain name to look for auction: "
+  if [[ "$TEXT" == "" ]]; then
+    echo "[!] Domain name was not porovided"
+    return
+  fi
+  ToHex "$TEXT"
+  GetResult "$($tcli run --abi $abi "$root" resolveRPC "{$aid0,\"name\":\"$HEX\",\"cert\":\"$root\",\"ptype\":2}")" '.value0'
+  if [[ "$RES" == "" ]]; then
+    echo "[!] Failed to resolve!"
+    return
+  fi
+  auct_addr="$RES"
+  echo "[*] Possible auction address: $auct_addr"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endBid "{}")" '.endBid'
+  endbid="$RES"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endRev "{}")" '.endRev'
+  endrev="$RES"
+  if [[ "$endbid" == "" || "$endrev" == "" || "$endbid" == "null" || "$endrev" == "null" ]]; then
+    echo "[!] Auction does not exist on that address (for the provided name)!"
+    return
+  fi
+  export auct_addr
   PS3='[/auction/] Please select an option: '
-  echo "[!] Not implemented yet"
+  options=("Query information" "Query lists" "Bid" "Reveal" "Finalize" "Return")
+  select opt in "${options[@]}"
+  do
+      case $opt in
+          "Query information")
+              echo "[>] Querying auction information"
+              MAuctionQuery; ;;
+          "Query lists")
+              echo "[>] Querying auction lists"
+              MAuctionQueryEx; ;;
+          "Bid")
+              echo "[>] Entering bid mode"
+              MAuctionBid; ;;
+          "Reveal")
+              echo "[>] Entering reveal mode"
+              MAuctionReveal; ;;
+          "Finalize")
+              echo "[>] Attempting to finalize auction"
+              MAuctionFinalize; ;;
+          "Return")
+              echo "[<] Returning to main menu"
+              return; ;;
+          *) echo "[!] Invalid option $REPLY";;
+      esac
+  done
+}
+
+function MAuctionQuery() {
+  echo "[-] Auction address: $auct_addr"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" root "{}")" '.root'
+  echo "[-] Root address: $RES"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" name "{}")" '.name'
+  echo "[-] Encoded name (hex): $RES"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" start "{}")" '.start'
+  echo "[-] Auction start: ($RES) $(date -d "@$RES")"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endBid "{}")" '.endBid'
+  echo "[-] Bid phase ends: ($RES) $(date -d "@$RES")"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endRev "{}")" '.endRev'
+  echo "[-] Reveal phase ends: ($RES) $(date -d "@$RES")"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" expiry "{}")" '.expiry'
+  echo "[-] New contract expiration: ($RES) $(date -d "@$RES")"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" minfinal "{}")" '.minfinal'
+  echo "[-] Earliest possible finalize: ($RES) $(date -d "@$RES")"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" reveal_1 "{}")" '.reveal_1'
+  echo "[-] Reveal phase first place: ($RES)"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" reveal_2 "{}")" '.reveal_2'
+  echo "[-] Reveal phase second place: ($RES)"
+}
+
+function MAuctionQueryEx() {
+  GetResult "$($tcli run --abi $aabi "$auct_addr" hashes "{}")" '.hashes'
+  echo "Hashes: $RES"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" reveals "{}")" '.reveals'
+  echo "Reveals: $RES"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" withdrawn "{}")" '.withdrawn'
+  echo "Withdrawn: $RES"
+}
+
+function MAuctionBid() {
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endBid "{}")" '.endBid'
+  endbid="$RES"
+  now=$(date +%s)
+  if [ "$now" -ge "$endbid" ]; then
+    echo "[!!! >>>] WARNING: Local time suggests bid phase is over! [<<< !!!]"
+    InputNumber "[!] Please type 1 to continue: "
+    if [[ "$NUMBER" != "1" ]]; then
+      return
+    fi
+  fi
+  InputNumber '[?] Enter your bid amount in Tons: '
+  if [[ "$NUMBER" == "" || "$NUMBER" == "0" ]]; then
+    echo "[!] No correct bid amount entered"
+    return
+  fi
+  bid="$NUMBER"
+  nonce="$(dd if=/dev/urandom bs=32 count=1 2>/dev/null)"
+  ToHex "$name"
+  xname="$HEX"
+  ToHex "$nonce"
+  xnonce="$HEX"
+  GetResult "$($tcli run --abi $abi "$root" generateHash '{"nonce":"0x'"$xnonce"'","amount":'"$bid"'000000000}')" '.value0'
+  xhash="$RES"
+  # {"components":[{"name":"name","type":"bytes"},{"name":"duration","type":"uint32"},{"name":"hash","type":"uint256"}],"name":"request","type":"tuple"}
+  GetBody "$($tcli body --abi $aabi bid '{"_answer_id":0,"hash":"'"$xhash"'"}')"
+  ProcessBody "$BODY" "$auct_addr"
+  echo "[!!!] COPY YOUR AMOUNT AND NONCE TO SAFE PLACE! WITHOUT THEM YOU WILL NOT BE ABLE TO REVEAL YOUR BID LATER! [!!!]"
+  echo "[!] "
+  echo "[!] Amount (in Tons): $bid"
+  echo "[!] Nonce value: $xnonce"
+  echo "[!] "
+  echo "[!!!] COPY YOUR AMOUNT AND NONCE TO SAFE PLACE! WITHOUT THEM YOU WILL NOT BE ABLE TO REVEAL YOUR BID LATER! [!!!]"
+}
+
+function MAuctionReveal() {
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endBid "{}")" '.endBid'
+  endbid="$RES"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endRev "{}")" '.endRev'
+  endrev="$RES"
+  now=$(date +%s)
+  if [ "$now" -le "$endbid" ]; then
+    echo "[!!! >>>] WARNING: Local time suggests reveal phase has not yet started! [<<< !!!]"
+    InputNumber "[!] Please type 1 to continue: "
+    if [[ "$NUMBER" != "1" ]]; then
+      return
+    fi
+  fi
+  if [ "$now" -ge "$endrev" ]; then
+    echo "[!!! >>>] WARNING: Local time suggests reveal phase is over! [<<< !!!]"
+    InputNumber "[!] Please type 1 to continue: "
+    if [[ "$NUMBER" != "1" ]]; then
+      return
+    fi
+  fi
+  InputNumber '[?] Enter your bid amount in Tons: '
+  if [[ "$NUMBER" == "" || "$NUMBER" == "0" ]]; then
+    echo "[!] No correct bid amount entered"
+    return
+  fi
+  bid="$NUMBER"
+  InputPubKey "[?] Enter your nonce (without 0x): "
+  if [[ "$PUBKEY" == "" ]]; then
+    echo "[!] No correct nonce entered"
+    return
+  fi
+  GetBody "$($tcli body --abi $aabi bid '{"_answer_id":0,"nonce":"0x'"$xnonce"'","amount":'"$bid"'000000000}')"
+  ProcessBody "$BODY" "$auct_addr" $((bid+1))
+}
+
+function MAuctionFinalize() {
+  GetResult "$($tcli run --abi $aabi "$auct_addr" minfinal "{}")" '.minfinal'
+  minfinal="$RES"
+  GetResult "$($tcli run --abi $aabi "$auct_addr" endRev "{}")" '.endRev'
+  endrev="$RES"
+  now=$(date +%s)
+  if [ "$now" -le "$endrev" ]; then
+    echo "[!!! >>>] WARNING: Local time suggests reveal phase has not finished yet! [<<< !!!]"
+    InputNumber "[!] Please type 1 to continue: "
+    if [[ "$NUMBER" != "1" ]]; then
+      return
+    fi
+  fi
+  if [ "$now" -le "$minfinal" ]; then
+    echo "[!!! >>>] WARNING: Local time suggests minimum finalization time is not reached! [<<< !!!]"
+    InputNumber "[!] Please type 1 to continue: "
+    if [[ "$NUMBER" != "1" ]]; then
+      return
+    fi
+  fi
+  GetBody "$($tcli body --abi $aabi finalize '{"_answer_id":0}')"
+  ProcessBody "$BODY" "$auct_addr"
 }
 
 # ======================================================================================================================
 
 function MRegName() {
-  echo "[!] Not implemented yet"
+  InputText "[?] Please enter a domain name: "
+  if [[ "$TEXT" == "" ]]; then
+    echo "[!] No domain name entered"
+    return
+  fi
+  name="$TEXT"
+  InputNumber '[?] Enter domain lifetime in years: '
+  if [[ "$NUMBER" == "" || "$NUMBER" == "0" ]]; then
+    echo "[!] No correct lifetime entered"
+    return
+  fi
+  life="$NUMBER"
+  InputNumber '[?] Enter your bid amount in Tons: '
+  if [[ "$NUMBER" == "" || "$NUMBER" == "0" ]]; then
+    echo "[!] No correct bid amount entered"
+    return
+  fi
+  bid="$NUMBER"
+  nonce="$(dd if=/dev/urandom bs=32 count=1 2>/dev/null)"
+  ToHex "$name"
+  xname="$HEX"
+  ToHex "$nonce"
+  xnonce="$HEX"
+  GetResult "$($tcli run --abi $abi "$root" generateHash '{"nonce":"0x'"$xnonce"'","amount":'"$bid"'000000000}')" '.value0'
+  xhash="$RES"
+  # {"components":[{"name":"name","type":"bytes"},{"name":"duration","type":"uint32"},{"name":"hash","type":"uint256"}],"name":"request","type":"tuple"}
+  GetBody "$($tcli body --abi $abi regName '{"callbackFunctionId":0,"request":{"name":"'"$xname"'","duration":'"$life"',"hash":"'"$xhash"'"}}')"
+  ProcessBody "$BODY" "$root" 6
+  echo "[!!!] COPY YOUR AMOUNT AND NONCE TO SAFE PLACE! WITHOUT THEM YOU WILL NOT BE ABLE TO REVEAL YOUR BID LATER! [!!!]"
+  echo "[!] "
+  echo "[!] Amount (in Tons): $bid"
+  echo "[!] Nonce value: $xnonce"
+  echo "[!] "
+  echo "[!!!] COPY YOUR AMOUNT AND NONCE TO SAFE PLACE! WITHOUT THEM YOU WILL NOT BE ABLE TO REVEAL YOUR BID LATER! [!!!]"
 }
 
 # ======================================================================================================================

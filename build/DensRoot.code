@@ -3184,16 +3184,6 @@ IFREF {
 }
 ; Decode input parameters
 ; Decode amount
-LDUQ 256
-PUSHCONT {
-	;; load next cell
-	LDREF
-	ENDS
-	CTOS
-	LDU 256
-}
-IFNOT
-; Decode nonce
 LDUQ 128
 PUSHCONT {
 	;; load next cell
@@ -3201,6 +3191,16 @@ PUSHCONT {
 	ENDS
 	CTOS
 	LDU 128
+}
+IFNOT
+; Decode nonce
+LDUQ 256
+PUSHCONT {
+	;; load next cell
+	LDREF
+	ENDS
+	CTOS
+	LDU 256
 }
 IFNOT
 ENDS
@@ -3214,10 +3214,10 @@ DUP
 ; end expValue
 ;; push identifier amount
 PUSH S3
-STUR 256
+STUR 128
 ;; push identifier nonce
 PUSH S2
-STUR 128
+STUR 256
 ; colValue
 NIP
 ; end colValue
@@ -3246,7 +3246,7 @@ PUSHCONT {
 	STZEROES
 	STSLICECONST 0
 	STSLICECONST 0
-	STSLICECONST xce3403b9
+	STSLICECONST xc27ce102
 	PUSH S1
 	STUR 256
 	ENDC
