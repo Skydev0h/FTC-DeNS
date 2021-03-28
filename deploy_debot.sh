@@ -51,6 +51,8 @@ if [[ ! -f "$tcli" ]]; then
   exit 1
 fi
 
+./selnet.sh get call
+
 if [[ -f "$solc" ]]; then
   cd contracts || exit
   echo "[*] Building contracts..."

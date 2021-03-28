@@ -43,6 +43,8 @@ auct_addr=''
 lrdn=''
 lrda=''
 
+./selnet.sh get menu
+
 addr=$($tcli genaddr build/DensRoot.tvc build/DensRoot.abi.json --setkey $rkf | grep 'Raw address' | awk '{print $3}')
 echo "[*] Root account address: $addr"
 root=$addr
@@ -168,7 +170,7 @@ function MainMenu() {
   # echo "Root address: $addr"
   PS3='[/] Please select an option: '
   options=("Resolve an address" "Root actions" "Certificate actions" "Auction actions" \
-           "Request name registration" "Set root address" "Quit")
+           "Request name registration" "Set root address" "Change network" "Quit")
   select opt in "${options[@]}"
   do
       case $opt in
@@ -190,6 +192,10 @@ function MainMenu() {
           "Set root address")
               echo "[>] Configuring root address"
               MRootAddress; break; ;;
+          "Change network")
+              echo "[>] Calling network selection script"
+              ./selnet.sh
+              break; ;;
           "Quit")
               echo "[!] Bye bye!"
               exit; ;;

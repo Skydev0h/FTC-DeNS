@@ -6,9 +6,9 @@ VAL=$2
 NGR=$(( VAL*1000000000 ))
 PL=$3
 
-cd box || exit
+# cd box || exit
 
-MSA=$(tonos-cli genaddr SafeMultisigWallet.tvc SafeMultisigWallet.abi.json --setkey keys.json | grep 'Raw address' | awk '{print $3}')
-tonos-cli call $MSA submitTransaction \
-"{\"dest\":\"$DST\",\"value\":$NGR,\"bounce\":false,\"allBalance\":false,\"payload\":\"$PL\"}" \
---abi SafeMultisigWallet.abi.json --sign keys.json
+MSA=$(tonos-cli genaddr box/SafeMultisigWallet.tvc box/SafeMultisigWallet.abi.json --setkey box/keys.json | grep 'Raw address' | awk '{print $3}')
+tonos-cli call "$MSA" submitTransaction \
+  "{\"dest\":\"$DST\",\"value\":$NGR,\"bounce\":false,\"allBalance\":false,\"payload\":\"$PL\"}" \
+  --abi box/SafeMultisigWallet.abi.json --sign box/keys.json

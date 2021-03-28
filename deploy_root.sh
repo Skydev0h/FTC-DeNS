@@ -51,6 +51,8 @@ if [[ ! -f "$tcli" ]]; then
   exit 1
 fi
 
+./selnet.sh get call
+
 if [[ -f "$solc" ]]; then
   cd contracts || exit
   echo "[*] Building contracts..."
@@ -146,7 +148,7 @@ fi
 
 if $doi; then
   echo "[*] Installing platform code..."
-  tonos-cli call --abi $abi --sign $rkf "$addr" installPlatform '{"code":"'"$c_plat"'"}'
+  $tcli call --abi $abi --sign $rkf "$addr" installPlatform '{"code":"'"$c_plat"'"}'
 fi
 
 echo "[=] Verifying certificate code..."
@@ -164,7 +166,7 @@ fi
 
 if $doi; then
   echo "[*] Installing certificate code..."
-  tonos-cli call --abi $abi --sign $rkf "$addr" installCertificate '{"code":"'"$c_cert"'"}'
+  $tcli call --abi $abi --sign $rkf "$addr" installCertificate '{"code":"'"$c_cert"'"}'
 fi
 
 echo "[=] Verifying auction code..."
@@ -182,7 +184,7 @@ fi
 
 if $doi; then
   echo "[*] Installing auction code..."
-  tonos-cli call --abi $abi --sign $rkf "$addr" installAuction '{"code":"'"$c_auct"'"}'
+  $tcli call --abi $abi --sign $rkf "$addr" installAuction '{"code":"'"$c_auct"'"}'
 fi
 
 echo "All done! You are advised to re-run this script again to make sure everything is deployed correctly!"
