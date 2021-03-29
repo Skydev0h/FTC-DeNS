@@ -11,6 +11,9 @@ This is an implementation of DeNS elements according to the [contest specificati
 
 ## Important points
 
+> Root contract is deployed in **DevNet** at address:
+> `0:6d4be805d19ddf0d4da99c6c38bc0233753c6e0785f198ec5c8014c5e9a07a8e`
+
 First of all, I would like to provide several things, that differentiate this contract the most.
 
 I will abbreviate `DensClass` as `D-Class` to make it a little shorter *and cooler*.
