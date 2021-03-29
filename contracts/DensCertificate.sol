@@ -72,7 +72,7 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // IDensCertificate owner can request upgrade from root
     function requestUpgrade() external view override onlyOwner retRem {
-        IDensRoot(root).requestCertificateUpgrade();
+        IDensRoot(root).requestCertificateUpgrade{value: 0, flag: MsgFlag.MsgBalance}();
         emit upgradeRequested();
     }
 
@@ -158,6 +158,7 @@ contract DensCertificate is IDensCertificate, ITransferOwnerInt, IUpgradable, IS
     // Auction process
 
     function auctionProcess(address new_owner, uint32 new_expiry) external responsible override onlyRoot returns(bool) {
+        tvm.accept();
         if (owner != new_owner) { value = address(0); owner = new_owner; pending_owner = address(0); }
         expiry = new_expiry;
         emit auctionSet(new_owner, new_expiry);

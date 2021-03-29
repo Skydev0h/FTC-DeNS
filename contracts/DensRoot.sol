@@ -298,7 +298,7 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
         address cert = _resolve(name, PlatformTypes.Certificate, address(this));
         temp_lookup[cert] = TempData(name, winner, expiry);
         emit auctionSuccess(name, winner, expiry, msg.sender);
-        IDensCertificate(cert).auctionProcess{callback: DensRoot.certAuctProcessCallback}(winner, expiry);
+        IDensCertificate(cert).auctionProcess{callback: DensRoot.certAuctProcessCallback, value: 0.1 ton, flag: 1}(winner, expiry);
         IDensAuction(msg.sender).destroy{value: 0, bounce: true, flag: MsgFlag.MsgBalance}();
     }
 
@@ -326,7 +326,7 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
             flag: MsgFlag.AddTranFees
         }();
         p.initialize{flag:MsgFlag.AddTranFees}(certificate_code, _owner);
-        IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy}(_owner, expiry);
+        IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy, value: 0.1 ton, flag: 1}(_owner, expiry);
         emit certificateDeployed(name, _owner, expiry, parent, address(p));
         return p;
     }
@@ -339,7 +339,7 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     // For playing with the contracts
     function directlyReconfigure(string name, address _owner, uint32 expiry) external override onlyOwner returns (address) {
         address p = _resolve(name, PlatformTypes.Certificate, address(this));
-        IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy}(_owner, expiry);
+        IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy, value: 0.1 ton, flag: 1}(_owner, expiry);
         emit certificateReconfigured(name, _owner, expiry, address(p));
         return p;
     }
@@ -363,7 +363,7 @@ contract DensRoot is IDensRoot, ITransferOwnerExt, IUpgradable, IAddBalance {
     function subCertSync(string name, string subname, address _owner, uint32 expiry, address _par) external override {
         require(msg.sender == _resolve(name, PlatformTypes.Certificate, _par), Errors.INVALID_ADDRESS);
         address p = _resolve(subname, PlatformTypes.Certificate, msg.sender);
-        IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy}(_owner, expiry);
+        IDensCertificate(address(p)).auctionProcess{callback: DensRoot.certAuctProcessCallbackDummy, value: 0.1 ton, flag: 1}(_owner, expiry);
         msg.sender.transfer({value: 0, bounce: false, flag: MsgFlag.MsgBalance});
     }
 
