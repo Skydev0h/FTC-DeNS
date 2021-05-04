@@ -71,11 +71,13 @@ test.call_method('regName', {'req': {'name': '68656c', 'duration': 3, 'hash': '0
 ts4.dispatch_messages()
 
 au = ts4.BaseContract('DensAuction', None, address=auct, nickname='HelAuct')
+print("bla")
 print(au.call_getter('hashes'))
 
 print("\n==================== Perform bid 'hel' on auct ====================")
 test.call_method('bid', {'dest': auct, 'amount': 10 * ts4.GRAM, 'nonce': nonce })
 ts4.dispatch_messages()
+print("bla1")
 print(au.call_getter('hashes'))
 
 print("\n==================== Perform regName 'hel' on root ====================")

@@ -1,36 +1,5 @@
 #!/bin/bash
 
-solc_sys=$(whereis solc | awk '{print $2}')
-link_sys=$(whereis tvm_linker | awk '{print $2}')
-tcli_sys=$(whereis tonos-cli | awk '{print $2}')
-
-solc=""
-link=""
-tcli=""
-
-if [[ "$solc_sys" != "" ]]; then
-  echo "[<] Using system solc"
-  solc="$solc_sys"
-else
-  echo "[>] Using local solc"
-  solc="../bin/solc"
-fi
-
-if [[ "$link_sys" != "" ]]; then
-  echo "[<] Using system tvm_linker"
-  link="$link_sys"
-else
-  echo "[>] Using local tvm_linker"
-  link="../bin/tvm_linker"
-fi
-
-if [[ "$tcli_sys" != "" ]]; then
-  echo "[<] Using system tonos-cli"
-  tcli="$tcli_sys"
-else
-  echo "[>] Using local tonos-cli"
-  tcli="./bin/tonos-cli"
-fi
 
 if [[ ! -f "$solc" ]]; then
   echo "[*] solc not found! Please download or build solc and install it to bin"

@@ -1,4 +1,4 @@
-pragma ton-solidity ^0.38.0;
+pragma ton-solidity ^0.42.0;
 
 library PlatformTypes {
     uint8 constant Platform = 0;
