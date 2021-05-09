@@ -22,8 +22,11 @@ tvm_linker compile DensBid.code -a DensBid.abi.json -o DensBid.tvc --lib ../bin/
 echo "--- DensTest ---"
 tvm_linker compile DensTest.code -a DensTest.abi.json -o DensTest.tvc --lib ../bin/stdlib_sol.tvm
 
-echo "--- DensDebot ---"
-tvm_linker compile DensDebot.code -a DensDebot.abi.json -o DensDebot.tvc --lib ../bin/stdlib_sol.tvm
+# echo "--- DensDebot ---"
+# tvm_linker compile DensDebot.code -a DensDebot.abi.json -o DensDebot.tvc --lib ../bin/stdlib_sol.tvm
+
+echo "--- MachineGun ---"
+tvm_linker compile MachineGun.code -a MachineGun.abi.json -o MachineGun.tvc --lib ../bin/stdlib_sol.tvm
 
 tvm_linker decode --tvc DensPlatform.tvc > dens_platform.txt
 tvm_linker decode --tvc DensCertificate.tvc > dens_certificate.txt

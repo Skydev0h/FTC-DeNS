@@ -1,0 +1,86 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"root","type":"address"},
+				{"name":"owner","type":"address"},
+				{"name":"expiry","type":"uint32"},
+				{"name":"base","type":"bytes"},
+				{"name":"lim","type":"uint32"},
+				{"name":"chs","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "tratata",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "_root",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_root","type":"address"}
+			]
+		},
+		{
+			"name": "_owner",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_owner","type":"address"}
+			]
+		},
+		{
+			"name": "_expiry",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_expiry","type":"uint32"}
+			]
+		},
+		{
+			"name": "_base",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_base","type":"bytes"}
+			]
+		},
+		{
+			"name": "i",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"i","type":"uint32"}
+			]
+		},
+		{
+			"name": "_lim",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_lim","type":"uint32"}
+			]
+		},
+		{
+			"name": "_chs",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_chs","type":"uint32"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}

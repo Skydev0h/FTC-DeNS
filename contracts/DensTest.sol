@@ -1,4 +1,4 @@
-pragma ton-solidity ^0.38.0;
+pragma ton-solidity >=0.42.0;
 
 import "./Interfaces.sol";
 import "./Libraries.sol";

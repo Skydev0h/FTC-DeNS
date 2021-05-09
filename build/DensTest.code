@@ -1,6 +1,5 @@
-.globl	constructor
-.public	constructor
-.type	constructor, @function
+.macro constructor
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -23,37 +22,37 @@ ACCEPT
 ; expValue
 ; end expValue
 ;; push identifier _root
-DUP
 ; colValue
-SETGLOB 10
 ; end colValue
 ; end constructor DensTest
-DROP
 ; end modifier acc
+SETGLOB 10
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	fallback
-.type	fallback, @function
-; function fallback
-THROW 191
-; end function fallback
+.macro receive_macro
+; function receive
+; end function receive
 IFREF {
 	CALL $c7_to_c4$
 }
 
-.globl	setValue
-.public	setValue
-.type	setValue, @function
+.macro fallback_macro
+; function fallback
+; end function fallback
+THROW 191
+
+.macro setValue
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
 ; Decode value
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -73,11 +72,8 @@ PUSH S1
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x39896800000000000000000000000000001c07f5f1_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x0e03faf8
 ;; new_value
 ;; push identifier value
 PUSH S1
@@ -86,17 +82,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function setValue
-DROP2
 ; end modifier acc
+DROP2
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	setTarget
-.public	setTarget
-.type	setTarget, @function
+.macro setTarget
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
@@ -104,7 +99,7 @@ LDMSGADDR
 LDI 16
 ; Decode value
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -125,11 +120,8 @@ PUSH S2
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x39896800000000000000000000000000003bd174df_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x1de8ba6f
 ;; rec_type
 ;; push identifier typ
 PUSH S2
@@ -142,23 +134,22 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function setTarget
-BLKDROP 3
 ; end modifier acc
+BLKDROP 3
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	transferOwner
-.public	transferOwner
-.type	transferOwner, @function
+.macro transferOwner
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
 ; Decode new_owner
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -178,11 +169,8 @@ PUSH S1
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x39896800000000000000000000000000003619b259_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x1b0cd92c
 ;; new_owner
 ;; push identifier new_owner
 PUSH S1
@@ -191,17 +179,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function transferOwner
-DROP2
 ; end modifier acc
+DROP2
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	acceptOwner
-.public	acceptOwner
-.type	acceptOwner, @function
+.macro acceptOwner
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
@@ -216,26 +203,22 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x3989680000000000000000000000000000d7aac063_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x6bd56031
 ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function acceptOwner
-DROP
 ; end modifier acc
+DROP
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	regName
-.public	regName
-.type	regName, @function
+.macro regName
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -256,7 +239,7 @@ TUPLE 3
 SWAP
 ; Decode amount
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -266,7 +249,7 @@ PUSHCONT {
 IFNOT
 ; Decode nonce
 LDUQ 256
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -315,11 +298,8 @@ GETGLOB 10
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x5012a05f200000000000000000000000000004_
+PUSHSLICE x5012a05f2000000000000000000000000000006114ccf1_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x308a6678
 ;; callbackFunctionId
 PUSHINT 708059340
 STUR 32
@@ -334,24 +314,21 @@ PUSH S2
 STUR 32
 PUSH S1
 STUR 256
-XCHG s3
-BLKDROP 3
+BLKDROP2 3, 1
 ENDC
 PUSHINT 0
 SENDRAWMSG
-DROP
 ; end function regName
-BLKDROP 3
 ; end modifier acc
+BLKDROP 4
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	regNameCallback
-.public	regNameCallback
-.type	regNameCallback, @function
+.macro regNameCallback
+DROP
 ; Decode input parameters
 ; Decode b
 LDI 1
@@ -428,24 +405,22 @@ CALLREF {
 }
 CTOS
 STRDUMP
-DROP
-BLKDROP 3
 ; end function regNameCallback
+BLKDROP 4
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	bid
-.public	bid
-.type	bid, @function
+.macro bid
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
 ; Decode amount
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -455,7 +430,7 @@ PUSHCONT {
 IFNOT
 ; Decode nonce
 LDUQ 256
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -497,12 +472,8 @@ PUSH S4
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x43b9aca00000000000000000000000000004_
+PUSHSLICE x43b9aca00000000000000000000000000000b3b812beb2e6584b_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x59dc095f
-STSLICECONST x59732c25
 ;; hash
 ;; push identifier hash
 PUSH S1
@@ -510,19 +481,17 @@ STUR 256
 ENDC
 PUSHINT 0
 SENDRAWMSG
-DROP2
 ; end function bid
-BLKDROP 3
 ; end modifier acc
+BLKDROP 5
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	bidCallback
-.public	bidCallback
-.type	bidCallback, @function
+.macro bidCallback
+DROP
 ; Decode input parameters
 ; Decode res
 LDI 1
@@ -563,24 +532,22 @@ CALLREF {
 }
 CTOS
 STRDUMP
-DROP
-DROP
 ; end function bidCallback
+DROP2
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	bid2
-.public	bid2
-.type	bid2, @function
+.macro bid2
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
 ; Decode amount
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -590,7 +557,7 @@ PUSHCONT {
 IFNOT
 ; Decode nonce
 LDUQ 256
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -632,12 +599,8 @@ PUSH S4
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x43b9aca00000000000000000000000000004_
+PUSHSLICE x43b9aca00000000000000000000000000000b3b812becfa18c69_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x59dc095f
-STSLICECONST x67d0c634
 ;; hash_val
 ;; push identifier hash
 PUSH S1
@@ -645,19 +608,17 @@ STUR 256
 ENDC
 PUSHINT 0
 SENDRAWMSG
-DROP2
 ; end function bid2
-BLKDROP 3
 ; end modifier acc
+BLKDROP 5
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	bid2Callback
-.public	bid2Callback
-.type	bid2Callback, @function
+.macro bid2Callback
+DROP
 ; Decode input parameters
 ; Decode res
 LDI 1
@@ -698,24 +659,22 @@ CALLREF {
 }
 CTOS
 STRDUMP
-DROP
-DROP
 ; end function bid2Callback
+DROP2
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	reveal
-.public	reveal
-.type	reveal, @function
+.macro reveal
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
 ; Decode amount
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -725,7 +684,7 @@ PUSHCONT {
 IFNOT
 ; Decode nonce
 LDUQ 256
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -754,11 +713,8 @@ STSLICECONST x62_
 STSLICE
 SWAP
 STGRAMS
-PUSHINT 105
-STZEROES
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5bc6c67f
+PUSHSLICE x000000000000000000000000000b78d8cff_
+STSLICER
 ;; amount
 ;; push identifier amount
 PUSH S2
@@ -771,17 +727,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function reveal
-BLKDROP 3
 ; end modifier acc
+BLKDROP 3
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	finalize
-.public	finalize
-.type	finalize, @function
+.macro finalize
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
@@ -796,27 +751,22 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x43b9aca00000000000000000000000000004_
+PUSHSLICE x43b9aca00000000000000000000000000000ef036e16d3ccc96b_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x7781b70b
-STSLICECONST x69e664b5
 ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function finalize
-DROP
 ; end modifier acc
+DROP
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	finalizeCallback
-.public	finalizeCallback
-.type	finalizeCallback, @function
+.macro finalizeCallback
+DROP
 ; Decode input parameters
 ; Decode res
 LDI 1
@@ -857,18 +807,16 @@ CALLREF {
 }
 CTOS
 STRDUMP
-DROP
-DROP
 ; end function finalizeCallback
+DROP2
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	requestSubCertificate
-.public	requestSubCertificate
-.type	requestSubCertificate, @function
+.macro requestSubCertificate
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
@@ -889,11 +837,8 @@ PUSH S2
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x3989680000000000000000000000000000f5098e4d_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x7a84c726
 ;; subname
 ;; push identifier name
 PUSH S2
@@ -906,17 +851,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function requestSubCertificate
-BLKDROP 3
 ; end modifier acc
+BLKDROP 3
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	syncSubCertificate
-.public	syncSubCertificate
-.type	syncSubCertificate, @function
+.macro syncSubCertificate
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
@@ -937,11 +881,8 @@ PUSH S2
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x3989680000000000000000000000000000ae0dd0d1_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5706e868
 ;; subname
 ;; push identifier name
 PUSH S2
@@ -954,17 +895,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function syncSubCertificate
-BLKDROP 3
 ; end modifier acc
+BLKDROP 3
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	withdraw
-.public	withdraw
-.type	withdraw, @function
+.macro withdraw
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDR
@@ -979,17 +919,14 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x43b9aca00000000000000000000000000004_
+PUSHSLICE x43b9aca000000000000000000000000000005f68e417_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x2fb4720b
 ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function withdraw
-DROP
 ; end modifier acc
+DROP
 IFREF {
 	CALL $c7_to_c4$
 }
@@ -1062,15 +999,15 @@ PUSHCONT {
 }
 IFELSE
 
-.internal-alias :main_internal,        0
-.internal	:main_internal
+.internal-alias :main_internal, 0
+.internal :main_internal
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Function: main_internal
 ;; param: contract_balance
 ;; param: msg_balance
 ;; param: int_msg_info
 ;; param: msg_body_slice
-PUSHINT 0  ; main_external trans id
+;; param: transaction_type
 PUSH S2
 CTOS
 PLDU 4
@@ -1078,55 +1015,40 @@ MODPOW2 1
 IFRET
 PUSH S1    ; body
 SEMPTY     ; isEmpty
-DUP        ; isEmpty isEmpty
+IFRET
+PUSH S1 ; body
+LDUQ 32  ; [funcId] body' ok
 PUSHCONT {
-	DROP    ;
-	PUSH S1 ; body
-	LDU 32  ; funcId body'
-	PUSH S1 ; funcId body' funcId
-	EQINT 0 ; funcId body' isZero
-	DUP     ; funcId body' isZero isZero
-	PUSHCONT {
- 		; funcId body' isZero
-		BLKDROP2 2, 1; isZero
+	; body'
+	DROP
+	CALLREF {
+		CALL $fallback_macro$
 	}
-	IF
+	THROW 0
 }
 IFNOT
-; [funcId body'] doReceive
-PUSHCONT {
-	; function receive
-	; end function receive
-}
-IFJMP
 PUSH S1 ; funcId body' funcId
-LESSINT 3            ; funcId body' funcId<3
-PUSH S2              ; funcId body' funcId<3 funcId
-PUSHINT 4294967293   ; funcId body' funcId<3 funcId 4294967293
-GREATER              ; funcId body' funcId<3 funcId>4294967293
-OR                   ; funcId body' funcId<3||funcId>4294967293
-PUSHCONT {
-	DROP2
-	PUSHINT 1
-	CALL 1
-	CALL $fallback$
+IFNOTRET
+SWAP
+CALLREF {
+	CALL $public_function_selector$
 }
-IFJMP
-SWAP    ; body funcId
-CALL 1
 GETGLOB 7
 ISNULL
 PUSHCONT {
-	DROP
-	CALL $fallback$
+	DROP2 ; funcId and restSlice
+	CALLREF {
+		CALL $fallback_macro$
+	}
 }
 IF
 
-.internal-alias :main_external,        -1
-.internal	:main_external
-PUSHINT -1 ; main_external trans id
+.internal-alias :main_external, -1
+.internal :main_external
 PUSH S1
-CALL $c4_to_c7_with_init_storage$
+CALLREF {
+	CALL $c4_to_c7_with_init_storage$
+}
 LDU 1 ; haveSign msgSlice
 SWAP
 PUSHCONT {
@@ -1144,26 +1066,180 @@ LDU 64                         ; timestamp msgSlice
 SWAP                           ; msgSlice timestamp
 CALL $replay_protection_macro$ ; msgSlice
 LDU  32 ; funcId body
-PUSH S1 ; funcId body funcId
-LESSINT 3            ; funcId body' funcId<3
-PUSH S2              ; funcId body' funcId<3 funcId
-PUSHINT 4294967293   ; funcId body' funcId<3 funcId 4294967293
-GREATER              ; funcId body' funcId<3 funcId>4294967293
-OR                   ; funcId body' funcId<3||funcId>4294967293
-PUSHCONT {
-	DROP2
-	PUSHINT 1
-	CALL 1
-	CALL $fallback$
-}
-IFJMP
 SWAP    ; body funcId
-CALL 1
+CALLREF {
+	CALL $public_function_selector$
+}
 GETGLOB 7
 ISNULL
 PUSHCONT {
-	DROP
-	CALL $fallback$
+	DROP2 ; funcId and restSlice
+	CALLREF {
+		CALL $fallback_macro$
+	}
 }
 IF
 
+.macro public_function_selector
+DUP
+PUSHINT 708059340
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 346897324
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 334453452
+		EQUAL
+		IFJMPREF {
+			CALL $setTarget$
+		}
+		DUP
+		PUSHINT 346897324
+		EQUAL
+		IFJMPREF {
+			CALL $setValue$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 581309056
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 412121449
+		EQUAL
+		IFJMPREF {
+			CALL $transferOwner$
+		}
+		DUP
+		PUSHINT 581309056
+		EQUAL
+		IFJMPREF {
+			CALL $finalize$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 708059340
+	EQUAL
+	IFJMPREF {
+		CALL $regNameCallback$
+	}
+}
+IFJMP
+DUP
+PUSHINT 1196840156
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 920926816
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 735968502
+		EQUAL
+		IFJMPREF {
+			CALL $syncSubCertificate$
+		}
+		DUP
+		PUSHINT 920926816
+		EQUAL
+		IFJMPREF {
+			CALL $reveal$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1188758641
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1114027814
+		EQUAL
+		IFJMPREF {
+			CALL $acceptOwner$
+		}
+		DUP
+		PUSHINT 1188758641
+		EQUAL
+		IFJMPREF {
+			CALL $regName$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1196840156
+	EQUAL
+	IFJMPREF {
+		CALL $constructor$
+	}
+}
+IFJMP
+DUP
+PUSHINT 2035176671
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 1540240414
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1500720165
+		EQUAL
+		IFJMPREF {
+			CALL $bidCallback$
+		}
+		DUP
+		PUSHINT 1540240414
+		EQUAL
+		IFJMPREF {
+			CALL $requestSubCertificate$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1776706741
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1741735476
+		EQUAL
+		IFJMPREF {
+			CALL $bid2Callback$
+		}
+		DUP
+		PUSHINT 1776706741
+		EQUAL
+		IFJMPREF {
+			CALL $finalizeCallback$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 2035176671
+	EQUAL
+	IFJMPREF {
+		CALL $bid$
+	}
+}
+IFJMP
+DUP
+PUSHINT 2092542765
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 2072717662
+	EQUAL
+	IFJMPREF {
+		CALL $withdraw$
+	}
+	DUP
+	PUSHINT 2092542765
+	EQUAL
+	IFJMPREF {
+		CALL $bid2$
+	}
+}
+IFJMP

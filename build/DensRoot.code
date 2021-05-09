@@ -1,6 +1,5 @@
-.globl	constructor
-.public	constructor
-.type	constructor, @function
+.macro constructor
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -16,7 +15,6 @@ SETGLOB 6
 ENDS
 ; constructor DensRoot
 GETGLOB 2
-NEQINT 0
 THROWIFNOT 101
 GETGLOB 5
 DUP
@@ -57,28 +55,25 @@ CALLREF {
 TRUE
 SETGLOB 7
 
-.globl	fallback
-.type	fallback, @function
-; function fallback
-THROW 191
-; end function fallback
-IFREF {
-	CALL $c7_to_c4$
-}
+.macro receive_macro
+; function receive
+; end function receive
+THROW 192
 
-.globl	addBalance
-.public	addBalance
-.type	addBalance, @function
+.macro fallback_macro
+; function fallback
+; end function fallback
+THROW 191
+
+.macro addBalance
+DROP
 ; Decode input parameters
 ENDS
 ; function addBalance
 ;; emit balanceAdded
+PUSHSLICE xc00000000000000000000000002a1cc7aa
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x2a1cc7aa
+STSLICE
 ;; donor
 ;; get member sender
 GETGLOB 9
@@ -99,9 +94,8 @@ IFREF {
 TRUE
 SETGLOB 7
 
-.globl	installPlatform
-.public	installPlatform
-.type	installPlatform, @function
+.macro installPlatform
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -137,12 +131,9 @@ DUP
 SETGLOB 10
 ; end colValue
 ;; emit platformCodeUpdated
+PUSHSLICE xc000000000000000000000000077e12fd0
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x77e12fd0
+STSLICE
 ;; hash
 ;; push identifier code
 PUSH S1
@@ -152,17 +143,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function installPlatform
-DROP
 ; end modifier onlyOwner
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	installCertificate
-.public	installCertificate
-.type	installCertificate, @function
+.macro installCertificate
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -198,12 +188,9 @@ DUP
 SETGLOB 11
 ; end colValue
 ;; emit certificateCodeUpdated
+PUSHSLICE xc000000000000000000000000018908882
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x18908882
+STSLICE
 ;; hash
 ;; push identifier code
 PUSH S1
@@ -213,17 +200,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function installCertificate
-DROP
 ; end modifier onlyOwner
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	installAuction
-.public	installAuction
-.type	installAuction, @function
+.macro installAuction
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -259,12 +245,9 @@ DUP
 SETGLOB 12
 ; end colValue
 ;; emit auctionCodeUpdated
+PUSHSLICE xc000000000000000000000000023fb1d93
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x23fb1d93
+STSLICE
 ;; hash
 ;; push identifier code
 PUSH S1
@@ -274,17 +257,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function installAuction
-DROP
 ; end modifier onlyOwner
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	installBid
-.public	installBid
-.type	installBid, @function
+.macro installBid
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -320,12 +302,9 @@ DUP
 SETGLOB 13
 ; end colValue
 ;; emit bidCodeUpdated
+PUSHSLICE xc00000000000000000000000002aa76a6d
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x2aa76a6d
+STSLICE
 ;; hash
 ;; push identifier code
 PUSH S1
@@ -335,17 +314,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function installBid
-DROP
 ; end modifier onlyOwner
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	setNewAuctionsBan
-.public	setNewAuctionsBan
-.type	setNewAuctionsBan, @function
+.macro setNewAuctionsBan
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -380,12 +358,9 @@ DUP
 SETGLOB 21
 ; end colValue
 ;; emit newAuctionsBanned
+PUSHSLICE xc00000000000000000000000003bfa503a
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x3bfa503a
+STSLICE
 ;; until
 ;; push identifier until
 PUSH S1
@@ -394,17 +369,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function setNewAuctionsBan
-DROP
 ; end modifier onlyOwner
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	setSmvRoot
-.public	setSmvRoot
-.type	setSmvRoot, @function
+.macro setSmvRoot
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -413,7 +387,7 @@ IFREF {
 ; Decode input parameters
 ; Decode smv
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -447,12 +421,9 @@ DUP
 SETGLOB 22
 ; end colValue
 ;; emit smvRootSet
+PUSHSLICE xc00000000000000000000000006191ab53
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x6191ab53
+STSLICE
 ;; smv_root
 ;; push identifier smv
 PUSH S1
@@ -461,17 +432,16 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function setSmvRoot
-DROP
 ; end modifier onlyOwner
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	onProposalPassed
-.public	onProposalPassed
-.type	onProposalPassed, @function
+.macro onProposalPassed
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -490,7 +460,7 @@ LDU 32
 LDREF
 ;; decode ProposalInfo.ts
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -500,7 +470,7 @@ PUSHCONT {
 IFNOT
 ;; decode ProposalInfo.proposalType
 LDUQ 8
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -539,8 +509,7 @@ PUSHCONT {
 	INDEX 5
 	;; ==
 	;; get member SetCode
-	PUSHINT 1
-	EQUAL
+	EQINT 1
 	PUSHCONT {
 		;; push identifier c
 		DUP
@@ -580,12 +549,9 @@ PUSHCONT {
 			SETGLOB 10
 			; end colValue
 			;; emit platformCodeUpdated
+			PUSHSLICE xc000000000000000000000000077e12fd0
 			NEWC
-			PUSHSLICE xc0000000000000000000000002_
-			STSLICER
-			STSLICECONST 0
-			STSLICECONST 0
-			STSLICECONST x77e12fd0
+			STSLICE
 			;; hash
 			;; push identifier code
 			PUSH S2
@@ -596,7 +562,6 @@ PUSHCONT {
 			SENDRAWMSG
 			;; return
 			BLKDROP 4
-			RET
 		}
 		IFNOTJMP
 		;; end if
@@ -613,12 +578,9 @@ PUSHCONT {
 			SETGLOB 11
 			; end colValue
 			;; emit certificateCodeUpdated
+			PUSHSLICE xc000000000000000000000000018908882
 			NEWC
-			PUSHSLICE xc0000000000000000000000002_
-			STSLICER
-			STSLICECONST 0
-			STSLICECONST 0
-			STSLICECONST x18908882
+			STSLICE
 			;; hash
 			;; push identifier code
 			PUSH S2
@@ -629,7 +591,6 @@ PUSHCONT {
 			SENDRAWMSG
 			;; return
 			BLKDROP 4
-			RET
 		}
 		IFJMP
 		;; end if
@@ -646,12 +607,9 @@ PUSHCONT {
 			SETGLOB 12
 			; end colValue
 			;; emit auctionCodeUpdated
+			PUSHSLICE xc000000000000000000000000023fb1d93
 			NEWC
-			PUSHSLICE xc0000000000000000000000002_
-			STSLICER
-			STSLICECONST 0
-			STSLICECONST 0
-			STSLICECONST x23fb1d93
+			STSLICE
 			;; hash
 			;; push identifier code
 			PUSH S2
@@ -662,7 +620,6 @@ PUSHCONT {
 			SENDRAWMSG
 			;; return
 			BLKDROP 4
-			RET
 		}
 		IFJMP
 		;; end if
@@ -681,12 +638,9 @@ PUSHCONT {
 			SETGLOB 13
 			; end colValue
 			;; emit bidCodeUpdated
+			PUSHSLICE xc00000000000000000000000002aa76a6d
 			NEWC
-			PUSHSLICE xc0000000000000000000000002_
-			STSLICER
-			STSLICECONST 0
-			STSLICECONST 0
-			STSLICECONST x2aa76a6d
+			STSLICE
 			;; hash
 			;; push identifier code
 			PUSH S2
@@ -697,7 +651,6 @@ PUSHCONT {
 			SENDRAWMSG
 			;; return
 			BLKDROP 4
-			RET
 		}
 		IFJMP
 		;; end if
@@ -710,16 +663,16 @@ PUSHCONT {
 		PUSHCONT {
 			;; push identifier code
 			PUSH S1
-			CALL $_upgrade_internal$
+			CALLREF {
+				CALL $_upgrade_internal_macro$
+			}
 			;; return
 			BLKDROP 4
-			RET
 		}
 		IFJMP
 		;; end if
 		;; return
 		BLKDROP 4
-		RET
 	}
 	IFJMP
 	;; end if
@@ -730,8 +683,7 @@ PUSHCONT {
 	INDEX 5
 	;; ==
 	;; get member Reserve
-	PUSHINT 2
-	EQUAL
+	EQINT 2
 	PUSHCONT {
 		;; push identifier c
 		DUP
@@ -757,10 +709,11 @@ PUSHCONT {
 		;; push identifier c_reserve
 		PUSH S1
 		INDEX 1
-		CALL $_reserveName_internal$
+		CALLREF {
+			CALL $_reserveName_internal_macro$
+		}
 		;; return
 		DROP2
-		RET
 	}
 	IFJMP
 	;; end if
@@ -771,8 +724,7 @@ PUSHCONT {
 	INDEX 5
 	;; ==
 	;; get member DeployCert
-	PUSHINT 3
-	EQUAL
+	EQINT 3
 	PUSHCONT {
 		;; push identifier c
 		DUP
@@ -808,11 +760,11 @@ PUSHCONT {
 		;; uint32
 		UFITS 32
 		MYADDR
-		CALL $deployCertificate_internal$
-		DROP
+		CALLREF {
+			CALL $deployCertificate_internal_macro$
+		}
 		;; return
-		DROP2
-		RET
+		BLKDROP 3
 	}
 	IFJMP
 	;; end if
@@ -823,8 +775,7 @@ PUSHCONT {
 	INDEX 5
 	;; ==
 	;; get member SetRootOwner
-	PUSHINT 4
-	EQUAL
+	EQINT 4
 	PUSHCONT {
 		;; push identifier c
 		DUP
@@ -858,12 +809,9 @@ PUSHCONT {
 		SETGLOB 15
 		; end colValue
 		;; emit ownerChanged
+		PUSHSLICE xc00000000000000000000000004d2c7c05
 		NEWC
-		PUSHSLICE xc0000000000000000000000002_
-		STSLICER
-		STSLICECONST 0
-		STSLICECONST 0
-		STSLICECONST x4d2c7c05
+		STSLICE
 		;; to
 		;; push identifier owner
 		GETGLOB 14
@@ -873,7 +821,6 @@ PUSHCONT {
 		SENDRAWMSG
 		;; return
 		DROP2
-		RET
 	}
 	IFJMP
 	;; end if
@@ -881,17 +828,16 @@ PUSHCONT {
 }
 CALLX
 ; end function onProposalPassed
-DROP
 ; end modifier onlySmvRoot
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	upgrade
-.public	upgrade
-.type	upgrade, @function
+.macro upgrade
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -921,10 +867,12 @@ ACCEPT
 ; function upgrade
 ;; push identifier code
 DUP
-CALL $_upgrade_internal$
+CALLREF {
+	CALL $_upgrade_internal_macro$
+}
 ; end function upgrade
-DROP
 ; end modifier onlyOwner
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
@@ -933,6 +881,9 @@ SETGLOB 7
 
 .globl	_upgrade_internal
 .type	_upgrade_internal, @function
+CALL $_upgrade_internal_macro$
+
+.macro _upgrade_internal_macro
 ;; param: code
 ; function _upgrade
 NEWC
@@ -961,18 +912,17 @@ NIP
 ;; push identifier code
 PUSH S1
 CTOS
+PLDREF
+CTOS
 BLESS
 POP c3
 ;; push identifier code
 PUSH S1
 SETCODE
 ;; emit rootCodeUpdated
+PUSHSLICE xc00000000000000000000000001db34797
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x1db34797
+STSLICE
 ;; hash
 ;; push identifier code
 PUSH S2
@@ -984,27 +934,26 @@ SENDRAWMSG
 ;; push identifier b
 DUP
 ENDC
-CALL $:onCodeUpgrade$
-DROP2
+CALLREF {
+	CALL $:onCodeUpgrade$
+}
 ; end function _upgrade
+DROP2
 
-.internal-alias :onCodeUpgrade,        2
-.internal	:onCodeUpgrade
-PUSHINT 1
-CALL 1
+.internal-alias :onCodeUpgrade, 2
+.internal :onCodeUpgrade
 ;; param: data
 ; function onCodeUpgrade
-DROP
 ; end function onCodeUpgrade
+DROP
 CALLREF {
 	CALL $c7_to_c4$
 }
 COMMIT
 THROW 0
 
-.globl	requestCertificateUpgrade
-.public	requestCertificateUpgrade
-.type	requestCertificateUpgrade, @function
+.macro requestCertificateUpgrade
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -1014,12 +963,9 @@ IFREF {
 ENDS
 ; function requestCertificateUpgrade
 ;; emit certCodeUpgraded
+PUSHSLICE xc0000000000000000000000000292707c2
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x292707c2
+STSLICE
 ;; cert
 ;; get member sender
 GETGLOB 9
@@ -1037,11 +983,8 @@ STI 1
 PUSHINT 3
 STZEROES
 STSLICE
-PUSHINT 109
-STZEROES
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x17230c3a
+PUSHSLICE x00000000000000000000000000002e461875_
+STSLICER
 ;; code
 ;; push identifier certificate_code
 GETGLOB 11
@@ -1056,9 +999,8 @@ CALLREF {
 TRUE
 SETGLOB 7
 
-.globl	reserveName
-.public	reserveName
-.type	reserveName, @function
+.macro reserveName
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -1089,13 +1031,14 @@ THROWIFNOT 100
 ACCEPT
 ; function reserveName
 ;; push identifier name
-PUSH S1
 ;; push identifier until
-PUSH S1
-CALL $_reserveName_internal$
+DUP2
+CALLREF {
+	CALL $_reserveName_internal_macro$
+}
 ; end function reserveName
-DROP2
 ; end modifier onlyOwner
+DROP2
 CALLREF {
 	CALL $c7_to_c4$
 }
@@ -1104,6 +1047,9 @@ SETGLOB 7
 
 .globl	_reserveName_internal
 .type	_reserveName_internal, @function
+CALL $_reserveName_internal_macro$
+
+.macro _reserveName_internal_macro
 ;; param: name
 ;; param: until
 ; function _reserveName
@@ -1114,20 +1060,17 @@ EQINT 1
 PUSHCONT {
 	; expValue
 	; end expValue
-	PUSHINT 4294967295
 	; colValue
-	NIP
+	DROP
+	PUSHINT 4294967295
 	; end colValue
 }
 IF
 ;; end if
 ;; emit nameReserved
+PUSHSLICE xc00000000000000000000000005349352d
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5349352d
+STSLICE
 ;; name
 ;; push identifier name
 PUSH S2
@@ -1157,15 +1100,12 @@ PUSHCONT {
 	;; push identifier name
 	PUSH S2
 	HASHCU
-	SWAP
 	; end expValue
-	PUSH S1
+	; colValue
 	SWAP
 	PUSHINT 256
 	DICTUDEL
 	DROP
-	; colValue
-	NIP
 	SETGLOB 20
 	; end colValue
 }
@@ -1191,12 +1131,11 @@ PUSHCONT {
 }
 IFELSE
 ;; end if
-DROP2
 ; end function _reserveName
+DROP2
 
-.globl	getReservedNames
-.public	getReservedNames
-.type	getReservedNames, @function
+.macro getReservedNames
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -1223,37 +1162,28 @@ GETGLOB 20
 DUP
 PUSHINT 256
 DICTUMIN
-NULLSWAPIFNOT
 PUSHCONT {
-	SWAP
+	DUP
+	ROT
 	PLDU 32
-	TUPLE 2
 }
-IF
-DUP
-ISNULL
 PUSHCONT {
 	NULL
 	NULL
-}
-PUSHCONT {
-	UNTUPLE 2
-	PUSH S1
+	NULL
 }
 IFELSE
 PUSHCONT {
-	DUP
+	PUSH S2
 	ISNULL
 	NOT
 }
 PUSHCONT {
 	; expValue
-	PUSH S5
 	; end expValue
 	;; push identifier key
-	PUSH S3
 	;; array.push(..)
-	SWAP
+	PUSH2 S1, S5
 	UNPAIR
 	PUSH S1
 	INC
@@ -1266,10 +1196,9 @@ PUSHCONT {
 	POP S6
 	; end colValue
 	; expValue
-	PUSH S4
 	; end expValue
 	;; push identifier exp
-	PUSH S2
+	PUSH2 S4, S0
 	;; array.push(..)
 	NEWC
 	STU 32
@@ -1285,35 +1214,31 @@ PUSHCONT {
 	; colValue
 	POP S5
 	; end colValue
-	DUP
-	PUSH S4
+	PUSH2 S2, S3
 	PUSHINT 256
 	DICTUGETNEXT
-	NULLSWAPIFNOT
 	PUSHCONT {
-		SWAP
-		PLDU 32
-		TUPLE 2
-	}
-	IF
-	DUP
-	ISNULL
-	PUSHCONT {
-		POP S1
-	}
-	PUSHCONT {
-		UNTUPLE 2
-		POP S3
 		DUP
-		POP S4
-		POP S1
+		ROT
+		PLDU 32
+	}
+	PUSHCONT {
+		NULL
+		NULL
+		NULL
 	}
 	IFELSE
+	BLKDROP2 3, 3
 }
 WHILE
 BLKDROP 4
 ; end for
 ;; return
+;; push identifier s
+;; push identifier e
+DUP2
+BLKDROP2 2, 2
+; end function getReservedNames
 ;; emitting 2 value(s)
 PUSH S2
 EQINT -1
@@ -1327,11 +1252,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST x996241b4
+	PUSHSLICE x0000000000000000000000002658906d2_
+	STSLICER
 	PUSH S2
 	UNPAIR
 	XCHG s2
@@ -1365,10 +1287,8 @@ PUSHCONT {
 	SWAP
 	STGRAMS
 	STDICT
-	PUSHINT 104
+	PUSHINT 106
 	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
 	GETGLOB 4
 	INDEX 5
 	STUR 32
@@ -1389,7 +1309,6 @@ PUSHCONT {
 }
 IFELSE
 DROP2
-; end function getReservedNames
 CALLREF {
 	CALL $c7_to_c4$
 }
@@ -1398,6 +1317,9 @@ SETGLOB 7
 
 .globl	_resolve_internal
 .type	_resolve_internal, @function
+CALL $_resolve_internal_macro$
+
+.macro _resolve_internal_macro
 ;; param: name
 ;; param: type_id
 ;; param: parent
@@ -1456,13 +1378,12 @@ STSLICECONST x801_
 STU 256
 ENDC
 CTOS
-XCHG s4
-BLKDROP 4
+NIP
 ; end function _resolve
+BLKDROP2 3, 1
 
-.globl	resolve
-.public	resolve
-.type	resolve, @function
+.macro resolve
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -1479,7 +1400,10 @@ ENDS
 DUP
 PUSHINT 1
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
+; end function resolve
 NIP
 ;; emitting 1 value(s)
 PUSH S1
@@ -1494,62 +1418,24 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xf073c6c8
+	PUSHSLICE x0000000000000000000000003c1cf1b22_
+	STSLICER
 	PUSH S1
 	STSLICER
 	ENDC
 	PUSHINT 0
 	SENDRAWMSG
 }
-PUSHCONT {
-	GETGLOB 4
-	DUP
-	INDEX 3
-	PUSH S1
-	INDEX 2
-	GETGLOB 9
-	BLKSWAP 1, 3
-	INDEX 1
-	NEWC
-	PUSHINT 2
-	STZEROES
-	STI 1
-	PUSHINT 3
-	STZEROES
-	STSLICE
-	SWAP
-	STGRAMS
-	STDICT
-	PUSHINT 104
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	GETGLOB 4
-	INDEX 5
-	STUR 32
-	PUSH S1
-	STSLICER
-	ENDC
-	GETGLOB 4
-	INDEX 4
-	SENDRAWMSG
-}
-IFELSE
+IF
 DROP
-; end function resolve
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	resolveRPC
-.public	resolveRPC
-.type	resolveRPC, @function
+.macro resolveRPC
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -1565,7 +1451,7 @@ SETGLOB 4
 LDREF
 ; Decode cert
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -1575,7 +1461,7 @@ PUSHCONT {
 IFNOT
 ; Decode ptype
 LDUQ 8
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -1613,14 +1499,14 @@ PUSHINT 64
 SETINDEXQ 4
 SETGLOB 4
 ;; push identifier name
-PUSH S2
 ;; push identifier ptype
-PUSH S1
 ;; push identifier cert
-PUSH S3
-CALL $_resolve_internal$
-XCHG s3
-BLKDROP 3
+PUSH3 S2, S0, S1
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
+; end function resolveRPC
+BLKDROP2 3, 1
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -1634,11 +1520,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xe03b7e24
+	PUSHSLICE x000000000000000000000000380edf892_
+	STSLICER
 	PUSH S1
 	STSLICER
 	ENDC
@@ -1664,10 +1547,8 @@ PUSHCONT {
 	SWAP
 	STGRAMS
 	STDICT
-	PUSHINT 104
+	PUSHINT 106
 	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
 	GETGLOB 4
 	INDEX 5
 	STUR 32
@@ -1680,16 +1561,14 @@ PUSHCONT {
 }
 IFELSE
 DROP
-; end function resolveRPC
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	resolveFull
-.public	resolveFull
-.type	resolveFull, @function
+.macro resolveFull
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -1710,10 +1589,9 @@ ENDS
 ;; param: ptype
 ; function resolveFull
 ;; push identifier fullname
-PUSH S1
 ;; decl: st
 ;; push identifier st
-DUP
+PUSH2 S1, S1
 PUSHINT 4294967295
 CDATASIZE
 DROP
@@ -1729,36 +1607,31 @@ PUSHINT 0
 ;; decl: i
 PUSHCONT {
 	;; push identifier i
-	DUP
 	;; <
 	;; push identifier l
-	PUSH S4
+	PUSH2 S0, S3
 	LESS
 }
 PUSHCONT {
 	;; if
 	;; push identifier st
-	PUSH S4
 	;; push identifier i
-	PUSH S1
+	PUSH2 S4, S0
 	PUSHINT 1
 	CALLREF {
 		CALL $__substr_macro$
 	}
 	HASHCU
-	PUSHSLICE x2f
-	NEWC
-	STSLICE
-	ENDC
+	PUSHREF {
+		.blob x2f
+	}
 	HASHCU
 	EQUAL
 	PUSHCONT {
 		;; push identifier st
-		PUSH S4
 		;; push identifier s
-		PUSH S3
 		;; push identifier i
-		PUSH S2
+		PUSH3 S4, S2, S0
 		;; -
 		;; push identifier s
 		PUSH S5
@@ -1768,10 +1641,11 @@ PUSHCONT {
 			CALL $__substr_macro$
 		}
 		;; push identifier ptype
-		PUSH S6
 		;; push identifier adr
-		PUSH S3
-		CALL $_resolve_internal$
+		PUSH2 S6, S2
+		CALLREF {
+			CALL $_resolve_internal_macro$
+		}
 		; expValue
 		; end expValue
 		; colValue
@@ -1782,8 +1656,7 @@ PUSHCONT {
 		;; push identifier i
 		DUP
 		;; +
-		PUSHINT 1
-		ADD
+		INC
 		; colValue
 		POP S3
 		; end colValue
@@ -1801,32 +1674,33 @@ WHILE
 DROP
 ; end for
 ;; push identifier st
-PUSH S3
 ;; push identifier s
-PUSH S2
+PUSH2 S3, S1
 ;; push identifier l
-PUSH S4
 ;; -
 ;; push identifier s
-PUSH S4
+BLKPUSH 2, 4
 SUB
 UFITS 256
 CALLREF {
 	CALL $__substr_macro$
 }
 ;; push identifier ptype
-PUSH S5
 ;; push identifier adr
-PUSH S2
-CALL $_resolve_internal$
+PUSH2 S5, S1
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 ; expValue
 ; end expValue
 ; colValue
 NIP
 ; end colValue
 ;; return
-XCHG s5
-BLKDROP 5
+;; push identifier adr
+DUP
+; end function resolveFull
+BLKDROP2 6, 1
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -1840,11 +1714,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xc255bc8e
+	PUSHSLICE x00000000000000000000000030956f23a_
+	STSLICER
 	PUSH S1
 	STSLICER
 	ENDC
@@ -1870,10 +1741,8 @@ PUSHCONT {
 	SWAP
 	STGRAMS
 	STDICT
-	PUSHINT 104
+	PUSHINT 106
 	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
 	GETGLOB 4
 	INDEX 5
 	STUR 32
@@ -1886,16 +1755,14 @@ PUSHCONT {
 }
 IFELSE
 DROP
-; end function resolveFull
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	resolveSub
-.public	resolveSub
-.type	resolveSub, @function
+.macro resolveSub
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -1906,7 +1773,7 @@ IFREF {
 LDREF
 ; Decode cert
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -1924,9 +1791,11 @@ PUSH S1
 PUSHINT 1
 ;; push identifier cert
 PUSH S2
-CALL $_resolve_internal$
-NIP
-NIP
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
+; end function resolveSub
+BLKDROP2 2, 1
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -1940,62 +1809,24 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xd0838829
+	PUSHSLICE x0000000000000000000000003420e20a6_
+	STSLICER
 	PUSH S1
 	STSLICER
 	ENDC
 	PUSHINT 0
 	SENDRAWMSG
 }
-PUSHCONT {
-	GETGLOB 4
-	DUP
-	INDEX 3
-	PUSH S1
-	INDEX 2
-	GETGLOB 9
-	BLKSWAP 1, 3
-	INDEX 1
-	NEWC
-	PUSHINT 2
-	STZEROES
-	STI 1
-	PUSHINT 3
-	STZEROES
-	STSLICE
-	SWAP
-	STGRAMS
-	STDICT
-	PUSHINT 104
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	GETGLOB 4
-	INDEX 5
-	STUR 32
-	PUSH S1
-	STSLICER
-	ENDC
-	GETGLOB 4
-	INDEX 4
-	SENDRAWMSG
-}
-IFELSE
+IF
 DROP
-; end function resolveSub
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	auction
-.public	auction
-.type	auction, @function
+.macro auction
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -2012,7 +1843,10 @@ ENDS
 DUP
 PUSHINT 2
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
+; end function auction
 NIP
 ;; emitting 1 value(s)
 PUSH S1
@@ -2027,62 +1861,24 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xec4d8e20
+	PUSHSLICE x0000000000000000000000003b1363882_
+	STSLICER
 	PUSH S1
 	STSLICER
 	ENDC
 	PUSHINT 0
 	SENDRAWMSG
 }
-PUSHCONT {
-	GETGLOB 4
-	DUP
-	INDEX 3
-	PUSH S1
-	INDEX 2
-	GETGLOB 9
-	BLKSWAP 1, 3
-	INDEX 1
-	NEWC
-	PUSHINT 2
-	STZEROES
-	STI 1
-	PUSHINT 3
-	STZEROES
-	STSLICE
-	SWAP
-	STGRAMS
-	STDICT
-	PUSHINT 104
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	GETGLOB 4
-	INDEX 5
-	STUR 32
-	PUSH S1
-	STSLICER
-	ENDC
-	GETGLOB 4
-	INDEX 4
-	SENDRAWMSG
-}
-IFELSE
+IF
 DROP
-; end function auction
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	gc
-.public	gc
-.type	gc, @function
+.macro gc
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -2128,8 +1924,7 @@ NOW
 ;; push identifier last_temp
 GETGLOB 19
 ;; +
-PUSHINT 60
-ADD
+ADDCONST 60
 UFITS 32
 GREATER
 THROWIFNOT 119
@@ -2169,12 +1964,9 @@ NOW
 SETGLOB 19
 ; end colValue
 ;; emit garbage_collected
+PUSHSLICE xc000000000000000000000000043e0048f
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x43e0048f
+STSLICE
 ENDC
 PUSHINT 0
 SENDRAWMSG
@@ -2186,9 +1978,8 @@ CALLREF {
 TRUE
 SETGLOB 7
 
-.globl	gcNeeded
-.public	gcNeeded
-.type	gcNeeded, @function
+.macro gcNeeded
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -2221,6 +2012,7 @@ PUSHCONT {
 	NOT
 }
 IFNOT
+; end function gcNeeded
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -2234,11 +2026,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xba9f45e2
+	PUSHSLICE x0000000000000000000000002ea7d178a_
+	STSLICER
 	PUSH S1
 	STIR 1
 	ENDC
@@ -2264,10 +2053,8 @@ PUSHCONT {
 	SWAP
 	STGRAMS
 	STDICT
-	PUSHINT 104
+	PUSHINT 106
 	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
 	GETGLOB 4
 	INDEX 5
 	STUR 32
@@ -2280,16 +2067,14 @@ PUSHCONT {
 }
 IFELSE
 DROP
-; end function gcNeeded
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	gcPossibleAt
-.public	gcPossibleAt
-.type	gcPossibleAt, @function
+.macro gcPossibleAt
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -2318,11 +2103,11 @@ UFITS 32
 ;; push identifier last_temp
 GETGLOB 19
 ;; +
-PUSHINT 60
-ADD
+ADDCONST 60
 UFITS 32
 MAX
 MAX
+; end function gcPossibleAt
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -2336,11 +2121,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xa49087a6
+	PUSHSLICE x000000000000000000000000292421e9a_
+	STSLICER
 	PUSH S1
 	STUR 32
 	ENDC
@@ -2366,10 +2148,8 @@ PUSHCONT {
 	SWAP
 	STGRAMS
 	STDICT
-	PUSHINT 104
+	PUSHINT 106
 	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
 	GETGLOB 4
 	INDEX 5
 	STUR 32
@@ -2382,16 +2162,14 @@ PUSHCONT {
 }
 IFELSE
 DROP
-; end function gcPossibleAt
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	regName
-.public	regName
-.type	regName, @function
+.macro regName
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -2408,7 +2186,7 @@ LDREF
 LDU 32
 ;; decode RegRequest.hash
 LDUQ 256
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -2444,9 +2222,9 @@ PUSHCONT {
 	PUSHCONT {
 		; expValue
 		; end expValue
-		PUSHINT 201
 		; colValue
-		NIP
+		DROP
+		PUSHINT 201
 		; end colValue
 	}
 	IF
@@ -2460,9 +2238,9 @@ PUSHCONT {
 	PUSHCONT {
 		; expValue
 		; end expValue
-		PUSHINT 202
 		; colValue
-		NIP
+		DROP
+		PUSHINT 202
 		; end colValue
 	}
 	IF
@@ -2474,11 +2252,10 @@ PUSHCONT {
 		NEWC
 		;; decl: b
 		; expValue
-		DUP
 		; end expValue
 		;; get member name
 		;; push identifier request
-		PUSH S3
+		PUSH2 S0, S2
 		INDEX 0
 		STREFR
 		; colValue
@@ -2498,8 +2275,7 @@ PUSHCONT {
 		DUP
 		SBITS
 		;; %
-		PUSHINT 8
-		MOD
+		MODPOW2 3
 		NEQINT 0
 		PUSHCONT {
 			; expValue
@@ -2588,22 +2364,20 @@ PUSHCONT {
 					PUSHCONT {
 						; expValue
 						; end expValue
-						PUSHINT 203
 						; colValue
-						POP S5
 						; end colValue
 						;; break
 						DROP
+						PUSHINT 203
+						POP S4
 						PUSHINT 2
-						RET
 					}
 					IFJMP
 					;; end if
 				}
 				WHILE
-				DROP
 				; end while
-				DROP
+				DROP2
 			}
 			IFELSE
 			;; end if
@@ -2641,8 +2415,7 @@ PUSHCONT {
 		PUSHCONT {
 			;; if
 			;; push identifier resn
-			DUP
-			DUP
+			BLKPUSH 2, 0
 			ISNULL
 			THROWIF 63
 			;; >
@@ -2674,12 +2447,9 @@ PUSHCONT {
 	DUP
 	PUSHCONT {
 		;; emit regNameRejected
+		PUSHSLICE xc0000000000000000000000000022b77c4
 		NEWC
-		PUSHSLICE xc0000000000000000000000002_
-		STSLICER
-		STSLICECONST 0
-		STSLICECONST 0
-		STSLICECONST x022b77c4
+		STSLICE
 		;; sender
 		;; get member sender
 		GETGLOB 9
@@ -2706,13 +2476,11 @@ PUSHCONT {
 		NEWC
 		;; decl: b1
 		; expValue
-		DUP
 		; end expValue
 		;; push identifier callbackFunctionId
-		PUSH S4
+		PUSH2 S0, S3
 		STUR 32
-		FALSE
-		STIR 1
+		STZERO
 		;; push identifier fail
 		PUSH S2
 		STUR 8
@@ -2727,10 +2495,8 @@ PUSHCONT {
 		NEWC
 		STSLICECONST x42_
 		STSLICE
-		PUSHINT 109
-		STZEROES
-		STSLICECONST 0
-		STSLICECONST 1
+		PUSHINT 1
+		STUR 111
 		;; push identifier b1
 		PUSH S1
 		ENDC
@@ -2739,18 +2505,14 @@ PUSHCONT {
 		PUSHINT 64
 		SENDRAWMSG
 		;; return
-		BLKDROP 4
-		RET
+		DROP2
 	}
 	IFJMP
 	;; end if
 	;; emit regNameRequest
+	PUSHSLICE xc000000000000000000000000004046bed
 	NEWC
-	PUSHSLICE xc0000000000000000000000002_
-	STSLICER
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST x04046bed
+	STSLICE
 	;; sender
 	;; get member sender
 	GETGLOB 9
@@ -2785,10 +2547,9 @@ PUSHCONT {
 	NEWC
 	;; decl: b
 	; expValue
-	DUP
 	; end expValue
 	;; push identifier rx
-	PUSH S2
+	PUSH2 S0, S1
 	UNTUPLE 3
 	XCHG s2
 	BLKSWAP 1, 3
@@ -2806,48 +2567,42 @@ PUSHCONT {
 	; end colValue
 	;; return
 	;; push identifier b
-	DUP
+	;; %
+	;; uint128
 	ENDC
 	HASHCU
-	;; %
 	PUSHINT 340282366920938463463374607431768211456
 	MOD
-	;; uint128
 	UFITS 128
-	NIP
-	NIP
 	; end function RXHash
+	NIP
 	;; decl: rhash
 	; expValue
 	;; fetch state_rx
-	GETGLOB 16
 	;; push identifier rhash
-	PUSH S1
-	SWAP
+	DUP
+	GETGLOB 16
 	; end expValue
 	;; push identifier reqx
 	PUSH S3
 	; colValue
-	UNTUPLE 3
-	NEWC
-	PUSH S3
-	UNTUPLE 3
-	NEWC
-	PUSH S3
-	STREFR
-	PUSH S2
-	STUR 32
-	PUSH S1
-	STUR 256
-	XCHG s3
-	BLKDROP 3
-	STBREFR
-	PUSH S2
-	STSLICER
-	PUSH S1
-	STUR 32
-	XCHG s3
-	BLKDROP 3
+	CALLREF {
+		UNTUPLE 3
+		XCHG s2
+		NEWC
+		SWAP
+		CALLREF {
+			UNTUPLE 3
+			XCHG s2
+			NEWC
+			STREF
+			STU 32
+			STU 256
+		}
+		STBREFR
+		STSLICE
+		STU 32
+	}
 	ROTREV
 	PUSHINT 128
 	DICTUSETB
@@ -2869,7 +2624,9 @@ PUSHCONT {
 	INDEX 0
 	PUSHINT 2
 	MYADDR
-	CALL $_resolve_internal$
+	CALLREF {
+		CALL $_resolve_internal_macro$
+	}
 	;; decl: auct
 	;; Remote call IDensAuction.inquiryRequest
 	;; push identifier auct
@@ -2881,12 +2638,8 @@ PUSHCONT {
 	PUSHINT 3
 	STZEROES
 	STSLICE
-	PUSHINT 109
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST x654ee154
-	STSLICECONST x21b371bb
+	PUSHSLICE x0000000000000000000000000000ca9dc2a84366e377_
+	STSLICER
 	;; rhash
 	;; push identifier rhash
 	PUSH S2
@@ -2897,19 +2650,19 @@ PUSHCONT {
 	ENDC
 	PUSHINT 64
 	SENDRAWMSG
-	BLKDROP 6
+	BLKDROP 4
 }
 CALLX
 ; end function regName
+DROP2
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	auctionProcessCallback
-.public	auctionProcessCallback
-.type	auctionProcessCallback, @function
+.macro auctionProcessCallback
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -2918,7 +2671,7 @@ IFREF {
 ; Decode input parameters
 ; Decode rhash
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -2928,7 +2681,7 @@ PUSHCONT {
 IFNOT
 ; Decode res
 LDIQ 1
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -2938,7 +2691,7 @@ PUSHCONT {
 IFNOT
 ; Decode expiry
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -2959,7 +2712,7 @@ PUSHCONT {
 	GETGLOB 16
 	PUSHINT 128
 	DICTUGET
-	PUSHCONT {
+	PUSHREFCONT {
 		LDREFRTOS
 		LDREF
 		LDU 32
@@ -2970,9 +2723,9 @@ PUSHCONT {
 		PLDU 32
 		TUPLE 3
 	}
-	PUSHCONT {
-		NEWC
-		ENDC
+	PUSHREFCONT {
+		PUSHREF {
+		}
 		PUSHINT 0
 		PUSHINT 0
 		TUPLE 3
@@ -2988,11 +2741,12 @@ PUSHCONT {
 	;; get member r
 	;; push identifier reqx
 	PUSH S1
-	INDEX 0
-	INDEX 0
+	INDEX2 0, 0
 	PUSHINT 2
 	MYADDR
-	CALL $_resolve_internal$
+	CALLREF {
+		CALL $_resolve_internal_macro$
+	}
 	SDEQ
 	THROWIFNOT 103
 	;; if
@@ -3003,18 +2757,14 @@ PUSHCONT {
 		;; delete
 		; expValue
 		;; fetch state_rx
-		GETGLOB 16
 		;; push identifier rhash
-		PUSH S4
-		SWAP
+		PUSH S3
 		; end expValue
-		PUSH S1
-		SWAP
+		; colValue
+		GETGLOB 16
 		PUSHINT 128
 		DICTUDEL
 		DROP
-		; colValue
-		NIP
 		SETGLOB 16
 		; end colValue
 		; function Now
@@ -3030,11 +2780,10 @@ PUSHCONT {
 		NEWC
 		;; decl: b
 		; expValue
-		DUP
 		; end expValue
 		;; get member callbackFunctionId
 		;; push identifier reqx
-		PUSH S2
+		PUSH2 S0, S1
 		INDEX 2
 		STUR 32
 		;; push identifier res
@@ -3056,10 +2805,8 @@ PUSHCONT {
 		NEWC
 		STSLICECONST x42_
 		STSLICE
-		PUSHINT 109
-		STZEROES
-		STSLICECONST 0
-		STSLICECONST 1
+		PUSHINT 1
+		STUR 111
 		;; push identifier b
 		PUSH S1
 		ENDC
@@ -3068,8 +2815,7 @@ PUSHCONT {
 		PUSHINT 64
 		SENDRAWMSG
 		;; return
-		BLKDROP 5
-		RET
+		DROP2
 	}
 	IFNOTJMP
 	;; end if
@@ -3081,14 +2827,12 @@ PUSHCONT {
 	;; get member r
 	;; push identifier reqx
 	PUSH S1
-	INDEX 0
-	INDEX 1
+	INDEX2 0, 1
 	;; get member hash
 	;; get member r
 	;; push identifier reqx
 	PUSH S2
-	INDEX 0
-	INDEX 2
+	INDEX2 0, 2
 	TUPLE 3
 	;; decl: rpr
 	;; Remote call IDensAuction.participateProxy
@@ -3101,10 +2845,8 @@ PUSHCONT {
 	PUSHINT 3
 	STZEROES
 	STSLICE
-	PUSHINT 109
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 1
+	PUSHINT 1
+	STUR 111
 	NEWC
 	STSLICECONST x4b93a748
 	STSLICECONST x5006d0e7
@@ -3119,8 +2861,7 @@ PUSHCONT {
 	STUR 32
 	PUSH S1
 	STUR 256
-	XCHG s3
-	BLKDROP 3
+	BLKDROP2 3, 1
 	;; rhash
 	;; push identifier rhash
 	PUSH S6
@@ -3133,19 +2874,19 @@ PUSHCONT {
 	ENDC
 	PUSHINT 64
 	SENDRAWMSG
-	BLKDROP 5
+	DROP2
 }
 CALLX
 ; end function auctionProcessCallback
+BLKDROP 3
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	certificateProcessCallback
-.public	certificateProcessCallback
-.type	certificateProcessCallback, @function
+.macro certificateProcessCallback
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -3154,7 +2895,7 @@ IFREF {
 ; Decode input parameters
 ; Decode rhash
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -3164,7 +2905,7 @@ PUSHCONT {
 IFNOT
 ; Decode expiry
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -3184,7 +2925,7 @@ PUSHCONT {
 	GETGLOB 16
 	PUSHINT 128
 	DICTUGET
-	PUSHCONT {
+	PUSHREFCONT {
 		LDREFRTOS
 		LDREF
 		LDU 32
@@ -3195,9 +2936,9 @@ PUSHCONT {
 		PLDU 32
 		TUPLE 3
 	}
-	PUSHCONT {
-		NEWC
-		ENDC
+	PUSHREFCONT {
+		PUSHREF {
+		}
 		PUSHINT 0
 		PUSHINT 0
 		TUPLE 3
@@ -3213,11 +2954,12 @@ PUSHCONT {
 	;; get member r
 	;; push identifier reqx
 	PUSH S1
-	INDEX 0
-	INDEX 0
+	INDEX2 0, 0
 	PUSHINT 1
 	MYADDR
-	CALL $_resolve_internal$
+	CALLREF {
+		CALL $_resolve_internal_macro$
+	}
 	SDEQ
 	THROWIFNOT 103
 	;; if
@@ -3230,11 +2972,8 @@ PUSHCONT {
 		NEWC
 		STSLICECONST x62_
 		STSLICE
-		PUSHSLICE x3989680000000000000000000000000004_
+		PUSHSLICE x39896800000000000000000000000000004b0bb247_
 		STSLICER
-		STSLICECONST 0
-		STSLICECONST 0
-		STSLICECONST x2585d923
 		ENDC
 		PUSHINT 0
 		SENDRAWMSG
@@ -3285,15 +3024,13 @@ PUSHCONT {
 			NEWC
 			;; decl: b
 			; expValue
-			DUP
 			; end expValue
 			;; get member callbackFunctionId
 			;; push identifier reqx
-			PUSH S2
+			PUSH2 S0, S1
 			INDEX 2
 			STUR 32
-			FALSE
-			STIR 1
+			STZERO
 			PUSHINT 0
 			;; uint8
 			STUR 8
@@ -3310,10 +3047,8 @@ PUSHCONT {
 			NEWC
 			STSLICECONST x42_
 			STSLICE
-			PUSHINT 109
-			STZEROES
-			STSLICECONST 0
-			STSLICECONST 1
+			PUSHINT 1
+			STUR 111
 			;; push identifier b
 			PUSH S1
 			ENDC
@@ -3322,39 +3057,34 @@ PUSHCONT {
 			PUSHINT 64
 			SENDRAWMSG
 			;; return
-			BLKDROP 4
-			RET
+			DROP2
 		}
 		IFJMP
 		;; end if
 		;; push identifier reqx
 		DUP
 		;; push identifier rhash
-		PUSH S3
 		;; push identifier expiry
-		PUSH S3
-		CALL $initializeAuction_internal$
+		OVER2
+		CALLREF {
+			CALL $initializeAuction_internal_macro$
+		}
 		;; return
-		BLKDROP 3
-		RET
+		DROP
 	}
 	IFJMP
 	;; end if
 	;; delete
 	; expValue
 	;; fetch state_rx
-	GETGLOB 16
 	;; push identifier rhash
-	PUSH S3
-	SWAP
+	PUSH S2
 	; end expValue
-	PUSH S1
-	SWAP
+	; colValue
+	GETGLOB 16
 	PUSHINT 128
 	DICTUDEL
 	DROP
-	; colValue
-	NIP
 	SETGLOB 16
 	; end colValue
 	; function Now
@@ -3370,15 +3100,13 @@ PUSHCONT {
 	NEWC
 	;; decl: b
 	; expValue
-	DUP
 	; end expValue
 	;; get member callbackFunctionId
 	;; push identifier reqx
-	PUSH S2
+	PUSH2 S0, S1
 	INDEX 2
 	STUR 32
-	FALSE
-	STIR 1
+	STZERO
 	PUSHINT 1
 	STUR 8
 	;; get member sender
@@ -3395,10 +3123,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST x42_
 	STSLICE
-	PUSHINT 109
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 1
+	PUSHINT 1
+	STUR 111
 	;; push identifier b
 	PUSH S1
 	ENDC
@@ -3406,19 +3132,19 @@ PUSHCONT {
 	ENDC
 	PUSHINT 64
 	SENDRAWMSG
-	BLKDROP 4
+	DROP2
 }
 CALLX
 ; end function certificateProcessCallback
+DROP2
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	auctionParticipationCallback
-.public	auctionParticipationCallback
-.type	auctionParticipationCallback, @function
+.macro auctionParticipationCallback
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -3427,7 +3153,7 @@ IFREF {
 ; Decode input parameters
 ; Decode rhash
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -3437,7 +3163,7 @@ PUSHCONT {
 IFNOT
 ; Decode res
 LDIQ 1
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -3456,7 +3182,7 @@ PUSH S1
 GETGLOB 16
 PUSHINT 128
 DICTUGET
-PUSHCONT {
+PUSHREFCONT {
 	LDREFRTOS
 	LDREF
 	LDU 32
@@ -3467,9 +3193,9 @@ PUSHCONT {
 	PLDU 32
 	TUPLE 3
 }
-PUSHCONT {
-	NEWC
-	ENDC
+PUSHREFCONT {
+	PUSHREF {
+	}
 	PUSHINT 0
 	PUSHINT 0
 	TUPLE 3
@@ -3482,18 +3208,14 @@ IFELSE
 ;; delete
 ; expValue
 ;; fetch state_rx
-GETGLOB 16
 ;; push identifier rhash
-PUSH S3
-SWAP
+PUSH S2
 ; end expValue
-PUSH S1
-SWAP
+; colValue
+GETGLOB 16
 PUSHINT 128
 DICTUDEL
 DROP
-; colValue
-NIP
 SETGLOB 16
 ; end colValue
 ; function Now
@@ -3512,21 +3234,21 @@ GETGLOB 9
 ;; get member r
 ;; push identifier reqx
 PUSH S1
-INDEX 0
-INDEX 0
+INDEX2 0, 0
 PUSHINT 2
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 SDEQ
 THROWIFNOT 103
 NEWC
 ;; decl: b
 ; expValue
-DUP
 ; end expValue
 ;; get member callbackFunctionId
 ;; push identifier reqx
-PUSH S2
+PUSH2 S0, S1
 INDEX 2
 STUR 32
 ;; push identifier res
@@ -3548,10 +3270,8 @@ INDEX 1
 NEWC
 STSLICECONST x42_
 STSLICE
-PUSHINT 109
-STZEROES
-STSLICECONST 0
-STSLICECONST 1
+PUSHINT 1
+STUR 111
 ;; push identifier b
 PUSH S1
 ENDC
@@ -3559,8 +3279,8 @@ STREFR
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 4
 ; end function auctionParticipationCallback
+BLKDROP 4
 CALLREF {
 	CALL $c7_to_c4$
 }
@@ -3569,6 +3289,9 @@ SETGLOB 7
 
 .globl	initializeAuction_internal
 .type	initializeAuction_internal, @function
+CALL $initializeAuction_internal_macro$
+
+.macro initializeAuction_internal_macro
 ;; param: reqx
 ;; param: rhash
 ;; param: expiry
@@ -3607,8 +3330,7 @@ DICTUSETB
 ;; get member r
 ;; push identifier reqx
 PUSH S3
-INDEX 0
-INDEX 0
+INDEX2 0, 0
 PUSHINT 3
 ROT
 PUSHINT 64
@@ -3643,14 +3365,11 @@ STSLICECONST x62_
 STSLICE
 SWAP
 STGRAMS
-PUSHINT 105
-STZEROES
-STSLICECONST xc_
-STSLICECONST 1
+PUSHSLICE x000000000000000000000000007_
+STSLICER
 PUSH S2
 STREFR
-STSLICECONST 0
-STSLICECONST x68b55f3f
+STSLICECONST x345aaf9fc_
 ENDC
 PUSHINT 0
 SENDRAWMSG
@@ -3662,11 +3381,8 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x398968000000000000000000000000000093969a69_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x49cb4d34
 ;; code
 ;; push identifier auction_code
 GETGLOB 12
@@ -3683,11 +3399,8 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x3989680000000000000000000000000000e1090d83_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x708486c1
 ;; code
 ;; push identifier bid_code
 GETGLOB 13
@@ -3696,27 +3409,22 @@ ENDC
 PUSHINT 1
 SENDRAWMSG
 ;; emit auctionDeployed
+PUSHSLICE xc00000000000000000000000005018e393
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5018e393
+STSLICE
 ;; name
 ;; get member name
 ;; get member r
 ;; push identifier reqx
 PUSH S4
-INDEX 0
-INDEX 0
+INDEX2 0, 0
 STREFR
 ;; duration
 ;; get member duration
 ;; get member r
 ;; push identifier reqx
 PUSH S4
-INDEX 0
-INDEX 1
+INDEX2 0, 1
 STUR 32
 ;; sender
 ;; get member sender
@@ -3741,12 +3449,8 @@ STI 1
 PUSHINT 3
 STZEROES
 STSLICE
-PUSHINT 109
-STZEROES
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x654ee154
-STSLICECONST x21b371bb
+PUSHSLICE x0000000000000000000000000000ca9dc2a84366e377_
+STSLICER
 ;; rhash
 ;; push identifier rhash
 PUSH S3
@@ -3758,12 +3462,443 @@ STUR 32
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 4
 ; end function initializeAuction
+BLKDROP 4
 
-.globl	ensureExpiry
-.public	ensureExpiry
-.type	ensureExpiry, @function
+.macro on_bounce_macro
+GETGLOB 1
+ISNULL
+IFREF {
+	CALL $c4_to_c7$
+}
+;; param: slice
+; function onBounce
+PUSHCONT {
+	; expValue
+	DUP
+	; end expValue
+	LDU 32
+	; colValue
+	POP S2
+	; end colValue
+	;; decl: functionId
+	;; if
+	FALSE ; decl return flag
+	;; push identifier functionId
+	PUSH S1
+	;; ==
+	PUSHINT 1699668308
+	EQUAL
+	PUSHCONT {
+		NEWC
+		;; decl: b
+		; expValue
+		; end expValue
+		;; push identifier slice
+		PUSH2 S0, S3
+		STSLICER
+		; colValue
+		NIP
+		; end colValue
+		;; push identifier b
+		DUP
+		ENDC
+		CTOS
+		HEXDUMP
+		DROP
+		; expValue
+		PUSH S3
+		; end expValue
+		LDU 32
+		; Decode input parameters
+		; Decode rhash
+		LDUQ 128
+		PUSHREFCONT {
+			;; load next cell
+			LDREF
+			ENDS
+			CTOS
+			LDU 128
+		}
+		IFNOT
+		; Decode expiry
+		LDUQ 32
+		PUSHREFCONT {
+			;; load next cell
+			LDREF
+			ENDS
+			CTOS
+			LDU 32
+		}
+		IFNOT
+		ENDS
+		PUSHSLICE x8_
+		; colValue
+		POP S7
+		; end colValue
+		;; decl: callbackFunctionId
+		;; decl: rhash
+		;; if
+		;; push identifier callbackFunctionId
+		PUSH S2
+		;; ==
+		PUSHINT 565408187
+		EQUAL
+		PUSHCONT {
+			;; index
+			;; push identifier rhash
+			PUSH S1
+			;; push identifier state_rx
+			GETGLOB 16
+			PUSHINT 128
+			DICTUGET
+			PUSHREFCONT {
+				LDREFRTOS
+				LDREF
+				LDU 32
+				PLDU 256
+				TUPLE 3
+				SWAP
+				LDMSGADDR
+				PLDU 32
+				TUPLE 3
+			}
+			PUSHREFCONT {
+				PUSHREF {
+				}
+				PUSHINT 0
+				PUSHINT 0
+				TUPLE 3
+				PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+				PUSHINT 0
+				TUPLE 3
+			}
+			IFELSE
+			;; decl: reqx
+			;; get member sender
+			GETGLOB 9
+			;; get member name
+			;; get member r
+			;; push identifier reqx
+			PUSH S1
+			INDEX2 0, 0
+			PUSHINT 2
+			MYADDR
+			CALLREF {
+				CALL $_resolve_internal_macro$
+			}
+			SDEQ
+			THROWIFNOT 103
+			;; get member name
+			;; get member r
+			;; push identifier reqx
+			DUP
+			INDEX2 0, 0
+			PUSHINT 1
+			MYADDR
+			CALLREF {
+				CALL $_resolve_internal_macro$
+			}
+			;; decl: cert
+			;; Remote call IDensCertificate.inquiryExpiry
+			;; push identifier cert
+			DUP
+			TRUE
+			NEWC
+			STSLICECONST x6_
+			STI 1
+			PUSHINT 3
+			STZEROES
+			STSLICE
+			PUSHSLICE x0000000000000000000000000000180fe884a42e5ded_
+			STSLICER
+			;; rhash
+			;; push identifier rhash
+			PUSH S4
+			STUR 128
+			ENDC
+			PUSHINT 64
+			SENDRAWMSG
+			;; return
+			BLKDROP 8
+			PUSHINT 4
+		}
+		IFJMP
+		;; end if
+		BLKDROP 4
+	}
+	IF
+	EQINT 4
+	IFRET
+	;; end if
+	;; if
+	FALSE ; decl return flag
+	;; push identifier functionId
+	PUSH S1
+	;; ==
+	PUSHINT 201847874
+	EQUAL
+	PUSHCONT {
+		; expValue
+		PUSH S2
+		; end expValue
+		LDU 32
+		; Decode input parameters
+		; Decode rhash
+		LDUQ 128
+		PUSHREFCONT {
+			;; load next cell
+			LDREF
+			ENDS
+			CTOS
+			LDU 128
+		}
+		IFNOT
+		ENDS
+		PUSHSLICE x8_
+		; colValue
+		POP S5
+		; end colValue
+		;; decl: callbackFunctionId
+		;; decl: rhash
+		;; if
+		FALSE ; decl return flag
+		;; push identifier callbackFunctionId
+		PUSH S2
+		;; ==
+		PUSHINT 1377251062
+		EQUAL
+		PUSHCONT {
+			;; index
+			;; push identifier rhash
+			PUSH S1
+			;; push identifier state_rx
+			GETGLOB 16
+			PUSHINT 128
+			DICTUGET
+			PUSHREFCONT {
+				LDREFRTOS
+				LDREF
+				LDU 32
+				PLDU 256
+				TUPLE 3
+				SWAP
+				LDMSGADDR
+				PLDU 32
+				TUPLE 3
+			}
+			PUSHREFCONT {
+				PUSHREF {
+				}
+				PUSHINT 0
+				PUSHINT 0
+				TUPLE 3
+				PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+				PUSHINT 0
+				TUPLE 3
+			}
+			IFELSE
+			;; decl: reqx
+			;; get member sender
+			GETGLOB 9
+			;; get member name
+			;; get member r
+			;; push identifier reqx
+			PUSH S1
+			INDEX2 0, 0
+			PUSHINT 1
+			MYADDR
+			CALLREF {
+				CALL $_resolve_internal_macro$
+			}
+			SDEQ
+			THROWIFNOT 103
+			;; if
+			; function Now
+			;; return
+			;; push identifier now
+			NOW
+			; end function Now
+			;; <
+			;; push identifier new_auctions_ban
+			GETGLOB 21
+			LESS
+			PUSHCONT {
+				NEWC
+				;; decl: b
+				; expValue
+				; end expValue
+				;; get member callbackFunctionId
+				;; push identifier reqx
+				PUSH2 S0, S1
+				INDEX 2
+				STUR 32
+				STZERO
+				PUSHINT 0
+				;; uint8
+				STUR 8
+				PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+				STSLICER
+				; colValue
+				NIP
+				; end colValue
+				;; transfer()
+				;; get member sender
+				;; push identifier reqx
+				PUSH S1
+				INDEX 1
+				NEWC
+				STSLICECONST x42_
+				STSLICE
+				PUSHINT 1
+				STUR 111
+				;; push identifier b
+				PUSH S1
+				ENDC
+				STREFR
+				ENDC
+				PUSHINT 64
+				SENDRAWMSG
+				;; return
+				BLKDROP 7
+				PUSHINT 4
+			}
+			IFJMP
+			;; end if
+			;; push identifier reqx
+			;; push identifier rhash
+			PUSH2 S0, S2
+			PUSHINT 0
+			CALLREF {
+				CALL $initializeAuction_internal_macro$
+			}
+			DROP
+		}
+		IF
+		DUP
+		IFRET
+		;; end if
+		BLKDROP 3
+	}
+	IF
+	EQINT 4
+	IFRET
+	;; end if
+	;; if
+	;; push identifier functionId
+	DUP
+	;; ==
+	PUSHINT 1510054060
+	EQUAL
+	PUSHCONT {
+		; expValue
+		PUSH S1
+		; end expValue
+		LDU 32
+		; colValue
+		POP S3
+		; end colValue
+		;; decl: callbackFunctionId
+		;; if
+		;; push identifier callbackFunctionId
+		DUP
+		;; ==
+		PUSHINT 1478212790
+		EQUAL
+		PUSHCONT {
+			;; index
+			;; get member sender
+			GETGLOB 9
+			;; push identifier temp_lookup
+			GETGLOB 17
+			PUSHINT 267
+			DICTGET
+			PUSHREFCONT {
+				LDREF
+				LDMSGADDR
+				PLDU 32
+				TUPLE 3
+			}
+			PUSHREFCONT {
+				PUSHREF {
+				}
+				PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+				PUSHINT 0
+				TUPLE 3
+			}
+			IFELSE
+			;; decl: td
+			;; delete
+			; expValue
+			;; fetch temp_lookup
+			;; get member sender
+			GETGLOB 9
+			; end expValue
+			; colValue
+			GETGLOB 17
+			PUSHINT 267
+			DICTDEL
+			DROP
+			SETGLOB 17
+			; end colValue
+			; function Now
+			;; return
+			;; push identifier now
+			NOW
+			; end function Now
+			; expValue
+			; end expValue
+			; colValue
+			SETGLOB 19
+			; end colValue
+			;; get member sender
+			GETGLOB 9
+			;; get member name
+			;; push identifier td
+			PUSH S1
+			INDEX 0
+			PUSHINT 1
+			MYADDR
+			CALLREF {
+				CALL $_resolve_internal_macro$
+			}
+			SDEQ
+			THROWIFNOT 103
+			;; get member name
+			;; push identifier td
+			DUP
+			INDEX 0
+			;; get member winner
+			;; push identifier td
+			PUSH S1
+			INDEX 1
+			;; get member expiry
+			;; push identifier td
+			PUSH S2
+			INDEX 2
+			MYADDR
+			CALLREF {
+				CALL $deployCertificate_internal_macro$
+			}
+			DROP2
+		}
+		IF
+		;; end if
+		DROP
+	}
+	IF
+	;; end if
+	DROP
+}
+CALLX
+; end function onBounce
+DROP
+CALLREF {
+	CALL $c7_to_c4$
+}
+
+.macro ensureExpiry
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -3784,7 +3919,9 @@ GETGLOB 9
 PUSH S2
 PUSHINT 2
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 SDEQ
 THROWIFNOT 103
 ;; push identifier expiry
@@ -3817,7 +3954,9 @@ THROWIFNOT 105
 PUSH S1
 PUSHINT 1
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 ;; decl: cert
 ;; Remote call IDensCertificate.setExpiry
 ;; push identifier cert
@@ -3829,11 +3968,8 @@ STI 1
 PUSHINT 3
 STZEROES
 STSLICE
-PUSHINT 109
-STZEROES
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x26b503c1
+PUSHSLICE x00000000000000000000000000004d6a0783_
+STSLICER
 ;; _expiry
 ;; push identifier expiry
 PUSH S2
@@ -3841,17 +3977,16 @@ STUR 32
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 3
 ; end function ensureExpiry
+BLKDROP 3
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	auctionFailed
-.public	auctionFailed
-.type	auctionFailed, @function
+.macro auctionFailed
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -3869,16 +4004,15 @@ GETGLOB 9
 PUSH S1
 PUSHINT 2
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 SDEQ
 THROWIFNOT 103
 ;; emit auctionFail
+PUSHSLICE xc0000000000000000000000000102fbaa2
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x102fbaa2
+STSLICE
 ;; name
 ;; push identifier name
 PUSH S1
@@ -3900,25 +4034,21 @@ STI 1
 PUSHINT 3
 STZEROES
 STSLICE
-PUSHINT 109
-STZEROES
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x2585d923
+PUSHSLICE x00000000000000000000000000004b0bb247_
+STSLICER
 ENDC
 PUSHINT 64
 SENDRAWMSG
-DROP
 ; end function auctionFailed
+DROP
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	auctionSucceeded
-.public	auctionSucceeded
-.type	auctionSucceeded, @function
+.macro auctionSucceeded
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -3929,7 +4059,7 @@ IFREF {
 LDREF
 ; Decode winner
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -3939,7 +4069,7 @@ PUSHCONT {
 IFNOT
 ; Decode expiry
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -3958,41 +4088,40 @@ GETGLOB 9
 PUSH S3
 PUSHINT 2
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 SDEQ
 THROWIFNOT 103
 ;; push identifier name
 PUSH S2
 PUSHINT 1
 MYADDR
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 ;; decl: cert
 ;; push identifier name
-PUSH S3
 ;; push identifier winner
-PUSH S3
 ;; push identifier expiry
-PUSH S3
+BLKPUSH 3, 3
 TUPLE 3
 ; expValue
 ;; fetch temp_lookup
-GETGLOB 17
 ;; push identifier cert
-PUSH S2
-SWAP
+PUSH S1
+GETGLOB 17
 ; end expValue
 ROT
 ; colValue
-UNTUPLE 3
-NEWC
-PUSH S3
-STREFR
-PUSH S2
-STSLICER
-PUSH S1
-STUR 32
-XCHG s3
-BLKDROP 3
+CALLREF {
+	UNTUPLE 3
+	XCHG s2
+	NEWC
+	STREF
+	STSLICE
+	STU 32
+}
 ROTREV
 PUSHINT 267
 DICTSETB
@@ -4009,12 +4138,9 @@ NOW
 SETGLOB 19
 ; end colValue
 ;; emit auctionSuccess
+PUSHSLICE xc00000000000000000000000000160ca0d
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x0160ca0d
+STSLICE
 ;; name
 ;; push identifier name
 PUSH S4
@@ -4040,12 +4166,8 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x405f5e100000000000000000000000000004_
+PUSHSLICE x405f5e100000000000000000000000000000b4033158b037796d_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5a0198ac
-STSLICECONST x581bbcb6
 ;; new_owner
 ;; push identifier winner
 PUSH S3
@@ -4067,35 +4189,28 @@ STI 1
 PUSHINT 3
 STZEROES
 STSLICE
-PUSHINT 109
-STZEROES
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x2585d923
+PUSHSLICE x00000000000000000000000000004b0bb247_
+STSLICER
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 4
 ; end function auctionSucceeded
+BLKDROP 4
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	auctionSink
-.public	auctionSink
-.type	auctionSink, @function
+.macro auctionSink
+DROP
 ; Decode input parameters
 ENDS
 ; function auctionSink
 ;; emit receivedAuction
+PUSHSLICE xc000000000000000000000000001c5132d
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x01c5132d
+STSLICE
 ;; amount
 ;; get member value
 CALLREF {
@@ -4112,9 +4227,8 @@ IFREF {
 TRUE
 SETGLOB 7
 
-.globl	certAuctProcessCallback
-.public	certAuctProcessCallback
-.type	certAuctProcessCallback, @function
+.macro certAuctProcessCallback
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -4129,49 +4243,44 @@ ENDS
 ;; delete
 ; expValue
 ;; fetch temp_lookup
-GETGLOB 17
 ;; get member sender
-GETGLOB 9
-SWAP
 ; end expValue
-PUSH S1
-SWAP
-PUSHINT 267
-DICTDEL
-DROP
 ; colValue
-NIP
-SETGLOB 17
 ; end colValue
 ; function Now
 ;; return
 ;; push identifier now
-NOW
 ; end function Now
 ; expValue
 ; end expValue
 ; colValue
-SETGLOB 19
 ; end colValue
-DROP
 ; end function certAuctProcessCallback
+DROP
+GETGLOB 9
+GETGLOB 17
+PUSHINT 267
+DICTDEL
+DROP
+SETGLOB 17
+NOW
+SETGLOB 19
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	certAuctProcessCallbackDummy
-.public	certAuctProcessCallbackDummy
-.type	certAuctProcessCallbackDummy, @function
+.macro certAuctProcessCallbackDummy
+DROP
 ; Decode input parameters
 ; Decode 
 LDI 1
 ENDS
 ;; param: 
 ; function certAuctProcessCallbackDummy
-DROP
 ; end function certAuctProcessCallbackDummy
+DROP
 IFREF {
 	CALL $c7_to_c4$
 }
@@ -4180,6 +4289,9 @@ SETGLOB 7
 
 .globl	deployCertificate_internal
 .type	deployCertificate_internal, @function
+CALL $deployCertificate_internal_macro$
+
+.macro deployCertificate_internal_macro
 ;; param: name
 ;; param: _owner
 ;; param: expiry
@@ -4243,14 +4355,11 @@ STSLICECONST x62_
 STSLICE
 SWAP
 STGRAMS
-PUSHINT 105
-STZEROES
-STSLICECONST xc_
-STSLICECONST 1
+PUSHSLICE x000000000000000000000000007_
+STSLICER
 PUSH S2
 STREFR
-STSLICECONST 0
-STSLICECONST x68b55f3f
+STSLICECONST x345aaf9fc_
 ENDC
 PUSHINT 1
 SENDRAWMSG
@@ -4262,11 +4371,8 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x3989680000000000000000000000000004_
+PUSHSLICE x398968000000000000000000000000000093969a69_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x49cb4d34
 ;; code
 ;; push identifier certificate_code
 GETGLOB 11
@@ -4284,12 +4390,8 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x405f5e100000000000000000000000000004_
+PUSHSLICE x405f5e100000000000000000000000000000b4033158b04f348d_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5a0198ac
-STSLICECONST x58279a46
 ;; new_owner
 ;; push identifier _owner
 PUSH S4
@@ -4302,11 +4404,9 @@ ENDC
 PUSHINT 1
 SENDRAWMSG
 ;; emit certificateDeployed
+PUSHSLICE xc0000000000000000000000001
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 1
+STSLICE
 NEWC
 STSLICECONST x7647814b
 ;; name
@@ -4334,13 +4434,12 @@ ENDC
 PUSHINT 0
 SENDRAWMSG
 ;; return
-XCHG s4
-BLKDROP 4
+;; push identifier p
 ; end function deployCertificate
+BLKDROP2 4, 1
 
-.globl	directlyDeploy
-.public	directlyDeploy
-.type	directlyDeploy, @function
+.macro directlyDeploy
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -4351,7 +4450,7 @@ IFREF {
 LDREF
 ; Decode _owner
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4361,7 +4460,7 @@ PUSHCONT {
 IFNOT
 ; Decode expiry
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4373,6 +4472,8 @@ ENDS
 ;; param: name
 ;; param: _owner
 ;; param: expiry
+;; ret param: retParam@0
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
 ; modifier onlyOwner
 GETGLOB 5
 DUP
@@ -4391,18 +4492,22 @@ ACCEPT
 ; function directlyDeploy
 ;; return
 ;; push identifier name
-PUSH S2
 ;; push identifier _owner
-PUSH S2
 ;; push identifier expiry
-PUSH S2
+BLKPUSH 3, 3
 MYADDR
-CALL $deployCertificate_internal$
+CALLREF {
+	CALL $deployCertificate_internal_macro$
+}
+NIP
+; end function directlyDeploy
+; end modifier onlyOwner
+BLKDROP2 3, 1
 ;; emitting 1 value(s)
-PUSH S4
+PUSH S1
 EQINT -1
 PUSHCONT {
-	PUSH S6
+	PUSH S3
 	CTOS
 	LDU 2
 	LDMSGADDR
@@ -4411,64 +4516,24 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST x91a2cf87
+	PUSHSLICE x0000000000000000000000002468b3e1e_
+	STSLICER
 	PUSH S1
 	STSLICER
 	ENDC
 	PUSHINT 0
 	SENDRAWMSG
 }
-PUSHCONT {
-	GETGLOB 4
-	DUP
-	INDEX 3
-	PUSH S1
-	INDEX 2
-	GETGLOB 9
-	BLKSWAP 1, 3
-	INDEX 1
-	NEWC
-	PUSHINT 2
-	STZEROES
-	STI 1
-	PUSHINT 3
-	STZEROES
-	STSLICE
-	SWAP
-	STGRAMS
-	STDICT
-	PUSHINT 104
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	GETGLOB 4
-	INDEX 5
-	STUR 32
-	PUSH S1
-	STSLICER
-	ENDC
-	GETGLOB 4
-	INDEX 4
-	SENDRAWMSG
-}
-IFELSE
+IF
 DROP
-; end function directlyDeploy
-BLKDROP 3
-; end modifier onlyOwner
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	directlyReconfigure
-.public	directlyReconfigure
-.type	directlyReconfigure, @function
+.macro directlyReconfigure
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -4479,7 +4544,7 @@ IFREF {
 LDREF
 ; Decode 
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4489,7 +4554,7 @@ PUSHCONT {
 IFNOT
 ; Decode 
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4501,6 +4566,8 @@ ENDS
 ;; param: 
 ;; param: 
 ;; param: 
+;; ret param: retParam@0
+PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
 ; modifier onlyOwner
 GETGLOB 5
 DUP
@@ -4518,12 +4585,16 @@ THROWIFNOT 100
 ACCEPT
 ; function directlyReconfigure
 ;; return
+DROP
 PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
+; end function directlyReconfigure
+; end modifier onlyOwner
+BLKDROP2 3, 1
 ;; emitting 1 value(s)
-PUSH S4
+PUSH S1
 EQINT -1
 PUSHCONT {
-	PUSH S6
+	PUSH S3
 	CTOS
 	LDU 2
 	LDMSGADDR
@@ -4532,64 +4603,24 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST xc76de20d
+	PUSHSLICE x00000000000000000000000031db78836_
+	STSLICER
 	PUSH S1
 	STSLICER
 	ENDC
 	PUSHINT 0
 	SENDRAWMSG
 }
-PUSHCONT {
-	GETGLOB 4
-	DUP
-	INDEX 3
-	PUSH S1
-	INDEX 2
-	GETGLOB 9
-	BLKSWAP 1, 3
-	INDEX 1
-	NEWC
-	PUSHINT 2
-	STZEROES
-	STI 1
-	PUSHINT 3
-	STZEROES
-	STSLICE
-	SWAP
-	STGRAMS
-	STDICT
-	PUSHINT 104
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	GETGLOB 4
-	INDEX 5
-	STUR 32
-	PUSH S1
-	STSLICER
-	ENDC
-	GETGLOB 4
-	INDEX 4
-	SENDRAWMSG
-}
-IFELSE
+IF
 DROP
-; end function directlyReconfigure
-BLKDROP 3
-; end modifier onlyOwner
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	generateHash
-.public	generateHash
-.type	generateHash, @function
+.macro generateHash
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -4598,7 +4629,7 @@ IFREF {
 ; Decode input parameters
 ; Decode bidder
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4608,7 +4639,7 @@ PUSHCONT {
 IFNOT
 ; Decode amount
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4618,7 +4649,7 @@ PUSHCONT {
 IFNOT
 ; Decode nonce
 LDUQ 256
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4634,10 +4665,9 @@ ENDS
 NEWC
 ;; decl: b
 ; expValue
-DUP
 ; end expValue
 ;; push identifier bidder
-PUSH S4
+PUSH2 S0, S3
 STSLICER
 ;; push identifier amount
 PUSH S3
@@ -4654,8 +4684,10 @@ ENDC
 HASHCU
 ;; decl: rhash
 ;; return
-XCHG s4
-BLKDROP 4
+;; push identifier rhash
+DUP
+; end function generateHash
+BLKDROP2 5, 1
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -4669,62 +4701,24 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST x94358b16
+	PUSHSLICE x000000000000000000000000250d62c5a_
+	STSLICER
 	PUSH S1
 	STUR 256
 	ENDC
 	PUSHINT 0
 	SENDRAWMSG
 }
-PUSHCONT {
-	GETGLOB 4
-	DUP
-	INDEX 3
-	PUSH S1
-	INDEX 2
-	GETGLOB 9
-	BLKSWAP 1, 3
-	INDEX 1
-	NEWC
-	PUSHINT 2
-	STZEROES
-	STI 1
-	PUSHINT 3
-	STZEROES
-	STSLICE
-	SWAP
-	STGRAMS
-	STDICT
-	PUSHINT 104
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	GETGLOB 4
-	INDEX 5
-	STUR 32
-	PUSH S1
-	STUR 256
-	ENDC
-	GETGLOB 4
-	INDEX 4
-	SENDRAWMSG
-}
-IFELSE
+IF
 DROP
-; end function generateHash
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	subCertRequest
-.public	subCertRequest
-.type	subCertRequest, @function
+.macro subCertRequest
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -4737,7 +4731,7 @@ LDREF
 LDREF
 ; Decode _owner
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4747,7 +4741,7 @@ PUSHCONT {
 IFNOT
 ; Decode expiry
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4757,7 +4751,7 @@ PUSHCONT {
 IFNOT
 ; Decode _par
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4779,18 +4773,20 @@ PUSH S5
 PUSHINT 1
 ;; push identifier _par
 PUSH S3
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 SDEQ
 THROWIFNOT 103
 ;; push identifier subname
-PUSH S3
 ;; push identifier _owner
-PUSH S3
 ;; push identifier expiry
-PUSH S3
+BLKPUSH 3, 3
 ;; get member sender
 GETGLOB 9
-CALL $deployCertificate_internal$
+CALLREF {
+	CALL $deployCertificate_internal_macro$
+}
 ;; decl: p
 ;; transfer()
 ;; push identifier p
@@ -4798,24 +4794,21 @@ DUP
 NEWC
 STSLICECONST x42_
 STSLICE
-PUSHINT 109
+PUSHINT 111
 STZEROES
-STSLICECONST 0
-STSLICECONST 0
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 6
 ; end function subCertRequest
+BLKDROP 6
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	subCertSync
-.public	subCertSync
-.type	subCertSync, @function
+.macro subCertSync
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -4828,7 +4821,7 @@ LDREF
 LDREF
 ; Decode _owner
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4838,7 +4831,7 @@ PUSHCONT {
 IFNOT
 ; Decode expiry
 LDUQ 32
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4848,7 +4841,7 @@ PUSHCONT {
 IFNOT
 ; Decode _par
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -4870,7 +4863,9 @@ PUSH S5
 PUSHINT 1
 ;; push identifier _par
 PUSH S3
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 SDEQ
 THROWIFNOT 103
 ;; push identifier subname
@@ -4878,7 +4873,9 @@ PUSH S3
 PUSHINT 1
 ;; get member sender
 GETGLOB 9
-CALL $_resolve_internal$
+CALLREF {
+	CALL $_resolve_internal_macro$
+}
 ;; decl: p
 ;; Remote call IDensCertificate.auctionProcess
 ;; push identifier p
@@ -4886,12 +4883,8 @@ DUP
 NEWC
 STSLICECONST x62_
 STSLICE
-PUSHSLICE x405f5e100000000000000000000000000004_
+PUSHSLICE x405f5e100000000000000000000000000000b4033158b04f348d_
 STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x5a0198ac
-STSLICECONST x58279a46
 ;; new_owner
 ;; push identifier _owner
 PUSH S4
@@ -4909,24 +4902,21 @@ GETGLOB 9
 NEWC
 STSLICECONST x42_
 STSLICE
-PUSHINT 109
+PUSHINT 111
 STZEROES
-STSLICECONST 0
-STSLICECONST 0
 ENDC
 PUSHINT 64
 SENDRAWMSG
-BLKDROP 6
 ; end function subCertSync
+BLKDROP 6
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	getOwner
-.public	getOwner
-.type	getOwner, @function
+.macro getOwner
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -4951,6 +4941,7 @@ SETINDEXQ 4
 SETGLOB 4
 ;; push identifier owner
 GETGLOB 14
+; end function getOwner
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -4964,11 +4955,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST x924ad0fa
+	PUSHSLICE x0000000000000000000000002492b43ea_
+	STSLICER
 	PUSH S1
 	STUR 256
 	ENDC
@@ -4994,10 +4982,8 @@ PUSHCONT {
 	SWAP
 	STGRAMS
 	STDICT
-	PUSHINT 104
+	PUSHINT 106
 	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
 	GETGLOB 4
 	INDEX 5
 	STUR 32
@@ -5010,16 +4996,14 @@ PUSHCONT {
 }
 IFELSE
 DROP
-; end function getOwner
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	transferOwner
-.public	transferOwner
-.type	transferOwner, @function
+.macro transferOwner
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -5028,7 +5012,7 @@ IFREF {
 ; Decode input parameters
 ; Decode new_owner
 LDUQ 256
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -5055,12 +5039,9 @@ THROWIFNOT 100
 ACCEPT
 ; function transferOwner
 ;; emit prepareOwnerTransfer
+PUSHSLICE xc0000000000000000000000000299a7ed7
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x299a7ed7
+STSLICE
 ;; to
 ;; push identifier new_owner
 PUSH S1
@@ -5071,22 +5052,19 @@ SENDRAWMSG
 ; expValue
 ; end expValue
 ;; push identifier new_owner
-DUP
 ; colValue
-SETGLOB 15
 ; end colValue
 ; end function transferOwner
-DROP
 ; end modifier onlyOwner
+SETGLOB 15
 CALLREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	acceptOwner
-.public	acceptOwner
-.type	acceptOwner, @function
+.macro acceptOwner
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -5110,12 +5088,9 @@ EQUAL
 THROWIFNOT 98
 ACCEPT
 ;; emit ownerTransferred
+PUSHSLICE xc00000000000000000000000001e60d6ed
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x1e60d6ed
+STSLICE
 ;; from
 ;; push identifier owner
 GETGLOB 14
@@ -5147,9 +5122,8 @@ CALLREF {
 TRUE
 SETGLOB 7
 
-.globl	getPendingOwner
-.public	getPendingOwner
-.type	getPendingOwner, @function
+.macro getPendingOwner
+DROP
 GETGLOB 1
 ISNULL
 IFREF {
@@ -5174,6 +5148,7 @@ SETINDEXQ 4
 SETGLOB 4
 ;; push identifier pending_owner
 GETGLOB 15
+; end function getPendingOwner
 ;; emitting 1 value(s)
 PUSH S1
 EQINT -1
@@ -5187,11 +5162,8 @@ PUSHCONT {
 	NEWC
 	STSLICECONST xc
 	STSLICE
-	PUSHINT 96
-	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
-	STSLICECONST x9010c6b6
+	PUSHSLICE x000000000000000000000000240431ada_
+	STSLICER
 	PUSH S1
 	STUR 256
 	ENDC
@@ -5217,10 +5189,8 @@ PUSHCONT {
 	SWAP
 	STGRAMS
 	STDICT
-	PUSHINT 104
+	PUSHINT 106
 	STZEROES
-	STSLICECONST 0
-	STSLICECONST 0
 	GETGLOB 4
 	INDEX 5
 	STUR 32
@@ -5233,20 +5203,18 @@ PUSHCONT {
 }
 IFELSE
 DROP
-; end function getPendingOwner
 IFREF {
 	CALL $c7_to_c4$
 }
 TRUE
 SETGLOB 7
 
-.globl	withdraw
-.public	withdraw
-.type	withdraw, @function
+.macro withdraw
+DROP
 ; Decode input parameters
 ; Decode dest
 LDMSGADDRQ
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -5256,7 +5224,7 @@ PUSHCONT {
 IFNOT
 ; Decode value
 LDUQ 128
-PUSHCONT {
+PUSHREFCONT {
 	;; load next cell
 	LDREF
 	ENDS
@@ -5296,12 +5264,9 @@ PUSHINT 10000000000
 GEQ
 THROWIFNOT 116
 ;; emit withdrawn
+PUSHSLICE xc00000000000000000000000000a8b72b0
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x0a8b72b0
+STSLICE
 ;; dest
 ;; push identifier dest
 PUSH S2
@@ -5315,24 +5280,21 @@ PUSHINT 0
 SENDRAWMSG
 ;; transfer()
 ;; push identifier value
-DUP
 ;; push identifier dest
-PUSH S2
+PUSH2 S0, S1
 NEWC
 STSLICECONST x62_
 STSLICE
 SWAP
 STGRAMS
-PUSHINT 105
+PUSHINT 107
 STZEROES
-STSLICECONST 0
-STSLICECONST 0
 ENDC
 PUSHINT 0
 SENDRAWMSG
 ; end function withdraw
-DROP2
 ; end modifier onlyOwner
+DROP2
 IFREF {
 	CALL $c7_to_c4$
 }
@@ -5465,20 +5427,20 @@ PUSHCONT {
 PUSHCONT {
 	PLDDICT   ; D
 	; init platform_code
-	NEWC
-	ENDC
+	PUSHREF {
+	}
 	SETGLOB 10
 	; init certificate_code
-	NEWC
-	ENDC
+	PUSHREF {
+	}
 	SETGLOB 11
 	; init auction_code
-	NEWC
-	ENDC
+	PUSHREF {
+	}
 	SETGLOB 12
 	; init bid_code
-	NEWC
-	ENDC
+	PUSHREF {
+	}
 	SETGLOB 13
 	; init owner
 	PUSHINT 0
@@ -5533,15 +5495,15 @@ PUSHCONT {
 }
 IFELSE
 
-.internal-alias :main_internal,        0
-.internal	:main_internal
+.internal-alias :main_internal, 0
+.internal :main_internal
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; Function: main_internal
 ;; param: contract_balance
 ;; param: msg_balance
 ;; param: int_msg_info
 ;; param: msg_body_slice
-PUSHINT 0  ; main_external trans id
+;; param: transaction_type
 PUSH S2
 CTOS
 LDU 4       ; bounced tail
@@ -5569,449 +5531,7 @@ PUSHCONT {
 	PUSH S1
 	LDSLICE 32
 	NIP
-	PUSHINT 1
-	CALL 1
-	CALLREF {
-		CALL $c4_to_c7$
-	}
-	;; param: slice
-	; function onBounce
-	PUSHCONT {
-		; expValue
-		DUP
-		; end expValue
-		LDU 32
-		; colValue
-		POP S2
-		; end colValue
-		;; decl: functionId
-		;; if
-		FALSE ; decl return flag
-		;; push identifier functionId
-		PUSH S1
-		;; ==
-		PUSHINT 1699668308
-		EQUAL
-		PUSHCONT {
-			NEWC
-			;; decl: b
-			; expValue
-			DUP
-			; end expValue
-			;; push identifier slice
-			PUSH S4
-			STSLICER
-			; colValue
-			NIP
-			; end colValue
-			;; push identifier b
-			DUP
-			ENDC
-			CTOS
-			HEXDUMP
-			DROP
-			; expValue
-			PUSH S3
-			; end expValue
-			LDU 32
-			; Decode input parameters
-			; Decode rhash
-			LDUQ 128
-			PUSHCONT {
-				;; load next cell
-				LDREF
-				ENDS
-				CTOS
-				LDU 128
-			}
-			IFNOT
-			; Decode expiry
-			LDUQ 32
-			PUSHCONT {
-				;; load next cell
-				LDREF
-				ENDS
-				CTOS
-				LDU 32
-			}
-			IFNOT
-			ENDS
-			PUSHSLICE x8_
-			; colValue
-			POP S7
-			; end colValue
-			ROTREV
-			ROTREV
-			ROTREV
-			;; decl: callbackFunctionId
-			;; decl: rhash
-			;; if
-			;; push identifier callbackFunctionId
-			PUSH S2
-			;; ==
-			PUSHINT 565408187
-			EQUAL
-			PUSHCONT {
-				;; index
-				;; push identifier rhash
-				PUSH S1
-				;; push identifier state_rx
-				GETGLOB 16
-				PUSHINT 128
-				DICTUGET
-				PUSHCONT {
-					LDREFRTOS
-					LDREF
-					LDU 32
-					PLDU 256
-					TUPLE 3
-					SWAP
-					LDMSGADDR
-					PLDU 32
-					TUPLE 3
-				}
-				PUSHCONT {
-					NEWC
-					ENDC
-					PUSHINT 0
-					PUSHINT 0
-					TUPLE 3
-					PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
-					PUSHINT 0
-					TUPLE 3
-				}
-				IFELSE
-				;; decl: reqx
-				;; get member sender
-				GETGLOB 9
-				;; get member name
-				;; get member r
-				;; push identifier reqx
-				PUSH S1
-				INDEX 0
-				INDEX 0
-				PUSHINT 2
-				MYADDR
-				CALL $_resolve_internal$
-				SDEQ
-				THROWIFNOT 103
-				;; get member name
-				;; get member r
-				;; push identifier reqx
-				DUP
-				INDEX 0
-				INDEX 0
-				PUSHINT 1
-				MYADDR
-				CALL $_resolve_internal$
-				;; decl: cert
-				;; Remote call IDensCertificate.inquiryExpiry
-				;; push identifier cert
-				DUP
-				TRUE
-				NEWC
-				STSLICECONST x6_
-				STI 1
-				PUSHINT 3
-				STZEROES
-				STSLICE
-				PUSHINT 109
-				STZEROES
-				STSLICECONST 0
-				STSLICECONST 0
-				STSLICECONST x0c07f442
-				STSLICECONST x52172ef6
-				;; rhash
-				;; push identifier rhash
-				PUSH S4
-				STUR 128
-				ENDC
-				PUSHINT 64
-				SENDRAWMSG
-				;; return
-				BLKDROP 9
-				PUSHINT 4
-				RET
-			}
-			IFJMP
-			;; end if
-			BLKDROP 4
-		}
-		IF
-		EQINT 4
-		IFRET
-		;; end if
-		;; if
-		FALSE ; decl return flag
-		;; push identifier functionId
-		PUSH S1
-		;; ==
-		PUSHINT 201847874
-		EQUAL
-		PUSHCONT {
-			; expValue
-			PUSH S2
-			; end expValue
-			LDU 32
-			; Decode input parameters
-			; Decode rhash
-			LDUQ 128
-			PUSHCONT {
-				;; load next cell
-				LDREF
-				ENDS
-				CTOS
-				LDU 128
-			}
-			IFNOT
-			ENDS
-			PUSHSLICE x8_
-			; colValue
-			POP S5
-			; end colValue
-			SWAP
-			SWAP
-			;; decl: callbackFunctionId
-			;; decl: rhash
-			;; if
-			FALSE ; decl return flag
-			;; push identifier callbackFunctionId
-			PUSH S2
-			;; ==
-			PUSHINT 1377251062
-			EQUAL
-			PUSHCONT {
-				;; index
-				;; push identifier rhash
-				PUSH S1
-				;; push identifier state_rx
-				GETGLOB 16
-				PUSHINT 128
-				DICTUGET
-				PUSHCONT {
-					LDREFRTOS
-					LDREF
-					LDU 32
-					PLDU 256
-					TUPLE 3
-					SWAP
-					LDMSGADDR
-					PLDU 32
-					TUPLE 3
-				}
-				PUSHCONT {
-					NEWC
-					ENDC
-					PUSHINT 0
-					PUSHINT 0
-					TUPLE 3
-					PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
-					PUSHINT 0
-					TUPLE 3
-				}
-				IFELSE
-				;; decl: reqx
-				;; get member sender
-				GETGLOB 9
-				;; get member name
-				;; get member r
-				;; push identifier reqx
-				PUSH S1
-				INDEX 0
-				INDEX 0
-				PUSHINT 1
-				MYADDR
-				CALL $_resolve_internal$
-				SDEQ
-				THROWIFNOT 103
-				;; if
-				; function Now
-				;; return
-				;; push identifier now
-				NOW
-				; end function Now
-				;; <
-				;; push identifier new_auctions_ban
-				GETGLOB 21
-				LESS
-				PUSHCONT {
-					NEWC
-					;; decl: b
-					; expValue
-					DUP
-					; end expValue
-					;; get member callbackFunctionId
-					;; push identifier reqx
-					PUSH S2
-					INDEX 2
-					STUR 32
-					FALSE
-					STIR 1
-					PUSHINT 0
-					;; uint8
-					STUR 8
-					PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
-					STSLICER
-					; colValue
-					NIP
-					; end colValue
-					;; transfer()
-					;; get member sender
-					;; push identifier reqx
-					PUSH S1
-					INDEX 1
-					NEWC
-					STSLICECONST x42_
-					STSLICE
-					PUSHINT 109
-					STZEROES
-					STSLICECONST 0
-					STSLICECONST 1
-					;; push identifier b
-					PUSH S1
-					ENDC
-					STREFR
-					ENDC
-					PUSHINT 64
-					SENDRAWMSG
-					;; return
-					BLKDROP 8
-					PUSHINT 4
-					RET
-				}
-				IFJMP
-				;; end if
-				;; push identifier reqx
-				DUP
-				;; push identifier rhash
-				PUSH S3
-				PUSHINT 0
-				CALL $initializeAuction_internal$
-				DROP
-			}
-			IF
-			DUP
-			IFRET
-			DROP
-			;; end if
-			DROP2
-		}
-		IF
-		EQINT 4
-		IFRET
-		;; end if
-		;; if
-		;; push identifier functionId
-		DUP
-		;; ==
-		PUSHINT 1510054060
-		EQUAL
-		PUSHCONT {
-			; expValue
-			PUSH S1
-			; end expValue
-			LDU 32
-			; colValue
-			POP S3
-			; end colValue
-			;; decl: callbackFunctionId
-			;; if
-			;; push identifier callbackFunctionId
-			DUP
-			;; ==
-			PUSHINT 1478212790
-			EQUAL
-			PUSHCONT {
-				;; index
-				;; get member sender
-				GETGLOB 9
-				;; push identifier temp_lookup
-				GETGLOB 17
-				PUSHINT 267
-				DICTGET
-				PUSHCONT {
-					LDREF
-					LDMSGADDR
-					PLDU 32
-					TUPLE 3
-				}
-				PUSHCONT {
-					NEWC
-					ENDC
-					PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
-					PUSHINT 0
-					TUPLE 3
-				}
-				IFELSE
-				;; decl: td
-				;; delete
-				; expValue
-				;; fetch temp_lookup
-				GETGLOB 17
-				;; get member sender
-				GETGLOB 9
-				SWAP
-				; end expValue
-				PUSH S1
-				SWAP
-				PUSHINT 267
-				DICTDEL
-				DROP
-				; colValue
-				NIP
-				SETGLOB 17
-				; end colValue
-				; function Now
-				;; return
-				;; push identifier now
-				NOW
-				; end function Now
-				; expValue
-				; end expValue
-				; colValue
-				SETGLOB 19
-				; end colValue
-				;; get member sender
-				GETGLOB 9
-				;; get member name
-				;; push identifier td
-				PUSH S1
-				INDEX 0
-				PUSHINT 1
-				MYADDR
-				CALL $_resolve_internal$
-				SDEQ
-				THROWIFNOT 103
-				;; get member name
-				;; push identifier td
-				DUP
-				INDEX 0
-				;; get member winner
-				;; push identifier td
-				PUSH S1
-				INDEX 1
-				;; get member expiry
-				;; push identifier td
-				PUSH S2
-				INDEX 2
-				MYADDR
-				CALL $deployCertificate_internal$
-				DROP
-				DROP
-			}
-			IF
-			;; end if
-			DROP
-		}
-		IF
-		;; end if
-		DROP2
-	}
-	CALLX
-	; end function onBounce
-	CALLREF {
-		CALL $c7_to_c4$
-	}
+	CALL $on_bounce_macro$
 }
 IFJMP
 PUSH S1    ; body
@@ -6020,7 +5540,16 @@ DUP        ; isEmpty isEmpty
 PUSHCONT {
 	DROP    ;
 	PUSH S1 ; body
-	LDU 32  ; funcId body'
+	LDUQ 32  ; [funcId] body' ok
+	PUSHCONT {
+		; body'
+		DROP
+		CALLREF {
+			CALL $fallback_macro$
+		}
+		THROW 0
+	}
+	IFNOT
 	PUSH S1 ; funcId body' funcId
 	EQINT 0 ; funcId body' isZero
 	DUP     ; funcId body' isZero isZero
@@ -6032,42 +5561,31 @@ PUSHCONT {
 }
 IFNOT
 ; [funcId body'] doReceive
-PUSHCONT {
-	; function receive
-	THROW 192
-	; end function receive
+IFJMPREF {
+	CALL $receive_macro$
 }
-IFJMP
-PUSH S1 ; funcId body' funcId
-LESSINT 3            ; funcId body' funcId<3
-PUSH S2              ; funcId body' funcId<3 funcId
-PUSHINT 4294967293   ; funcId body' funcId<3 funcId 4294967293
-GREATER              ; funcId body' funcId<3 funcId>4294967293
-OR                   ; funcId body' funcId<3||funcId>4294967293
-PUSHCONT {
-	DROP2
-	PUSHINT 1
-	CALL 1
-	CALL $fallback$
+SWAP
+CALLREF {
+	CALL $public_function_selector$
 }
-IFJMP
-SWAP    ; body funcId
-CALL 1
 GETGLOB 7
 ISNULL
 PUSHCONT {
-	DROP
-	CALL $fallback$
+	DROP2 ; funcId and restSlice
+	CALLREF {
+		CALL $fallback_macro$
+	}
 }
 IF
 
-.internal-alias :main_external,        -1
-.internal	:main_external
-PUSHINT -1 ; main_external trans id
+.internal-alias :main_external, -1
+.internal :main_external
 PUSHSLICE x8000000000000000000000000000000000000000000000000000000000000000001_
 SETGLOB 9
 PUSH S1
-CALL $c4_to_c7_with_init_storage$
+CALLREF {
+	CALL $c4_to_c7_with_init_storage$
+}
 LDU 1 ; haveSign msgSlice
 SWAP
 PUSHCONT {
@@ -6108,42 +5626,28 @@ NOW     ; msgSlice expireAt now
 GREATER ; msgSlice expireAt>now
 THROWIFNOT 57
 LDU  32 ; funcId body
-PUSH S1 ; funcId body funcId
-LESSINT 3            ; funcId body' funcId<3
-PUSH S2              ; funcId body' funcId<3 funcId
-PUSHINT 4294967293   ; funcId body' funcId<3 funcId 4294967293
-GREATER              ; funcId body' funcId<3 funcId>4294967293
-OR                   ; funcId body' funcId<3||funcId>4294967293
-PUSHCONT {
-	DROP2
-	PUSHINT 1
-	CALL 1
-	CALL $fallback$
-}
-IFJMP
 SWAP    ; body funcId
-CALL 1
+CALLREF {
+	CALL $public_function_selector$
+}
 GETGLOB 7
 ISNULL
 PUSHCONT {
-	DROP
-	CALL $fallback$
+	DROP2 ; funcId and restSlice
+	CALLREF {
+		CALL $fallback_macro$
+	}
 }
 IF
 
-.globl	platform_code
-.public	platform_code
-.type	platform_code, @function
+.macro platform_code
 CALLREF {
 	CALL $c4_to_c7$
 }
 GETGLOB 10
+PUSHSLICE xc0000000000000000000000000e6d44df5
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST xe6d44df5
+STSLICE
 PUSH S1
 STREFR
 ENDC
@@ -6152,19 +5656,14 @@ SENDRAWMSG
 TRUE
 SETGLOB 7
 
-.globl	certificate_code
-.public	certificate_code
-.type	certificate_code, @function
+.macro certificate_code
 CALLREF {
 	CALL $c4_to_c7$
 }
 GETGLOB 11
+PUSHSLICE xc0000000000000000000000000c6a4958b
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST xc6a4958b
+STSLICE
 PUSH S1
 STREFR
 ENDC
@@ -6173,19 +5672,14 @@ SENDRAWMSG
 TRUE
 SETGLOB 7
 
-.globl	auction_code
-.public	auction_code
-.type	auction_code, @function
+.macro auction_code
 CALLREF {
 	CALL $c4_to_c7$
 }
 GETGLOB 12
+PUSHSLICE xc0000000000000000000000000a5a919fc
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST xa5a919fc
+STSLICE
 PUSH S1
 STREFR
 ENDC
@@ -6194,19 +5688,14 @@ SENDRAWMSG
 TRUE
 SETGLOB 7
 
-.globl	bid_code
-.public	bid_code
-.type	bid_code, @function
+.macro bid_code
 CALLREF {
 	CALL $c4_to_c7$
 }
 GETGLOB 13
+PUSHSLICE xc0000000000000000000000000e10b6481
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST xe10b6481
+STSLICE
 PUSH S1
 STREFR
 ENDC
@@ -6215,19 +5704,14 @@ SENDRAWMSG
 TRUE
 SETGLOB 7
 
-.globl	owner
-.public	owner
-.type	owner, @function
+.macro owner
 CALLREF {
 	CALL $c4_to_c7$
 }
 GETGLOB 14
+PUSHSLICE xc00000000000000000000000009178e9bd
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST x9178e9bd
+STSLICE
 PUSH S1
 STUR 256
 ENDC
@@ -6236,19 +5720,14 @@ SENDRAWMSG
 TRUE
 SETGLOB 7
 
-.globl	pending_owner
-.public	pending_owner
-.type	pending_owner, @function
+.macro pending_owner
 CALLREF {
 	CALL $c4_to_c7$
 }
 GETGLOB 15
+PUSHSLICE xc0000000000000000000000000e6ab27e0
 NEWC
-PUSHSLICE xc0000000000000000000000002_
-STSLICER
-STSLICECONST 0
-STSLICECONST 0
-STSLICECONST xe6ab27e0
+STSLICE
 PUSH S1
 STUR 256
 ENDC
@@ -6257,3 +5736,406 @@ SENDRAWMSG
 TRUE
 SETGLOB 7
 
+.macro public_function_selector
+DUP
+PUSHINT 388172858
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 166288215
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 141807997
+		EQUAL
+		IFJMPREF {
+			CALL $withdraw$
+		}
+		DUP
+		PUSHINT 166196011
+		EQUAL
+		IFJMPREF {
+			CALL $onProposalPassed$
+		}
+		DUP
+		PUSHINT 166288215
+		EQUAL
+		IFJMPREF {
+			CALL $auctionFailed$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 293136829
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 269534902
+		EQUAL
+		IFJMPREF {
+			CALL $getPendingOwner$
+		}
+		DUP
+		PUSHINT 282043741
+		EQUAL
+		IFJMPREF {
+			CALL $installPlatform$
+		}
+		DUP
+		PUSHINT 293136829
+		EQUAL
+		IFJMPREF {
+			CALL $owner$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 328617079
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 295882631
+		EQUAL
+		IFJMPREF {
+			CALL $directlyDeploy$
+		}
+		DUP
+		PUSHINT 306893050
+		EQUAL
+		IFJMPREF {
+			CALL $getOwner$
+		}
+		DUP
+		PUSHINT 328617079
+		EQUAL
+		IFJMPREF {
+			CALL $transferOwner$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 388172858
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 339053334
+		EQUAL
+		IFJMPREF {
+			CALL $generateHash$
+		}
+		DUP
+		PUSHINT 343830048
+		EQUAL
+		IFJMPREF {
+			CALL $installCertificate$
+		}
+		DUP
+		PUSHINT 388172858
+		EQUAL
+		IFJMPREF {
+			CALL $upgrade$
+		}
+	}
+	IFJMP
+}
+IFJMP
+DUP
+PUSHINT 1155271999
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 613451686
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 425869748
+		EQUAL
+		IFJMPREF {
+			CALL $getReservedNames$
+		}
+		DUP
+		PUSHINT 565408187
+		EQUAL
+		IFJMPREF {
+			CALL $auctionProcessCallback$
+		}
+		DUP
+		PUSHINT 613451686
+		EQUAL
+		IFJMPREF {
+			CALL $gcPossibleAt$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 814376568
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 631839228
+		EQUAL
+		IFJMPREF {
+			CALL $auction_code$
+		}
+		DUP
+		PUSHINT 725642401
+		EQUAL
+		IFJMPREF {
+			CALL $setNewAuctionsBan$
+		}
+		DUP
+		PUSHINT 814376568
+		EQUAL
+		IFJMPREF {
+			CALL $regName$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 864421225
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 824733373
+		EQUAL
+		IFJMPREF {
+			CALL $subCertRequest$
+		}
+		DUP
+		PUSHINT 832830675
+		EQUAL
+		IFJMPREF {
+			CALL $addBalance$
+		}
+		DUP
+		PUSHINT 864421225
+		EQUAL
+		IFJMPREF {
+			CALL $installBid$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1155271999
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 983516642
+		EQUAL
+		IFJMPREF {
+			CALL $gcNeeded$
+		}
+		DUP
+		PUSHINT 1112915086
+		EQUAL
+		IFJMPREF {
+			CALL $resolveFull$
+		}
+		DUP
+		PUSHINT 1155271999
+		EQUAL
+		IFJMPREF {
+			CALL $ensureExpiry$
+		}
+	}
+	IFJMP
+}
+IFJMP
+DUP
+PUSHINT 1614511652
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 1219438366
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1185191307
+		EQUAL
+		IFJMPREF {
+			CALL $certificate_code$
+		}
+		DUP
+		PUSHINT 1198383629
+		EQUAL
+		IFJMPREF {
+			CALL $directlyReconfigure$
+		}
+		DUP
+		PUSHINT 1219438366
+		EQUAL
+		IFJMPREF {
+			CALL $reserveName$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1342623975
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1249020557
+		EQUAL
+		IFJMPREF {
+			CALL $requestCertificateUpgrade$
+		}
+		DUP
+		PUSHINT 1315065614
+		EQUAL
+		IFJMPREF {
+			CALL $setSmvRoot$
+		}
+		DUP
+		PUSHINT 1342623975
+		EQUAL
+		IFJMPREF {
+			CALL $auctionParticipationCallback$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1478212790
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1350797353
+		EQUAL
+		IFJMPREF {
+			CALL $resolveSub$
+		}
+		DUP
+		PUSHINT 1377251062
+		EQUAL
+		IFJMPREF {
+			CALL $certificateProcessCallback$
+		}
+		DUP
+		PUSHINT 1478212790
+		EQUAL
+		IFJMPREF {
+			CALL $certAuctProcessCallback$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1614511652
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1478990406
+		EQUAL
+		IFJMPREF {
+			CALL $certAuctProcessCallbackDummy$
+		}
+		DUP
+		PUSHINT 1596529814
+		EQUAL
+		IFJMPREF {
+			CALL $auctionSucceeded$
+		}
+		DUP
+		PUSHINT 1614511652
+		EQUAL
+		IFJMPREF {
+			CALL $resolveRPC$
+		}
+	}
+	IFJMP
+}
+IFJMP
+DUP
+PUSHINT 2135484735
+LEQ
+PUSHCONT {
+	DUP
+	PUSHINT 1636715328
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1615843465
+		EQUAL
+		IFJMPREF {
+			CALL $gc$
+		}
+		DUP
+		PUSHINT 1628136577
+		EQUAL
+		IFJMPREF {
+			CALL $bid_code$
+		}
+		DUP
+		PUSHINT 1636715328
+		EQUAL
+		IFJMPREF {
+			CALL $auctionSink$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1756716863
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1722492896
+		EQUAL
+		IFJMPREF {
+			CALL $pending_owner$
+		}
+		DUP
+		PUSHINT 1725189621
+		EQUAL
+		IFJMPREF {
+			CALL $platform_code$
+		}
+		DUP
+		PUSHINT 1756716863
+		EQUAL
+		IFJMPREF {
+			CALL $constructor$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 1886635720
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1809145905
+		EQUAL
+		IFJMPREF {
+			CALL $acceptOwner$
+		}
+		DUP
+		PUSHINT 1817021984
+		EQUAL
+		IFJMPREF {
+			CALL $auction$
+		}
+		DUP
+		PUSHINT 1886635720
+		EQUAL
+		IFJMPREF {
+			CALL $resolve$
+		}
+	}
+	IFJMP
+	DUP
+	PUSHINT 2135484735
+	LEQ
+	PUSHCONT {
+		DUP
+		PUSHINT 1896505361
+		EQUAL
+		IFJMPREF {
+			CALL $installAuction$
+		}
+		DUP
+		PUSHINT 2135484735
+		EQUAL
+		IFJMPREF {
+			CALL $subCertSync$
+		}
+	}
+	IFJMP
+}
+IFJMP
