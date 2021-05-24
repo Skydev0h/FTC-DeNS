@@ -2,7 +2,9 @@
 #!/bin/bash
 set -e
 
-DEBOT_NAME=DeNSDebot
+tos=tonos-cli
+
+DEBOT_NAME=DensRoot
 giver=0:841288ed3b55d9cdafa806807f02a0ae0c169aa5edfe88a789a6482429756a94
 function giver {
 tonos-cli --url http://127.0.0.1 call --abi ../local_giver.abi.json $giver sendGrams "{\"dest\":\"$1\",\"amount\":10000000000}"
@@ -28,8 +30,8 @@ giver $DEBOT_ADDRESS
 DEBOT_ABI=$(cat $DEBOT_NAME.abi.json | xxd -ps -c 20000)
 
 echo DEPLOY DEBOT $DEBOT_ADDRESS
-tonos-cli --url $NETWORK deploy $DEBOT_NAME.tvc "{\"_root\":\"0:4b873b8dcfd933c1b96905455ac3037ea030c13b59110d41725c6feb7c71dc3b\"}" --sign $DEBOT_NAME.keys.json --abi $DEBOT_NAME.abi.json
-tonos-cli --url $NETWORK call $DEBOT_ADDRESS setABI "{\"dabi\":\"$DEBOT_ABI\"}" --sign $DEBOT_NAME.keys.json --abi $DEBOT_NAME.abi.json
+tonos-cli --url $NETWORK deploy $DEBOT_NAME.tvc "{}" --sign $DEBOT_NAME.keys.json --abi $DEBOT_NAME.abi.json
+tonos-cli --url $NETWORK call $DEBOT_ADDRESS --sign $DEBOT_NAME.keys.json --abi $DEBOT_NAME.abi.json
 
 echo DONE
 echo $DEBOT_ADDRESS > address.log

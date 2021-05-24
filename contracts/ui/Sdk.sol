@@ -5,7 +5,7 @@ interface ISdk {
 function getBalance(uint32 answerId, address addr) external returns (uint128 nanotokens);
 function getAccountType(uint32 answerId, address addr) external returns (int8 acc_type);
 function getAccountCodeHash(uint32 answerId, address addr) external returns (uint256 code_hash);
-//crypto
+//crypto 
 function chacha20(uint32 answerId, bytes data, bytes nonce, uint256 key) external returns (bytes output);
 //crypto utils
 function signHash(uint32 answerId, uint256 hash) external returns (bytes arg1);
@@ -25,7 +25,17 @@ function hdkeySecretFromXprv(uint32 answerId, string xprv) external returns (uin
 function hdkeyPublicFromXprv(uint32 answerId, string xprv) external returns (uint256 pub);
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external returns (uint256 sec, uint256 pub);
 //string
-function substring(uint32 answerId, string str, uint32 start, uint32 count) external returns (string cutstr);
+function substring(uint32 answerId, string str, uint32 start, uint32 count) external returns (string substr);
+//sc
+function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes encrypted);
+function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external returns (bytes decrypted);
+function naclKeypairFromSecret(uint32 answerId, uint256 secret) external returns (uint256 publicKey, uint256 secretKey);
+//query
+struct AccData {
+    address id;
+    TvmCell data;
+}
+function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) external returns (AccData[] accDatas);
 }
 
 
@@ -34,7 +44,6 @@ library Sdk {
 
 	uint256 constant ITF_ADDR = 0x8fc6454f90072c9f1f6d3313ae1608f64f4a0660c6ae9f42c68b6a79e2a1bc4b;
 	int8 constant DEBOT_WC = -31;
-
 
 	function getBalance(uint32 answerId, address addr) public pure {
 		address a = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
@@ -115,6 +124,24 @@ library Sdk {
 		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
 		ISdk(addr).substring(answerId, str, start, count);
 	}
+
+	function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).naclBox(answerId, decrypted, nonce, publicKey, secretKey);
+	}
+	function naclBoxOpen(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).naclBoxOpen(answerId, decrypted, nonce, publicKey, secretKey);
+	}
+	function naclKeypairFromSecret(uint32 answerId, uint256 secret) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).naclKeypairFromSecret(answerId, secret);
+	}
+	
+	function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) public pure {
+		address addr = address.makeAddrStd(DEBOT_WC, ITF_ADDR);
+		ISdk(addr).getAccountsDataByHash(answerId, codeHash, gt);
+ 	}
 }
 
 contract SdkABI is ISdk {
@@ -122,7 +149,7 @@ contract SdkABI is ISdk {
 function getBalance(uint32 answerId, address addr) external override returns (uint128 nanotokens) {}
 function getAccountType(uint32 answerId, address addr) external override returns (int8 acc_type) {}
 function getAccountCodeHash(uint32 answerId, address addr) external override returns (uint256 code_hash) {}
-//crypto
+//crypto 
 function chacha20(uint32 answerId, bytes data, bytes nonce, uint256 key) external override returns (bytes output) {}
 //crypto utils
 function signHash(uint32 answerId, uint256 hash) external override returns (bytes arg1) {}
@@ -143,4 +170,10 @@ function hdkeyPublicFromXprv(uint32 answerId, string xprv) external override ret
 function naclSignKeypairFromSecretKey (uint32 answerId, uint256 secret)  external override returns (uint256 sec, uint256 pub) {}
 //string
 function substring(uint32 answerId, string str, uint32 start, uint32 count) external override returns (string substr) {}
+//sc
+function naclBox(uint32 answerId, bytes decrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes encrypted) {}
+function naclBoxOpen(uint32 answerId, bytes encrypted, bytes nonce, uint256 publicKey, uint256 secretKey) external override returns (bytes decrypted) {}
+function naclKeypairFromSecret(uint32 answerId, uint256 secret) external override returns (uint256 publicKey, uint256 secretKey) {}
+//query
+function getAccountsDataByHash(uint32 answerId, uint256 codeHash, address gt) external override returns (AccData[] accDatas) {}
 }
