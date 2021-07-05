@@ -154,6 +154,7 @@ contract D4Root is ID4Root {
     {
         TvmBuilder param;
         param.store(Sys.ReserveNOWDuration);
+        param.store(address(0));
         _deployContract(Base.auct, name, address(this), param.toCell());
         emit adminReserved(name);
         msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
@@ -288,6 +289,7 @@ contract D4Root is ID4Root {
             ReserveProposalSpecific c_reserve = specific.toSlice().decode(ReserveProposalSpecific);
             TvmBuilder param;
             param.store(Sys.ReserveDuration);
+            param.store(address(0));
             _deployContract(Base.auct, c_reserve.name, address(this), param.toCell());
             emit smvReserveStart(c_reserve.name);
         }
@@ -379,6 +381,7 @@ contract D4Root is ID4Root {
         require(Now() >= no_auctions_until, Errors.auctionsAreRestricted);
         TvmBuilder param;
         param.store(duration);
+        param.store(msg.sender);
         address auc = _deployContract(Base.auct, name, address(this), param.toCell());
         return {value: 0, bounce: false, flag: Flags.messageValue} auc;
     }

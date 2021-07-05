@@ -26,6 +26,9 @@ contract D4User is ID4User, D4Based {
     uint32 public auctBookNext;
     uint32 public certBookNext;
 
+    uint128 call_value;
+    uint8 call_flag;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Modifiers
 
@@ -51,6 +54,13 @@ contract D4User is ID4User, D4Based {
         TvmSlice s = capsule.toSlice();
         unpackBase(s);
         m_version = 1;
+        if (st_parent.wid == Sys.ExternalMetaChain) {
+            call_value = Sys.CallValue;
+            call_flag = 0;
+        } else {
+            call_value = 0;
+            call_flag = Flags.messageValue;
+        }
     }
 
     function setMasterKey(bytes newMasterKey)
@@ -69,7 +79,7 @@ contract D4User is ID4User, D4Based {
     {
         uint hash = tvm.hash(tvm.code());
         ID4Root(st_root).upgradeMeRequest
-            {value: 0, bounce: true, flag: Flags.messageValue}
+            {value: call_value, bounce: true, flag: call_flag}
             (st_type, m_revision, hash);
         emit upgradeRequested(m_revision, hash);
     }
@@ -107,8 +117,8 @@ contract D4User is ID4User, D4Based {
     {
         ID4Root(st_root).createAuction{
             callback:  D4User.createAuctionCallback,
-               value:  0,
-                flag:  Flags.messageValue
+               value:  call_value,
+                flag:  call_flag
         } (st_parent, m_revision, name, duration);
     }
 
@@ -137,11 +147,14 @@ contract D4User is ID4User, D4Based {
         uint32 tnow = Now();
         require(tnow >= info.startTime, Errors.invalidTimePhase);
         require(tnow < info.bidEnds, Errors.invalidTimePhase);
-        optional(AuctBid) bid = auctBids[auction];
-        if (!bid.hasValue()) // a new bid (not updating old one)
+        optional(AuctBid) bid = auctBids.fetch(auction);
+        if (!bid.hasValue()) { // a new bid (not updating old one)
             ID4Auct(auction).accountBid{value: Sys.CallValue}(st_parent); // TODO: ts4 not calling?
+        }
         auctBids[auction] = AuctBid(tnow, data, hash);
     }
+
+    event debug(AuctBid arg);
 
     function revealBid(address auction, uint128 amount, uint128 nonce)
         external override
@@ -174,10 +187,7 @@ contract D4User is ID4User, D4Based {
         external override
         onlyOwner
     {
-        if (st_parent.wid != Sys.ExternalMetaChain)
-            ID4Auct(auction).finalize{value: 0, bounce: true, flag: Flags.messageValue}(st_parent);
-        else
-            ID4Auct(auction).finalize{value: Sys.CallValue, bounce: true}(st_parent);
+        ID4Auct(auction).finalize{value: call_value, bounce: true, flag: call_flag}(st_parent);
     }
 
     function utilBidHash(address auction, uint32 startTime, address user, uint128 amount, uint256 nonce)
@@ -198,8 +208,8 @@ contract D4User is ID4User, D4Based {
     {
         ID4Cert(target).getInfo{
             callback:  D4User.queryCertCallback,
-               value:  0,
-                flag:  Flags.messageValue
+               value:  call_value,
+                flag:  call_flag
         }();
     }
 
@@ -209,8 +219,8 @@ contract D4User is ID4User, D4Based {
     {
         ID4Auct(target).getInfo{
             callback:  D4User.queryAuctCallback,
-               value:  0,
-                flag:  Flags.messageValue
+               value:  call_value,
+                flag:  call_flag
         }();
     }
 
@@ -228,7 +238,7 @@ contract D4User is ID4User, D4Based {
         onlyOwner
     {
         AuctInfo info = auctInfo[target];
-        optional(AuctBid) bid = auctBids[target];
+        optional(AuctBid) bid = auctBids.fetch(target);
         if (bid.hasValue())
             require(Now() >= info.revEnds, Errors.cantForgetActiveBid);
         delete auctBook[info.id];
@@ -241,6 +251,7 @@ contract D4User is ID4User, D4Based {
         external
     {
         verifyInteraction(Base.cert, info.name, info.parent);
+        tvm.accept();
         info.sync = Now();
         optional(CertInfo) old = certInfo.fetch(msg.sender);
         if (old.hasValue())
@@ -253,9 +264,10 @@ contract D4User is ID4User, D4Based {
     }
 
     function queryAuctCallback(AuctInfo info)
-        external
+        external override
     {
         verifyInteraction(Base.auct, info.name, info.parent);
+        tvm.accept();
         info.sync = Now();
         optional(AuctInfo) old = auctInfo.fetch(msg.sender);
         if (old.hasValue())
@@ -274,7 +286,7 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
-        ID4Cert(target).setValue {value: 0, bounce: true, flag: Flags.messageValue}
+        ID4Cert(target).setValue {value: call_value, bounce: true, flag: call_flag}
                         (index, new_value);
     }
 
@@ -282,7 +294,7 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
-        ID4Cert(target).resetValue {value: 0, bounce: true, flag: Flags.messageValue}
+        ID4Cert(target).resetValue {value: call_value, bounce: true, flag: call_flag}
                         (index);
     }
 
@@ -290,7 +302,7 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
-        ID4Cert(target).clearValues {value: 0, bounce: true, flag: Flags.messageValue}
+        ID4Cert(target).clearValues {value: call_value, bounce: true, flag: call_flag}
                         ();
     }
 
@@ -298,15 +310,15 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
-        ID4Cert(target).withdrawExcess {value: 0, bounce: true, flag: Flags.messageValue}
-                        (msg.sender, amount);
+        ID4Cert(target).withdrawExcess {value: call_value, bounce: true, flag: call_flag}
+                        (call_value == 0 ? msg.sender : address(this), amount);
     }
 
     function certRequestUpgrade(address target)
         external view override
         onlyOwner
     {
-        ID4Cert(target).requestUpgrade {value: 0, bounce: true, flag: Flags.messageValue}
+        ID4Cert(target).requestUpgrade {value: call_value, bounce: true, flag: call_flag}
                         ();
     }
 
@@ -314,7 +326,7 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
-        ID4Cert(target).requestProlong {value: 0, bounce: true, flag: Flags.messageValue}
+        ID4Cert(target).requestProlong {value: call_value, bounce: true, flag: call_flag}
                         ();
     }
 
@@ -322,7 +334,7 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
-        ID4Cert(target).deploySub {value: 0, bounce: true, flag: Flags.messageValue}
+        ID4Cert(target).deploySub {value: call_value, bounce: true, flag: call_flag}
                         (name);
     }
 
@@ -330,7 +342,7 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
-        ID4Cert(target).syncSub {value: 0, bounce: true, flag: Flags.messageValue}
+        ID4Cert(target).syncSub {value: call_value, bounce: true, flag: call_flag}
                         (name);
     }
 

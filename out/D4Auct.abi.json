@@ -207,6 +207,14 @@
 			]
 		},
 		{
+			"name": "instigator",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"instigator","type":"address"}
+			]
+		},
+		{
 			"name": "bids",
 			"inputs": [
 			],

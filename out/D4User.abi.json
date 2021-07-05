@@ -424,6 +424,14 @@
 	],
 	"events": [
 		{
+			"name": "debug",
+			"inputs": [
+				{"components":[{"name":"time","type":"uint32"},{"name":"data","type":"bytes"},{"name":"hash","type":"uint256"}],"name":"arg","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "withdrawn",
 			"inputs": [
 				{"name":"oldBalance","type":"uint128"},

@@ -70,6 +70,7 @@ extUser.call_method_signed('createAuction', {'name': h('test'), 'duration': 2})
 dm()
 
 # TODO: warning: messages are misordered???
+print(extUser.call_getter('auctInfo'))
 
 seg('Find auction')
 auctAddr = root.call_getter('resolveFull', {'_answer_id': 0, 'ct_type': 2, 'fullname': h('test')})
@@ -89,8 +90,8 @@ bhash = extUser.call_getter('utilBidHash', {'auction': auctAddr, 'startTime': ba
                                             'user': user, 'amount': gr(10), 'nonce': nonce})
 
 seg('Bid')
-extUser.call_method_signed('makeBid', {'auction': auctAddr, 'data': '', 'hash': bhash})
+# print('auctBids:', extUser.call_getter('auctBids'));
+extUser.call_method_signed('makeBid', {'auction': auctAddr, 'data': '00', 'hash': bhash})
 dm()
-
-
+# print('auctBids:', extUser.call_getter('auctBids'));
 

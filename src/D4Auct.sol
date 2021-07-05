@@ -24,6 +24,8 @@ contract D4Auct is ID4Auct, D4Based {
     uint32 public expiryTarget;
     uint32 public finalizeAfter;
 
+    address public instigator;
+
     // Statistics
 
     uint32 public bids;
@@ -50,7 +52,9 @@ contract D4Auct is ID4Auct, D4Based {
         tvm.resetStorage();
         TvmSlice s = capsule.toSlice();
         unpackBase(s);
-        durationYears = param.toSlice().loadUnsigned(8);
+        TvmSlice sl = param.toSlice();
+        durationYears = sl.loadUnsigned(8);
+        instigator = sl.decode(address);
         m_version = 1;
         // isFragile = isReady = false;
         // startTime = bidEnds = revEnds = expiryBase = expiryTarget = finalizeAfter = 0;
@@ -110,7 +114,7 @@ contract D4Auct is ID4Auct, D4Based {
     // Query quasistatic information
 
     function getInfo()
-        external responsible view override
+        public responsible view override
         returns (AuctInfo info)
     {
         return {value: 0, bounce: false, flag: Flags.messageValue}
@@ -160,6 +164,10 @@ contract D4Auct is ID4Auct, D4Based {
             ID4Cert(_resolveContract(Base.cert, st_name, st_parent)).ensureExpiry
                 {value: 0, bounce: true, flag: Flags.messageValue}
                 (finalizeAfter + Sys.ReAuctionGrace, true);
+        }
+        if (instigator != address(0))
+        {
+            ID4User(instigator).queryAuctCallback(getInfo());
         }
     }
 
