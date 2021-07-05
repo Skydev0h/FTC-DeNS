@@ -1,0 +1,9 @@
+[submodule "src/debot/external"]
+	path = src/debot/external
+	url = https://github.com/tonlabs/DeBot-IS-consortium
+[submodule "src/debot/debots"]
+	path = src/debot/debots
+	url = https://github.com/tonlabs/debots.git
+[submodule "lib/external/dens-smv"]
+	path = lib/external/dens-smv
+	url = https://github.com/RSquad/dens-smv
