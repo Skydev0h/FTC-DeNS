@@ -1,0 +1,715 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "dropAdminFlag",
+			"inputs": [
+				{"name":"flags","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminDeploy",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"set_owner","type":"address"},
+				{"name":"set_expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminReserve",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminChown",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"set_owner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminChexp",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"set_expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminUpgradeUser",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminUpgradeCert",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onProposalPassed",
+			"inputs": [
+				{"components":[{"name":"start","type":"uint32"},{"name":"end","type":"uint32"},{"name":"title","type":"bytes"},{"name":"proposalType","type":"uint8"},{"name":"specific","type":"cell"},{"name":"state","type":"uint8"},{"name":"votesFor","type":"uint32"},{"name":"votesAgainst","type":"uint32"}],"name":"proposalInfo","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onProposalRejected",
+			"inputs": [
+				{"components":[{"name":"start","type":"uint32"},{"name":"end","type":"uint32"},{"name":"title","type":"bytes"},{"name":"proposalType","type":"uint8"},{"name":"specific","type":"cell"},{"name":"state","type":"uint8"},{"name":"votesFor","type":"uint32"},{"name":"votesAgainst","type":"uint32"}],"name":"proposalInfo","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "onProposalDeploy",
+			"inputs": [
+				{"name":"value0","type":"address"},
+				{"name":"proposalType","type":"uint8"},
+				{"name":"specific","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployUserForMe",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"user_addr","type":"address"}
+			]
+		},
+		{
+			"name": "deployUserForPubKey",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"pubkey","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"user_addr","type":"address"}
+			]
+		},
+		{
+			"name": "resolveUser",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"user","type":"address"}
+			],
+			"outputs": [
+				{"name":"user_addr","type":"address"}
+			]
+		},
+		{
+			"name": "resolve",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"ct_type","type":"uint8"},
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+				{"name":"res","type":"address"}
+			]
+		},
+		{
+			"name": "resolveFull",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"ct_type","type":"uint8"},
+				{"name":"fullname","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"res","type":"address"}
+			]
+		},
+		{
+			"name": "createAuction",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"origin","type":"address"},
+				{"name":"revision","type":"uint32"},
+				{"name":"name","type":"bytes"},
+				{"name":"duration","type":"uint8"}
+			],
+			"outputs": [
+				{"name":"auction","type":"address"}
+			]
+		},
+		{
+			"name": "resolveAuction",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+				{"name":"auct_addr","type":"address"}
+			]
+		},
+		{
+			"name": "onAuctionResult",
+			"inputs": [
+				{"name":"winner","type":"address"},
+				{"name":"exp","type":"uint32"},
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"},
+				{"name":"deploy","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "applyAuctionCallback",
+			"inputs": [
+				{"name":"success","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "subCertDepl",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"},
+				{"name":"subname","type":"bytes"},
+				{"name":"new_owner","type":"address"},
+				{"name":"expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "receiveShards",
+			"inputs": [
+				{"name":"ct_type","type":"uint8"},
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setBaseCode",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setCertificateCode",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setAuctionCode",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setUserCode",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setRootCode",
+			"inputs": [
+				{"name":"code","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeMeRequest",
+			"inputs": [
+				{"name":"ct_type","type":"uint8"},
+				{"name":"my_revision","type":"uint32"},
+				{"name":"my_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "assignSmvContract",
+			"inputs": [
+				{"name":"smv_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "restrictAuctions",
+			"inputs": [
+				{"name":"until","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getOwner",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"owner_","type":"address"}
+			]
+		},
+		{
+			"name": "getPendingOwner",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"pending_owner_","type":"address"}
+			]
+		},
+		{
+			"name": "transferOwner",
+			"inputs": [
+				{"name":"new_owner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "cancelTransferOwner",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "acceptTransfer",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "relinquishOwner",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdrawable",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"avail","type":"uint128"}
+			]
+		},
+		{
+			"name": "withdraw",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "m_version",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_version","type":"uint16"}
+			]
+		},
+		{
+			"name": "base_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"base_code","type":"cell"}
+			]
+		},
+		{
+			"name": "certificate_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"certificate_code","type":"cell"}
+			]
+		},
+		{
+			"name": "auction_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"auction_code","type":"cell"}
+			]
+		},
+		{
+			"name": "user_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"user_code","type":"cell"}
+			]
+		},
+		{
+			"name": "base_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"base_revision","type":"uint32"}
+			]
+		},
+		{
+			"name": "certificate_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"certificate_revision","type":"uint32"}
+			]
+		},
+		{
+			"name": "auction_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"auction_revision","type":"uint32"}
+			]
+		},
+		{
+			"name": "user_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"user_revision","type":"uint32"}
+			]
+		},
+		{
+			"name": "owner",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"owner","type":"address"}
+			]
+		},
+		{
+			"name": "pending_owner",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"pending_owner","type":"address"}
+			]
+		},
+		{
+			"name": "owner_transfer_deadline",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"owner_transfer_deadline","type":"uint32"}
+			]
+		},
+		{
+			"name": "relinquish_owner_deadline",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"relinquish_owner_deadline","type":"uint32"}
+			]
+		},
+		{
+			"name": "smv_root",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"smv_root","type":"address"}
+			]
+		},
+		{
+			"name": "no_auctions_until",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"no_auctions_until","type":"uint32"}
+			]
+		},
+		{
+			"name": "admin_enabled",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"admin_enabled","type":"uint8"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+		{
+			"name": "codeUpdated",
+			"inputs": [
+				{"name":"codeType","type":"uint8"},
+				{"name":"codeHash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "subUpgraded",
+			"inputs": [
+				{"name":"codeType","type":"uint8"},
+				{"name":"subContract","type":"address"},
+				{"name":"from","type":"uint32"},
+				{"name":"to","type":"uint32"},
+				{"name":"newhash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerTransferStart",
+			"inputs": [
+				{"name":"currentOwner","type":"address"},
+				{"name":"nextOwner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerTransferCancelled",
+			"inputs": [
+				{"name":"currentOwner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerTransferComplete",
+			"inputs": [
+				{"name":"fromOwner","type":"address"},
+				{"name":"toOwner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerRelinquishStart",
+			"inputs": [
+				{"name":"curOwner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerRelinquishComplete",
+			"inputs": [
+				{"name":"oldOwner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvContractConfigured",
+			"inputs": [
+				{"name":"curSMV","type":"address"},
+				{"name":"newSMV","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdrawn",
+			"inputs": [
+				{"name":"oldBalance","type":"uint128"},
+				{"name":"withdrawn","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "auctionsRestricted",
+			"inputs": [
+				{"name":"until","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "rootCodeUpgraded",
+			"inputs": [
+				{"name":"from","type":"uint256"},
+				{"name":"to","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "contractShattered",
+			"inputs": [
+				{"name":"ct_type","type":"uint8"},
+				{"name":"ct_addr","type":"address"},
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "auctionResult",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"},
+				{"name":"winner","type":"address"},
+				{"name":"deploy","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certReserved",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminFlagDropped",
+			"inputs": [
+				{"name":"which","type":"uint8"},
+				{"name":"remain","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminDeployed",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"set_owner","type":"address"},
+				{"name":"set_expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminReserved",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminChowned",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"set_owner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminChexped",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"set_expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminUpgradedUser",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "adminUpgradedCert",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvCodeUpgrade",
+			"inputs": [
+				{"name":"ct","type":"uint8"},
+				{"name":"chash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvReserveStart",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvReserveCommit",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"result","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvSetOwner",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"set_owner","type":"address"},
+				{"name":"set_expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvSetRootOwner",
+			"inputs": [
+				{"name":"new_owner","type":"address"}
+			],
+			"outputs": [
+			]
+		}
+	]
+}

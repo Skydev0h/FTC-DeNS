@@ -1,5 +1,7 @@
-pragma ton-solidity ^0.38.0;
+pragma ton-solidity >=0.45.0;
 
 interface ISink {
+
     function sink() external pure;
+
 }

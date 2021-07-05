@@ -1,7 +1,7 @@
 pragma ton-solidity >=0.45.0;
 
-import "./ID4Auct.sol";
-import "./ID4Base.sol";
-import "./ID4Cert.sol";
-import "./ID4Root.sol";
-import "./ID4User.sol";
+import "./AFlags.sol";
+import "./Base.sol";
+import "./Flags.sol";
+import "./Errors.sol";
+import "./Sys.sol";

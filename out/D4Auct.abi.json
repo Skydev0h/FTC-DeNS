@@ -1,0 +1,325 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "registrationPreflightCallback",
+			"inputs": [
+				{"name":"value0","type":"uint128"},
+				{"name":"expiry_","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getInfo",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"durationYears","type":"uint8"},{"name":"startTime","type":"uint32"},{"name":"bidEnds","type":"uint32"},{"name":"revEnds","type":"uint32"},{"name":"finalizeAfter","type":"uint32"},{"name":"expiryTarget","type":"uint32"}],"name":"info","type":"tuple"}
+			]
+		},
+		{
+			"name": "commit",
+			"inputs": [
+				{"name":"result","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "accountBid",
+			"inputs": [
+				{"name":"user","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "revealBid",
+			"inputs": [
+				{"name":"user","type":"address"},
+				{"name":"bid_time","type":"uint32"},
+				{"name":"amount","type":"uint128"},
+				{"name":"nonce","type":"uint128"},
+				{"name":"prover","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "requiredAmountForProlong",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"amount","type":"uint128"}
+			]
+		},
+		{
+			"name": "prolong",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "finalize",
+			"inputs": [
+				{"name":"user","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "applyAuctionCallback",
+			"inputs": [
+				{"name":"success","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sink",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "st_root",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_root","type":"address"}
+			]
+		},
+		{
+			"name": "st_type",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_type","type":"uint8"}
+			]
+		},
+		{
+			"name": "st_name",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_name","type":"bytes"}
+			]
+		},
+		{
+			"name": "st_parent",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_parent","type":"address"}
+			]
+		},
+		{
+			"name": "base_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"base_code","type":"cell"}
+			]
+		},
+		{
+			"name": "m_version",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_version","type":"uint16"}
+			]
+		},
+		{
+			"name": "m_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_revision","type":"uint32"}
+			]
+		},
+		{
+			"name": "startTime",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"startTime","type":"uint32"}
+			]
+		},
+		{
+			"name": "bidEnds",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"bidEnds","type":"uint32"}
+			]
+		},
+		{
+			"name": "revEnds",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"revEnds","type":"uint32"}
+			]
+		},
+		{
+			"name": "durationYears",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"durationYears","type":"uint8"}
+			]
+		},
+		{
+			"name": "expiryBase",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"expiryBase","type":"uint32"}
+			]
+		},
+		{
+			"name": "expiryTarget",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"expiryTarget","type":"uint32"}
+			]
+		},
+		{
+			"name": "finalizeAfter",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"finalizeAfter","type":"uint32"}
+			]
+		},
+		{
+			"name": "bids",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"bids","type":"uint32"}
+			]
+		},
+		{
+			"name": "revs",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"revs","type":"uint32"}
+			]
+		},
+		{
+			"name": "top1",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"top1","type":"address"}
+			]
+		},
+		{
+			"name": "amt1",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"amt1","type":"uint128"}
+			]
+		},
+		{
+			"name": "top2",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"top2","type":"address"}
+			]
+		},
+		{
+			"name": "amt2",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"amt2","type":"uint128"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"st_root","type":"address"},
+		{"key":2,"name":"st_type","type":"uint8"},
+		{"key":3,"name":"st_name","type":"bytes"},
+		{"key":4,"name":"st_parent","type":"address"}
+	],
+	"events": [
+		{
+			"name": "topUpdated",
+			"inputs": [
+				{"name":"num","type":"uint8"},
+				{"name":"user","type":"address"},
+				{"name":"amount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "bidPlaced",
+			"inputs": [
+				{"name":"user","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "bidRevealed",
+			"inputs": [
+				{"name":"user","type":"address"},
+				{"name":"amount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certProlonged",
+			"inputs": [
+				{"name":"price","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "auctionFailed",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "auctionSucceded",
+			"inputs": [
+				{"name":"winner","type":"address"},
+				{"name":"paid","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "auctionRejected",
+			"inputs": [
+				{"name":"winner","type":"address"}
+			],
+			"outputs": [
+			]
+		}
+	]
+}

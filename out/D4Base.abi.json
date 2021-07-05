@@ -1,0 +1,98 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"code","type":"cell"},
+				{"name":"revision","type":"uint32"},
+				{"name":"param","type":"cell"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "registrationPreflight",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"requestId","type":"uint128"}
+			],
+			"outputs": [
+				{"name":"requestId_","type":"uint128"},
+				{"name":"expiry_","type":"uint32"}
+			]
+		},
+		{
+			"name": "destroy",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "st_root",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_root","type":"address"}
+			]
+		},
+		{
+			"name": "st_type",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_type","type":"uint8"}
+			]
+		},
+		{
+			"name": "st_name",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_name","type":"bytes"}
+			]
+		},
+		{
+			"name": "st_parent",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_parent","type":"address"}
+			]
+		},
+		{
+			"name": "base_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"base_code","type":"cell"}
+			]
+		},
+		{
+			"name": "m_version",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_version","type":"uint16"}
+			]
+		},
+		{
+			"name": "m_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_revision","type":"uint32"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"st_root","type":"address"},
+		{"key":2,"name":"st_type","type":"uint8"},
+		{"key":3,"name":"st_name","type":"bytes"},
+		{"key":4,"name":"st_parent","type":"address"}
+	],
+	"events": [
+	]
+}

@@ -1,0 +1,461 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setMasterKey",
+			"inputs": [
+				{"name":"newMasterKey","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "requestUpgrade",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"code","type":"cell"},
+				{"name":"revision","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeNotNeeded",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "createAuction",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"duration","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "createAuctionCallback",
+			"inputs": [
+				{"name":"auction","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "makeBid",
+			"inputs": [
+				{"name":"auction","type":"address"},
+				{"name":"data","type":"bytes"},
+				{"name":"hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "revealBid",
+			"inputs": [
+				{"name":"auction","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"nonce","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "bidRevealComplete",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "finalize",
+			"inputs": [
+				{"name":"auction","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "utilBidHash",
+			"inputs": [
+				{"name":"auction","type":"address"},
+				{"name":"startTime","type":"uint32"},
+				{"name":"user","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"nonce","type":"uint256"}
+			],
+			"outputs": [
+				{"name":"value0","type":"uint256"}
+			]
+		},
+		{
+			"name": "queryCert",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queryAuct",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "forgetCert",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "forgetAuct",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queryCertCallback",
+			"inputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"registered","type":"uint32"},{"name":"auctioned","type":"uint32"},{"name":"expires","type":"uint32"},{"name":"owner","type":"address"}],"name":"info","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queryAuctCallback",
+			"inputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"durationYears","type":"uint8"},{"name":"startTime","type":"uint32"},{"name":"bidEnds","type":"uint32"},{"name":"revEnds","type":"uint32"},{"name":"finalizeAfter","type":"uint32"},{"name":"expiryTarget","type":"uint32"}],"name":"info","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setValue",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"index","type":"int16"},
+				{"name":"new_value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "resetValue",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"index","type":"int16"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "clearValues",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certWithdrawExcess",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"amount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certRequestUpgrade",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "requestProlong",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deploySub",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "syncSub",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addLocked",
+			"inputs": [
+				{"name":"until","type":"uint32"},
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdrawable",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"avail","type":"uint128"}
+			]
+		},
+		{
+			"name": "sweepLocks",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdraw",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "passToOwner",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sink",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "st_root",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_root","type":"address"}
+			]
+		},
+		{
+			"name": "st_type",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_type","type":"uint8"}
+			]
+		},
+		{
+			"name": "st_name",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_name","type":"bytes"}
+			]
+		},
+		{
+			"name": "st_parent",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_parent","type":"address"}
+			]
+		},
+		{
+			"name": "base_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"base_code","type":"cell"}
+			]
+		},
+		{
+			"name": "m_version",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_version","type":"uint16"}
+			]
+		},
+		{
+			"name": "m_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_revision","type":"uint32"}
+			]
+		},
+		{
+			"name": "fundLocks",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"fundLocks","type":"map(uint32,uint128)"}
+			]
+		},
+		{
+			"name": "minLockTime",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"minLockTime","type":"uint32"}
+			]
+		},
+		{
+			"name": "totalLocked",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"totalLocked","type":"uint128"}
+			]
+		},
+		{
+			"name": "masterKey",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"masterKey","type":"bytes"}
+			]
+		},
+		{
+			"name": "auctBook",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"auctBook","type":"map(uint32,address)"}
+			]
+		},
+		{
+			"name": "auctInfo",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"durationYears","type":"uint8"},{"name":"startTime","type":"uint32"},{"name":"bidEnds","type":"uint32"},{"name":"revEnds","type":"uint32"},{"name":"finalizeAfter","type":"uint32"},{"name":"expiryTarget","type":"uint32"}],"name":"auctInfo","type":"map(address,tuple)"}
+			]
+		},
+		{
+			"name": "auctBids",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"time","type":"uint32"},{"name":"data","type":"bytes"},{"name":"hash","type":"uint256"}],"name":"auctBids","type":"map(address,tuple)"}
+			]
+		},
+		{
+			"name": "certBook",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"certBook","type":"map(uint32,address)"}
+			]
+		},
+		{
+			"name": "certInfo",
+			"inputs": [
+			],
+			"outputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"registered","type":"uint32"},{"name":"auctioned","type":"uint32"},{"name":"expires","type":"uint32"},{"name":"owner","type":"address"}],"name":"certInfo","type":"map(address,tuple)"}
+			]
+		},
+		{
+			"name": "auctBookNext",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"auctBookNext","type":"uint32"}
+			]
+		},
+		{
+			"name": "certBookNext",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"certBookNext","type":"uint32"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"st_root","type":"address"},
+		{"key":2,"name":"st_type","type":"uint8"},
+		{"key":3,"name":"st_name","type":"bytes"},
+		{"key":4,"name":"st_parent","type":"address"}
+	],
+	"events": [
+		{
+			"name": "withdrawn",
+			"inputs": [
+				{"name":"oldBalance","type":"uint128"},
+				{"name":"withdrawn","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeRequested",
+			"inputs": [
+				{"name":"my_rev","type":"uint32"},
+				{"name":"my_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeReceived",
+			"inputs": [
+				{"name":"new_rev","type":"uint32"},
+				{"name":"new_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "alreadyUpToDate",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		}
+	]
+}

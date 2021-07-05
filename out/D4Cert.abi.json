@@ -1,0 +1,489 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "requestUpgrade",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"code","type":"cell"},
+				{"name":"revision","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeNotNeeded",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getInfo",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"registered","type":"uint32"},{"name":"auctioned","type":"uint32"},{"name":"expires","type":"uint32"},{"name":"owner","type":"address"}],"name":"info","type":"tuple"}
+			]
+		},
+		{
+			"name": "getValue",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"index","type":"int16"}
+			],
+			"outputs": [
+				{"name":"value0","type":"address"}
+			]
+		},
+		{
+			"name": "setValue",
+			"inputs": [
+				{"name":"index","type":"int16"},
+				{"name":"new_value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "resetValue",
+			"inputs": [
+				{"name":"index","type":"int16"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "clearValues",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "registrationPreflight",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"requestId","type":"uint128"}
+			],
+			"outputs": [
+				{"name":"requestId_","type":"uint128"},
+				{"name":"expiry_","type":"uint32"}
+			]
+		},
+		{
+			"name": "applyAuctionResult",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"},
+				{"name":"new_owner","type":"address"},
+				{"name":"new_expiry","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"success","type":"bool"}
+			]
+		},
+		{
+			"name": "ensureExpiry",
+			"inputs": [
+				{"name":"expiry","type":"uint32"},
+				{"name":"retval","type":"bool"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getOwner",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"owner_","type":"address"}
+			]
+		},
+		{
+			"name": "getPendingOwner",
+			"inputs": [
+				{"name":"_answer_id","type":"uint32"}
+			],
+			"outputs": [
+				{"name":"pending_owner_","type":"address"}
+			]
+		},
+		{
+			"name": "transferOwner",
+			"inputs": [
+				{"name":"new_owner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "cancelTransferOwner",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "acceptTransfer",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "relinquishOwner",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "requestProlong",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deploySub",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "syncSub",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "subSynchronize",
+			"inputs": [
+				{"name":"new_owner","type":"address"},
+				{"name":"new_expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "passToOwner",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdrawExcess",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"amount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "sink",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "st_root",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_root","type":"address"}
+			]
+		},
+		{
+			"name": "st_type",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_type","type":"uint8"}
+			]
+		},
+		{
+			"name": "st_name",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_name","type":"bytes"}
+			]
+		},
+		{
+			"name": "st_parent",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"st_parent","type":"address"}
+			]
+		},
+		{
+			"name": "base_code",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"base_code","type":"cell"}
+			]
+		},
+		{
+			"name": "m_version",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_version","type":"uint16"}
+			]
+		},
+		{
+			"name": "m_revision",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"m_revision","type":"uint32"}
+			]
+		},
+		{
+			"name": "owner",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"owner","type":"address"}
+			]
+		},
+		{
+			"name": "pending_owner",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"pending_owner","type":"address"}
+			]
+		},
+		{
+			"name": "owner_transfer_deadline",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"owner_transfer_deadline","type":"uint32"}
+			]
+		},
+		{
+			"name": "relinquish_owner_deadline",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"relinquish_owner_deadline","type":"uint32"}
+			]
+		},
+		{
+			"name": "value",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value","type":"map(int16,address)"}
+			]
+		},
+		{
+			"name": "registered",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"registered","type":"uint32"}
+			]
+		},
+		{
+			"name": "auctioned",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"auctioned","type":"uint32"}
+			]
+		},
+		{
+			"name": "expires",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"expires","type":"uint32"}
+			]
+		}
+	],
+	"data": [
+		{"key":1,"name":"st_root","type":"address"},
+		{"key":2,"name":"st_type","type":"uint8"},
+		{"key":3,"name":"st_name","type":"bytes"},
+		{"key":4,"name":"st_parent","type":"address"}
+	],
+	"events": [
+		{
+			"name": "ownerTransferStart",
+			"inputs": [
+				{"name":"currentOwner","type":"address"},
+				{"name":"nextOwner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerTransferCancelled",
+			"inputs": [
+				{"name":"currentOwner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerTransferComplete",
+			"inputs": [
+				{"name":"fromOwner","type":"address"},
+				{"name":"toOwner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerRelinquishStart",
+			"inputs": [
+				{"name":"curOwner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "ownerRelinquishComplete",
+			"inputs": [
+				{"name":"oldOwner","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "excessBalanceWithdrawn",
+			"inputs": [
+				{"name":"oldBalance","type":"uint128"},
+				{"name":"withdrawn","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "valueSet",
+			"inputs": [
+				{"name":"index","type":"int16"},
+				{"name":"value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "valueReset",
+			"inputs": [
+				{"name":"index","type":"int16"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "valueCleared",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeRequested",
+			"inputs": [
+				{"name":"my_rev","type":"uint32"},
+				{"name":"my_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeReceived",
+			"inputs": [
+				{"name":"new_rev","type":"uint32"},
+				{"name":"new_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "alreadyUpToDate",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "auctionResultApplied",
+			"inputs": [
+				{"name":"curOwner","type":"address"},
+				{"name":"newOwner","type":"address"},
+				{"name":"curExpiry","type":"uint32"},
+				{"name":"newExpiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "prolongRequested",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "initialized",
+			"inputs": [
+				{"name":"initOwner","type":"address"},
+				{"name":"initExpiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "synchronized",
+			"inputs": [
+				{"name":"syncOwner","type":"address"},
+				{"name":"syncExpiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "reservedOwnerSet",
+			"inputs": [
+				{"name":"new_owner","type":"address"},
+				{"name":"new_expiry","type":"uint32"}
+			],
+			"outputs": [
+			]
+		}
+	]
+}

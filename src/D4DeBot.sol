@@ -3,5 +3,9 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 pragma AbiHeader expire;
 
-import "./Imports.sol";
+import "./interfaces/ID4DeBot.sol";
+import "./debot/Imports.sol";
 
+contract D4DeBot is ID4DeBot {
+
+}

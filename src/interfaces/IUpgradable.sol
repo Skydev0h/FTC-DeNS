@@ -1,9 +1,8 @@
 pragma ton-solidity >=0.45.0;
 
-interface IRegPre {
+interface IUpgradable {
 
-    function registrationPreflight(uint128 requestId)
-        external view responsible
-        returns (uint128 requestId_, uint32 expiry_);
+    function upgrade(TvmCell code, uint32 revision) external;
+    function upgradeNotNeeded() external;
 
 }

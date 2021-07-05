@@ -1,0 +1,50 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "makeIntUser",
+			"inputs": [
+				{"name":"root","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addressCallback",
+			"inputs": [
+				{"name":"user_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "makeExtUser",
+			"inputs": [
+				{"name":"root","type":"address"},
+				{"name":"pk","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addr",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"addr","type":"address"}
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}

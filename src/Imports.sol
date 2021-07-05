@@ -1,5 +1,8 @@
 pragma ton-solidity >=0.45.0;
 
-import "./common/Interfaces.sol";
-import "./common/Libraries.sol";
-import "./common/Structures.sol";
+import "./structures/Imports.sol";
+import "./libraries/Imports.sol";
+import "./interfaces/Imports.sol";
+
+import "./abstract/D4Based.sol";
+import "./abstract/D4PureBase.sol";
