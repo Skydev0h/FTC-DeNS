@@ -20,6 +20,7 @@ contract D4User is ID4User, D4Based {
     mapping(address => AuctInfo) public auctInfo;
     mapping(address => AuctBid ) public auctBids;
 
+    // TODO: callback getInfo from D4Cert when owner constructed or changed
     mapping(uint32  => address ) public certBook;
     mapping(address => CertInfo) public certInfo;
 
@@ -149,12 +150,10 @@ contract D4User is ID4User, D4Based {
         require(tnow < info.bidEnds, Errors.invalidTimePhase);
         optional(AuctBid) bid = auctBids.fetch(auction);
         if (!bid.hasValue()) { // a new bid (not updating old one)
-            ID4Auct(auction).accountBid{value: Sys.CallValue}(st_parent); // TODO: ts4 not calling?
+            ID4Auct(auction).accountBid{value: Sys.CallValue}(st_parent);
         }
         auctBids[auction] = AuctBid(tnow, data, hash);
     }
-
-    event debug(AuctBid arg);
 
     function revealBid(address auction, uint128 amount, uint128 nonce)
         external override
@@ -248,7 +247,7 @@ contract D4User is ID4User, D4Based {
     }
 
     function queryCertCallback(CertInfo info)
-        external
+        external override
     {
         verifyInteraction(Base.cert, info.name, info.parent);
         tvm.accept();
@@ -344,6 +343,38 @@ contract D4User is ID4User, D4Based {
     {
         ID4Cert(target).syncSub {value: call_value, bounce: true, flag: call_flag}
                         (name);
+    }
+
+    function certTransferOwner(address target, address new_owner, uint32 deadline)
+        external view override
+        onlyOwner
+    {
+        ID4Cert(target).transferOwner {value: call_value, bounce: true, flag: call_flag}
+                        (new_owner, deadline);
+    }
+
+    function certCancelTransferOwner(address target)
+        external view override
+        onlyOwner
+    {
+        ID4Cert(target).cancelTransferOwner {value: call_value, bounce: true, flag: call_flag}
+                        ();
+    }
+
+    function certAcceptTransfer(address target)
+        external view override
+        onlyOwner
+    {
+        ID4Cert(target).acceptTransfer {value: call_value, bounce: true, flag: call_flag}
+                        ();
+    }
+
+    function certRelinquishOwner(address target)
+        external view override
+        onlyOwner
+    {
+        ID4Cert(target).relinquishOwner {value: call_value, bounce: true, flag: call_flag}
+                        ();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

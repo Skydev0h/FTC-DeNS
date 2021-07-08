@@ -224,6 +224,40 @@
 			]
 		},
 		{
+			"name": "certTransferOwner",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"new_owner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certCancelTransferOwner",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certAcceptTransfer",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certRelinquishOwner",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "addLocked",
 			"inputs": [
 				{"name":"until","type":"uint32"},
@@ -423,14 +457,6 @@
 		{"key":4,"name":"st_parent","type":"address"}
 	],
 	"events": [
-		{
-			"name": "debug",
-			"inputs": [
-				{"components":[{"name":"time","type":"uint32"},{"name":"data","type":"bytes"},{"name":"hash","type":"uint256"}],"name":"arg","type":"tuple"}
-			],
-			"outputs": [
-			]
-		},
 		{
 			"name": "withdrawn",
 			"inputs": [

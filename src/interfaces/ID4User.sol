@@ -3,6 +3,7 @@ pragma ton-solidity >=0.45.0;
 import "./IUpgradable.sol";
 import "./IPasser.sol";
 import "../structures/AuctInfo.sol";
+import "../structures/CertInfo.sol";
 
 interface ID4User is IUpgradable, IPasser {
 
@@ -44,6 +45,12 @@ interface ID4User is IUpgradable, IPasser {
     function deploySub(address target, string name) external view;
     function syncSub(address target, string name) external view;
 
+    function queryCertCallback(CertInfo info) external;
     function queryAuctCallback(AuctInfo info) external;
+
+    function certTransferOwner(address target, address new_owner, uint32 deadline) external view;
+    function certCancelTransferOwner(address target) external view;
+    function certAcceptTransfer(address target) external view;
+    function certRelinquishOwner(address target) external view;
 
 }

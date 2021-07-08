@@ -167,7 +167,7 @@ contract D4Auct is ID4Auct, D4Based {
         }
         if (instigator != address(0))
         {
-            ID4User(instigator).queryAuctCallback(getInfo());
+            ID4User(instigator).queryAuctCallback{value:Sys.CallValue}(getInfo());
         }
     }
 

@@ -108,7 +108,7 @@ contract D4Cert is ID4Cert, D4Based {
     // Query quasistatic information
 
     function getInfo()
-        external responsible view override
+        public responsible view override
         returns (CertInfo info)
     {
         return {value: 0, bounce: false, flag: Flags.messageValue}
@@ -174,6 +174,7 @@ contract D4Cert is ID4Cert, D4Based {
             verifyInteraction(Base.auct, st_name, st_parent);
         tvm.accept(); // Shall not fail because of gas
         emit auctionResultApplied(owner, new_owner, expires, new_expiry);
+        address old_owner = owner;
         if ((owner != new_owner) && (new_owner != address(0))) {
             // Tidy up the state
             delete value;
@@ -185,6 +186,11 @@ contract D4Cert is ID4Cert, D4Based {
         auctioned = Now();
         if (new_expiry != 0)
             expires = new_expiry;
+        if (st_parent == st_root) {
+            ID4User(owner).queryCertCallback{value:Sys.CallValue}(getInfo());
+            if (owner != old_owner)
+                ID4User(old_owner).queryCertCallback{value:Sys.CallValue}(getInfo());
+        }
         return {value: 0, bounce: true, flag: Flags.messageValue}
             true;
     }
@@ -195,6 +201,8 @@ contract D4Cert is ID4Cert, D4Based {
         if (msg.sender != st_root) // Root or Auction
             verifyInteraction(Base.auct, st_name, st_parent);
         expires = math.max(expires, expiry);
+        if (st_parent == st_root)
+            ID4User(owner).queryCertCallback{value:Sys.CallValue}(getInfo());
         if (retval)
             msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
     }
@@ -245,9 +253,15 @@ contract D4Cert is ID4Cert, D4Based {
         external override onlyPendingOwner
     {
         emit ownerTransferComplete(owner, pending_owner);
+        address old_owner = owner;
         owner = pending_owner;
         owner_transfer_deadline = 0;
         pending_owner = address(0);
+        if (st_parent == st_root) {
+            ID4User(owner).queryCertCallback{value:Sys.CallValue}(getInfo());
+            if (owner != old_owner)
+                ID4User(old_owner).queryCertCallback{value:Sys.CallValue}(getInfo());
+        }
     }
 
     function relinquishOwner()
@@ -260,10 +274,13 @@ contract D4Cert is ID4Cert, D4Based {
             return;
         }
         emit ownerRelinquishComplete(owner);
+        address old_owner = owner;
         owner = address(0);
         pending_owner = address(0);
         owner_transfer_deadline = 0;
         relinquish_owner_deadline = 0;
+        if (st_parent == st_root)
+            ID4User(old_owner).queryCertCallback{value:Sys.CallValue}(getInfo());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
