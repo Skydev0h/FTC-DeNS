@@ -5,6 +5,7 @@
 		{
 			"name": "constructor",
 			"inputs": [
+				{"name":"root","type":"address"}
 			],
 			"outputs": [
 			]
@@ -12,15 +13,6 @@
 		{
 			"name": "makeIntUser",
 			"inputs": [
-				{"name":"root","type":"address"}
-			],
-			"outputs": [
-			]
-		},
-		{
-			"name": "addressCallback",
-			"inputs": [
-				{"name":"user_addr","type":"address"}
 			],
 			"outputs": [
 			]
@@ -28,18 +20,325 @@
 		{
 			"name": "makeExtUser",
 			"inputs": [
-				{"name":"root","type":"address"},
 				{"name":"pk","type":"uint256"}
 			],
 			"outputs": [
 			]
 		},
 		{
-			"name": "addr",
+			"name": "addressCallbackInt",
+			"inputs": [
+				{"name":"user_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addressCallbackExt",
+			"inputs": [
+				{"name":"user_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "addLocked",
+			"inputs": [
+				{"name":"until","type":"uint32"},
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "requestUpgrade",
 			"inputs": [
 			],
 			"outputs": [
-				{"name":"addr","type":"address"}
+			]
+		},
+		{
+			"name": "sweepLocks",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdraw",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "pull",
+			"inputs": [
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "withdrawable",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"avail","type":"uint128"}
+			]
+		},
+		{
+			"name": "setMasterKey",
+			"inputs": [
+				{"name":"newMasterKey","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "createAuction",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"duration","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "makeBid",
+			"inputs": [
+				{"name":"auction","type":"address"},
+				{"name":"data","type":"bytes"},
+				{"name":"hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "revealBid",
+			"inputs": [
+				{"name":"auction","type":"address"},
+				{"name":"amount","type":"uint128"},
+				{"name":"nonce","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "bidRevealComplete",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "finalize",
+			"inputs": [
+				{"name":"auction","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queryCert",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queryAuct",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "forgetCert",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "forgetAuct",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setValue",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"index","type":"int16"},
+				{"name":"new_value","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "resetValue",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"index","type":"int16"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "clearValues",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certWithdrawExcess",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"amount","type":"uint128"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certRequestUpgrade",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "requestProlong",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deploySub",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "syncSub",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queryCertCallback",
+			"inputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"registered","type":"uint32"},{"name":"auctioned","type":"uint32"},{"name":"expires","type":"uint32"},{"name":"owner","type":"address"}],"name":"info","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "queryAuctCallback",
+			"inputs": [
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"durationYears","type":"uint8"},{"name":"startTime","type":"uint32"},{"name":"bidEnds","type":"uint32"},{"name":"revEnds","type":"uint32"},{"name":"finalizeAfter","type":"uint32"},{"name":"expiryTarget","type":"uint32"}],"name":"info","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certTransferOwner",
+			"inputs": [
+				{"name":"target","type":"address"},
+				{"name":"new_owner","type":"address"},
+				{"name":"deadline","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certCancelTransferOwner",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certAcceptTransfer",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "certRelinquishOwner",
+			"inputs": [
+				{"name":"target","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "passToOwner",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgrade",
+			"inputs": [
+				{"name":"code","type":"cell"},
+				{"name":"revision","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "upgradeNotNeeded",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "_root",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"_root","type":"address"}
+			]
+		},
+		{
+			"name": "iaddr",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"iaddr","type":"address"}
+			]
+		},
+		{
+			"name": "eaddr",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"eaddr","type":"address"}
 			]
 		}
 	],

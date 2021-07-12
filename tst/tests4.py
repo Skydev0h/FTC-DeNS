@@ -18,14 +18,16 @@ static_key_pair = ('1b5d84f798478416f9e3c3914d85ffb4659bf28772115240e2b8c98c2caa
                    '87e974284c3ca6de353a09a1ec63d52d0aba5e6be9ea8b5', '0xb3982dc3a7ae6132b87e974284c3ca6'
                                                                       'de353a09a1ec63d52d0aba5e6be9ea8b5')
 
+def lad(l, n=64, p='', s=''): return ts4.Address('0:' + p + (n * l) + s)
+
 class Root(ts4.BaseContract):
     def __init__(self):
         kp = static_key_pair  # ts4.make_keypair()
         super(Root, self).__init__('D4Root', {}, keypair=kp, nickname='Root',
-                                   override_address=ts4.Address('0:' + (64 * 'a')))
+                                   override_address=lad('a'))
 
 def h(s: str): return s.encode('ASCII').hex()
-def seg(s: str): print('#\n# {}\n#'.format(s))
+def seg(s: str): print('\n# ******************************\n# {}\n# ******************************\n'.format(s))
 def dm(): ts4.dispatch_messages()
 def gr(g: int = 1): return g * ts4.GRAM
 def b(acct): return acct.balance / gr() if acct.balance is not None else '-'
@@ -50,48 +52,111 @@ for i in cinst:
 seg('Upgrade (setCode)')
 root.call_method_signed('setRootCode', {'code': code['Root']})
 
+class Test(ts4.BaseContract):
+    def __init__(self, iden='', kp=None):
+        sid = str(iden)
+        super(Test, self).__init__('D4Test', {'root': root.address}, nickname='Test' + sid.rstrip('0'),
+                                   override_address=lad('e', 64 - len(sid), sid))
+        self.call_method('makeIntUser', {})
+        dm()
+        # noinspection PyTypeChecker
+        self.i = ts4.BaseContract('D4User', {}, address=self.call_getter('iaddr'),
+                                  nickname='IntUser' + sid.rstrip('0'))
+        if kp is not None:
+            self.call_method('makeExtUser', {'pk': kp[1]})
+            dm()
+            # noinspection PyTypeChecker
+            self.e = ts4.BaseContract('D4User', {}, address=self.call_getter('eaddr'),
+                                      nickname='ExtUser' + sid.rstrip('0'), keypair=kp)
+        self.la = None
+
+    def start_auction(self, name, duration):
+        self.call_method('createAuction', {'name': h(name), 'duration': duration})
+        dm()
+        self.la = self.i.call_getter('lastCreatedAuction')
+
+    def bid(self, amount, _auct=None):
+        la = _auct if _auct is not None else self.la
+        ainfo = self.i.call_getter('auctInfo')
+        if la not in ainfo:
+            self.call_method('queryAuct', {'target': la})
+            dm()
+            ainfo = self.i.call_getter('auctInfo')
+        bhash = intUser.call_getter('utilBidHash', {'auction': la, 'startTime': ainfo[la]['startTime'],
+                                                    'user': self.address, 'amount': amount, 'nonce': nonce})
+        self.call_method('makeBid', {'auction': la, 'data': '00', 'hash': bhash})
+        dm()
+
+    def rev(self, amount, _auct=None):
+        la = _auct if _auct is not None else self.la
+        self.call_method('revealBid', {'auction': la, 'amount': amount, 'nonce': nonce})
+        dm()
+
+
 seg('Create user contracts')
-test = ts4.BaseContract('D4Test', {}, nickname='Test', override_address=ts4.Address('0:' + (64 * 'e')))
+uc = dict()
+for i in range(0, 10):
+    uc[i] = Test(str(i) + '000', static_key_pair if i == 0 else None)
 
-test.call_method('makeIntUser', {'root': root.address})
-dm()
-
-# noinspection PyTypeChecker
-intUser = ts4.BaseContract('D4User', {}, address=test.call_getter('addr'), nickname='IntUser')
-
-test.call_method('makeExtUser', {'root': root.address, 'pk': root.keypair[1]})
-dm()
-
-# noinspection PyTypeChecker
-extUser = ts4.BaseContract('D4User', {}, address=test.call_getter('addr'), nickname='ExtUser', keypair=static_key_pair)
+test, intUser = uc[0], uc[0].i
 
 seg('Create auction')
-extUser.call_method_signed('createAuction', {'name': h('test'), 'duration': 2})
+test.start_auction('test', 2)
+auct = ts4.BaseContract('D4Auct', {}, address=test.la, nickname='testAuct')
+
+seg('Perform bid')
+test.bid(gr(10))
+
+seg('And some other bids')
+bids = {1:5, 2:8, 3:2, 4:6, 5: 15, 6:13}
+for k in bids:
+    uc[k].bid(gr(bids[k]), test.la)
+
+ainfo = intUser.call_getter('auctInfo')[test.la]
+ts4.core.set_now(ainfo['bidEnds'] + 1)
+
+seg('Reveals (time warp)')
+
+def rev(idx):
+    seg('Reveal #{}: amount is {}'.format(idx, bids[idx]))
+    uc[idx].rev(gr(bids[idx]), test.la)
+
+rev(1)
+rev(2)
+rev(3)
+rev(4)
+
+seg('Finalize')
+ts4.core.set_now(ainfo['revEnds'] + 1)
+test.call_method('finalize', {'auction': test.la})
 dm()
 
-# TODO: warning: messages are misordered???
-print(extUser.call_getter('auctInfo'))
+# TODO: ts4 invalid behaviour, int_msg value not deducted from flag 64
 
-seg('Find auction')
-auctAddr = root.call_getter('resolveFull', {'_answer_id': 0, 'ct_type': 2, 'fullname': h('test')})
-
-# noinspection PyTypeChecker
-auct = ts4.BaseContract('D4Auct', {}, address=auctAddr, nickname='testAuct')
-
-seg('Query again')
-extUser.call_method_signed('queryAuct', {'target': auctAddr})
-dm()
-
-seg('Read information')
-auctInfo = extUser.call_getter('auctInfo')
-
-user = extUser.call_getter('st_parent')
-bhash = extUser.call_getter('utilBidHash', {'auction': auctAddr, 'startTime': baseTime,
-                                            'user': user, 'amount': gr(10), 'nonce': nonce})
-
-seg('Bid')
-# print('auctBids:', extUser.call_getter('auctBids'));
-extUser.call_method_signed('makeBid', {'auction': auctAddr, 'data': '00', 'hash': bhash})
-dm()
-# print('auctBids:', extUser.call_getter('auctBids'));
-
+#
+# seg('Find auction')
+# auctAddr = root.call_getter('resolveFull', {'_answer_id': 0, 'ct_type': 2, 'fullname': h('test')})
+#
+# # noinspection PyTypeChecker
+# auct = ts4.BaseContract('D4Auct', {}, address=auctAddr, nickname='testAuct')
+#
+# seg('Query again')
+# test.call_method('queryAuct', {'target': auctAddr})
+# dm()
+#
+# seg('Read information')
+# auctInfo = intUser.call_getter('auctInfo')
+#
+# user = intUser.call_getter('st_parent')
+# bhash = intUser.call_getter('utilBidHash', {'auction': auctAddr, 'startTime': baseTime,
+#                                             'user': user, 'amount': gr(10), 'nonce': nonce})
+#
+# seg('Bid')
+# print('auctBids:', intUser.call_getter('auctBids'));
+# test.call_method('makeBid', {'auction': auctAddr, 'data': '00', 'hash': bhash})
+# dm()
+# print('auctBids:', intUser.call_getter('auctBids'));
+#
+# seg('Other bids')
+#
+# print(auctInfo[auctAddr])

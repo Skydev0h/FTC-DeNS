@@ -43,7 +43,8 @@ fi
 function SelectNetwork() {
   PS3='Please select an option: '
   options=("FreeTON DevNet (https://net.ton.dev)" "FreeTON MainNet (https://main.ton.dev)" \
-           "FloodNet (https://gql.custler.net)" "LocalNode (http://localhost)" "Custom URL" "Exit")
+           "FloodNet (https://gql.custler.net)" "LocalNode (http://localhost)" "VM LocalNode (http://localnode)"
+           "Custom URL" "Exit")
   select opt in "${options[@]}"
   do
       case $opt in
@@ -55,6 +56,8 @@ function SelectNetwork() {
             SetNet "https://gql.custler.net"; exit; ;;
           "LocalNode (http://localhost)")
             SetNet "http://localhost"; exit; ;;
+          "VM LocalNode (http://localnode)")
+            SetNet "http://localnode"; exit; ;;
           "Custom URL")
             read -r -p "[?] Please enter new endpoint URL: " url
             if [[ "$url" != "" ]]; then

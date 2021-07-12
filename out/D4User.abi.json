@@ -99,7 +99,7 @@
 				{"name":"startTime","type":"uint32"},
 				{"name":"user","type":"address"},
 				{"name":"amount","type":"uint128"},
-				{"name":"nonce","type":"uint256"}
+				{"name":"nonce","type":"uint128"}
 			],
 			"outputs": [
 				{"name":"value0","type":"uint256"}
@@ -447,6 +447,14 @@
 			],
 			"outputs": [
 				{"name":"certBookNext","type":"uint32"}
+			]
+		},
+		{
+			"name": "lastCreatedAuction",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"lastCreatedAuction","type":"address"}
 			]
 		}
 	],

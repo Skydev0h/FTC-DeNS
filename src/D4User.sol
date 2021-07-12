@@ -30,6 +30,8 @@ contract D4User is ID4User, D4Based {
     uint128 call_value;
     uint8 call_flag;
 
+    address public lastCreatedAuction;
+
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Modifiers
 
@@ -124,10 +126,10 @@ contract D4User is ID4User, D4Based {
     }
 
     function createAuctionCallback(address auction)
-        external view
+        external
         onlyRoot
     {
-        st_root;
+        lastCreatedAuction = auction;
         ID4Auct(auction).getInfo{
             callback:  D4User.queryAuctCallback,
                value:  0,
@@ -166,7 +168,7 @@ contract D4User is ID4User, D4Based {
         require(Now() < info.revEnds, Errors.invalidTimePhase);
         AuctBid bid = auctBids[auction];
         if (st_parent.wid != Sys.ExternalMetaChain)
-            ID4Auct(auction).revealBid {value: 0, bounce: true, flag: Flags.messageValue + Flags.addFees}
+            ID4Auct(auction).revealBid {value: 0, bounce: true, flag: Flags.messageValue}
                 (st_parent, bid.time, amount, nonce, bid.hash);
         else
             ID4Auct(auction).revealBid {value: amount + Sys.AddToReveal, bounce: true, flag: Flags.addFees}
@@ -189,7 +191,7 @@ contract D4User is ID4User, D4Based {
         ID4Auct(auction).finalize{value: call_value, bounce: true, flag: call_flag}(st_parent);
     }
 
-    function utilBidHash(address auction, uint32 startTime, address user, uint128 amount, uint256 nonce)
+    function utilBidHash(address auction, uint32 startTime, address user, uint128 amount, uint128 nonce)
         external pure
         returns (uint256)
     {
