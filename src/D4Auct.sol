@@ -235,9 +235,12 @@ contract D4Auct is ID4Auct, D4Based {
         revs += 1;
         emit bidRevealed(msg.sender, amount);
         ID4User(msg.sender).bidRevealComplete{value: Sys.CallValue}();
+        uint128 bal = address(this).balance - msg.value;
         if (amount <= amt2) {
             ID4User(msg.sender).addLocked{value: amount, bounce: false}(revEnds, st_name, st_parent);
-            msg.sender.transfer({value: 0, bounce: false, flag: Flags.messageValue});
+            // msg.sender.transfer({value: 0, bounce: false, flag: Flags.messageValue});
+            tvm.rawReserve(bal, 0);
+            msg.sender.transfer({value: 0, bounce: false, flag: Flags.contractBalance});
             return;
         }
         if (amount <= amt1) {
@@ -245,10 +248,11 @@ contract D4Auct is ID4Auct, D4Based {
             amt2 = amount;
             emit topUpdated(2, top2, amt2);
             ID4User(msg.sender).addLocked{value: amount, bounce: false}(revEnds, st_name, st_parent);
-            msg.sender.transfer({value: 0, bounce: false, flag: Flags.messageValue});
+            // msg.sender.transfer({value: 0, bounce: false, flag: Flags.messageValue});
+            tvm.rawReserve(bal, 0);
+            msg.sender.transfer({value: 0, bounce: false, flag: Flags.contractBalance});
             return;
         }
-        uint128 bal = address(this).balance - msg.value;
         if (amt1 != 0) {
             ID4User(top1).addLocked{value: amt1, bounce: false}(revEnds, st_name, st_parent);
             top2 = top1;
@@ -334,7 +338,9 @@ contract D4Auct is ID4Auct, D4Based {
             }(top1, expiryTarget);
         } else
             applyAuctionFailed();
-        msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+        // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+        tvm.rawReserve(address(this).balance - msg.value, 0);
+        msg.sender.transfer({value: 0, bounce: false, flag: Flags.contractBalance});
     }
 
     function applyAuctionCallback(bool success)

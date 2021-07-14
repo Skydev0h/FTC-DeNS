@@ -137,6 +137,16 @@ contract D4Root is ID4Root {
         emit adminFlagDropped(flags, admin_enabled);
     }
 
+    function _returnIfIntAdm()
+        internal view
+    {
+        if (owner.wid != Sys.ExternalMetaChain) {
+            // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+            tvm.rawReserve(address(this).balance - msg.value, 0);
+            msg.sender.transfer({value: 0, bounce: false, flag: Flags.contractBalance});
+        }
+    }
+
     function adminDeploy(string name, address set_owner, uint32 set_expiry)
         external view override
         onlyOwner adminEnabled(AFlags.deploy)
@@ -145,7 +155,7 @@ contract D4Root is ID4Root {
         param.store(set_owner, set_expiry);
         _deployContract(Base.cert, name, address(this), param.toCell());
         emit adminDeployed(name, set_owner, set_expiry);
-        msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+        _returnIfIntAdm();
     }
 
     function adminReserve(string name)
@@ -157,7 +167,7 @@ contract D4Root is ID4Root {
         param.store(address(0));
         _deployContract(Base.auct, name, address(this), param.toCell());
         emit adminReserved(name);
-        msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+        _returnIfIntAdm();
     }
 
     function adminChown(string name, address set_owner)
@@ -170,7 +180,7 @@ contract D4Root is ID4Root {
                 flag:  Flags.addTransactionFees
         }(set_owner, 0);
         emit adminChowned(name, set_owner);
-        msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+        _returnIfIntAdm();
     }
 
     function adminChexp(string name, uint32 set_expiry)
@@ -183,7 +193,7 @@ contract D4Root is ID4Root {
                 flag:  Flags.addTransactionFees
         }(address(0), set_expiry);
         emit adminChexped(name, set_expiry);
-        msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+        _returnIfIntAdm();
     }
 
     function adminUpgradeUser(address target)
@@ -314,7 +324,8 @@ contract D4Root is ID4Root {
         require(msg.value >= Sys.MinimalUserRegister, Errors.messageValueTooLow);
         TvmCell empty;
         address wal = _deployContract(Base.user, "", msg.sender, empty);
-        return {value: 0, bounce: false, flag: Flags.messageValue} wal;
+        tvm.rawReserve(address(this).balance - msg.value, 0);
+        return {value: 0, bounce: false, flag: Flags.contractBalance} wal;
     }
 
     function deployUserForPubKey(uint256 pubkey)
@@ -326,7 +337,8 @@ contract D4Root is ID4Root {
         TvmCell empty;
         address wal = _deployContract(Base.user, "",
             address.makeAddrStd(Sys.ExternalMetaChain, pubkey), empty);
-        return {value: 0, bounce: false, flag: Flags.messageValue} wal;
+        tvm.rawReserve(address(this).balance - msg.value, 0);
+        return {value: 0, bounce: false, flag: Flags.contractBalance} wal;
     }
 
     function resolveUser(address user)
@@ -375,6 +387,7 @@ contract D4Root is ID4Root {
         returns (address auction)
     {
         verifyInteraction(Base.user, "", origin);
+        require(msg.value >= Sys.MinimalRegNameRequest, Errors.messageValueTooLow);
         require(revision >= user_revision, Errors.interactionOutdated);
         require(duration >= 1, Errors.invalidArgument);
         require(duration <= Sys.MaxDurationValue, Errors.invalidArgument);
@@ -383,7 +396,8 @@ contract D4Root is ID4Root {
         param.store(duration);
         param.store(msg.sender);
         address auc = _deployContract(Base.auct, name, address(this), param.toCell());
-        return {value: 0, bounce: false, flag: Flags.messageValue} auc;
+        tvm.rawReserve(address(this).balance - msg.value, 0);
+        return {value: 0, bounce: false, flag: Flags.contractBalance} auc;
     }
 
     function resolveAuction(string name)

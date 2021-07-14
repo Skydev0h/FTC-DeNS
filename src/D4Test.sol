@@ -59,7 +59,9 @@ contract D4Test is ID4User {
 
     function setMasterKey(bytes newMasterKey) external a override { usr.setMasterKey(newMasterKey); }
 
-    function createAuction(string name, uint8 duration) external view a override { usr.createAuction(name, duration); }
+    function createAuction(string name, uint8 duration) external view a override {
+        usr.createAuction{value: Sys.MinimalRegNameRequest, flag: 1}(name, duration);
+    }
 
     function makeBid(address auction, bytes data, uint256 hash) external a override {
         usr.makeBid{value: Sys.MinimumMakeBid, flag: 1}(auction, data, hash);

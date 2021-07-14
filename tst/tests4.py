@@ -131,6 +131,17 @@ ts4.core.set_now(ainfo['revEnds'] + 1)
 test.call_method('finalize', {'auction': test.la})
 dm()
 
+certAddr = root.call_getter('resolveFull', {'_answer_id': 0, 'ct_type': 1, 'fullname': h('test')})
+cert = ts4.BaseContract('D4Cert', {}, address=certAddr, nickname='testCert')
+
+cert.call_getter('getOwner', {'_answer_id': 0})
+
+seg('Set value')
+uc[2].call_method('setValue', {'target': certAddr, 'index': 0, 'new_value': root.address})
+dm()
+cert.call_getter('getValue', {'_answer_id': 0, 'index': 0})
+cert.call_getter('getValue', {'_answer_id': 0, 'index': 1})
+
 # TODO: ts4 invalid behaviour, int_msg value not deducted from flag 64
 
 #
