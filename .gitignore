@@ -1,4 +1,5 @@
 /.idea/
 /*.log
 /bin/*.log
-
+/usr/*.keys.json
+/usr/*.phrase.txt

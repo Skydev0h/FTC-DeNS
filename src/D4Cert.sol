@@ -128,7 +128,7 @@ contract D4Cert is ID4Cert, D4Based {
         returns(address)
     {
         return {value: 0, bounce: true, flag: Flags.messageValue}
-            value[index];
+            value.at(index);
     }
 
     function setValue(int16 index, address new_value)
