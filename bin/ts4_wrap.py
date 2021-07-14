@@ -38,9 +38,15 @@ for fname in os.listdir("out"):
         inputs = []
         iregals = []
         otypes = []
+        aid = False
         for inp in fn['inputs']:
-            inputs.append(inp['name'])
+            if inp['name'] == '_answer_id':
+                aid = True
+            else:
+                inputs.append(inp['name'])
             iregals.append('\'' + inp['name'] + '\': ' + inp['name'])
+        if aid:
+            inputs.append('_answer_id=0')
         for oup in fn['outputs']:
             otypes.append(oup['type'])
 

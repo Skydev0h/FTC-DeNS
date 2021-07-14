@@ -102,15 +102,15 @@ class WrapD4Auct:
             ts4.dispatch_messages()
         return _r_
 
-    def getInfo(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def getInfo(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.getInfo
         :rtype: tuple
         :param _answer_id: uint32
         """
-        return self.G_getInfo(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getInfo(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getInfo(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_getInfo(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Auct.getInfo getter
         :rtype: tuple
@@ -118,7 +118,7 @@ class WrapD4Auct:
         """
         return self.ts4_contract.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_getInfo(self, _answer_id, ts4_expect_ec=0):
+    def R_getInfo(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.getInfo raw getter
         :rtype: tuple
@@ -126,7 +126,7 @@ class WrapD4Auct:
         """
         return self.ts4_contract.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_getInfo(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getInfo(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.getInfo method call
         :param _answer_id: uint32
@@ -136,7 +136,7 @@ class WrapD4Auct:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getInfo(self, _answer_id, ts4_expect_ec=0):
+    def S_getInfo(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.getInfo signed method call
         :param _answer_id: uint32
@@ -307,15 +307,15 @@ class WrapD4Auct:
             ts4.dispatch_messages()
         return _r_
 
-    def requiredAmountForProlong(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def requiredAmountForProlong(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.requiredAmountForProlong
         :rtype: uint128
         :param _answer_id: uint32
         """
-        return self.G_requiredAmountForProlong(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_requiredAmountForProlong(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_requiredAmountForProlong(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_requiredAmountForProlong(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Auct.requiredAmountForProlong getter
         :rtype: uint128
@@ -323,7 +323,7 @@ class WrapD4Auct:
         """
         return self.ts4_contract.call_getter('requiredAmountForProlong', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_requiredAmountForProlong(self, _answer_id, ts4_expect_ec=0):
+    def R_requiredAmountForProlong(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.requiredAmountForProlong raw getter
         :rtype: uint128
@@ -331,7 +331,7 @@ class WrapD4Auct:
         """
         return self.ts4_contract.call_getter_raw('requiredAmountForProlong', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_requiredAmountForProlong(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_requiredAmountForProlong(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.requiredAmountForProlong method call
         :param _answer_id: uint32
@@ -341,7 +341,7 @@ class WrapD4Auct:
             ts4.dispatch_messages()
         return _r_
 
-    def S_requiredAmountForProlong(self, _answer_id, ts4_expect_ec=0):
+    def S_requiredAmountForProlong(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.requiredAmountForProlong signed method call
         :param _answer_id: uint32
@@ -1410,16 +1410,16 @@ class WrapD4Base:
             ts4.dispatch_messages()
         return _r_
 
-    def registrationPreflight(self, _answer_id, requestId, ts4_expect_ec=0, ts4_sign=False):
+    def registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Base.registrationPreflight
         :rtype: uint128, uint32
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        return self.G_registrationPreflight(_answer_id, requestId, ts4_expect_ec=ts4_expect_ec)
+        return self.G_registrationPreflight(requestId, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_registrationPreflight(self, _answer_id, requestId, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_registrationPreflight(self, requestId, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Base.registrationPreflight getter
         :rtype: uint128, uint32
@@ -1428,7 +1428,7 @@ class WrapD4Base:
         """
         return self.ts4_contract.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_registrationPreflight(self, _answer_id, requestId, ts4_expect_ec=0):
+    def R_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Base.registrationPreflight raw getter
         :rtype: uint128, uint32
@@ -1437,7 +1437,7 @@ class WrapD4Base:
         """
         return self.ts4_contract.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
 
-    def M_registrationPreflight(self, _answer_id, requestId, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_registrationPreflight(self, requestId, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.registrationPreflight method call
         :param _answer_id: uint32
@@ -1448,7 +1448,7 @@ class WrapD4Base:
             ts4.dispatch_messages()
         return _r_
 
-    def S_registrationPreflight(self, _answer_id, requestId, ts4_expect_ec=0):
+    def S_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Base.registrationPreflight signed method call
         :param _answer_id: uint32
@@ -1957,15 +1957,15 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def getInfo(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def getInfo(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getInfo
         :rtype: tuple
         :param _answer_id: uint32
         """
-        return self.G_getInfo(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getInfo(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getInfo(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_getInfo(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Cert.getInfo getter
         :rtype: tuple
@@ -1973,7 +1973,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_getInfo(self, _answer_id, ts4_expect_ec=0):
+    def R_getInfo(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getInfo raw getter
         :rtype: tuple
@@ -1981,7 +1981,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_getInfo(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getInfo(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getInfo method call
         :param _answer_id: uint32
@@ -1991,7 +1991,7 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getInfo(self, _answer_id, ts4_expect_ec=0):
+    def S_getInfo(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getInfo signed method call
         :param _answer_id: uint32
@@ -2001,16 +2001,16 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def getValue(self, _answer_id, index, ts4_expect_ec=0, ts4_sign=False):
+    def getValue(self, index, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getValue
         :rtype: address
         :param _answer_id: uint32
         :param index: int16
         """
-        return self.G_getValue(_answer_id, index, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getValue(index, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getValue(self, _answer_id, index, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_getValue(self, index, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Cert.getValue getter
         :rtype: address
@@ -2019,7 +2019,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter('getValue', {'_answer_id': _answer_id, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_getValue(self, _answer_id, index, ts4_expect_ec=0):
+    def R_getValue(self, index, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getValue raw getter
         :rtype: address
@@ -2028,7 +2028,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter_raw('getValue', {'_answer_id': _answer_id, 'index': index}, expect_ec=ts4_expect_ec)
 
-    def M_getValue(self, _answer_id, index, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getValue(self, index, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getValue method call
         :param _answer_id: uint32
@@ -2039,7 +2039,7 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getValue(self, _answer_id, index, ts4_expect_ec=0):
+    def S_getValue(self, index, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getValue signed method call
         :param _answer_id: uint32
@@ -2191,16 +2191,16 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def registrationPreflight(self, _answer_id, requestId, ts4_expect_ec=0, ts4_sign=False):
+    def registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.registrationPreflight
         :rtype: uint128, uint32
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        return self.G_registrationPreflight(_answer_id, requestId, ts4_expect_ec=ts4_expect_ec)
+        return self.G_registrationPreflight(requestId, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_registrationPreflight(self, _answer_id, requestId, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_registrationPreflight(self, requestId, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Cert.registrationPreflight getter
         :rtype: uint128, uint32
@@ -2209,7 +2209,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_registrationPreflight(self, _answer_id, requestId, ts4_expect_ec=0):
+    def R_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.registrationPreflight raw getter
         :rtype: uint128, uint32
@@ -2218,7 +2218,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
 
-    def M_registrationPreflight(self, _answer_id, requestId, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_registrationPreflight(self, requestId, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.registrationPreflight method call
         :param _answer_id: uint32
@@ -2229,7 +2229,7 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def S_registrationPreflight(self, _answer_id, requestId, ts4_expect_ec=0):
+    def S_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.registrationPreflight signed method call
         :param _answer_id: uint32
@@ -2240,7 +2240,7 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def applyAuctionResult(self, _answer_id, new_owner, new_expiry, ts4_expect_ec=0, ts4_sign=False):
+    def applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.applyAuctionResult
         :rtype: bool
@@ -2248,9 +2248,9 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.G_applyAuctionResult(_answer_id, new_owner, new_expiry, ts4_expect_ec=ts4_expect_ec)
+        return self.G_applyAuctionResult(new_owner, new_expiry, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_applyAuctionResult(self, _answer_id, new_owner, new_expiry, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Cert.applyAuctionResult getter
         :rtype: bool
@@ -2260,7 +2260,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_applyAuctionResult(self, _answer_id, new_owner, new_expiry, ts4_expect_ec=0):
+    def R_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.applyAuctionResult raw getter
         :rtype: bool
@@ -2270,7 +2270,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter_raw('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
 
-    def M_applyAuctionResult(self, _answer_id, new_owner, new_expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.applyAuctionResult method call
         :param _answer_id: uint32
@@ -2282,7 +2282,7 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def S_applyAuctionResult(self, _answer_id, new_owner, new_expiry, ts4_expect_ec=0):
+    def S_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.applyAuctionResult signed method call
         :param _answer_id: uint32
@@ -2346,15 +2346,15 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def getOwner(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def getOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getOwner
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.G_getOwner(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getOwner(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_getOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Cert.getOwner getter
         :rtype: address
@@ -2362,7 +2362,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_getOwner(self, _answer_id, ts4_expect_ec=0):
+    def R_getOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getOwner raw getter
         :rtype: address
@@ -2370,7 +2370,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_getOwner(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getOwner method call
         :param _answer_id: uint32
@@ -2380,7 +2380,7 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getOwner(self, _answer_id, ts4_expect_ec=0):
+    def S_getOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getOwner signed method call
         :param _answer_id: uint32
@@ -2390,15 +2390,15 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def getPendingOwner(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def getPendingOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getPendingOwner
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.G_getPendingOwner(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getPendingOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getPendingOwner(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_getPendingOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Cert.getPendingOwner getter
         :rtype: address
@@ -2406,7 +2406,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_getPendingOwner(self, _answer_id, ts4_expect_ec=0):
+    def R_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getPendingOwner raw getter
         :rtype: address
@@ -2414,7 +2414,7 @@ class WrapD4Cert:
         """
         return self.ts4_contract.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_getPendingOwner(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getPendingOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getPendingOwner method call
         :param _answer_id: uint32
@@ -2424,7 +2424,7 @@ class WrapD4Cert:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getPendingOwner(self, _answer_id, ts4_expect_ec=0):
+    def S_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getPendingOwner signed method call
         :param _answer_id: uint32
@@ -4162,15 +4162,15 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def deployUserForMe(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def deployUserForMe(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.deployUserForMe
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.G_deployUserForMe(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_deployUserForMe(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_deployUserForMe(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_deployUserForMe(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.deployUserForMe getter
         :rtype: address
@@ -4178,7 +4178,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('deployUserForMe', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_deployUserForMe(self, _answer_id, ts4_expect_ec=0):
+    def R_deployUserForMe(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForMe raw getter
         :rtype: address
@@ -4186,7 +4186,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('deployUserForMe', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_deployUserForMe(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_deployUserForMe(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.deployUserForMe method call
         :param _answer_id: uint32
@@ -4196,7 +4196,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_deployUserForMe(self, _answer_id, ts4_expect_ec=0):
+    def S_deployUserForMe(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForMe signed method call
         :param _answer_id: uint32
@@ -4206,16 +4206,16 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def deployUserForPubKey(self, _answer_id, pubkey, ts4_expect_ec=0, ts4_sign=False):
+    def deployUserForPubKey(self, pubkey, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.deployUserForPubKey
         :rtype: address
         :param _answer_id: uint32
         :param pubkey: uint256
         """
-        return self.G_deployUserForPubKey(_answer_id, pubkey, ts4_expect_ec=ts4_expect_ec)
+        return self.G_deployUserForPubKey(pubkey, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_deployUserForPubKey(self, _answer_id, pubkey, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.deployUserForPubKey getter
         :rtype: address
@@ -4224,7 +4224,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_deployUserForPubKey(self, _answer_id, pubkey, ts4_expect_ec=0):
+    def R_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForPubKey raw getter
         :rtype: address
@@ -4233,7 +4233,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
 
-    def M_deployUserForPubKey(self, _answer_id, pubkey, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.deployUserForPubKey method call
         :param _answer_id: uint32
@@ -4244,7 +4244,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_deployUserForPubKey(self, _answer_id, pubkey, ts4_expect_ec=0):
+    def S_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForPubKey signed method call
         :param _answer_id: uint32
@@ -4255,16 +4255,16 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def resolveUser(self, _answer_id, user, ts4_expect_ec=0, ts4_sign=False):
+    def resolveUser(self, user, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolveUser
         :rtype: address
         :param _answer_id: uint32
         :param user: address
         """
-        return self.G_resolveUser(_answer_id, user, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolveUser(user, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolveUser(self, _answer_id, user, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_resolveUser(self, user, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.resolveUser getter
         :rtype: address
@@ -4273,7 +4273,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('resolveUser', {'_answer_id': _answer_id, 'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_resolveUser(self, _answer_id, user, ts4_expect_ec=0):
+    def R_resolveUser(self, user, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveUser raw getter
         :rtype: address
@@ -4282,7 +4282,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('resolveUser', {'_answer_id': _answer_id, 'user': user}, expect_ec=ts4_expect_ec)
 
-    def M_resolveUser(self, _answer_id, user, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolveUser(self, user, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolveUser method call
         :param _answer_id: uint32
@@ -4293,7 +4293,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolveUser(self, _answer_id, user, ts4_expect_ec=0):
+    def S_resolveUser(self, user, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveUser signed method call
         :param _answer_id: uint32
@@ -4304,7 +4304,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def resolve(self, _answer_id, ct_type, name, parent, ts4_expect_ec=0, ts4_sign=False):
+    def resolve(self, ct_type, name, parent, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolve
         :rtype: address
@@ -4313,9 +4313,9 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        return self.G_resolve(_answer_id, ct_type, name, parent, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolve(ct_type, name, parent, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolve(self, _answer_id, ct_type, name, parent, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_resolve(self, ct_type, name, parent, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.resolve getter
         :rtype: address
@@ -4326,7 +4326,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_resolve(self, _answer_id, ct_type, name, parent, ts4_expect_ec=0):
+    def R_resolve(self, ct_type, name, parent, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolve raw getter
         :rtype: address
@@ -4337,7 +4337,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
 
-    def M_resolve(self, _answer_id, ct_type, name, parent, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolve(self, ct_type, name, parent, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolve method call
         :param _answer_id: uint32
@@ -4350,7 +4350,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolve(self, _answer_id, ct_type, name, parent, ts4_expect_ec=0):
+    def S_resolve(self, ct_type, name, parent, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolve signed method call
         :param _answer_id: uint32
@@ -4363,7 +4363,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def resolveFull(self, _answer_id, ct_type, fullname, ts4_expect_ec=0, ts4_sign=False):
+    def resolveFull(self, ct_type, fullname, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolveFull
         :rtype: address
@@ -4371,9 +4371,9 @@ class WrapD4Root:
         :param ct_type: uint8
         :param fullname: bytes
         """
-        return self.G_resolveFull(_answer_id, ct_type, fullname, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolveFull(ct_type, fullname, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolveFull(self, _answer_id, ct_type, fullname, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.resolveFull getter
         :rtype: address
@@ -4383,7 +4383,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_resolveFull(self, _answer_id, ct_type, fullname, ts4_expect_ec=0):
+    def R_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveFull raw getter
         :rtype: address
@@ -4393,7 +4393,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
 
-    def M_resolveFull(self, _answer_id, ct_type, fullname, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolveFull method call
         :param _answer_id: uint32
@@ -4405,7 +4405,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolveFull(self, _answer_id, ct_type, fullname, ts4_expect_ec=0):
+    def S_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveFull signed method call
         :param _answer_id: uint32
@@ -4417,7 +4417,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def createAuction(self, _answer_id, origin, revision, name, duration, ts4_expect_ec=0, ts4_sign=False):
+    def createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.createAuction
         :rtype: address
@@ -4427,9 +4427,9 @@ class WrapD4Root:
         :param name: bytes
         :param duration: uint8
         """
-        return self.G_createAuction(_answer_id, origin, revision, name, duration, ts4_expect_ec=ts4_expect_ec)
+        return self.G_createAuction(origin, revision, name, duration, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_createAuction(self, _answer_id, origin, revision, name, duration, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.createAuction getter
         :rtype: address
@@ -4441,7 +4441,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_createAuction(self, _answer_id, origin, revision, name, duration, ts4_expect_ec=0):
+    def R_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.createAuction raw getter
         :rtype: address
@@ -4453,7 +4453,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
 
-    def M_createAuction(self, _answer_id, origin, revision, name, duration, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.createAuction method call
         :param _answer_id: uint32
@@ -4467,7 +4467,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_createAuction(self, _answer_id, origin, revision, name, duration, ts4_expect_ec=0):
+    def S_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.createAuction signed method call
         :param _answer_id: uint32
@@ -4481,16 +4481,16 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def resolveAuction(self, _answer_id, name, ts4_expect_ec=0, ts4_sign=False):
+    def resolveAuction(self, name, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolveAuction
         :rtype: address
         :param _answer_id: uint32
         :param name: bytes
         """
-        return self.G_resolveAuction(_answer_id, name, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolveAuction(name, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolveAuction(self, _answer_id, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_resolveAuction(self, name, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.resolveAuction getter
         :rtype: address
@@ -4499,7 +4499,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('resolveAuction', {'_answer_id': _answer_id, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_resolveAuction(self, _answer_id, name, ts4_expect_ec=0):
+    def R_resolveAuction(self, name, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveAuction raw getter
         :rtype: address
@@ -4508,7 +4508,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('resolveAuction', {'_answer_id': _answer_id, 'name': name}, expect_ec=ts4_expect_ec)
 
-    def M_resolveAuction(self, _answer_id, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolveAuction(self, name, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolveAuction method call
         :param _answer_id: uint32
@@ -4519,7 +4519,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolveAuction(self, _answer_id, name, ts4_expect_ec=0):
+    def S_resolveAuction(self, name, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveAuction signed method call
         :param _answer_id: uint32
@@ -5154,15 +5154,15 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def getOwner(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def getOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.getOwner
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.G_getOwner(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getOwner(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_getOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.getOwner getter
         :rtype: address
@@ -5170,7 +5170,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_getOwner(self, _answer_id, ts4_expect_ec=0):
+    def R_getOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getOwner raw getter
         :rtype: address
@@ -5178,7 +5178,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_getOwner(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.getOwner method call
         :param _answer_id: uint32
@@ -5188,7 +5188,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getOwner(self, _answer_id, ts4_expect_ec=0):
+    def S_getOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getOwner signed method call
         :param _answer_id: uint32
@@ -5198,15 +5198,15 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def getPendingOwner(self, _answer_id, ts4_expect_ec=0, ts4_sign=False):
+    def getPendingOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.getPendingOwner
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.G_getPendingOwner(_answer_id, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getPendingOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getPendingOwner(self, _answer_id, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
+    def G_getPendingOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]):
         """
         Wrapper for D4Root.getPendingOwner getter
         :rtype: address
@@ -5214,7 +5214,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
-    def R_getPendingOwner(self, _answer_id, ts4_expect_ec=0):
+    def R_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getPendingOwner raw getter
         :rtype: address
@@ -5222,7 +5222,7 @@ class WrapD4Root:
         """
         return self.ts4_contract.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
-    def M_getPendingOwner(self, _answer_id, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getPendingOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.getPendingOwner method call
         :param _answer_id: uint32
@@ -5232,7 +5232,7 @@ class WrapD4Root:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getPendingOwner(self, _answer_id, ts4_expect_ec=0):
+    def S_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getPendingOwner signed method call
         :param _answer_id: uint32

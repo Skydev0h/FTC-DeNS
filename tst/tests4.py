@@ -133,7 +133,7 @@ wtest.finalize(test.la)
 # test.call_method('finalize', {'auction': test.la})
 dm()
 
-certAddr = wroot.resolveFull(0, 1, h('test'))
+certAddr = wroot.resolveFull(1, h('test'))
 cert = ts4.BaseContract('D4Cert', {}, address=certAddr, nickname='testCert')
 wcert = WrapD4Cert(cert)
 
@@ -141,10 +141,10 @@ wcert.getOwner(0)
 
 seg('Set value')
 wc[2].setValue(certAddr, 0, root.address)
-wcert.getValue(0, 0)
+wcert.getValue(0)
 
 wc[2].resetValue(certAddr, 0)
-wcert.getValue(0, 0, ts4_expect_ec=50)
+wcert.getValue(0, ts4_expect_ec=50)
 
 
 #
