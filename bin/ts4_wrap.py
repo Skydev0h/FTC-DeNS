@@ -22,17 +22,21 @@ print('class WrapperGlobal:')
 print('    auto_dispatch_messages: bool = True')
 print('')
 
+classes=[]
 for fname in os.listdir("out"):
     if not fname.startswith("D4"): continue
     if not fname.endswith(".abi.json"): continue
     cname = fname[:-9]
+    classes.append(cname)
     with open("./out/" + fname, 'r') as f1:
         abi = json.load(f1)
         fun = abi['functions']
+    c_name = 'C_'
     print('# noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins')
     print('class Wrap' + cname + ':')
     print('    def __init__(self, contract):')
-    print('        self.ts4_contract = contract')
+    print('        self.' + c_name + ' = contract')
+    print('        self.A_ = contract.address')
     print('')
     for fn in fun:
         inputs = []
@@ -73,7 +77,7 @@ for fname in os.listdir("out"):
         for inp in fn['inputs']:
             print('        :param ' + inp['name'] + ': ' + inp['type'])
         print('        """')
-        print('        return self.ts4_contract.call_getter(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_getter + ')')
+        print('        return self.' + c_name + '.call_getter(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_getter + ')')
         print('')
 
         print('    def R_' + fn['name'] + '(self, ' + ', '.join(inputs) + (', ' if len(inputs) > 0 else '') + tails_getter_raw + '):')
@@ -83,7 +87,7 @@ for fname in os.listdir("out"):
         for inp in fn['inputs']:
             print('        :param ' + inp['name'] + ': ' + inp['type'])
         print('        """')
-        print('        return self.ts4_contract.call_getter_raw(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_getter_raw + ')')
+        print('        return self.' + c_name + '.call_getter_raw(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_getter_raw + ')')
         print('')
 
         print('    def M_' + fn['name'] + '(self, ' + ', '.join(inputs) + (', ' if len(inputs) > 0 else '') + tails_method + '):')
@@ -92,7 +96,7 @@ for fname in os.listdir("out"):
         for inp in fn['inputs']:
             print('        :param ' + inp['name'] + ': ' + inp['type'])
         print('        """')
-        print('        _r_ = self.ts4_contract.call_method(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_method + ')')
+        print('        _r_ = self.' + c_name + '.call_method(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_method + ')')
         print('        if WrapperGlobal.auto_dispatch_messages:')
         print('            ts4.dispatch_messages()')
         print('        return _r_')
@@ -104,8 +108,15 @@ for fname in os.listdir("out"):
         for inp in fn['inputs']:
             print('        :param ' + inp['name'] + ': ' + inp['type'])
         print('        """')
-        print('        _r_ = self.ts4_contract.call_method_signed(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_method_signed + ')')
+        print('        _r_ = self.' + c_name + '.call_method_signed(\'' + fn['name'] + '\', {' + ', '.join(iregals) + '}, ' + pars_method_signed + ')')
         print('        if WrapperGlobal.auto_dispatch_messages:')
         print('            ts4.dispatch_messages()')
         print('        return _r_')
         print('')
+
+# print('def Wrap(contract: ts4.BaseContract):')
+# print('    c = contract.name_')
+# for cn in classes:
+#     print('    if c == \'' + cn + '\':')
+#     print('        return Wrap' + cn + '(contract)')
+# print('    return None')

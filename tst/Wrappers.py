@@ -6,7 +6,8 @@ class WrapperGlobal:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4Auct:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -23,20 +24,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.constructor getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.constructor raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.constructor method call
         """
-        _r_ = self.ts4_contract.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -45,7 +46,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.constructor signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -69,7 +70,7 @@ class WrapD4Auct:
         :param value0: uint128
         :param expiry_: uint32
         """
-        return self.ts4_contract.call_getter('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_registrationPreflightCallback(self, value0, expiry_, ts4_expect_ec=0):
         """
@@ -78,7 +79,7 @@ class WrapD4Auct:
         :param value0: uint128
         :param expiry_: uint32
         """
-        return self.ts4_contract.call_getter_raw('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, expect_ec=ts4_expect_ec)
 
     def M_registrationPreflightCallback(self, value0, expiry_, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -86,7 +87,7 @@ class WrapD4Auct:
         :param value0: uint128
         :param expiry_: uint32
         """
-        _r_ = self.ts4_contract.call_method('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -97,7 +98,7 @@ class WrapD4Auct:
         :param value0: uint128
         :param expiry_: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('registrationPreflightCallback', {'value0': value0, 'expiry_': expiry_}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -116,7 +117,7 @@ class WrapD4Auct:
         :rtype: tuple
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_getInfo(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -124,14 +125,14 @@ class WrapD4Auct:
         :rtype: tuple
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_getInfo(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.getInfo method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('getInfo', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getInfo', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -141,7 +142,7 @@ class WrapD4Auct:
         Wrapper for D4Auct.getInfo signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -163,7 +164,7 @@ class WrapD4Auct:
         :rtype: 
         :param result: bool
         """
-        return self.ts4_contract.call_getter('commit', {'result': result}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('commit', {'result': result}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_commit(self, result, ts4_expect_ec=0):
         """
@@ -171,14 +172,14 @@ class WrapD4Auct:
         :rtype: 
         :param result: bool
         """
-        return self.ts4_contract.call_getter_raw('commit', {'result': result}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('commit', {'result': result}, expect_ec=ts4_expect_ec)
 
     def M_commit(self, result, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.commit method call
         :param result: bool
         """
-        _r_ = self.ts4_contract.call_method('commit', {'result': result}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('commit', {'result': result}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -188,7 +189,7 @@ class WrapD4Auct:
         Wrapper for D4Auct.commit signed method call
         :param result: bool
         """
-        _r_ = self.ts4_contract.call_method_signed('commit', {'result': result}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('commit', {'result': result}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -210,7 +211,7 @@ class WrapD4Auct:
         :rtype: 
         :param user: address
         """
-        return self.ts4_contract.call_getter('accountBid', {'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('accountBid', {'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_accountBid(self, user, ts4_expect_ec=0):
         """
@@ -218,14 +219,14 @@ class WrapD4Auct:
         :rtype: 
         :param user: address
         """
-        return self.ts4_contract.call_getter_raw('accountBid', {'user': user}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('accountBid', {'user': user}, expect_ec=ts4_expect_ec)
 
     def M_accountBid(self, user, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.accountBid method call
         :param user: address
         """
-        _r_ = self.ts4_contract.call_method('accountBid', {'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('accountBid', {'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -235,7 +236,7 @@ class WrapD4Auct:
         Wrapper for D4Auct.accountBid signed method call
         :param user: address
         """
-        _r_ = self.ts4_contract.call_method_signed('accountBid', {'user': user}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('accountBid', {'user': user}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -265,7 +266,7 @@ class WrapD4Auct:
         :param nonce: uint128
         :param prover: uint256
         """
-        return self.ts4_contract.call_getter('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_revealBid(self, user, bid_time, amount, nonce, prover, ts4_expect_ec=0):
         """
@@ -277,7 +278,7 @@ class WrapD4Auct:
         :param nonce: uint128
         :param prover: uint256
         """
-        return self.ts4_contract.call_getter_raw('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, expect_ec=ts4_expect_ec)
 
     def M_revealBid(self, user, bid_time, amount, nonce, prover, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -288,7 +289,7 @@ class WrapD4Auct:
         :param nonce: uint128
         :param prover: uint256
         """
-        _r_ = self.ts4_contract.call_method('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -302,7 +303,7 @@ class WrapD4Auct:
         :param nonce: uint128
         :param prover: uint256
         """
-        _r_ = self.ts4_contract.call_method_signed('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('revealBid', {'user': user, 'bid_time': bid_time, 'amount': amount, 'nonce': nonce, 'prover': prover}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -321,7 +322,7 @@ class WrapD4Auct:
         :rtype: uint128
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('requiredAmountForProlong', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('requiredAmountForProlong', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_requiredAmountForProlong(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -329,14 +330,14 @@ class WrapD4Auct:
         :rtype: uint128
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('requiredAmountForProlong', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requiredAmountForProlong', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_requiredAmountForProlong(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.requiredAmountForProlong method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('requiredAmountForProlong', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requiredAmountForProlong', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -346,7 +347,7 @@ class WrapD4Auct:
         Wrapper for D4Auct.requiredAmountForProlong signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('requiredAmountForProlong', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requiredAmountForProlong', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -366,20 +367,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.prolong getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('prolong', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('prolong', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_prolong(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.prolong raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('prolong', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('prolong', {}, expect_ec=ts4_expect_ec)
 
     def M_prolong(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.prolong method call
         """
-        _r_ = self.ts4_contract.call_method('prolong', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('prolong', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -388,7 +389,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.prolong signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('prolong', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('prolong', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -410,7 +411,7 @@ class WrapD4Auct:
         :rtype: 
         :param user: address
         """
-        return self.ts4_contract.call_getter('finalize', {'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('finalize', {'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_finalize(self, user, ts4_expect_ec=0):
         """
@@ -418,14 +419,14 @@ class WrapD4Auct:
         :rtype: 
         :param user: address
         """
-        return self.ts4_contract.call_getter_raw('finalize', {'user': user}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('finalize', {'user': user}, expect_ec=ts4_expect_ec)
 
     def M_finalize(self, user, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.finalize method call
         :param user: address
         """
-        _r_ = self.ts4_contract.call_method('finalize', {'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('finalize', {'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -435,7 +436,7 @@ class WrapD4Auct:
         Wrapper for D4Auct.finalize signed method call
         :param user: address
         """
-        _r_ = self.ts4_contract.call_method_signed('finalize', {'user': user}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('finalize', {'user': user}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -457,7 +458,7 @@ class WrapD4Auct:
         :rtype: 
         :param success: bool
         """
-        return self.ts4_contract.call_getter('applyAuctionCallback', {'success': success}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('applyAuctionCallback', {'success': success}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_applyAuctionCallback(self, success, ts4_expect_ec=0):
         """
@@ -465,14 +466,14 @@ class WrapD4Auct:
         :rtype: 
         :param success: bool
         """
-        return self.ts4_contract.call_getter_raw('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
 
     def M_applyAuctionCallback(self, success, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.applyAuctionCallback method call
         :param success: bool
         """
-        _r_ = self.ts4_contract.call_method('applyAuctionCallback', {'success': success}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('applyAuctionCallback', {'success': success}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -482,7 +483,7 @@ class WrapD4Auct:
         Wrapper for D4Auct.applyAuctionCallback signed method call
         :param success: bool
         """
-        _r_ = self.ts4_contract.call_method_signed('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -502,20 +503,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.sink getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_sink(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.sink raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
 
     def M_sink(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.sink method call
         """
-        _r_ = self.ts4_contract.call_method('sink', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('sink', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -524,7 +525,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.sink signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('sink', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('sink', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -541,20 +542,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.st_root getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_root(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.st_root raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
 
     def M_st_root(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.st_root method call
         """
-        _r_ = self.ts4_contract.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -563,7 +564,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.st_root signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -580,20 +581,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.st_type getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_type(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.st_type raw getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
 
     def M_st_type(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.st_type method call
         """
-        _r_ = self.ts4_contract.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -602,7 +603,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.st_type signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -619,20 +620,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.st_name getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.st_name raw getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
     def M_st_name(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.st_name method call
         """
-        _r_ = self.ts4_contract.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -641,7 +642,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.st_name signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -658,20 +659,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.st_parent getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_parent(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.st_parent raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
 
     def M_st_parent(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.st_parent method call
         """
-        _r_ = self.ts4_contract.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -680,7 +681,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.st_parent signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -697,20 +698,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.base_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_base_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.base_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
 
     def M_base_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.base_code method call
         """
-        _r_ = self.ts4_contract.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -719,7 +720,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.base_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -736,20 +737,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.m_version getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_version(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.m_version raw getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
 
     def M_m_version(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.m_version method call
         """
-        _r_ = self.ts4_contract.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -758,7 +759,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.m_version signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -775,20 +776,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.m_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.m_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_m_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.m_revision method call
         """
-        _r_ = self.ts4_contract.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -797,7 +798,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.m_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -814,20 +815,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.startTime getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('startTime', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('startTime', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_startTime(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.startTime raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('startTime', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('startTime', {}, expect_ec=ts4_expect_ec)
 
     def M_startTime(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.startTime method call
         """
-        _r_ = self.ts4_contract.call_method('startTime', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('startTime', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -836,7 +837,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.startTime signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('startTime', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('startTime', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -853,20 +854,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.bidEnds getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('bidEnds', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('bidEnds', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_bidEnds(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.bidEnds raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('bidEnds', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('bidEnds', {}, expect_ec=ts4_expect_ec)
 
     def M_bidEnds(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.bidEnds method call
         """
-        _r_ = self.ts4_contract.call_method('bidEnds', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('bidEnds', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -875,7 +876,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.bidEnds signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('bidEnds', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('bidEnds', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -892,20 +893,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.revEnds getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('revEnds', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('revEnds', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_revEnds(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.revEnds raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('revEnds', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('revEnds', {}, expect_ec=ts4_expect_ec)
 
     def M_revEnds(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.revEnds method call
         """
-        _r_ = self.ts4_contract.call_method('revEnds', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('revEnds', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -914,7 +915,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.revEnds signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('revEnds', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('revEnds', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -931,20 +932,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.durationYears getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter('durationYears', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('durationYears', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_durationYears(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.durationYears raw getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter_raw('durationYears', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('durationYears', {}, expect_ec=ts4_expect_ec)
 
     def M_durationYears(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.durationYears method call
         """
-        _r_ = self.ts4_contract.call_method('durationYears', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('durationYears', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -953,7 +954,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.durationYears signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('durationYears', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('durationYears', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -970,20 +971,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.expiryBase getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('expiryBase', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('expiryBase', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_expiryBase(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.expiryBase raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('expiryBase', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('expiryBase', {}, expect_ec=ts4_expect_ec)
 
     def M_expiryBase(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.expiryBase method call
         """
-        _r_ = self.ts4_contract.call_method('expiryBase', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('expiryBase', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -992,7 +993,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.expiryBase signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('expiryBase', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('expiryBase', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1009,20 +1010,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.expiryTarget getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('expiryTarget', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('expiryTarget', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_expiryTarget(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.expiryTarget raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('expiryTarget', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('expiryTarget', {}, expect_ec=ts4_expect_ec)
 
     def M_expiryTarget(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.expiryTarget method call
         """
-        _r_ = self.ts4_contract.call_method('expiryTarget', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('expiryTarget', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1031,7 +1032,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.expiryTarget signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('expiryTarget', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('expiryTarget', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1048,20 +1049,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.finalizeAfter getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('finalizeAfter', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('finalizeAfter', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_finalizeAfter(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.finalizeAfter raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('finalizeAfter', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('finalizeAfter', {}, expect_ec=ts4_expect_ec)
 
     def M_finalizeAfter(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.finalizeAfter method call
         """
-        _r_ = self.ts4_contract.call_method('finalizeAfter', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('finalizeAfter', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1070,7 +1071,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.finalizeAfter signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('finalizeAfter', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('finalizeAfter', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1087,20 +1088,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.instigator getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('instigator', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('instigator', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_instigator(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.instigator raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('instigator', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('instigator', {}, expect_ec=ts4_expect_ec)
 
     def M_instigator(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.instigator method call
         """
-        _r_ = self.ts4_contract.call_method('instigator', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('instigator', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1109,7 +1110,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.instigator signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('instigator', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('instigator', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1126,20 +1127,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.bids getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('bids', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('bids', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_bids(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.bids raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('bids', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('bids', {}, expect_ec=ts4_expect_ec)
 
     def M_bids(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.bids method call
         """
-        _r_ = self.ts4_contract.call_method('bids', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('bids', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1148,7 +1149,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.bids signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('bids', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('bids', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1165,20 +1166,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.revs getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('revs', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('revs', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_revs(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.revs raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('revs', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('revs', {}, expect_ec=ts4_expect_ec)
 
     def M_revs(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.revs method call
         """
-        _r_ = self.ts4_contract.call_method('revs', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('revs', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1187,7 +1188,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.revs signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('revs', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('revs', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1204,20 +1205,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.top1 getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('top1', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('top1', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_top1(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.top1 raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('top1', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('top1', {}, expect_ec=ts4_expect_ec)
 
     def M_top1(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.top1 method call
         """
-        _r_ = self.ts4_contract.call_method('top1', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('top1', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1226,7 +1227,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.top1 signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('top1', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('top1', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1243,20 +1244,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.amt1 getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter('amt1', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('amt1', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_amt1(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.amt1 raw getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter_raw('amt1', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('amt1', {}, expect_ec=ts4_expect_ec)
 
     def M_amt1(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.amt1 method call
         """
-        _r_ = self.ts4_contract.call_method('amt1', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('amt1', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1265,7 +1266,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.amt1 signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('amt1', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('amt1', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1282,20 +1283,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.top2 getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('top2', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('top2', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_top2(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.top2 raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('top2', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('top2', {}, expect_ec=ts4_expect_ec)
 
     def M_top2(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.top2 method call
         """
-        _r_ = self.ts4_contract.call_method('top2', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('top2', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1304,7 +1305,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.top2 signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('top2', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('top2', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1321,20 +1322,20 @@ class WrapD4Auct:
         Wrapper for D4Auct.amt2 getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter('amt2', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('amt2', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_amt2(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.amt2 raw getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter_raw('amt2', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('amt2', {}, expect_ec=ts4_expect_ec)
 
     def M_amt2(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.amt2 method call
         """
-        _r_ = self.ts4_contract.call_method('amt2', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('amt2', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1343,7 +1344,7 @@ class WrapD4Auct:
         """
         Wrapper for D4Auct.amt2 signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('amt2', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('amt2', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1351,7 +1352,8 @@ class WrapD4Auct:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4Base:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, code, revision, param, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -1374,7 +1376,7 @@ class WrapD4Base:
         :param revision: uint32
         :param param: cell
         """
-        return self.ts4_contract.call_getter('constructor', {'code': code, 'revision': revision, 'param': param}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {'code': code, 'revision': revision, 'param': param}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, code, revision, param, ts4_expect_ec=0):
         """
@@ -1384,7 +1386,7 @@ class WrapD4Base:
         :param revision: uint32
         :param param: cell
         """
-        return self.ts4_contract.call_getter_raw('constructor', {'code': code, 'revision': revision, 'param': param}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {'code': code, 'revision': revision, 'param': param}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, code, revision, param, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -1393,7 +1395,7 @@ class WrapD4Base:
         :param revision: uint32
         :param param: cell
         """
-        _r_ = self.ts4_contract.call_method('constructor', {'code': code, 'revision': revision, 'param': param}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {'code': code, 'revision': revision, 'param': param}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1405,7 +1407,7 @@ class WrapD4Base:
         :param revision: uint32
         :param param: cell
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {'code': code, 'revision': revision, 'param': param}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {'code': code, 'revision': revision, 'param': param}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1426,7 +1428,7 @@ class WrapD4Base:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        return self.ts4_contract.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
         """
@@ -1435,7 +1437,7 @@ class WrapD4Base:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        return self.ts4_contract.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
 
     def M_registrationPreflight(self, requestId, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -1443,7 +1445,7 @@ class WrapD4Base:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        _r_ = self.ts4_contract.call_method('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1454,7 +1456,7 @@ class WrapD4Base:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1474,20 +1476,20 @@ class WrapD4Base:
         Wrapper for D4Base.destroy getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('destroy', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('destroy', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_destroy(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.destroy raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('destroy', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('destroy', {}, expect_ec=ts4_expect_ec)
 
     def M_destroy(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.destroy method call
         """
-        _r_ = self.ts4_contract.call_method('destroy', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('destroy', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1496,7 +1498,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.destroy signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('destroy', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('destroy', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1513,20 +1515,20 @@ class WrapD4Base:
         Wrapper for D4Base.st_root getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_root(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.st_root raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
 
     def M_st_root(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.st_root method call
         """
-        _r_ = self.ts4_contract.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1535,7 +1537,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.st_root signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1552,20 +1554,20 @@ class WrapD4Base:
         Wrapper for D4Base.st_type getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_type(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.st_type raw getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
 
     def M_st_type(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.st_type method call
         """
-        _r_ = self.ts4_contract.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1574,7 +1576,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.st_type signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1591,20 +1593,20 @@ class WrapD4Base:
         Wrapper for D4Base.st_name getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.st_name raw getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
     def M_st_name(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.st_name method call
         """
-        _r_ = self.ts4_contract.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1613,7 +1615,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.st_name signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1630,20 +1632,20 @@ class WrapD4Base:
         Wrapper for D4Base.st_parent getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_parent(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.st_parent raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
 
     def M_st_parent(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.st_parent method call
         """
-        _r_ = self.ts4_contract.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1652,7 +1654,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.st_parent signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1669,20 +1671,20 @@ class WrapD4Base:
         Wrapper for D4Base.base_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_base_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.base_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
 
     def M_base_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.base_code method call
         """
-        _r_ = self.ts4_contract.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1691,7 +1693,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.base_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1708,20 +1710,20 @@ class WrapD4Base:
         Wrapper for D4Base.m_version getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_version(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.m_version raw getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
 
     def M_m_version(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.m_version method call
         """
-        _r_ = self.ts4_contract.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1730,7 +1732,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.m_version signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1747,20 +1749,20 @@ class WrapD4Base:
         Wrapper for D4Base.m_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.m_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_m_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.m_revision method call
         """
-        _r_ = self.ts4_contract.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1769,7 +1771,7 @@ class WrapD4Base:
         """
         Wrapper for D4Base.m_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1777,7 +1779,8 @@ class WrapD4Base:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4Cert:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -1794,20 +1797,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.constructor getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.constructor raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.constructor method call
         """
-        _r_ = self.ts4_contract.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1816,7 +1819,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.constructor signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1836,20 +1839,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.requestUpgrade getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_requestUpgrade(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.requestUpgrade raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
 
     def M_requestUpgrade(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.requestUpgrade method call
         """
-        _r_ = self.ts4_contract.call_method('requestUpgrade', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requestUpgrade', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1858,7 +1861,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.requestUpgrade signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('requestUpgrade', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requestUpgrade', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1882,7 +1885,7 @@ class WrapD4Cert:
         :param code: cell
         :param revision: uint32
         """
-        return self.ts4_contract.call_getter('upgrade', {'code': code, 'revision': revision}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('upgrade', {'code': code, 'revision': revision}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_upgrade(self, code, revision, ts4_expect_ec=0):
         """
@@ -1891,7 +1894,7 @@ class WrapD4Cert:
         :param code: cell
         :param revision: uint32
         """
-        return self.ts4_contract.call_getter_raw('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
 
     def M_upgrade(self, code, revision, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -1899,7 +1902,7 @@ class WrapD4Cert:
         :param code: cell
         :param revision: uint32
         """
-        _r_ = self.ts4_contract.call_method('upgrade', {'code': code, 'revision': revision}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('upgrade', {'code': code, 'revision': revision}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1910,7 +1913,7 @@ class WrapD4Cert:
         :param code: cell
         :param revision: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1930,20 +1933,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.upgradeNotNeeded getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_upgradeNotNeeded(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.upgradeNotNeeded raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
 
     def M_upgradeNotNeeded(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.upgradeNotNeeded method call
         """
-        _r_ = self.ts4_contract.call_method('upgradeNotNeeded', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('upgradeNotNeeded', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1952,7 +1955,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.upgradeNotNeeded signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1971,7 +1974,7 @@ class WrapD4Cert:
         :rtype: tuple
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_getInfo(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -1979,14 +1982,14 @@ class WrapD4Cert:
         :rtype: tuple
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_getInfo(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getInfo method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('getInfo', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getInfo', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1996,7 +1999,7 @@ class WrapD4Cert:
         Wrapper for D4Cert.getInfo signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2017,7 +2020,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param index: int16
         """
-        return self.ts4_contract.call_getter('getValue', {'_answer_id': _answer_id, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('getValue', {'_answer_id': _answer_id, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_getValue(self, index, _answer_id=0, ts4_expect_ec=0):
         """
@@ -2026,7 +2029,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param index: int16
         """
-        return self.ts4_contract.call_getter_raw('getValue', {'_answer_id': _answer_id, 'index': index}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getValue', {'_answer_id': _answer_id, 'index': index}, expect_ec=ts4_expect_ec)
 
     def M_getValue(self, index, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2034,7 +2037,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method('getValue', {'_answer_id': _answer_id, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getValue', {'_answer_id': _answer_id, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2045,7 +2048,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method_signed('getValue', {'_answer_id': _answer_id, 'index': index}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getValue', {'_answer_id': _answer_id, 'index': index}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2069,7 +2072,7 @@ class WrapD4Cert:
         :param index: int16
         :param new_value: address
         """
-        return self.ts4_contract.call_getter('setValue', {'index': index, 'new_value': new_value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setValue', {'index': index, 'new_value': new_value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setValue(self, index, new_value, ts4_expect_ec=0):
         """
@@ -2078,7 +2081,7 @@ class WrapD4Cert:
         :param index: int16
         :param new_value: address
         """
-        return self.ts4_contract.call_getter_raw('setValue', {'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setValue', {'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
 
     def M_setValue(self, index, new_value, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2086,7 +2089,7 @@ class WrapD4Cert:
         :param index: int16
         :param new_value: address
         """
-        _r_ = self.ts4_contract.call_method('setValue', {'index': index, 'new_value': new_value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setValue', {'index': index, 'new_value': new_value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2097,7 +2100,7 @@ class WrapD4Cert:
         :param index: int16
         :param new_value: address
         """
-        _r_ = self.ts4_contract.call_method_signed('setValue', {'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setValue', {'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2119,7 +2122,7 @@ class WrapD4Cert:
         :rtype: 
         :param index: int16
         """
-        return self.ts4_contract.call_getter('resetValue', {'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('resetValue', {'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_resetValue(self, index, ts4_expect_ec=0):
         """
@@ -2127,14 +2130,14 @@ class WrapD4Cert:
         :rtype: 
         :param index: int16
         """
-        return self.ts4_contract.call_getter_raw('resetValue', {'index': index}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resetValue', {'index': index}, expect_ec=ts4_expect_ec)
 
     def M_resetValue(self, index, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.resetValue method call
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method('resetValue', {'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resetValue', {'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2144,7 +2147,7 @@ class WrapD4Cert:
         Wrapper for D4Cert.resetValue signed method call
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method_signed('resetValue', {'index': index}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resetValue', {'index': index}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2164,20 +2167,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.clearValues getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('clearValues', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('clearValues', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_clearValues(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.clearValues raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('clearValues', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('clearValues', {}, expect_ec=ts4_expect_ec)
 
     def M_clearValues(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.clearValues method call
         """
-        _r_ = self.ts4_contract.call_method('clearValues', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('clearValues', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2186,7 +2189,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.clearValues signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('clearValues', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('clearValues', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2207,7 +2210,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        return self.ts4_contract.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
         """
@@ -2216,7 +2219,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        return self.ts4_contract.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
 
     def M_registrationPreflight(self, requestId, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2224,7 +2227,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        _r_ = self.ts4_contract.call_method('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2235,7 +2238,7 @@ class WrapD4Cert:
         :param _answer_id: uint32
         :param requestId: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2258,7 +2261,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.ts4_contract.call_getter('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_expect_ec=0):
         """
@@ -2268,7 +2271,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.ts4_contract.call_getter_raw('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
 
     def M_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2277,7 +2280,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2289,7 +2292,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2313,7 +2316,7 @@ class WrapD4Cert:
         :param expiry: uint32
         :param retval: bool
         """
-        return self.ts4_contract.call_getter('ensureExpiry', {'expiry': expiry, 'retval': retval}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('ensureExpiry', {'expiry': expiry, 'retval': retval}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_ensureExpiry(self, expiry, retval, ts4_expect_ec=0):
         """
@@ -2322,7 +2325,7 @@ class WrapD4Cert:
         :param expiry: uint32
         :param retval: bool
         """
-        return self.ts4_contract.call_getter_raw('ensureExpiry', {'expiry': expiry, 'retval': retval}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('ensureExpiry', {'expiry': expiry, 'retval': retval}, expect_ec=ts4_expect_ec)
 
     def M_ensureExpiry(self, expiry, retval, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2330,7 +2333,7 @@ class WrapD4Cert:
         :param expiry: uint32
         :param retval: bool
         """
-        _r_ = self.ts4_contract.call_method('ensureExpiry', {'expiry': expiry, 'retval': retval}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('ensureExpiry', {'expiry': expiry, 'retval': retval}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2341,7 +2344,7 @@ class WrapD4Cert:
         :param expiry: uint32
         :param retval: bool
         """
-        _r_ = self.ts4_contract.call_method_signed('ensureExpiry', {'expiry': expiry, 'retval': retval}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('ensureExpiry', {'expiry': expiry, 'retval': retval}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2360,7 +2363,7 @@ class WrapD4Cert:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_getOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -2368,14 +2371,14 @@ class WrapD4Cert:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_getOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getOwner method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('getOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2385,7 +2388,7 @@ class WrapD4Cert:
         Wrapper for D4Cert.getOwner signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2404,7 +2407,7 @@ class WrapD4Cert:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -2412,14 +2415,14 @@ class WrapD4Cert:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_getPendingOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getPendingOwner method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('getPendingOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getPendingOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2429,7 +2432,7 @@ class WrapD4Cert:
         Wrapper for D4Cert.getPendingOwner signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2453,7 +2456,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_transferOwner(self, new_owner, deadline, ts4_expect_ec=0):
         """
@@ -2462,7 +2465,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter_raw('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
 
     def M_transferOwner(self, new_owner, deadline, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2470,7 +2473,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2481,7 +2484,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2501,20 +2504,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.cancelTransferOwner getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('cancelTransferOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('cancelTransferOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_cancelTransferOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.cancelTransferOwner raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
 
     def M_cancelTransferOwner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.cancelTransferOwner method call
         """
-        _r_ = self.ts4_contract.call_method('cancelTransferOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('cancelTransferOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2523,7 +2526,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.cancelTransferOwner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2543,20 +2546,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.acceptTransfer getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('acceptTransfer', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('acceptTransfer', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_acceptTransfer(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.acceptTransfer raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('acceptTransfer', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('acceptTransfer', {}, expect_ec=ts4_expect_ec)
 
     def M_acceptTransfer(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.acceptTransfer method call
         """
-        _r_ = self.ts4_contract.call_method('acceptTransfer', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('acceptTransfer', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2565,7 +2568,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.acceptTransfer signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('acceptTransfer', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('acceptTransfer', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2585,20 +2588,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.relinquishOwner getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('relinquishOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('relinquishOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_relinquishOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.relinquishOwner raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('relinquishOwner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('relinquishOwner', {}, expect_ec=ts4_expect_ec)
 
     def M_relinquishOwner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.relinquishOwner method call
         """
-        _r_ = self.ts4_contract.call_method('relinquishOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('relinquishOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2607,7 +2610,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.relinquishOwner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('relinquishOwner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('relinquishOwner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2627,20 +2630,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.requestProlong getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('requestProlong', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('requestProlong', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_requestProlong(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.requestProlong raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('requestProlong', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requestProlong', {}, expect_ec=ts4_expect_ec)
 
     def M_requestProlong(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.requestProlong method call
         """
-        _r_ = self.ts4_contract.call_method('requestProlong', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requestProlong', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2649,7 +2652,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.requestProlong signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('requestProlong', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requestProlong', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2671,7 +2674,7 @@ class WrapD4Cert:
         :rtype: 
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('deploySub', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('deploySub', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_deploySub(self, name, ts4_expect_ec=0):
         """
@@ -2679,14 +2682,14 @@ class WrapD4Cert:
         :rtype: 
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('deploySub', {'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('deploySub', {'name': name}, expect_ec=ts4_expect_ec)
 
     def M_deploySub(self, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.deploySub method call
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('deploySub', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('deploySub', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2696,7 +2699,7 @@ class WrapD4Cert:
         Wrapper for D4Cert.deploySub signed method call
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('deploySub', {'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('deploySub', {'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2718,7 +2721,7 @@ class WrapD4Cert:
         :rtype: 
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('syncSub', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('syncSub', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_syncSub(self, name, ts4_expect_ec=0):
         """
@@ -2726,14 +2729,14 @@ class WrapD4Cert:
         :rtype: 
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('syncSub', {'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('syncSub', {'name': name}, expect_ec=ts4_expect_ec)
 
     def M_syncSub(self, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.syncSub method call
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('syncSub', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('syncSub', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2743,7 +2746,7 @@ class WrapD4Cert:
         Wrapper for D4Cert.syncSub signed method call
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('syncSub', {'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('syncSub', {'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2767,7 +2770,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.ts4_contract.call_getter('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_subSynchronize(self, new_owner, new_expiry, ts4_expect_ec=0):
         """
@@ -2776,7 +2779,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.ts4_contract.call_getter_raw('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
 
     def M_subSynchronize(self, new_owner, new_expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2784,7 +2787,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2795,7 +2798,7 @@ class WrapD4Cert:
         :param new_owner: address
         :param new_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('subSynchronize', {'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2815,20 +2818,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.passToOwner getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_passToOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.passToOwner raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
 
     def M_passToOwner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.passToOwner method call
         """
-        _r_ = self.ts4_contract.call_method('passToOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('passToOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2837,7 +2840,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.passToOwner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('passToOwner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('passToOwner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2861,7 +2864,7 @@ class WrapD4Cert:
         :param dest: address
         :param amount: uint128
         """
-        return self.ts4_contract.call_getter('withdrawExcess', {'dest': dest, 'amount': amount}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('withdrawExcess', {'dest': dest, 'amount': amount}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_withdrawExcess(self, dest, amount, ts4_expect_ec=0):
         """
@@ -2870,7 +2873,7 @@ class WrapD4Cert:
         :param dest: address
         :param amount: uint128
         """
-        return self.ts4_contract.call_getter_raw('withdrawExcess', {'dest': dest, 'amount': amount}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('withdrawExcess', {'dest': dest, 'amount': amount}, expect_ec=ts4_expect_ec)
 
     def M_withdrawExcess(self, dest, amount, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -2878,7 +2881,7 @@ class WrapD4Cert:
         :param dest: address
         :param amount: uint128
         """
-        _r_ = self.ts4_contract.call_method('withdrawExcess', {'dest': dest, 'amount': amount}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('withdrawExcess', {'dest': dest, 'amount': amount}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2889,7 +2892,7 @@ class WrapD4Cert:
         :param dest: address
         :param amount: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('withdrawExcess', {'dest': dest, 'amount': amount}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('withdrawExcess', {'dest': dest, 'amount': amount}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2909,20 +2912,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.sink getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_sink(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.sink raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
 
     def M_sink(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.sink method call
         """
-        _r_ = self.ts4_contract.call_method('sink', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('sink', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2931,7 +2934,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.sink signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('sink', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('sink', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2948,20 +2951,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.st_root getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_root(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.st_root raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
 
     def M_st_root(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.st_root method call
         """
-        _r_ = self.ts4_contract.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2970,7 +2973,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.st_root signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2987,20 +2990,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.st_type getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_type(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.st_type raw getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
 
     def M_st_type(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.st_type method call
         """
-        _r_ = self.ts4_contract.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3009,7 +3012,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.st_type signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3026,20 +3029,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.st_name getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.st_name raw getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
     def M_st_name(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.st_name method call
         """
-        _r_ = self.ts4_contract.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3048,7 +3051,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.st_name signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3065,20 +3068,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.st_parent getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_parent(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.st_parent raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
 
     def M_st_parent(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.st_parent method call
         """
-        _r_ = self.ts4_contract.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3087,7 +3090,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.st_parent signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3104,20 +3107,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.base_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_base_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.base_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
 
     def M_base_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.base_code method call
         """
-        _r_ = self.ts4_contract.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3126,7 +3129,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.base_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3143,20 +3146,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.m_version getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_version(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.m_version raw getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
 
     def M_m_version(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.m_version method call
         """
-        _r_ = self.ts4_contract.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3165,7 +3168,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.m_version signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3182,20 +3185,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.m_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.m_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_m_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.m_revision method call
         """
-        _r_ = self.ts4_contract.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3204,7 +3207,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.m_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3221,20 +3224,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.owner getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_owner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.owner raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('owner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('owner', {}, expect_ec=ts4_expect_ec)
 
     def M_owner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.owner method call
         """
-        _r_ = self.ts4_contract.call_method('owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3243,7 +3246,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.owner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('owner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('owner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3260,20 +3263,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.pending_owner getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('pending_owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('pending_owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_pending_owner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.pending_owner raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('pending_owner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('pending_owner', {}, expect_ec=ts4_expect_ec)
 
     def M_pending_owner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.pending_owner method call
         """
-        _r_ = self.ts4_contract.call_method('pending_owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('pending_owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3282,7 +3285,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.pending_owner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('pending_owner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('pending_owner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3299,20 +3302,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.owner_transfer_deadline getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('owner_transfer_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('owner_transfer_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_owner_transfer_deadline(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.owner_transfer_deadline raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
 
     def M_owner_transfer_deadline(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.owner_transfer_deadline method call
         """
-        _r_ = self.ts4_contract.call_method('owner_transfer_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('owner_transfer_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3321,7 +3324,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.owner_transfer_deadline signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3338,20 +3341,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.relinquish_owner_deadline getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('relinquish_owner_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('relinquish_owner_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_relinquish_owner_deadline(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.relinquish_owner_deadline raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
 
     def M_relinquish_owner_deadline(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.relinquish_owner_deadline method call
         """
-        _r_ = self.ts4_contract.call_method('relinquish_owner_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('relinquish_owner_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3360,7 +3363,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.relinquish_owner_deadline signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3377,20 +3380,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.value getter
         :rtype: map(int16,address)
         """
-        return self.ts4_contract.call_getter('value', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('value', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_value(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.value raw getter
         :rtype: map(int16,address)
         """
-        return self.ts4_contract.call_getter_raw('value', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('value', {}, expect_ec=ts4_expect_ec)
 
     def M_value(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.value method call
         """
-        _r_ = self.ts4_contract.call_method('value', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('value', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3399,7 +3402,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.value signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('value', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('value', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3416,20 +3419,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.registered getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('registered', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('registered', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_registered(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.registered raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('registered', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('registered', {}, expect_ec=ts4_expect_ec)
 
     def M_registered(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.registered method call
         """
-        _r_ = self.ts4_contract.call_method('registered', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('registered', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3438,7 +3441,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.registered signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('registered', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('registered', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3455,20 +3458,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.auctioned getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('auctioned', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('auctioned', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_auctioned(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.auctioned raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('auctioned', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('auctioned', {}, expect_ec=ts4_expect_ec)
 
     def M_auctioned(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.auctioned method call
         """
-        _r_ = self.ts4_contract.call_method('auctioned', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('auctioned', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3477,7 +3480,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.auctioned signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('auctioned', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('auctioned', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3494,20 +3497,20 @@ class WrapD4Cert:
         Wrapper for D4Cert.expires getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('expires', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('expires', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_expires(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.expires raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('expires', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('expires', {}, expect_ec=ts4_expect_ec)
 
     def M_expires(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.expires method call
         """
-        _r_ = self.ts4_contract.call_method('expires', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('expires', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3516,7 +3519,7 @@ class WrapD4Cert:
         """
         Wrapper for D4Cert.expires signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('expires', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('expires', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3524,7 +3527,8 @@ class WrapD4Cert:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4DeBot:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -3541,20 +3545,20 @@ class WrapD4DeBot:
         Wrapper for D4DeBot.constructor getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4DeBot.constructor raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4DeBot.constructor method call
         """
-        _r_ = self.ts4_contract.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3563,7 +3567,7 @@ class WrapD4DeBot:
         """
         Wrapper for D4DeBot.constructor signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3571,7 +3575,8 @@ class WrapD4DeBot:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4MFT128:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -3588,20 +3593,20 @@ class WrapD4MFT128:
         Wrapper for D4MFT128.constructor getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4MFT128.constructor raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4MFT128.constructor method call
         """
-        _r_ = self.ts4_contract.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3610,7 +3615,7 @@ class WrapD4MFT128:
         """
         Wrapper for D4MFT128.constructor signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3618,7 +3623,8 @@ class WrapD4MFT128:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4Root:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -3635,20 +3641,20 @@ class WrapD4Root:
         Wrapper for D4Root.constructor getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.constructor raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.constructor method call
         """
-        _r_ = self.ts4_contract.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3657,7 +3663,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.constructor signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3679,7 +3685,7 @@ class WrapD4Root:
         :rtype: 
         :param flags: uint8
         """
-        return self.ts4_contract.call_getter('dropAdminFlag', {'flags': flags}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('dropAdminFlag', {'flags': flags}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_dropAdminFlag(self, flags, ts4_expect_ec=0):
         """
@@ -3687,14 +3693,14 @@ class WrapD4Root:
         :rtype: 
         :param flags: uint8
         """
-        return self.ts4_contract.call_getter_raw('dropAdminFlag', {'flags': flags}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('dropAdminFlag', {'flags': flags}, expect_ec=ts4_expect_ec)
 
     def M_dropAdminFlag(self, flags, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.dropAdminFlag method call
         :param flags: uint8
         """
-        _r_ = self.ts4_contract.call_method('dropAdminFlag', {'flags': flags}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('dropAdminFlag', {'flags': flags}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3704,7 +3710,7 @@ class WrapD4Root:
         Wrapper for D4Root.dropAdminFlag signed method call
         :param flags: uint8
         """
-        _r_ = self.ts4_contract.call_method_signed('dropAdminFlag', {'flags': flags}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('dropAdminFlag', {'flags': flags}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3730,7 +3736,7 @@ class WrapD4Root:
         :param set_owner: address
         :param set_expiry: uint32
         """
-        return self.ts4_contract.call_getter('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_adminDeploy(self, name, set_owner, set_expiry, ts4_expect_ec=0):
         """
@@ -3740,7 +3746,7 @@ class WrapD4Root:
         :param set_owner: address
         :param set_expiry: uint32
         """
-        return self.ts4_contract.call_getter_raw('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
 
     def M_adminDeploy(self, name, set_owner, set_expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -3749,7 +3755,7 @@ class WrapD4Root:
         :param set_owner: address
         :param set_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3761,7 +3767,7 @@ class WrapD4Root:
         :param set_owner: address
         :param set_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('adminDeploy', {'name': name, 'set_owner': set_owner, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3783,7 +3789,7 @@ class WrapD4Root:
         :rtype: 
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('adminReserve', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('adminReserve', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_adminReserve(self, name, ts4_expect_ec=0):
         """
@@ -3791,14 +3797,14 @@ class WrapD4Root:
         :rtype: 
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('adminReserve', {'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('adminReserve', {'name': name}, expect_ec=ts4_expect_ec)
 
     def M_adminReserve(self, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.adminReserve method call
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('adminReserve', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('adminReserve', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3808,7 +3814,7 @@ class WrapD4Root:
         Wrapper for D4Root.adminReserve signed method call
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('adminReserve', {'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('adminReserve', {'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3832,7 +3838,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_owner: address
         """
-        return self.ts4_contract.call_getter('adminChown', {'name': name, 'set_owner': set_owner}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('adminChown', {'name': name, 'set_owner': set_owner}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_adminChown(self, name, set_owner, ts4_expect_ec=0):
         """
@@ -3841,7 +3847,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_owner: address
         """
-        return self.ts4_contract.call_getter_raw('adminChown', {'name': name, 'set_owner': set_owner}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('adminChown', {'name': name, 'set_owner': set_owner}, expect_ec=ts4_expect_ec)
 
     def M_adminChown(self, name, set_owner, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -3849,7 +3855,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_owner: address
         """
-        _r_ = self.ts4_contract.call_method('adminChown', {'name': name, 'set_owner': set_owner}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('adminChown', {'name': name, 'set_owner': set_owner}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3860,7 +3866,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_owner: address
         """
-        _r_ = self.ts4_contract.call_method_signed('adminChown', {'name': name, 'set_owner': set_owner}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('adminChown', {'name': name, 'set_owner': set_owner}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3884,7 +3890,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_expiry: uint32
         """
-        return self.ts4_contract.call_getter('adminChexp', {'name': name, 'set_expiry': set_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('adminChexp', {'name': name, 'set_expiry': set_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_adminChexp(self, name, set_expiry, ts4_expect_ec=0):
         """
@@ -3893,7 +3899,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_expiry: uint32
         """
-        return self.ts4_contract.call_getter_raw('adminChexp', {'name': name, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('adminChexp', {'name': name, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
 
     def M_adminChexp(self, name, set_expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -3901,7 +3907,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method('adminChexp', {'name': name, 'set_expiry': set_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('adminChexp', {'name': name, 'set_expiry': set_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3912,7 +3918,7 @@ class WrapD4Root:
         :param name: bytes
         :param set_expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('adminChexp', {'name': name, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('adminChexp', {'name': name, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3934,7 +3940,7 @@ class WrapD4Root:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('adminUpgradeUser', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('adminUpgradeUser', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_adminUpgradeUser(self, target, ts4_expect_ec=0):
         """
@@ -3942,14 +3948,14 @@ class WrapD4Root:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('adminUpgradeUser', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('adminUpgradeUser', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_adminUpgradeUser(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.adminUpgradeUser method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('adminUpgradeUser', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('adminUpgradeUser', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3959,7 +3965,7 @@ class WrapD4Root:
         Wrapper for D4Root.adminUpgradeUser signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('adminUpgradeUser', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('adminUpgradeUser', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -3981,7 +3987,7 @@ class WrapD4Root:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('adminUpgradeCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('adminUpgradeCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_adminUpgradeCert(self, target, ts4_expect_ec=0):
         """
@@ -3989,14 +3995,14 @@ class WrapD4Root:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('adminUpgradeCert', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('adminUpgradeCert', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_adminUpgradeCert(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.adminUpgradeCert method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('adminUpgradeCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('adminUpgradeCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4006,7 +4012,7 @@ class WrapD4Root:
         Wrapper for D4Root.adminUpgradeCert signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('adminUpgradeCert', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('adminUpgradeCert', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4028,7 +4034,7 @@ class WrapD4Root:
         :rtype: 
         :param proposalInfo: tuple
         """
-        return self.ts4_contract.call_getter('onProposalPassed', {'proposalInfo': proposalInfo}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('onProposalPassed', {'proposalInfo': proposalInfo}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_onProposalPassed(self, proposalInfo, ts4_expect_ec=0):
         """
@@ -4036,14 +4042,14 @@ class WrapD4Root:
         :rtype: 
         :param proposalInfo: tuple
         """
-        return self.ts4_contract.call_getter_raw('onProposalPassed', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('onProposalPassed', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
 
     def M_onProposalPassed(self, proposalInfo, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.onProposalPassed method call
         :param proposalInfo: tuple
         """
-        _r_ = self.ts4_contract.call_method('onProposalPassed', {'proposalInfo': proposalInfo}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('onProposalPassed', {'proposalInfo': proposalInfo}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4053,7 +4059,7 @@ class WrapD4Root:
         Wrapper for D4Root.onProposalPassed signed method call
         :param proposalInfo: tuple
         """
-        _r_ = self.ts4_contract.call_method_signed('onProposalPassed', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('onProposalPassed', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4075,7 +4081,7 @@ class WrapD4Root:
         :rtype: 
         :param proposalInfo: tuple
         """
-        return self.ts4_contract.call_getter('onProposalRejected', {'proposalInfo': proposalInfo}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('onProposalRejected', {'proposalInfo': proposalInfo}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_onProposalRejected(self, proposalInfo, ts4_expect_ec=0):
         """
@@ -4083,14 +4089,14 @@ class WrapD4Root:
         :rtype: 
         :param proposalInfo: tuple
         """
-        return self.ts4_contract.call_getter_raw('onProposalRejected', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('onProposalRejected', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
 
     def M_onProposalRejected(self, proposalInfo, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.onProposalRejected method call
         :param proposalInfo: tuple
         """
-        _r_ = self.ts4_contract.call_method('onProposalRejected', {'proposalInfo': proposalInfo}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('onProposalRejected', {'proposalInfo': proposalInfo}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4100,7 +4106,7 @@ class WrapD4Root:
         Wrapper for D4Root.onProposalRejected signed method call
         :param proposalInfo: tuple
         """
-        _r_ = self.ts4_contract.call_method_signed('onProposalRejected', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('onProposalRejected', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4126,7 +4132,7 @@ class WrapD4Root:
         :param proposalType: uint8
         :param specific: cell
         """
-        return self.ts4_contract.call_getter('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_onProposalDeploy(self, value0, proposalType, specific, ts4_expect_ec=0):
         """
@@ -4136,7 +4142,7 @@ class WrapD4Root:
         :param proposalType: uint8
         :param specific: cell
         """
-        return self.ts4_contract.call_getter_raw('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, expect_ec=ts4_expect_ec)
 
     def M_onProposalDeploy(self, value0, proposalType, specific, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4145,7 +4151,7 @@ class WrapD4Root:
         :param proposalType: uint8
         :param specific: cell
         """
-        _r_ = self.ts4_contract.call_method('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4157,7 +4163,7 @@ class WrapD4Root:
         :param proposalType: uint8
         :param specific: cell
         """
-        _r_ = self.ts4_contract.call_method_signed('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('onProposalDeploy', {'value0': value0, 'proposalType': proposalType, 'specific': specific}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4176,7 +4182,7 @@ class WrapD4Root:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('deployUserForMe', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('deployUserForMe', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_deployUserForMe(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -4184,14 +4190,14 @@ class WrapD4Root:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('deployUserForMe', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('deployUserForMe', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_deployUserForMe(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.deployUserForMe method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('deployUserForMe', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('deployUserForMe', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4201,7 +4207,7 @@ class WrapD4Root:
         Wrapper for D4Root.deployUserForMe signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('deployUserForMe', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('deployUserForMe', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4222,7 +4228,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param pubkey: uint256
         """
-        return self.ts4_contract.call_getter('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_expect_ec=0):
         """
@@ -4231,7 +4237,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param pubkey: uint256
         """
-        return self.ts4_contract.call_getter_raw('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
 
     def M_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4239,7 +4245,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param pubkey: uint256
         """
-        _r_ = self.ts4_contract.call_method('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4250,7 +4256,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param pubkey: uint256
         """
-        _r_ = self.ts4_contract.call_method_signed('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4271,7 +4277,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param user: address
         """
-        return self.ts4_contract.call_getter('resolveUser', {'_answer_id': _answer_id, 'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('resolveUser', {'_answer_id': _answer_id, 'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_resolveUser(self, user, _answer_id=0, ts4_expect_ec=0):
         """
@@ -4280,7 +4286,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param user: address
         """
-        return self.ts4_contract.call_getter_raw('resolveUser', {'_answer_id': _answer_id, 'user': user}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolveUser', {'_answer_id': _answer_id, 'user': user}, expect_ec=ts4_expect_ec)
 
     def M_resolveUser(self, user, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4288,7 +4294,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param user: address
         """
-        _r_ = self.ts4_contract.call_method('resolveUser', {'_answer_id': _answer_id, 'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolveUser', {'_answer_id': _answer_id, 'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4299,7 +4305,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param user: address
         """
-        _r_ = self.ts4_contract.call_method_signed('resolveUser', {'_answer_id': _answer_id, 'user': user}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolveUser', {'_answer_id': _answer_id, 'user': user}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4324,7 +4330,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_resolve(self, ct_type, name, parent, _answer_id=0, ts4_expect_ec=0):
         """
@@ -4335,7 +4341,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter_raw('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
 
     def M_resolve(self, ct_type, name, parent, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4345,7 +4351,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4358,7 +4364,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method_signed('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4381,7 +4387,7 @@ class WrapD4Root:
         :param ct_type: uint8
         :param fullname: bytes
         """
-        return self.ts4_contract.call_getter('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_expect_ec=0):
         """
@@ -4391,7 +4397,7 @@ class WrapD4Root:
         :param ct_type: uint8
         :param fullname: bytes
         """
-        return self.ts4_contract.call_getter_raw('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
 
     def M_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4400,7 +4406,7 @@ class WrapD4Root:
         :param ct_type: uint8
         :param fullname: bytes
         """
-        _r_ = self.ts4_contract.call_method('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4412,7 +4418,7 @@ class WrapD4Root:
         :param ct_type: uint8
         :param fullname: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4439,7 +4445,7 @@ class WrapD4Root:
         :param name: bytes
         :param duration: uint8
         """
-        return self.ts4_contract.call_getter('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_expect_ec=0):
         """
@@ -4451,7 +4457,7 @@ class WrapD4Root:
         :param name: bytes
         :param duration: uint8
         """
-        return self.ts4_contract.call_getter_raw('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
 
     def M_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4462,7 +4468,7 @@ class WrapD4Root:
         :param name: bytes
         :param duration: uint8
         """
-        _r_ = self.ts4_contract.call_method('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4476,7 +4482,7 @@ class WrapD4Root:
         :param name: bytes
         :param duration: uint8
         """
-        _r_ = self.ts4_contract.call_method_signed('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4497,7 +4503,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('resolveAuction', {'_answer_id': _answer_id, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('resolveAuction', {'_answer_id': _answer_id, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_resolveAuction(self, name, _answer_id=0, ts4_expect_ec=0):
         """
@@ -4506,7 +4512,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('resolveAuction', {'_answer_id': _answer_id, 'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolveAuction', {'_answer_id': _answer_id, 'name': name}, expect_ec=ts4_expect_ec)
 
     def M_resolveAuction(self, name, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4514,7 +4520,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('resolveAuction', {'_answer_id': _answer_id, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolveAuction', {'_answer_id': _answer_id, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4525,7 +4531,7 @@ class WrapD4Root:
         :param _answer_id: uint32
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('resolveAuction', {'_answer_id': _answer_id, 'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolveAuction', {'_answer_id': _answer_id, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4555,7 +4561,7 @@ class WrapD4Root:
         :param parent: address
         :param deploy: bool
         """
-        return self.ts4_contract.call_getter('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_onAuctionResult(self, winner, exp, name, parent, deploy, ts4_expect_ec=0):
         """
@@ -4567,7 +4573,7 @@ class WrapD4Root:
         :param parent: address
         :param deploy: bool
         """
-        return self.ts4_contract.call_getter_raw('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, expect_ec=ts4_expect_ec)
 
     def M_onAuctionResult(self, winner, exp, name, parent, deploy, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4578,7 +4584,7 @@ class WrapD4Root:
         :param parent: address
         :param deploy: bool
         """
-        _r_ = self.ts4_contract.call_method('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4592,7 +4598,7 @@ class WrapD4Root:
         :param parent: address
         :param deploy: bool
         """
-        _r_ = self.ts4_contract.call_method_signed('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('onAuctionResult', {'winner': winner, 'exp': exp, 'name': name, 'parent': parent, 'deploy': deploy}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4614,7 +4620,7 @@ class WrapD4Root:
         :rtype: 
         :param success: bool
         """
-        return self.ts4_contract.call_getter('applyAuctionCallback', {'success': success}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('applyAuctionCallback', {'success': success}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_applyAuctionCallback(self, success, ts4_expect_ec=0):
         """
@@ -4622,14 +4628,14 @@ class WrapD4Root:
         :rtype: 
         :param success: bool
         """
-        return self.ts4_contract.call_getter_raw('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
 
     def M_applyAuctionCallback(self, success, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.applyAuctionCallback method call
         :param success: bool
         """
-        _r_ = self.ts4_contract.call_method('applyAuctionCallback', {'success': success}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('applyAuctionCallback', {'success': success}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4639,7 +4645,7 @@ class WrapD4Root:
         Wrapper for D4Root.applyAuctionCallback signed method call
         :param success: bool
         """
-        _r_ = self.ts4_contract.call_method_signed('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4669,7 +4675,7 @@ class WrapD4Root:
         :param new_owner: address
         :param expiry: uint32
         """
-        return self.ts4_contract.call_getter('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_subCertDepl(self, name, parent, subname, new_owner, expiry, ts4_expect_ec=0):
         """
@@ -4681,7 +4687,7 @@ class WrapD4Root:
         :param new_owner: address
         :param expiry: uint32
         """
-        return self.ts4_contract.call_getter_raw('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, expect_ec=ts4_expect_ec)
 
     def M_subCertDepl(self, name, parent, subname, new_owner, expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4692,7 +4698,7 @@ class WrapD4Root:
         :param new_owner: address
         :param expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4706,7 +4712,7 @@ class WrapD4Root:
         :param new_owner: address
         :param expiry: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('subCertDepl', {'name': name, 'parent': parent, 'subname': subname, 'new_owner': new_owner, 'expiry': expiry}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4732,7 +4738,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_receiveShards(self, ct_type, name, parent, ts4_expect_ec=0):
         """
@@ -4742,7 +4748,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter_raw('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
 
     def M_receiveShards(self, ct_type, name, parent, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -4751,7 +4757,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4763,7 +4769,7 @@ class WrapD4Root:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method_signed('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4785,7 +4791,7 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter('setBaseCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setBaseCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setBaseCode(self, code, ts4_expect_ec=0):
         """
@@ -4793,14 +4799,14 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter_raw('setBaseCode', {'code': code}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setBaseCode', {'code': code}, expect_ec=ts4_expect_ec)
 
     def M_setBaseCode(self, code, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.setBaseCode method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method('setBaseCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setBaseCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4810,7 +4816,7 @@ class WrapD4Root:
         Wrapper for D4Root.setBaseCode signed method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method_signed('setBaseCode', {'code': code}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setBaseCode', {'code': code}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4832,7 +4838,7 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter('setCertificateCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setCertificateCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setCertificateCode(self, code, ts4_expect_ec=0):
         """
@@ -4840,14 +4846,14 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter_raw('setCertificateCode', {'code': code}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setCertificateCode', {'code': code}, expect_ec=ts4_expect_ec)
 
     def M_setCertificateCode(self, code, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.setCertificateCode method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method('setCertificateCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setCertificateCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4857,7 +4863,7 @@ class WrapD4Root:
         Wrapper for D4Root.setCertificateCode signed method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method_signed('setCertificateCode', {'code': code}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setCertificateCode', {'code': code}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4879,7 +4885,7 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter('setAuctionCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setAuctionCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setAuctionCode(self, code, ts4_expect_ec=0):
         """
@@ -4887,14 +4893,14 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter_raw('setAuctionCode', {'code': code}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setAuctionCode', {'code': code}, expect_ec=ts4_expect_ec)
 
     def M_setAuctionCode(self, code, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.setAuctionCode method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method('setAuctionCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setAuctionCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4904,7 +4910,7 @@ class WrapD4Root:
         Wrapper for D4Root.setAuctionCode signed method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method_signed('setAuctionCode', {'code': code}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setAuctionCode', {'code': code}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4926,7 +4932,7 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter('setUserCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setUserCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setUserCode(self, code, ts4_expect_ec=0):
         """
@@ -4934,14 +4940,14 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter_raw('setUserCode', {'code': code}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setUserCode', {'code': code}, expect_ec=ts4_expect_ec)
 
     def M_setUserCode(self, code, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.setUserCode method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method('setUserCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setUserCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4951,7 +4957,7 @@ class WrapD4Root:
         Wrapper for D4Root.setUserCode signed method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method_signed('setUserCode', {'code': code}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setUserCode', {'code': code}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4973,7 +4979,7 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter('setRootCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setRootCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setRootCode(self, code, ts4_expect_ec=0):
         """
@@ -4981,14 +4987,14 @@ class WrapD4Root:
         :rtype: 
         :param code: cell
         """
-        return self.ts4_contract.call_getter_raw('setRootCode', {'code': code}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setRootCode', {'code': code}, expect_ec=ts4_expect_ec)
 
     def M_setRootCode(self, code, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.setRootCode method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method('setRootCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setRootCode', {'code': code}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4998,7 +5004,7 @@ class WrapD4Root:
         Wrapper for D4Root.setRootCode signed method call
         :param code: cell
         """
-        _r_ = self.ts4_contract.call_method_signed('setRootCode', {'code': code}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setRootCode', {'code': code}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5024,7 +5030,7 @@ class WrapD4Root:
         :param my_revision: uint32
         :param my_hash: uint256
         """
-        return self.ts4_contract.call_getter('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_upgradeMeRequest(self, ct_type, my_revision, my_hash, ts4_expect_ec=0):
         """
@@ -5034,7 +5040,7 @@ class WrapD4Root:
         :param my_revision: uint32
         :param my_hash: uint256
         """
-        return self.ts4_contract.call_getter_raw('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, expect_ec=ts4_expect_ec)
 
     def M_upgradeMeRequest(self, ct_type, my_revision, my_hash, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -5043,7 +5049,7 @@ class WrapD4Root:
         :param my_revision: uint32
         :param my_hash: uint256
         """
-        _r_ = self.ts4_contract.call_method('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5055,7 +5061,7 @@ class WrapD4Root:
         :param my_revision: uint32
         :param my_hash: uint256
         """
-        _r_ = self.ts4_contract.call_method_signed('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('upgradeMeRequest', {'ct_type': ct_type, 'my_revision': my_revision, 'my_hash': my_hash}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5077,7 +5083,7 @@ class WrapD4Root:
         :rtype: 
         :param smv_addr: address
         """
-        return self.ts4_contract.call_getter('assignSmvContract', {'smv_addr': smv_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('assignSmvContract', {'smv_addr': smv_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_assignSmvContract(self, smv_addr, ts4_expect_ec=0):
         """
@@ -5085,14 +5091,14 @@ class WrapD4Root:
         :rtype: 
         :param smv_addr: address
         """
-        return self.ts4_contract.call_getter_raw('assignSmvContract', {'smv_addr': smv_addr}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('assignSmvContract', {'smv_addr': smv_addr}, expect_ec=ts4_expect_ec)
 
     def M_assignSmvContract(self, smv_addr, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.assignSmvContract method call
         :param smv_addr: address
         """
-        _r_ = self.ts4_contract.call_method('assignSmvContract', {'smv_addr': smv_addr}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('assignSmvContract', {'smv_addr': smv_addr}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5102,7 +5108,7 @@ class WrapD4Root:
         Wrapper for D4Root.assignSmvContract signed method call
         :param smv_addr: address
         """
-        _r_ = self.ts4_contract.call_method_signed('assignSmvContract', {'smv_addr': smv_addr}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('assignSmvContract', {'smv_addr': smv_addr}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5124,7 +5130,7 @@ class WrapD4Root:
         :rtype: 
         :param until: uint32
         """
-        return self.ts4_contract.call_getter('restrictAuctions', {'until': until}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('restrictAuctions', {'until': until}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_restrictAuctions(self, until, ts4_expect_ec=0):
         """
@@ -5132,14 +5138,14 @@ class WrapD4Root:
         :rtype: 
         :param until: uint32
         """
-        return self.ts4_contract.call_getter_raw('restrictAuctions', {'until': until}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('restrictAuctions', {'until': until}, expect_ec=ts4_expect_ec)
 
     def M_restrictAuctions(self, until, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.restrictAuctions method call
         :param until: uint32
         """
-        _r_ = self.ts4_contract.call_method('restrictAuctions', {'until': until}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('restrictAuctions', {'until': until}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5149,7 +5155,7 @@ class WrapD4Root:
         Wrapper for D4Root.restrictAuctions signed method call
         :param until: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('restrictAuctions', {'until': until}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('restrictAuctions', {'until': until}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5168,7 +5174,7 @@ class WrapD4Root:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_getOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -5176,14 +5182,14 @@ class WrapD4Root:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_getOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.getOwner method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('getOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5193,7 +5199,7 @@ class WrapD4Root:
         Wrapper for D4Root.getOwner signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5212,7 +5218,7 @@ class WrapD4Root:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
         """
@@ -5220,14 +5226,14 @@ class WrapD4Root:
         :rtype: address
         :param _answer_id: uint32
         """
-        return self.ts4_contract.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
 
     def M_getPendingOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.getPendingOwner method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method('getPendingOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getPendingOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5237,7 +5243,7 @@ class WrapD4Root:
         Wrapper for D4Root.getPendingOwner signed method call
         :param _answer_id: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5261,7 +5267,7 @@ class WrapD4Root:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_transferOwner(self, new_owner, deadline, ts4_expect_ec=0):
         """
@@ -5270,7 +5276,7 @@ class WrapD4Root:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter_raw('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
 
     def M_transferOwner(self, new_owner, deadline, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -5278,7 +5284,7 @@ class WrapD4Root:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5289,7 +5295,7 @@ class WrapD4Root:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('transferOwner', {'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5309,20 +5315,20 @@ class WrapD4Root:
         Wrapper for D4Root.cancelTransferOwner getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('cancelTransferOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('cancelTransferOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_cancelTransferOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.cancelTransferOwner raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
 
     def M_cancelTransferOwner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.cancelTransferOwner method call
         """
-        _r_ = self.ts4_contract.call_method('cancelTransferOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('cancelTransferOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5331,7 +5337,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.cancelTransferOwner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5351,20 +5357,20 @@ class WrapD4Root:
         Wrapper for D4Root.acceptTransfer getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('acceptTransfer', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('acceptTransfer', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_acceptTransfer(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.acceptTransfer raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('acceptTransfer', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('acceptTransfer', {}, expect_ec=ts4_expect_ec)
 
     def M_acceptTransfer(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.acceptTransfer method call
         """
-        _r_ = self.ts4_contract.call_method('acceptTransfer', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('acceptTransfer', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5373,7 +5379,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.acceptTransfer signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('acceptTransfer', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('acceptTransfer', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5393,20 +5399,20 @@ class WrapD4Root:
         Wrapper for D4Root.relinquishOwner getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('relinquishOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('relinquishOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_relinquishOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.relinquishOwner raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('relinquishOwner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('relinquishOwner', {}, expect_ec=ts4_expect_ec)
 
     def M_relinquishOwner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.relinquishOwner method call
         """
-        _r_ = self.ts4_contract.call_method('relinquishOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('relinquishOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5415,7 +5421,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.relinquishOwner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('relinquishOwner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('relinquishOwner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5432,20 +5438,20 @@ class WrapD4Root:
         Wrapper for D4Root.withdrawable getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter('withdrawable', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('withdrawable', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_withdrawable(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.withdrawable raw getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter_raw('withdrawable', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('withdrawable', {}, expect_ec=ts4_expect_ec)
 
     def M_withdrawable(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.withdrawable method call
         """
-        _r_ = self.ts4_contract.call_method('withdrawable', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('withdrawable', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5454,7 +5460,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.withdrawable signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('withdrawable', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('withdrawable', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5478,7 +5484,7 @@ class WrapD4Root:
         :param dest: address
         :param value: uint128
         """
-        return self.ts4_contract.call_getter('withdraw', {'dest': dest, 'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('withdraw', {'dest': dest, 'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_withdraw(self, dest, value, ts4_expect_ec=0):
         """
@@ -5487,7 +5493,7 @@ class WrapD4Root:
         :param dest: address
         :param value: uint128
         """
-        return self.ts4_contract.call_getter_raw('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
 
     def M_withdraw(self, dest, value, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -5495,7 +5501,7 @@ class WrapD4Root:
         :param dest: address
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method('withdraw', {'dest': dest, 'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('withdraw', {'dest': dest, 'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5506,7 +5512,7 @@ class WrapD4Root:
         :param dest: address
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5523,20 +5529,20 @@ class WrapD4Root:
         Wrapper for D4Root.m_version getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_version(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.m_version raw getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
 
     def M_m_version(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.m_version method call
         """
-        _r_ = self.ts4_contract.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5545,7 +5551,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.m_version signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5562,20 +5568,20 @@ class WrapD4Root:
         Wrapper for D4Root.base_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_base_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.base_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
 
     def M_base_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.base_code method call
         """
-        _r_ = self.ts4_contract.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5584,7 +5590,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.base_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5601,20 +5607,20 @@ class WrapD4Root:
         Wrapper for D4Root.certificate_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('certificate_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certificate_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certificate_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.certificate_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('certificate_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certificate_code', {}, expect_ec=ts4_expect_ec)
 
     def M_certificate_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.certificate_code method call
         """
-        _r_ = self.ts4_contract.call_method('certificate_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certificate_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5623,7 +5629,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.certificate_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('certificate_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certificate_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5640,20 +5646,20 @@ class WrapD4Root:
         Wrapper for D4Root.auction_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('auction_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('auction_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_auction_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.auction_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('auction_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('auction_code', {}, expect_ec=ts4_expect_ec)
 
     def M_auction_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.auction_code method call
         """
-        _r_ = self.ts4_contract.call_method('auction_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('auction_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5662,7 +5668,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.auction_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('auction_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('auction_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5679,20 +5685,20 @@ class WrapD4Root:
         Wrapper for D4Root.user_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('user_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('user_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_user_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.user_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('user_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('user_code', {}, expect_ec=ts4_expect_ec)
 
     def M_user_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.user_code method call
         """
-        _r_ = self.ts4_contract.call_method('user_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('user_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5701,7 +5707,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.user_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('user_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('user_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5718,20 +5724,20 @@ class WrapD4Root:
         Wrapper for D4Root.base_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('base_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('base_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_base_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.base_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('base_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('base_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_base_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.base_revision method call
         """
-        _r_ = self.ts4_contract.call_method('base_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('base_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5740,7 +5746,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.base_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('base_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('base_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5757,20 +5763,20 @@ class WrapD4Root:
         Wrapper for D4Root.certificate_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('certificate_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certificate_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certificate_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.certificate_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('certificate_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certificate_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_certificate_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.certificate_revision method call
         """
-        _r_ = self.ts4_contract.call_method('certificate_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certificate_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5779,7 +5785,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.certificate_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('certificate_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certificate_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5796,20 +5802,20 @@ class WrapD4Root:
         Wrapper for D4Root.auction_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('auction_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('auction_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_auction_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.auction_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('auction_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('auction_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_auction_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.auction_revision method call
         """
-        _r_ = self.ts4_contract.call_method('auction_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('auction_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5818,7 +5824,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.auction_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('auction_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('auction_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5835,20 +5841,20 @@ class WrapD4Root:
         Wrapper for D4Root.user_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('user_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('user_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_user_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.user_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('user_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('user_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_user_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.user_revision method call
         """
-        _r_ = self.ts4_contract.call_method('user_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('user_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5857,7 +5863,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.user_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('user_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('user_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5874,20 +5880,20 @@ class WrapD4Root:
         Wrapper for D4Root.owner getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_owner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.owner raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('owner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('owner', {}, expect_ec=ts4_expect_ec)
 
     def M_owner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.owner method call
         """
-        _r_ = self.ts4_contract.call_method('owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5896,7 +5902,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.owner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('owner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('owner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5913,20 +5919,20 @@ class WrapD4Root:
         Wrapper for D4Root.pending_owner getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('pending_owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('pending_owner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_pending_owner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.pending_owner raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('pending_owner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('pending_owner', {}, expect_ec=ts4_expect_ec)
 
     def M_pending_owner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.pending_owner method call
         """
-        _r_ = self.ts4_contract.call_method('pending_owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('pending_owner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5935,7 +5941,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.pending_owner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('pending_owner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('pending_owner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5952,20 +5958,20 @@ class WrapD4Root:
         Wrapper for D4Root.owner_transfer_deadline getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('owner_transfer_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('owner_transfer_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_owner_transfer_deadline(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.owner_transfer_deadline raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
 
     def M_owner_transfer_deadline(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.owner_transfer_deadline method call
         """
-        _r_ = self.ts4_contract.call_method('owner_transfer_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('owner_transfer_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5974,7 +5980,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.owner_transfer_deadline signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('owner_transfer_deadline', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5991,20 +5997,20 @@ class WrapD4Root:
         Wrapper for D4Root.relinquish_owner_deadline getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('relinquish_owner_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('relinquish_owner_deadline', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_relinquish_owner_deadline(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.relinquish_owner_deadline raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
 
     def M_relinquish_owner_deadline(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.relinquish_owner_deadline method call
         """
-        _r_ = self.ts4_contract.call_method('relinquish_owner_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('relinquish_owner_deadline', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6013,7 +6019,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.relinquish_owner_deadline signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('relinquish_owner_deadline', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6030,20 +6036,20 @@ class WrapD4Root:
         Wrapper for D4Root.smv_root getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('smv_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('smv_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_smv_root(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.smv_root raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('smv_root', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('smv_root', {}, expect_ec=ts4_expect_ec)
 
     def M_smv_root(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.smv_root method call
         """
-        _r_ = self.ts4_contract.call_method('smv_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('smv_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6052,7 +6058,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.smv_root signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('smv_root', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('smv_root', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6069,20 +6075,20 @@ class WrapD4Root:
         Wrapper for D4Root.no_auctions_until getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('no_auctions_until', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('no_auctions_until', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_no_auctions_until(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.no_auctions_until raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('no_auctions_until', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('no_auctions_until', {}, expect_ec=ts4_expect_ec)
 
     def M_no_auctions_until(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.no_auctions_until method call
         """
-        _r_ = self.ts4_contract.call_method('no_auctions_until', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('no_auctions_until', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6091,7 +6097,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.no_auctions_until signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('no_auctions_until', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('no_auctions_until', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6108,20 +6114,20 @@ class WrapD4Root:
         Wrapper for D4Root.admin_enabled getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter('admin_enabled', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('admin_enabled', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_admin_enabled(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.admin_enabled raw getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter_raw('admin_enabled', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('admin_enabled', {}, expect_ec=ts4_expect_ec)
 
     def M_admin_enabled(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.admin_enabled method call
         """
-        _r_ = self.ts4_contract.call_method('admin_enabled', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('admin_enabled', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6130,7 +6136,7 @@ class WrapD4Root:
         """
         Wrapper for D4Root.admin_enabled signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('admin_enabled', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('admin_enabled', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6138,7 +6144,8 @@ class WrapD4Root:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4Test:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, root, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -6157,7 +6164,7 @@ class WrapD4Test:
         :rtype: 
         :param root: address
         """
-        return self.ts4_contract.call_getter('constructor', {'root': root}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {'root': root}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, root, ts4_expect_ec=0):
         """
@@ -6165,14 +6172,14 @@ class WrapD4Test:
         :rtype: 
         :param root: address
         """
-        return self.ts4_contract.call_getter_raw('constructor', {'root': root}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {'root': root}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, root, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.constructor method call
         :param root: address
         """
-        _r_ = self.ts4_contract.call_method('constructor', {'root': root}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {'root': root}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6182,7 +6189,7 @@ class WrapD4Test:
         Wrapper for D4Test.constructor signed method call
         :param root: address
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {'root': root}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {'root': root}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6202,20 +6209,20 @@ class WrapD4Test:
         Wrapper for D4Test.makeIntUser getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('makeIntUser', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('makeIntUser', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_makeIntUser(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.makeIntUser raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('makeIntUser', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('makeIntUser', {}, expect_ec=ts4_expect_ec)
 
     def M_makeIntUser(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.makeIntUser method call
         """
-        _r_ = self.ts4_contract.call_method('makeIntUser', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('makeIntUser', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6224,7 +6231,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.makeIntUser signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('makeIntUser', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('makeIntUser', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6246,7 +6253,7 @@ class WrapD4Test:
         :rtype: 
         :param pk: uint256
         """
-        return self.ts4_contract.call_getter('makeExtUser', {'pk': pk}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('makeExtUser', {'pk': pk}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_makeExtUser(self, pk, ts4_expect_ec=0):
         """
@@ -6254,14 +6261,14 @@ class WrapD4Test:
         :rtype: 
         :param pk: uint256
         """
-        return self.ts4_contract.call_getter_raw('makeExtUser', {'pk': pk}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('makeExtUser', {'pk': pk}, expect_ec=ts4_expect_ec)
 
     def M_makeExtUser(self, pk, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.makeExtUser method call
         :param pk: uint256
         """
-        _r_ = self.ts4_contract.call_method('makeExtUser', {'pk': pk}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('makeExtUser', {'pk': pk}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6271,7 +6278,7 @@ class WrapD4Test:
         Wrapper for D4Test.makeExtUser signed method call
         :param pk: uint256
         """
-        _r_ = self.ts4_contract.call_method_signed('makeExtUser', {'pk': pk}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('makeExtUser', {'pk': pk}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6293,7 +6300,7 @@ class WrapD4Test:
         :rtype: 
         :param user_addr: address
         """
-        return self.ts4_contract.call_getter('addressCallbackInt', {'user_addr': user_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('addressCallbackInt', {'user_addr': user_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_addressCallbackInt(self, user_addr, ts4_expect_ec=0):
         """
@@ -6301,14 +6308,14 @@ class WrapD4Test:
         :rtype: 
         :param user_addr: address
         """
-        return self.ts4_contract.call_getter_raw('addressCallbackInt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('addressCallbackInt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
 
     def M_addressCallbackInt(self, user_addr, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.addressCallbackInt method call
         :param user_addr: address
         """
-        _r_ = self.ts4_contract.call_method('addressCallbackInt', {'user_addr': user_addr}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('addressCallbackInt', {'user_addr': user_addr}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6318,7 +6325,7 @@ class WrapD4Test:
         Wrapper for D4Test.addressCallbackInt signed method call
         :param user_addr: address
         """
-        _r_ = self.ts4_contract.call_method_signed('addressCallbackInt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('addressCallbackInt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6340,7 +6347,7 @@ class WrapD4Test:
         :rtype: 
         :param user_addr: address
         """
-        return self.ts4_contract.call_getter('addressCallbackExt', {'user_addr': user_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('addressCallbackExt', {'user_addr': user_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_addressCallbackExt(self, user_addr, ts4_expect_ec=0):
         """
@@ -6348,14 +6355,14 @@ class WrapD4Test:
         :rtype: 
         :param user_addr: address
         """
-        return self.ts4_contract.call_getter_raw('addressCallbackExt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('addressCallbackExt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
 
     def M_addressCallbackExt(self, user_addr, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.addressCallbackExt method call
         :param user_addr: address
         """
-        _r_ = self.ts4_contract.call_method('addressCallbackExt', {'user_addr': user_addr}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('addressCallbackExt', {'user_addr': user_addr}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6365,7 +6372,7 @@ class WrapD4Test:
         Wrapper for D4Test.addressCallbackExt signed method call
         :param user_addr: address
         """
-        _r_ = self.ts4_contract.call_method_signed('addressCallbackExt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('addressCallbackExt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6391,7 +6398,7 @@ class WrapD4Test:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter('addLocked', {'until': until, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('addLocked', {'until': until, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_addLocked(self, until, name, parent, ts4_expect_ec=0):
         """
@@ -6401,7 +6408,7 @@ class WrapD4Test:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter_raw('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
 
     def M_addLocked(self, until, name, parent, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -6410,7 +6417,7 @@ class WrapD4Test:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method('addLocked', {'until': until, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('addLocked', {'until': until, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6422,7 +6429,7 @@ class WrapD4Test:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method_signed('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6442,20 +6449,20 @@ class WrapD4Test:
         Wrapper for D4Test.requestUpgrade getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_requestUpgrade(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.requestUpgrade raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
 
     def M_requestUpgrade(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.requestUpgrade method call
         """
-        _r_ = self.ts4_contract.call_method('requestUpgrade', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requestUpgrade', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6464,7 +6471,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.requestUpgrade signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('requestUpgrade', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requestUpgrade', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6484,20 +6491,20 @@ class WrapD4Test:
         Wrapper for D4Test.sweepLocks getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('sweepLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('sweepLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_sweepLocks(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.sweepLocks raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('sweepLocks', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('sweepLocks', {}, expect_ec=ts4_expect_ec)
 
     def M_sweepLocks(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.sweepLocks method call
         """
-        _r_ = self.ts4_contract.call_method('sweepLocks', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('sweepLocks', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6506,7 +6513,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.sweepLocks signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('sweepLocks', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('sweepLocks', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6530,7 +6537,7 @@ class WrapD4Test:
         :param dest: address
         :param value: uint128
         """
-        return self.ts4_contract.call_getter('withdraw', {'dest': dest, 'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('withdraw', {'dest': dest, 'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_withdraw(self, dest, value, ts4_expect_ec=0):
         """
@@ -6539,7 +6546,7 @@ class WrapD4Test:
         :param dest: address
         :param value: uint128
         """
-        return self.ts4_contract.call_getter_raw('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
 
     def M_withdraw(self, dest, value, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -6547,7 +6554,7 @@ class WrapD4Test:
         :param dest: address
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method('withdraw', {'dest': dest, 'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('withdraw', {'dest': dest, 'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6558,7 +6565,7 @@ class WrapD4Test:
         :param dest: address
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6580,7 +6587,7 @@ class WrapD4Test:
         :rtype: 
         :param value: uint128
         """
-        return self.ts4_contract.call_getter('pull', {'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('pull', {'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_pull(self, value, ts4_expect_ec=0):
         """
@@ -6588,14 +6595,14 @@ class WrapD4Test:
         :rtype: 
         :param value: uint128
         """
-        return self.ts4_contract.call_getter_raw('pull', {'value': value}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('pull', {'value': value}, expect_ec=ts4_expect_ec)
 
     def M_pull(self, value, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.pull method call
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method('pull', {'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('pull', {'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6605,7 +6612,7 @@ class WrapD4Test:
         Wrapper for D4Test.pull signed method call
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('pull', {'value': value}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('pull', {'value': value}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6622,20 +6629,20 @@ class WrapD4Test:
         Wrapper for D4Test.withdrawable getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter('withdrawable', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('withdrawable', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_withdrawable(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.withdrawable raw getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter_raw('withdrawable', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('withdrawable', {}, expect_ec=ts4_expect_ec)
 
     def M_withdrawable(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.withdrawable method call
         """
-        _r_ = self.ts4_contract.call_method('withdrawable', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('withdrawable', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6644,7 +6651,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.withdrawable signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('withdrawable', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('withdrawable', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6666,7 +6673,7 @@ class WrapD4Test:
         :rtype: 
         :param newMasterKey: bytes
         """
-        return self.ts4_contract.call_getter('setMasterKey', {'newMasterKey': newMasterKey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setMasterKey', {'newMasterKey': newMasterKey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setMasterKey(self, newMasterKey, ts4_expect_ec=0):
         """
@@ -6674,14 +6681,14 @@ class WrapD4Test:
         :rtype: 
         :param newMasterKey: bytes
         """
-        return self.ts4_contract.call_getter_raw('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
 
     def M_setMasterKey(self, newMasterKey, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.setMasterKey method call
         :param newMasterKey: bytes
         """
-        _r_ = self.ts4_contract.call_method('setMasterKey', {'newMasterKey': newMasterKey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setMasterKey', {'newMasterKey': newMasterKey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6691,7 +6698,7 @@ class WrapD4Test:
         Wrapper for D4Test.setMasterKey signed method call
         :param newMasterKey: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6715,7 +6722,7 @@ class WrapD4Test:
         :param name: bytes
         :param duration: uint8
         """
-        return self.ts4_contract.call_getter('createAuction', {'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('createAuction', {'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_createAuction(self, name, duration, ts4_expect_ec=0):
         """
@@ -6724,7 +6731,7 @@ class WrapD4Test:
         :param name: bytes
         :param duration: uint8
         """
-        return self.ts4_contract.call_getter_raw('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
 
     def M_createAuction(self, name, duration, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -6732,7 +6739,7 @@ class WrapD4Test:
         :param name: bytes
         :param duration: uint8
         """
-        _r_ = self.ts4_contract.call_method('createAuction', {'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('createAuction', {'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6743,7 +6750,7 @@ class WrapD4Test:
         :param name: bytes
         :param duration: uint8
         """
-        _r_ = self.ts4_contract.call_method_signed('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6769,7 +6776,7 @@ class WrapD4Test:
         :param data: bytes
         :param hash: uint256
         """
-        return self.ts4_contract.call_getter('makeBid', {'auction': auction, 'data': data, 'hash': hash}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('makeBid', {'auction': auction, 'data': data, 'hash': hash}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_makeBid(self, auction, data, hash, ts4_expect_ec=0):
         """
@@ -6779,7 +6786,7 @@ class WrapD4Test:
         :param data: bytes
         :param hash: uint256
         """
-        return self.ts4_contract.call_getter_raw('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
 
     def M_makeBid(self, auction, data, hash, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -6788,7 +6795,7 @@ class WrapD4Test:
         :param data: bytes
         :param hash: uint256
         """
-        _r_ = self.ts4_contract.call_method('makeBid', {'auction': auction, 'data': data, 'hash': hash}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('makeBid', {'auction': auction, 'data': data, 'hash': hash}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6800,7 +6807,7 @@ class WrapD4Test:
         :param data: bytes
         :param hash: uint256
         """
-        _r_ = self.ts4_contract.call_method_signed('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6826,7 +6833,7 @@ class WrapD4Test:
         :param amount: uint128
         :param nonce: uint128
         """
-        return self.ts4_contract.call_getter('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_revealBid(self, auction, amount, nonce, ts4_expect_ec=0):
         """
@@ -6836,7 +6843,7 @@ class WrapD4Test:
         :param amount: uint128
         :param nonce: uint128
         """
-        return self.ts4_contract.call_getter_raw('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
 
     def M_revealBid(self, auction, amount, nonce, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -6845,7 +6852,7 @@ class WrapD4Test:
         :param amount: uint128
         :param nonce: uint128
         """
-        _r_ = self.ts4_contract.call_method('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6857,7 +6864,7 @@ class WrapD4Test:
         :param amount: uint128
         :param nonce: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6877,20 +6884,20 @@ class WrapD4Test:
         Wrapper for D4Test.bidRevealComplete getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('bidRevealComplete', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('bidRevealComplete', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_bidRevealComplete(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.bidRevealComplete raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
 
     def M_bidRevealComplete(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.bidRevealComplete method call
         """
-        _r_ = self.ts4_contract.call_method('bidRevealComplete', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('bidRevealComplete', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6899,7 +6906,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.bidRevealComplete signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6921,7 +6928,7 @@ class WrapD4Test:
         :rtype: 
         :param auction: address
         """
-        return self.ts4_contract.call_getter('finalize', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('finalize', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_finalize(self, auction, ts4_expect_ec=0):
         """
@@ -6929,14 +6936,14 @@ class WrapD4Test:
         :rtype: 
         :param auction: address
         """
-        return self.ts4_contract.call_getter_raw('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
 
     def M_finalize(self, auction, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.finalize method call
         :param auction: address
         """
-        _r_ = self.ts4_contract.call_method('finalize', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('finalize', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6946,7 +6953,7 @@ class WrapD4Test:
         Wrapper for D4Test.finalize signed method call
         :param auction: address
         """
-        _r_ = self.ts4_contract.call_method_signed('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6968,7 +6975,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('queryCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryCert(self, target, ts4_expect_ec=0):
         """
@@ -6976,14 +6983,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_queryCert(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.queryCert method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('queryCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -6993,7 +7000,7 @@ class WrapD4Test:
         Wrapper for D4Test.queryCert signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7015,7 +7022,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('queryAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryAuct(self, target, ts4_expect_ec=0):
         """
@@ -7023,14 +7030,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_queryAuct(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.queryAuct method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('queryAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7040,7 +7047,7 @@ class WrapD4Test:
         Wrapper for D4Test.queryAuct signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7062,7 +7069,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('forgetCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('forgetCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_forgetCert(self, target, ts4_expect_ec=0):
         """
@@ -7070,14 +7077,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_forgetCert(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.forgetCert method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('forgetCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('forgetCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7087,7 +7094,7 @@ class WrapD4Test:
         Wrapper for D4Test.forgetCert signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7109,7 +7116,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('forgetAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('forgetAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_forgetAuct(self, target, ts4_expect_ec=0):
         """
@@ -7117,14 +7124,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_forgetAuct(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.forgetAuct method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('forgetAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('forgetAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7134,7 +7141,7 @@ class WrapD4Test:
         Wrapper for D4Test.forgetAuct signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7160,7 +7167,7 @@ class WrapD4Test:
         :param index: int16
         :param new_value: address
         """
-        return self.ts4_contract.call_getter('setValue', {'target': target, 'index': index, 'new_value': new_value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setValue', {'target': target, 'index': index, 'new_value': new_value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setValue(self, target, index, new_value, ts4_expect_ec=0):
         """
@@ -7170,7 +7177,7 @@ class WrapD4Test:
         :param index: int16
         :param new_value: address
         """
-        return self.ts4_contract.call_getter_raw('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
 
     def M_setValue(self, target, index, new_value, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -7179,7 +7186,7 @@ class WrapD4Test:
         :param index: int16
         :param new_value: address
         """
-        _r_ = self.ts4_contract.call_method('setValue', {'target': target, 'index': index, 'new_value': new_value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setValue', {'target': target, 'index': index, 'new_value': new_value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7191,7 +7198,7 @@ class WrapD4Test:
         :param index: int16
         :param new_value: address
         """
-        _r_ = self.ts4_contract.call_method_signed('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7215,7 +7222,7 @@ class WrapD4Test:
         :param target: address
         :param index: int16
         """
-        return self.ts4_contract.call_getter('resetValue', {'target': target, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('resetValue', {'target': target, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_resetValue(self, target, index, ts4_expect_ec=0):
         """
@@ -7224,7 +7231,7 @@ class WrapD4Test:
         :param target: address
         :param index: int16
         """
-        return self.ts4_contract.call_getter_raw('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
 
     def M_resetValue(self, target, index, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -7232,7 +7239,7 @@ class WrapD4Test:
         :param target: address
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method('resetValue', {'target': target, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resetValue', {'target': target, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7243,7 +7250,7 @@ class WrapD4Test:
         :param target: address
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method_signed('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7265,7 +7272,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('clearValues', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('clearValues', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_clearValues(self, target, ts4_expect_ec=0):
         """
@@ -7273,14 +7280,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_clearValues(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.clearValues method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('clearValues', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('clearValues', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7290,7 +7297,7 @@ class WrapD4Test:
         Wrapper for D4Test.clearValues signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7314,7 +7321,7 @@ class WrapD4Test:
         :param target: address
         :param amount: uint128
         """
-        return self.ts4_contract.call_getter('certWithdrawExcess', {'target': target, 'amount': amount}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certWithdrawExcess', {'target': target, 'amount': amount}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certWithdrawExcess(self, target, amount, ts4_expect_ec=0):
         """
@@ -7323,7 +7330,7 @@ class WrapD4Test:
         :param target: address
         :param amount: uint128
         """
-        return self.ts4_contract.call_getter_raw('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
 
     def M_certWithdrawExcess(self, target, amount, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -7331,7 +7338,7 @@ class WrapD4Test:
         :param target: address
         :param amount: uint128
         """
-        _r_ = self.ts4_contract.call_method('certWithdrawExcess', {'target': target, 'amount': amount}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certWithdrawExcess', {'target': target, 'amount': amount}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7342,7 +7349,7 @@ class WrapD4Test:
         :param target: address
         :param amount: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7364,7 +7371,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certRequestUpgrade', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certRequestUpgrade', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certRequestUpgrade(self, target, ts4_expect_ec=0):
         """
@@ -7372,14 +7379,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certRequestUpgrade(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.certRequestUpgrade method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certRequestUpgrade', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certRequestUpgrade', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7389,7 +7396,7 @@ class WrapD4Test:
         Wrapper for D4Test.certRequestUpgrade signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7411,7 +7418,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('requestProlong', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('requestProlong', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_requestProlong(self, target, ts4_expect_ec=0):
         """
@@ -7419,14 +7426,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_requestProlong(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.requestProlong method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('requestProlong', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requestProlong', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7436,7 +7443,7 @@ class WrapD4Test:
         Wrapper for D4Test.requestProlong signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7460,7 +7467,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('deploySub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('deploySub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_deploySub(self, target, name, ts4_expect_ec=0):
         """
@@ -7469,7 +7476,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
     def M_deploySub(self, target, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -7477,7 +7484,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('deploySub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('deploySub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7488,7 +7495,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7512,7 +7519,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('syncSub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('syncSub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_syncSub(self, target, name, ts4_expect_ec=0):
         """
@@ -7521,7 +7528,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
     def M_syncSub(self, target, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -7529,7 +7536,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('syncSub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('syncSub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7540,7 +7547,7 @@ class WrapD4Test:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7562,7 +7569,7 @@ class WrapD4Test:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter('queryCertCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryCertCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryCertCallback(self, info, ts4_expect_ec=0):
         """
@@ -7570,14 +7577,14 @@ class WrapD4Test:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter_raw('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
 
     def M_queryCertCallback(self, info, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.queryCertCallback method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method('queryCertCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryCertCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7587,7 +7594,7 @@ class WrapD4Test:
         Wrapper for D4Test.queryCertCallback signed method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method_signed('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7609,7 +7616,7 @@ class WrapD4Test:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter('queryAuctCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryAuctCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryAuctCallback(self, info, ts4_expect_ec=0):
         """
@@ -7617,14 +7624,14 @@ class WrapD4Test:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter_raw('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
 
     def M_queryAuctCallback(self, info, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.queryAuctCallback method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method('queryAuctCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryAuctCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7634,7 +7641,7 @@ class WrapD4Test:
         Wrapper for D4Test.queryAuctCallback signed method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method_signed('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7660,7 +7667,7 @@ class WrapD4Test:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certTransferOwner(self, target, new_owner, deadline, ts4_expect_ec=0):
         """
@@ -7670,7 +7677,7 @@ class WrapD4Test:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter_raw('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
 
     def M_certTransferOwner(self, target, new_owner, deadline, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -7679,7 +7686,7 @@ class WrapD4Test:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7691,7 +7698,7 @@ class WrapD4Test:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7713,7 +7720,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certCancelTransferOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certCancelTransferOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certCancelTransferOwner(self, target, ts4_expect_ec=0):
         """
@@ -7721,14 +7728,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certCancelTransferOwner(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.certCancelTransferOwner method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certCancelTransferOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certCancelTransferOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7738,7 +7745,7 @@ class WrapD4Test:
         Wrapper for D4Test.certCancelTransferOwner signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7760,7 +7767,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certAcceptTransfer', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certAcceptTransfer', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certAcceptTransfer(self, target, ts4_expect_ec=0):
         """
@@ -7768,14 +7775,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certAcceptTransfer(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.certAcceptTransfer method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certAcceptTransfer', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certAcceptTransfer', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7785,7 +7792,7 @@ class WrapD4Test:
         Wrapper for D4Test.certAcceptTransfer signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7807,7 +7814,7 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certRelinquishOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certRelinquishOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certRelinquishOwner(self, target, ts4_expect_ec=0):
         """
@@ -7815,14 +7822,14 @@ class WrapD4Test:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certRelinquishOwner(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.certRelinquishOwner method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certRelinquishOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certRelinquishOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7832,7 +7839,7 @@ class WrapD4Test:
         Wrapper for D4Test.certRelinquishOwner signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7852,20 +7859,20 @@ class WrapD4Test:
         Wrapper for D4Test.passToOwner getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_passToOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.passToOwner raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
 
     def M_passToOwner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.passToOwner method call
         """
-        _r_ = self.ts4_contract.call_method('passToOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('passToOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7874,7 +7881,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.passToOwner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('passToOwner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('passToOwner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7898,7 +7905,7 @@ class WrapD4Test:
         :param code: cell
         :param revision: uint32
         """
-        return self.ts4_contract.call_getter('upgrade', {'code': code, 'revision': revision}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('upgrade', {'code': code, 'revision': revision}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_upgrade(self, code, revision, ts4_expect_ec=0):
         """
@@ -7907,7 +7914,7 @@ class WrapD4Test:
         :param code: cell
         :param revision: uint32
         """
-        return self.ts4_contract.call_getter_raw('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
 
     def M_upgrade(self, code, revision, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -7915,7 +7922,7 @@ class WrapD4Test:
         :param code: cell
         :param revision: uint32
         """
-        _r_ = self.ts4_contract.call_method('upgrade', {'code': code, 'revision': revision}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('upgrade', {'code': code, 'revision': revision}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7926,7 +7933,7 @@ class WrapD4Test:
         :param code: cell
         :param revision: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7946,20 +7953,20 @@ class WrapD4Test:
         Wrapper for D4Test.upgradeNotNeeded getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_upgradeNotNeeded(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.upgradeNotNeeded raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
 
     def M_upgradeNotNeeded(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.upgradeNotNeeded method call
         """
-        _r_ = self.ts4_contract.call_method('upgradeNotNeeded', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('upgradeNotNeeded', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7968,7 +7975,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.upgradeNotNeeded signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -7985,20 +7992,20 @@ class WrapD4Test:
         Wrapper for D4Test._root getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R__root(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test._root raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('_root', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('_root', {}, expect_ec=ts4_expect_ec)
 
     def M__root(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test._root method call
         """
-        _r_ = self.ts4_contract.call_method('_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8007,7 +8014,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test._root signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('_root', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('_root', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8024,20 +8031,20 @@ class WrapD4Test:
         Wrapper for D4Test.iaddr getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('iaddr', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('iaddr', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_iaddr(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.iaddr raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('iaddr', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('iaddr', {}, expect_ec=ts4_expect_ec)
 
     def M_iaddr(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.iaddr method call
         """
-        _r_ = self.ts4_contract.call_method('iaddr', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('iaddr', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8046,7 +8053,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.iaddr signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('iaddr', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('iaddr', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8063,20 +8070,20 @@ class WrapD4Test:
         Wrapper for D4Test.eaddr getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('eaddr', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('eaddr', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_eaddr(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.eaddr raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('eaddr', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('eaddr', {}, expect_ec=ts4_expect_ec)
 
     def M_eaddr(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.eaddr method call
         """
-        _r_ = self.ts4_contract.call_method('eaddr', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('eaddr', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8085,7 +8092,7 @@ class WrapD4Test:
         """
         Wrapper for D4Test.eaddr signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('eaddr', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('eaddr', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8093,7 +8100,8 @@ class WrapD4Test:
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4User:
     def __init__(self, contract):
-        self.ts4_contract = contract
+        self.C_ = contract
+        self.A_ = contract.address
 
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
@@ -8110,20 +8118,20 @@ class WrapD4User:
         Wrapper for D4User.constructor getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.constructor raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
     def M_constructor(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.constructor method call
         """
-        _r_ = self.ts4_contract.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('constructor', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8132,7 +8140,7 @@ class WrapD4User:
         """
         Wrapper for D4User.constructor signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('constructor', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8154,7 +8162,7 @@ class WrapD4User:
         :rtype: 
         :param newMasterKey: bytes
         """
-        return self.ts4_contract.call_getter('setMasterKey', {'newMasterKey': newMasterKey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setMasterKey', {'newMasterKey': newMasterKey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setMasterKey(self, newMasterKey, ts4_expect_ec=0):
         """
@@ -8162,14 +8170,14 @@ class WrapD4User:
         :rtype: 
         :param newMasterKey: bytes
         """
-        return self.ts4_contract.call_getter_raw('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
 
     def M_setMasterKey(self, newMasterKey, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.setMasterKey method call
         :param newMasterKey: bytes
         """
-        _r_ = self.ts4_contract.call_method('setMasterKey', {'newMasterKey': newMasterKey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setMasterKey', {'newMasterKey': newMasterKey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8179,7 +8187,7 @@ class WrapD4User:
         Wrapper for D4User.setMasterKey signed method call
         :param newMasterKey: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8199,20 +8207,20 @@ class WrapD4User:
         Wrapper for D4User.requestUpgrade getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_requestUpgrade(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.requestUpgrade raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
 
     def M_requestUpgrade(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.requestUpgrade method call
         """
-        _r_ = self.ts4_contract.call_method('requestUpgrade', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requestUpgrade', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8221,7 +8229,7 @@ class WrapD4User:
         """
         Wrapper for D4User.requestUpgrade signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('requestUpgrade', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requestUpgrade', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8245,7 +8253,7 @@ class WrapD4User:
         :param code: cell
         :param revision: uint32
         """
-        return self.ts4_contract.call_getter('upgrade', {'code': code, 'revision': revision}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('upgrade', {'code': code, 'revision': revision}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_upgrade(self, code, revision, ts4_expect_ec=0):
         """
@@ -8254,7 +8262,7 @@ class WrapD4User:
         :param code: cell
         :param revision: uint32
         """
-        return self.ts4_contract.call_getter_raw('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
 
     def M_upgrade(self, code, revision, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -8262,7 +8270,7 @@ class WrapD4User:
         :param code: cell
         :param revision: uint32
         """
-        _r_ = self.ts4_contract.call_method('upgrade', {'code': code, 'revision': revision}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('upgrade', {'code': code, 'revision': revision}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8273,7 +8281,7 @@ class WrapD4User:
         :param code: cell
         :param revision: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('upgrade', {'code': code, 'revision': revision}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8293,20 +8301,20 @@ class WrapD4User:
         Wrapper for D4User.upgradeNotNeeded getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_upgradeNotNeeded(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.upgradeNotNeeded raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
 
     def M_upgradeNotNeeded(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.upgradeNotNeeded method call
         """
-        _r_ = self.ts4_contract.call_method('upgradeNotNeeded', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('upgradeNotNeeded', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8315,7 +8323,7 @@ class WrapD4User:
         """
         Wrapper for D4User.upgradeNotNeeded signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8339,7 +8347,7 @@ class WrapD4User:
         :param name: bytes
         :param duration: uint8
         """
-        return self.ts4_contract.call_getter('createAuction', {'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('createAuction', {'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_createAuction(self, name, duration, ts4_expect_ec=0):
         """
@@ -8348,7 +8356,7 @@ class WrapD4User:
         :param name: bytes
         :param duration: uint8
         """
-        return self.ts4_contract.call_getter_raw('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
 
     def M_createAuction(self, name, duration, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -8356,7 +8364,7 @@ class WrapD4User:
         :param name: bytes
         :param duration: uint8
         """
-        _r_ = self.ts4_contract.call_method('createAuction', {'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('createAuction', {'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8367,7 +8375,7 @@ class WrapD4User:
         :param name: bytes
         :param duration: uint8
         """
-        _r_ = self.ts4_contract.call_method_signed('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8389,7 +8397,7 @@ class WrapD4User:
         :rtype: 
         :param auction: address
         """
-        return self.ts4_contract.call_getter('createAuctionCallback', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('createAuctionCallback', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_createAuctionCallback(self, auction, ts4_expect_ec=0):
         """
@@ -8397,14 +8405,14 @@ class WrapD4User:
         :rtype: 
         :param auction: address
         """
-        return self.ts4_contract.call_getter_raw('createAuctionCallback', {'auction': auction}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('createAuctionCallback', {'auction': auction}, expect_ec=ts4_expect_ec)
 
     def M_createAuctionCallback(self, auction, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.createAuctionCallback method call
         :param auction: address
         """
-        _r_ = self.ts4_contract.call_method('createAuctionCallback', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('createAuctionCallback', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8414,7 +8422,7 @@ class WrapD4User:
         Wrapper for D4User.createAuctionCallback signed method call
         :param auction: address
         """
-        _r_ = self.ts4_contract.call_method_signed('createAuctionCallback', {'auction': auction}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('createAuctionCallback', {'auction': auction}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8440,7 +8448,7 @@ class WrapD4User:
         :param data: bytes
         :param hash: uint256
         """
-        return self.ts4_contract.call_getter('makeBid', {'auction': auction, 'data': data, 'hash': hash}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('makeBid', {'auction': auction, 'data': data, 'hash': hash}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_makeBid(self, auction, data, hash, ts4_expect_ec=0):
         """
@@ -8450,7 +8458,7 @@ class WrapD4User:
         :param data: bytes
         :param hash: uint256
         """
-        return self.ts4_contract.call_getter_raw('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
 
     def M_makeBid(self, auction, data, hash, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -8459,7 +8467,7 @@ class WrapD4User:
         :param data: bytes
         :param hash: uint256
         """
-        _r_ = self.ts4_contract.call_method('makeBid', {'auction': auction, 'data': data, 'hash': hash}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('makeBid', {'auction': auction, 'data': data, 'hash': hash}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8471,7 +8479,7 @@ class WrapD4User:
         :param data: bytes
         :param hash: uint256
         """
-        _r_ = self.ts4_contract.call_method_signed('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('makeBid', {'auction': auction, 'data': data, 'hash': hash}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8497,7 +8505,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        return self.ts4_contract.call_getter('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_revealBid(self, auction, amount, nonce, ts4_expect_ec=0):
         """
@@ -8507,7 +8515,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        return self.ts4_contract.call_getter_raw('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
 
     def M_revealBid(self, auction, amount, nonce, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -8516,7 +8524,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        _r_ = self.ts4_contract.call_method('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8528,7 +8536,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('revealBid', {'auction': auction, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8548,20 +8556,20 @@ class WrapD4User:
         Wrapper for D4User.bidRevealComplete getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('bidRevealComplete', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('bidRevealComplete', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_bidRevealComplete(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.bidRevealComplete raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
 
     def M_bidRevealComplete(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.bidRevealComplete method call
         """
-        _r_ = self.ts4_contract.call_method('bidRevealComplete', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('bidRevealComplete', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8570,7 +8578,7 @@ class WrapD4User:
         """
         Wrapper for D4User.bidRevealComplete signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8592,7 +8600,7 @@ class WrapD4User:
         :rtype: 
         :param auction: address
         """
-        return self.ts4_contract.call_getter('finalize', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('finalize', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_finalize(self, auction, ts4_expect_ec=0):
         """
@@ -8600,14 +8608,14 @@ class WrapD4User:
         :rtype: 
         :param auction: address
         """
-        return self.ts4_contract.call_getter_raw('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
 
     def M_finalize(self, auction, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.finalize method call
         :param auction: address
         """
-        _r_ = self.ts4_contract.call_method('finalize', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('finalize', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8617,7 +8625,7 @@ class WrapD4User:
         Wrapper for D4User.finalize signed method call
         :param auction: address
         """
-        _r_ = self.ts4_contract.call_method_signed('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8644,7 +8652,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        return self.ts4_contract.call_getter('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_utilBidHash(self, auction, startTime, user, amount, nonce, ts4_expect_ec=0):
         """
@@ -8656,7 +8664,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        return self.ts4_contract.call_getter_raw('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
 
     def M_utilBidHash(self, auction, startTime, user, amount, nonce, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -8667,7 +8675,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        _r_ = self.ts4_contract.call_method('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8681,7 +8689,7 @@ class WrapD4User:
         :param amount: uint128
         :param nonce: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('utilBidHash', {'auction': auction, 'startTime': startTime, 'user': user, 'amount': amount, 'nonce': nonce}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8703,7 +8711,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('queryCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryCert(self, target, ts4_expect_ec=0):
         """
@@ -8711,14 +8719,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_queryCert(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.queryCert method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('queryCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8728,7 +8736,7 @@ class WrapD4User:
         Wrapper for D4User.queryCert signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8750,7 +8758,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('queryAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryAuct(self, target, ts4_expect_ec=0):
         """
@@ -8758,14 +8766,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_queryAuct(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.queryAuct method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('queryAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8775,7 +8783,7 @@ class WrapD4User:
         Wrapper for D4User.queryAuct signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8797,7 +8805,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('forgetCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('forgetCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_forgetCert(self, target, ts4_expect_ec=0):
         """
@@ -8805,14 +8813,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_forgetCert(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.forgetCert method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('forgetCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('forgetCert', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8822,7 +8830,7 @@ class WrapD4User:
         Wrapper for D4User.forgetCert signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8844,7 +8852,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('forgetAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('forgetAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_forgetAuct(self, target, ts4_expect_ec=0):
         """
@@ -8852,14 +8860,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_forgetAuct(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.forgetAuct method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('forgetAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('forgetAuct', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8869,7 +8877,7 @@ class WrapD4User:
         Wrapper for D4User.forgetAuct signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8891,7 +8899,7 @@ class WrapD4User:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter('queryCertCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryCertCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryCertCallback(self, info, ts4_expect_ec=0):
         """
@@ -8899,14 +8907,14 @@ class WrapD4User:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter_raw('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
 
     def M_queryCertCallback(self, info, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.queryCertCallback method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method('queryCertCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryCertCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8916,7 +8924,7 @@ class WrapD4User:
         Wrapper for D4User.queryCertCallback signed method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method_signed('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8938,7 +8946,7 @@ class WrapD4User:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter('queryAuctCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('queryAuctCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_queryAuctCallback(self, info, ts4_expect_ec=0):
         """
@@ -8946,14 +8954,14 @@ class WrapD4User:
         :rtype: 
         :param info: tuple
         """
-        return self.ts4_contract.call_getter_raw('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
 
     def M_queryAuctCallback(self, info, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.queryAuctCallback method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method('queryAuctCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('queryAuctCallback', {'info': info}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8963,7 +8971,7 @@ class WrapD4User:
         Wrapper for D4User.queryAuctCallback signed method call
         :param info: tuple
         """
-        _r_ = self.ts4_contract.call_method_signed('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8989,7 +8997,7 @@ class WrapD4User:
         :param index: int16
         :param new_value: address
         """
-        return self.ts4_contract.call_getter('setValue', {'target': target, 'index': index, 'new_value': new_value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('setValue', {'target': target, 'index': index, 'new_value': new_value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_setValue(self, target, index, new_value, ts4_expect_ec=0):
         """
@@ -8999,7 +9007,7 @@ class WrapD4User:
         :param index: int16
         :param new_value: address
         """
-        return self.ts4_contract.call_getter_raw('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
 
     def M_setValue(self, target, index, new_value, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9008,7 +9016,7 @@ class WrapD4User:
         :param index: int16
         :param new_value: address
         """
-        _r_ = self.ts4_contract.call_method('setValue', {'target': target, 'index': index, 'new_value': new_value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('setValue', {'target': target, 'index': index, 'new_value': new_value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9020,7 +9028,7 @@ class WrapD4User:
         :param index: int16
         :param new_value: address
         """
-        _r_ = self.ts4_contract.call_method_signed('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('setValue', {'target': target, 'index': index, 'new_value': new_value}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9044,7 +9052,7 @@ class WrapD4User:
         :param target: address
         :param index: int16
         """
-        return self.ts4_contract.call_getter('resetValue', {'target': target, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('resetValue', {'target': target, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_resetValue(self, target, index, ts4_expect_ec=0):
         """
@@ -9053,7 +9061,7 @@ class WrapD4User:
         :param target: address
         :param index: int16
         """
-        return self.ts4_contract.call_getter_raw('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
 
     def M_resetValue(self, target, index, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9061,7 +9069,7 @@ class WrapD4User:
         :param target: address
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method('resetValue', {'target': target, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resetValue', {'target': target, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9072,7 +9080,7 @@ class WrapD4User:
         :param target: address
         :param index: int16
         """
-        _r_ = self.ts4_contract.call_method_signed('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resetValue', {'target': target, 'index': index}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9094,7 +9102,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('clearValues', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('clearValues', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_clearValues(self, target, ts4_expect_ec=0):
         """
@@ -9102,14 +9110,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_clearValues(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.clearValues method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('clearValues', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('clearValues', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9119,7 +9127,7 @@ class WrapD4User:
         Wrapper for D4User.clearValues signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9143,7 +9151,7 @@ class WrapD4User:
         :param target: address
         :param amount: uint128
         """
-        return self.ts4_contract.call_getter('certWithdrawExcess', {'target': target, 'amount': amount}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certWithdrawExcess', {'target': target, 'amount': amount}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certWithdrawExcess(self, target, amount, ts4_expect_ec=0):
         """
@@ -9152,7 +9160,7 @@ class WrapD4User:
         :param target: address
         :param amount: uint128
         """
-        return self.ts4_contract.call_getter_raw('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
 
     def M_certWithdrawExcess(self, target, amount, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9160,7 +9168,7 @@ class WrapD4User:
         :param target: address
         :param amount: uint128
         """
-        _r_ = self.ts4_contract.call_method('certWithdrawExcess', {'target': target, 'amount': amount}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certWithdrawExcess', {'target': target, 'amount': amount}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9171,7 +9179,7 @@ class WrapD4User:
         :param target: address
         :param amount: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certWithdrawExcess', {'target': target, 'amount': amount}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9193,7 +9201,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certRequestUpgrade', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certRequestUpgrade', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certRequestUpgrade(self, target, ts4_expect_ec=0):
         """
@@ -9201,14 +9209,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certRequestUpgrade(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.certRequestUpgrade method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certRequestUpgrade', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certRequestUpgrade', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9218,7 +9226,7 @@ class WrapD4User:
         Wrapper for D4User.certRequestUpgrade signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9240,7 +9248,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('requestProlong', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('requestProlong', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_requestProlong(self, target, ts4_expect_ec=0):
         """
@@ -9248,14 +9256,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_requestProlong(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.requestProlong method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('requestProlong', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requestProlong', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9265,7 +9273,7 @@ class WrapD4User:
         Wrapper for D4User.requestProlong signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9289,7 +9297,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('deploySub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('deploySub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_deploySub(self, target, name, ts4_expect_ec=0):
         """
@@ -9298,7 +9306,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
     def M_deploySub(self, target, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9306,7 +9314,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('deploySub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('deploySub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9317,7 +9325,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9341,7 +9349,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter('syncSub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('syncSub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_syncSub(self, target, name, ts4_expect_ec=0):
         """
@@ -9350,7 +9358,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        return self.ts4_contract.call_getter_raw('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
     def M_syncSub(self, target, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9358,7 +9366,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method('syncSub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('syncSub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9369,7 +9377,7 @@ class WrapD4User:
         :param target: address
         :param name: bytes
         """
-        _r_ = self.ts4_contract.call_method_signed('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9395,7 +9403,7 @@ class WrapD4User:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certTransferOwner(self, target, new_owner, deadline, ts4_expect_ec=0):
         """
@@ -9405,7 +9413,7 @@ class WrapD4User:
         :param new_owner: address
         :param deadline: uint32
         """
-        return self.ts4_contract.call_getter_raw('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
 
     def M_certTransferOwner(self, target, new_owner, deadline, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9414,7 +9422,7 @@ class WrapD4User:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9426,7 +9434,7 @@ class WrapD4User:
         :param new_owner: address
         :param deadline: uint32
         """
-        _r_ = self.ts4_contract.call_method_signed('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certTransferOwner', {'target': target, 'new_owner': new_owner, 'deadline': deadline}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9448,7 +9456,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certCancelTransferOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certCancelTransferOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certCancelTransferOwner(self, target, ts4_expect_ec=0):
         """
@@ -9456,14 +9464,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certCancelTransferOwner(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.certCancelTransferOwner method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certCancelTransferOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certCancelTransferOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9473,7 +9481,7 @@ class WrapD4User:
         Wrapper for D4User.certCancelTransferOwner signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9495,7 +9503,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certAcceptTransfer', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certAcceptTransfer', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certAcceptTransfer(self, target, ts4_expect_ec=0):
         """
@@ -9503,14 +9511,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certAcceptTransfer(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.certAcceptTransfer method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certAcceptTransfer', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certAcceptTransfer', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9520,7 +9528,7 @@ class WrapD4User:
         Wrapper for D4User.certAcceptTransfer signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9542,7 +9550,7 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter('certRelinquishOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certRelinquishOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certRelinquishOwner(self, target, ts4_expect_ec=0):
         """
@@ -9550,14 +9558,14 @@ class WrapD4User:
         :rtype: 
         :param target: address
         """
-        return self.ts4_contract.call_getter_raw('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
 
     def M_certRelinquishOwner(self, target, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.certRelinquishOwner method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method('certRelinquishOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certRelinquishOwner', {'target': target}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9567,7 +9575,7 @@ class WrapD4User:
         Wrapper for D4User.certRelinquishOwner signed method call
         :param target: address
         """
-        _r_ = self.ts4_contract.call_method_signed('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9593,7 +9601,7 @@ class WrapD4User:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter('addLocked', {'until': until, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('addLocked', {'until': until, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_addLocked(self, until, name, parent, ts4_expect_ec=0):
         """
@@ -9603,7 +9611,7 @@ class WrapD4User:
         :param name: bytes
         :param parent: address
         """
-        return self.ts4_contract.call_getter_raw('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
 
     def M_addLocked(self, until, name, parent, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9612,7 +9620,7 @@ class WrapD4User:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method('addLocked', {'until': until, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('addLocked', {'until': until, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9624,7 +9632,7 @@ class WrapD4User:
         :param name: bytes
         :param parent: address
         """
-        _r_ = self.ts4_contract.call_method_signed('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9641,20 +9649,20 @@ class WrapD4User:
         Wrapper for D4User.withdrawable getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter('withdrawable', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('withdrawable', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_withdrawable(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.withdrawable raw getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter_raw('withdrawable', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('withdrawable', {}, expect_ec=ts4_expect_ec)
 
     def M_withdrawable(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.withdrawable method call
         """
-        _r_ = self.ts4_contract.call_method('withdrawable', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('withdrawable', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9663,7 +9671,7 @@ class WrapD4User:
         """
         Wrapper for D4User.withdrawable signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('withdrawable', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('withdrawable', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9683,20 +9691,20 @@ class WrapD4User:
         Wrapper for D4User.sweepLocks getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('sweepLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('sweepLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_sweepLocks(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.sweepLocks raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('sweepLocks', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('sweepLocks', {}, expect_ec=ts4_expect_ec)
 
     def M_sweepLocks(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.sweepLocks method call
         """
-        _r_ = self.ts4_contract.call_method('sweepLocks', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('sweepLocks', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9705,7 +9713,7 @@ class WrapD4User:
         """
         Wrapper for D4User.sweepLocks signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('sweepLocks', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('sweepLocks', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9729,7 +9737,7 @@ class WrapD4User:
         :param dest: address
         :param value: uint128
         """
-        return self.ts4_contract.call_getter('withdraw', {'dest': dest, 'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('withdraw', {'dest': dest, 'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_withdraw(self, dest, value, ts4_expect_ec=0):
         """
@@ -9738,7 +9746,7 @@ class WrapD4User:
         :param dest: address
         :param value: uint128
         """
-        return self.ts4_contract.call_getter_raw('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
 
     def M_withdraw(self, dest, value, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
@@ -9746,7 +9754,7 @@ class WrapD4User:
         :param dest: address
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method('withdraw', {'dest': dest, 'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('withdraw', {'dest': dest, 'value': value}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9757,7 +9765,7 @@ class WrapD4User:
         :param dest: address
         :param value: uint128
         """
-        _r_ = self.ts4_contract.call_method_signed('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('withdraw', {'dest': dest, 'value': value}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9777,20 +9785,20 @@ class WrapD4User:
         Wrapper for D4User.passToOwner getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_passToOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.passToOwner raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
 
     def M_passToOwner(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.passToOwner method call
         """
-        _r_ = self.ts4_contract.call_method('passToOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('passToOwner', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9799,7 +9807,7 @@ class WrapD4User:
         """
         Wrapper for D4User.passToOwner signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('passToOwner', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('passToOwner', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9819,20 +9827,20 @@ class WrapD4User:
         Wrapper for D4User.sink getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_sink(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.sink raw getter
         :rtype: 
         """
-        return self.ts4_contract.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
 
     def M_sink(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.sink method call
         """
-        _r_ = self.ts4_contract.call_method('sink', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('sink', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9841,7 +9849,7 @@ class WrapD4User:
         """
         Wrapper for D4User.sink signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('sink', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('sink', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9858,20 +9866,20 @@ class WrapD4User:
         Wrapper for D4User.st_root getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_root', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_root(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.st_root raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_root', {}, expect_ec=ts4_expect_ec)
 
     def M_st_root(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.st_root method call
         """
-        _r_ = self.ts4_contract.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_root', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9880,7 +9888,7 @@ class WrapD4User:
         """
         Wrapper for D4User.st_root signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_root', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9897,20 +9905,20 @@ class WrapD4User:
         Wrapper for D4User.st_type getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_type', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_type(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.st_type raw getter
         :rtype: uint8
         """
-        return self.ts4_contract.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_type', {}, expect_ec=ts4_expect_ec)
 
     def M_st_type(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.st_type method call
         """
-        _r_ = self.ts4_contract.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_type', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9919,7 +9927,7 @@ class WrapD4User:
         """
         Wrapper for D4User.st_type signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_type', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9936,20 +9944,20 @@ class WrapD4User:
         Wrapper for D4User.st_name getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.st_name raw getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
     def M_st_name(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.st_name method call
         """
-        _r_ = self.ts4_contract.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_name', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9958,7 +9966,7 @@ class WrapD4User:
         """
         Wrapper for D4User.st_name signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_name', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9975,20 +9983,20 @@ class WrapD4User:
         Wrapper for D4User.st_parent getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('st_parent', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_st_parent(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.st_parent raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('st_parent', {}, expect_ec=ts4_expect_ec)
 
     def M_st_parent(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.st_parent method call
         """
-        _r_ = self.ts4_contract.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('st_parent', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -9997,7 +10005,7 @@ class WrapD4User:
         """
         Wrapper for D4User.st_parent signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('st_parent', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10014,20 +10022,20 @@ class WrapD4User:
         Wrapper for D4User.base_code getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('base_code', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_base_code(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.base_code raw getter
         :rtype: cell
         """
-        return self.ts4_contract.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('base_code', {}, expect_ec=ts4_expect_ec)
 
     def M_base_code(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.base_code method call
         """
-        _r_ = self.ts4_contract.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('base_code', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10036,7 +10044,7 @@ class WrapD4User:
         """
         Wrapper for D4User.base_code signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('base_code', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10053,20 +10061,20 @@ class WrapD4User:
         Wrapper for D4User.m_version getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_version', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_version(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.m_version raw getter
         :rtype: uint16
         """
-        return self.ts4_contract.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_version', {}, expect_ec=ts4_expect_ec)
 
     def M_m_version(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.m_version method call
         """
-        _r_ = self.ts4_contract.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_version', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10075,7 +10083,7 @@ class WrapD4User:
         """
         Wrapper for D4User.m_version signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_version', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10092,20 +10100,20 @@ class WrapD4User:
         Wrapper for D4User.m_revision getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('m_revision', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_m_revision(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.m_revision raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('m_revision', {}, expect_ec=ts4_expect_ec)
 
     def M_m_revision(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.m_revision method call
         """
-        _r_ = self.ts4_contract.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('m_revision', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10114,7 +10122,7 @@ class WrapD4User:
         """
         Wrapper for D4User.m_revision signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('m_revision', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10131,20 +10139,20 @@ class WrapD4User:
         Wrapper for D4User.fundLocks getter
         :rtype: map(uint32,uint128)
         """
-        return self.ts4_contract.call_getter('fundLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('fundLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_fundLocks(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.fundLocks raw getter
         :rtype: map(uint32,uint128)
         """
-        return self.ts4_contract.call_getter_raw('fundLocks', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('fundLocks', {}, expect_ec=ts4_expect_ec)
 
     def M_fundLocks(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.fundLocks method call
         """
-        _r_ = self.ts4_contract.call_method('fundLocks', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('fundLocks', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10153,7 +10161,7 @@ class WrapD4User:
         """
         Wrapper for D4User.fundLocks signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('fundLocks', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('fundLocks', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10170,20 +10178,20 @@ class WrapD4User:
         Wrapper for D4User.minLockTime getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('minLockTime', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('minLockTime', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_minLockTime(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.minLockTime raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('minLockTime', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('minLockTime', {}, expect_ec=ts4_expect_ec)
 
     def M_minLockTime(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.minLockTime method call
         """
-        _r_ = self.ts4_contract.call_method('minLockTime', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('minLockTime', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10192,7 +10200,7 @@ class WrapD4User:
         """
         Wrapper for D4User.minLockTime signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('minLockTime', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('minLockTime', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10209,20 +10217,20 @@ class WrapD4User:
         Wrapper for D4User.totalLocked getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter('totalLocked', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('totalLocked', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_totalLocked(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.totalLocked raw getter
         :rtype: uint128
         """
-        return self.ts4_contract.call_getter_raw('totalLocked', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('totalLocked', {}, expect_ec=ts4_expect_ec)
 
     def M_totalLocked(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.totalLocked method call
         """
-        _r_ = self.ts4_contract.call_method('totalLocked', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('totalLocked', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10231,7 +10239,7 @@ class WrapD4User:
         """
         Wrapper for D4User.totalLocked signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('totalLocked', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('totalLocked', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10248,20 +10256,20 @@ class WrapD4User:
         Wrapper for D4User.masterKey getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter('masterKey', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('masterKey', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_masterKey(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.masterKey raw getter
         :rtype: bytes
         """
-        return self.ts4_contract.call_getter_raw('masterKey', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('masterKey', {}, expect_ec=ts4_expect_ec)
 
     def M_masterKey(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.masterKey method call
         """
-        _r_ = self.ts4_contract.call_method('masterKey', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('masterKey', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10270,7 +10278,7 @@ class WrapD4User:
         """
         Wrapper for D4User.masterKey signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('masterKey', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('masterKey', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10287,20 +10295,20 @@ class WrapD4User:
         Wrapper for D4User.auctBook getter
         :rtype: map(uint32,address)
         """
-        return self.ts4_contract.call_getter('auctBook', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('auctBook', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_auctBook(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.auctBook raw getter
         :rtype: map(uint32,address)
         """
-        return self.ts4_contract.call_getter_raw('auctBook', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('auctBook', {}, expect_ec=ts4_expect_ec)
 
     def M_auctBook(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.auctBook method call
         """
-        _r_ = self.ts4_contract.call_method('auctBook', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('auctBook', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10309,7 +10317,7 @@ class WrapD4User:
         """
         Wrapper for D4User.auctBook signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('auctBook', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('auctBook', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10326,20 +10334,20 @@ class WrapD4User:
         Wrapper for D4User.auctInfo getter
         :rtype: map(address,tuple)
         """
-        return self.ts4_contract.call_getter('auctInfo', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('auctInfo', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_auctInfo(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.auctInfo raw getter
         :rtype: map(address,tuple)
         """
-        return self.ts4_contract.call_getter_raw('auctInfo', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('auctInfo', {}, expect_ec=ts4_expect_ec)
 
     def M_auctInfo(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.auctInfo method call
         """
-        _r_ = self.ts4_contract.call_method('auctInfo', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('auctInfo', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10348,7 +10356,7 @@ class WrapD4User:
         """
         Wrapper for D4User.auctInfo signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('auctInfo', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('auctInfo', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10365,20 +10373,20 @@ class WrapD4User:
         Wrapper for D4User.auctBids getter
         :rtype: map(address,tuple)
         """
-        return self.ts4_contract.call_getter('auctBids', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('auctBids', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_auctBids(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.auctBids raw getter
         :rtype: map(address,tuple)
         """
-        return self.ts4_contract.call_getter_raw('auctBids', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('auctBids', {}, expect_ec=ts4_expect_ec)
 
     def M_auctBids(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.auctBids method call
         """
-        _r_ = self.ts4_contract.call_method('auctBids', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('auctBids', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10387,7 +10395,7 @@ class WrapD4User:
         """
         Wrapper for D4User.auctBids signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('auctBids', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('auctBids', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10404,20 +10412,20 @@ class WrapD4User:
         Wrapper for D4User.certBook getter
         :rtype: map(uint32,address)
         """
-        return self.ts4_contract.call_getter('certBook', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certBook', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certBook(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.certBook raw getter
         :rtype: map(uint32,address)
         """
-        return self.ts4_contract.call_getter_raw('certBook', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certBook', {}, expect_ec=ts4_expect_ec)
 
     def M_certBook(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.certBook method call
         """
-        _r_ = self.ts4_contract.call_method('certBook', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certBook', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10426,7 +10434,7 @@ class WrapD4User:
         """
         Wrapper for D4User.certBook signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('certBook', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certBook', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10443,20 +10451,20 @@ class WrapD4User:
         Wrapper for D4User.certInfo getter
         :rtype: map(address,tuple)
         """
-        return self.ts4_contract.call_getter('certInfo', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certInfo', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certInfo(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.certInfo raw getter
         :rtype: map(address,tuple)
         """
-        return self.ts4_contract.call_getter_raw('certInfo', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certInfo', {}, expect_ec=ts4_expect_ec)
 
     def M_certInfo(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.certInfo method call
         """
-        _r_ = self.ts4_contract.call_method('certInfo', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certInfo', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10465,7 +10473,7 @@ class WrapD4User:
         """
         Wrapper for D4User.certInfo signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('certInfo', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certInfo', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10482,20 +10490,20 @@ class WrapD4User:
         Wrapper for D4User.auctBookNext getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('auctBookNext', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('auctBookNext', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_auctBookNext(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.auctBookNext raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('auctBookNext', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('auctBookNext', {}, expect_ec=ts4_expect_ec)
 
     def M_auctBookNext(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.auctBookNext method call
         """
-        _r_ = self.ts4_contract.call_method('auctBookNext', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('auctBookNext', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10504,7 +10512,7 @@ class WrapD4User:
         """
         Wrapper for D4User.auctBookNext signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('auctBookNext', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('auctBookNext', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10521,20 +10529,20 @@ class WrapD4User:
         Wrapper for D4User.certBookNext getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter('certBookNext', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('certBookNext', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_certBookNext(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.certBookNext raw getter
         :rtype: uint32
         """
-        return self.ts4_contract.call_getter_raw('certBookNext', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('certBookNext', {}, expect_ec=ts4_expect_ec)
 
     def M_certBookNext(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.certBookNext method call
         """
-        _r_ = self.ts4_contract.call_method('certBookNext', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('certBookNext', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10543,7 +10551,7 @@ class WrapD4User:
         """
         Wrapper for D4User.certBookNext signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('certBookNext', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('certBookNext', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10560,20 +10568,20 @@ class WrapD4User:
         Wrapper for D4User.lastCreatedAuction getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter('lastCreatedAuction', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
+        return self.C_.call_getter('lastCreatedAuction', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields)
 
     def R_lastCreatedAuction(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.lastCreatedAuction raw getter
         :rtype: address
         """
-        return self.ts4_contract.call_getter_raw('lastCreatedAuction', {}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('lastCreatedAuction', {}, expect_ec=ts4_expect_ec)
 
     def M_lastCreatedAuction(self, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.lastCreatedAuction method call
         """
-        _r_ = self.ts4_contract.call_method('lastCreatedAuction', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('lastCreatedAuction', {}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -10582,7 +10590,7 @@ class WrapD4User:
         """
         Wrapper for D4User.lastCreatedAuction signed method call
         """
-        _r_ = self.ts4_contract.call_method_signed('lastCreatedAuction', {}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('lastCreatedAuction', {}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_

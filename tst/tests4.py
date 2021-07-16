@@ -1,7 +1,6 @@
 import tonos_ts4.ts4 as ts4, json
 from Wrappers import *
 
-eq = ts4.eq
 baseTime = 1000000
 basePath = '../out/'
 codeFormat = basePath + 'D4{0}.tvc'
@@ -38,8 +37,7 @@ ts4.core.set_now(baseTime)
 nonce = '0x123456789'
 
 seg('Root initialization')
-root = Root()
-wroot = WrapD4Root(root)
+root = WrapD4Root(Root())
 
 seg('Code installation')
 cinst = {
@@ -49,70 +47,44 @@ cinst = {
     'User': 'User'
 }
 for i in cinst:
-    root.call_method_signed('set' + cinst[i] + 'Code', {'code': code[i]})
+    root.C_.call_method_signed('set' + cinst[i] + 'Code', {'code': code[i]})
 
 seg('Upgrade (setCode)')
-wroot.setRootCode(code['Root'], ts4_sign=True)  # root.call_method_signed('setRootCode', {'code': code['Root']})
-
-class Test(ts4.BaseContract):
-    def __init__(self, iden='', kp=None):
-        sid = str(iden)
-        super(Test, self).__init__('D4Test', {'root': root.address}, nickname='Test' + sid.rstrip('0'),
-                                   override_address=lad('e', 64 - len(sid), sid))
-        self.w = WrapD4Test(self)
-        self.w.makeIntUser()
-        # noinspection PyTypeChecker
-        self.i = ts4.BaseContract('D4User', {}, address=self.call_getter('iaddr'),
-                                  nickname='IntUser' + sid.rstrip('0'))
-        self.wi = WrapD4User(self.i)
-        if kp is not None:
-            self.w.makeExtUser(kp[1])
-            # noinspection PyTypeChecker
-            self.e = ts4.BaseContract('D4User', {}, address=self.call_getter('eaddr'),
-                                      nickname='ExtUser' + sid.rstrip('0'), keypair=kp)
-            self.we = WrapD4User(self.e)
-        self.la = None
-
-    def start_auction(self, name, duration):
-        self.w.createAuction(h(name), duration)
-        self.la = self.wi.lastCreatedAuction()
-
-    def bid(self, amount, _auct=None):
-        la = _auct if _auct is not None else self.la
-        ainfo = self.wi.auctInfo()
-        if la not in ainfo:
-            self.w.queryAuct(la)
-            ainfo = self.wi.auctInfo()
-        bhash = self.wi.utilBidHash(la, ainfo[la]['startTime'], self.address, amount, nonce)
-        self.w.makeBid(la, '00', bhash)
-
-    def rev(self, amount, _auct=None):
-        la = _auct if _auct is not None else self.la
-        self.w.revealBid(la, amount, nonce)
-
+root.setRootCode(code['Root'], ts4_sign=True)  # root.call_method_signed('setRootCode', {'code': code['Root']})
 
 seg('Create user contracts')
-uc, wc = dict(), dict()
+uc, ui = dict(), dict()
 for i in range(0, 10):
-    uc[i] = Test(str(i) + '000', static_key_pair if i == 0 else None)
-    wc[i] = WrapD4Test(uc[i])
+    # c = WrapD4Test(Test(str(i) + '000', static_key_pair if i == 0 else None))
+    sid = str(i) + '000'
+    uc[i] = WrapD4Test(ts4.BaseContract('D4Test', {'root': root.A_}, nickname='Test' + sid.rstrip('0'),
+                                        override_address=lad('e', 64 - len(sid), sid)))
+    uc[i].makeIntUser()
+    ui[i] = WrapD4User(ts4.BaseContract('D4User', {}, address=uc[i].iaddr(), nickname='IntUser' + sid.rstrip('0')))
 
-test, intUser, wtest, wintUser = uc[0], uc[0].i, wc[0], uc[0].wi
+test, intUser = uc[0], ui[0]
 
 seg('Create auction')
-test.start_auction('test', 2)
-auct = ts4.BaseContract('D4Auct', {}, address=test.la, nickname='testAuct')
-wauct = WrapD4Auct(auct)
+test.createAuction(h('test'), 2)
+auct = WrapD4Auct(ts4.BaseContract('D4Auct', {}, address=intUser.lastCreatedAuction(), nickname='testAuct'))
+
+def mkbid(i, amount):
+    ainfo = ui[i].auctInfo()
+    if auct.A_ not in ainfo:
+        uc[i].queryAuct(auct.A_)
+        ainfo = ui[i].auctInfo()
+    bhash = ui[i].utilBidHash(auct.A_, ainfo[auct.A_]['startTime'], uc[i].A_, amount, nonce)
+    uc[i].makeBid(auct.A_, '00', bhash)
 
 seg('Perform bid')
-test.bid(gr(10))
+mkbid(0, gr(10))
 
 seg('And some other bids')
 bids = {1:5, 2:8, 3:2, 4:6, 5: 15, 6:13}
 for k in bids:
-    uc[k].bid(gr(bids[k]), test.la)
+    mkbid(k, gr(bids[k]))
 
-ainfo = wintUser.auctInfo()[test.la]
+ainfo = intUser.auctInfo()[auct.A_]
 
 ts4.core.set_now(ainfo['bidEnds'] + 1)
 
@@ -120,32 +92,29 @@ seg('Reveals (time warp)')
 
 def rev(idx):
     seg('Reveal #{}: amount is {}'.format(idx, bids[idx]))
-    uc[idx].rev(gr(bids[idx]), test.la)
+    uc[idx].revealBid(auct.A_, gr(bids[idx]), nonce)
 
-rev(1)
-rev(2)
-rev(3)
-rev(4)
+rev(1), rev(2), rev(3), rev(4)
 
 seg('Finalize')
 ts4.core.set_now(ainfo['revEnds'] + 1)
-wtest.finalize(test.la)
+test.finalize(auct.A_)
 # test.call_method('finalize', {'auction': test.la})
 dm()
 
-certAddr = wroot.resolveFull(1, h('test'))
-cert = ts4.BaseContract('D4Cert', {}, address=certAddr, nickname='testCert')
-wcert = WrapD4Cert(cert)
+certAddr = root.resolveFull(1, h('test'))
+cert = WrapD4Cert(ts4.BaseContract('D4Cert', {}, address=certAddr, nickname='testCert'))
 
-wcert.getOwner(0)
+cert.getOwner(0)
 
 seg('Set value')
-wc[2].setValue(certAddr, 0, root.address)
-wcert.getValue(0)
+uc[2].setValue(certAddr, 0, root.A_)
+cert.getValue(0)
 
-wc[2].resetValue(certAddr, 0)
-wcert.getValue(0, ts4_expect_ec=50)
+uc[2].resetValue(certAddr, 0)
+cert.getValue(0, ts4_expect_ec=50)
 
+ts4.reset_all()
 
 #
 # seg('Find auction')
