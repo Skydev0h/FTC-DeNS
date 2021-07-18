@@ -278,6 +278,7 @@ contract D4User is ID4User, D4Based {
             auctBook[info.id] = msg.sender;
         }
         auctInfo[msg.sender] = info;
+        passToOwner();
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

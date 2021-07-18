@@ -3,8 +3,13 @@ import tonos_ts4.ts4 as ts4
 class WrapperGlobal:
     auto_dispatch_messages: bool = True
 
+class WrapperParentClass:
+    def __init__(self):
+        self.C_: ts4.BaseContract = None
+        self.A_: ts4.Address = None
+
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4Auct:
+class WrapD4Auct(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address
@@ -1350,7 +1355,7 @@ class WrapD4Auct:
         return _r_
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4Base:
+class WrapD4Base(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address
@@ -1777,7 +1782,7 @@ class WrapD4Base:
         return _r_
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4Cert:
+class WrapD4Cert(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address
@@ -3525,7 +3530,7 @@ class WrapD4Cert:
         return _r_
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4DeBot:
+class WrapD4DeBot(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address
@@ -3573,7 +3578,7 @@ class WrapD4DeBot:
         return _r_
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4MFT128:
+class WrapD4MFT128(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address
@@ -3621,7 +3626,7 @@ class WrapD4MFT128:
         return _r_
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4Root:
+class WrapD4Root(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address
@@ -6142,7 +6147,7 @@ class WrapD4Root:
         return _r_
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4Test:
+class WrapD4Test(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address
@@ -8098,7 +8103,7 @@ class WrapD4Test:
         return _r_
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
-class WrapD4User:
+class WrapD4User(WrapperParentClass):
     def __init__(self, contract):
         self.C_ = contract
         self.A_ = contract.address

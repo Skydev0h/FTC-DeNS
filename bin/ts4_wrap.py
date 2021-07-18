@@ -21,6 +21,11 @@ print('')
 print('class WrapperGlobal:')
 print('    auto_dispatch_messages: bool = True')
 print('')
+print('class WrapperParentClass:')
+print('        def __init__(self):')
+print('            self.C_: ts4.BaseContract = None')
+print('            self.A_: ts4.Address = None')
+print('')
 
 classes=[]
 for fname in os.listdir("out"):
@@ -33,7 +38,7 @@ for fname in os.listdir("out"):
         fun = abi['functions']
     c_name = 'C_'
     print('# noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins')
-    print('class Wrap' + cname + ':')
+    print('class Wrap' + cname + '(WrapperParentClass):')
     print('    def __init__(self, contract):')
     print('        self.' + c_name + ' = contract')
     print('        self.A_ = contract.address')
