@@ -4,13 +4,13 @@ abspath = os.path.abspath(__file__)
 dname = os.path.dirname(abspath)
 os.chdir(dname + "/../")
 
-pars_getter = 'key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decode_ints=ts4_decode_ints, decode_tuples=ts4_decode_tuples, dont_decode_fields=ts4_dont_decode_fields'
+pars_getter = 'key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder'
 pars_getter_raw = 'expect_ec=ts4_expect_ec'
 pars_method = 'private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot'
 pars_method_signed = 'expect_ec=ts4_expect_ec'
 pars_smart = 'ts4_expect_ec=ts4_expect_ec'
 
-tails_getter = 'ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decode_ints=True, ts4_decode_tuples=None, ts4_dont_decode_fields=[]'
+tails_getter = 'ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None'
 tails_getter_raw = 'ts4_expect_ec=0'
 tails_method = 'ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False'
 tails_method_signed = 'ts4_expect_ec=0'

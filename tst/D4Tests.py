@@ -2,6 +2,10 @@ import tonos_ts4.ts4 as ts4, json
 from Machine import *
 from Wrappers import *
 
+########################################
+# Requires tonos-ts4==0.4.0b0 or later #
+########################################
+
 mach = Machine('../out/', 'D4Auct D4Base D4Cert D4Root D4Test D4User'.split(' '))
 
 mach.deploy_root()
@@ -24,7 +28,7 @@ for i in range(1, 4+1):
     mach.reveal_bid(i, 'test')
 mach.show_balances()
 
-mach.advance_time(Utils.d(2))
+mach.advance_time(Utils.d(2))  # reveal -> finalize
 
 Utils.dboxed('Finalize auction')
 mach.finalize_auction(2, 'test')

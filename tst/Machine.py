@@ -12,7 +12,7 @@ class Machine:
         self.tests: dict[WrapD4Test] = dict()
         self.users: dict[WrapD4User] = dict()
         self.aucts: dict[WrapD4Auct] = dict()
-        self.bids: dict[dict[int]] = dict()
+        self.bids:  dict[dict[int]]  = dict()
         self.certs: dict[WrapD4Cert] = dict()
         Utils.silence(False)
         Utils.dboxed('Initializing...')
@@ -21,7 +21,7 @@ class Machine:
         ts4.G_WARN_ON_UNEXPECTED_ANSWERS = True
         Utils.boxed('Preloading contracts...')
         for i in preload_contracts:
-            self.code[i] = ts4.core.load_code_cell(base_path + i + '.tvc')
+            self.code[i] = ts4.load_code_cell(base_path + i)
             ts4.register_abi(i)
         Utils.boxed('Resetting state...')
         self.reset()

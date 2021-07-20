@@ -331,6 +331,7 @@ contract D4Auct is ID4Auct, D4Based {
         }
         emit auctionSucceded(top1, paid);
         if (expiryBase > 0) {
+            msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
             ID4Cert(_resolveContract(Base.cert, st_name, st_parent)).applyAuctionResult{
                 callback:  D4Auct.applyAuctionCallback,
                    value:  Sys.CallValue,
