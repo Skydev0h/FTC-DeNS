@@ -13,7 +13,7 @@ interface ID4User is IUpgradable, IPasser {
 
     function sweepLocks() external;
 
-    function withdraw(address dest, uint128 value) external view;
+    function withdraw(address dest, uint128 value) external;
 
     function withdrawable()
         external view
@@ -35,6 +35,7 @@ interface ID4User is IUpgradable, IPasser {
     function queryAuct(address target) external view;
     function forgetCert(address target) external;
     function forgetAuct(address target) external;
+    function forgetMe(string name, address parent) external;
 
     function setValue(address target, int16 index, address new_value) external view;
     function resetValue(address target, int16 index) external view;

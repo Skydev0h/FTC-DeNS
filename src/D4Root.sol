@@ -669,7 +669,7 @@ contract D4Root is ID4Root {
     {
         if (Now() > relinquish_owner_deadline)
         {
-            relinquish_owner_deadline = now + Sys.RelinquishOwnerTimeout;
+            relinquish_owner_deadline = Now() + Sys.RelinquishOwnerTimeout;
             emit ownerRelinquishStart(owner, relinquish_owner_deadline);
             return;
         }

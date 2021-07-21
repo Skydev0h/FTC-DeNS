@@ -175,6 +175,15 @@
 			]
 		},
 		{
+			"name": "forgetMe",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "setValue",
 			"inputs": [
 				{"name":"target","type":"address"},

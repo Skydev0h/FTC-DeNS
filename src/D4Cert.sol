@@ -39,6 +39,7 @@ contract D4Cert is ID4Cert, D4Based {
         if ((auctioned == 0) && (st_root == st_parent))
              auctioned = Now();
         m_version = 1;
+        ID4User(owner).queryCertCallback{value:Sys.CallValue}(getInfo());
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -269,7 +270,7 @@ contract D4Cert is ID4Cert, D4Based {
     {
         if (Now() > relinquish_owner_deadline)
         {
-            relinquish_owner_deadline = now + Sys.RelinquishOwnerTimeout;
+            relinquish_owner_deadline = Now() + Sys.RelinquishOwnerTimeout;
             emit ownerRelinquishStart(owner, relinquish_owner_deadline);
             return;
         }

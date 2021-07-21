@@ -49,7 +49,7 @@ contract D4Test is ID4User {
 
     function sweepLocks() external a override { usr.sweepLocks(); }
 
-    function withdraw(address dest, uint128 value) external view a override { usr.withdraw(dest, value); }
+    function withdraw(address dest, uint128 value) external a override { usr.withdraw(dest, value); }
 
     function pull(uint128 value) external view a {
         usr.withdraw(address(this), value);
@@ -81,6 +81,7 @@ contract D4Test is ID4User {
     function queryAuct(address target) external view a override { usr.queryAuct(target); }
     function forgetCert(address target) external a override { usr.forgetCert(target); }
     function forgetAuct(address target) external a override { usr.forgetAuct(target); }
+    function forgetMe(string name, address parent) external a override {}
 
     function setValue(address target, int16 index, address new_value) external view a override { usr.setValue(target, index, new_value); }
     function resetValue(address target, int16 index) external view a override { usr.resetValue(target, index); }

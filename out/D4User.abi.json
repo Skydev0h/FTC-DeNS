@@ -138,6 +138,15 @@
 			]
 		},
 		{
+			"name": "forgetMe",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"parent","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
 			"name": "queryCertCallback",
 			"inputs": [
 				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"registered","type":"uint32"},{"name":"auctioned","type":"uint32"},{"name":"expires","type":"uint32"},{"name":"owner","type":"address"}],"name":"info","type":"tuple"}

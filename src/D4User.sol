@@ -248,6 +248,31 @@ contract D4User is ID4User, D4Based {
             delete auctBids[target];
     }
 
+    function forgetMe(string name, address parent)
+        external override
+    {
+        // verifyInteraction(Base.auct, name, parent);
+        if (msg.sender == _resolveContract(Base.auct, name, parent)) {
+            optional(AuctInfo) info = auctInfo.fetch(msg.sender);
+            optional(AuctBid) bid = auctBids.fetch(msg.sender);
+            if (info.hasValue()) {
+                if (bid.hasValue())
+                    require(Now() >= info.get().bidEnds, Errors.invalidTimePhase);
+                delete auctBook[info.get().id];
+                delete auctInfo[msg.sender];
+                if (bid.hasValue())
+                    delete auctBids[msg.sender];
+            }
+        } else if (msg.sender == _resolveContract(Base.cert, name, parent)) {
+            optional(CertInfo) info = certInfo.fetch(msg.sender);
+            if (info.hasValue()) {
+                delete certBook[info.get().id];
+                delete certInfo[msg.sender];
+            }
+        } else
+            revert(Errors.interactionWrongSender);
+    }
+
     function queryCertCallback(CertInfo info)
         external override
     {
@@ -425,7 +450,7 @@ contract D4User is ID4User, D4Based {
     }
 
     function sweepLocks()
-        external override
+        public override
     {
         uint32 tnow = Now();
         if (tnow >= minLockTime) {
@@ -450,9 +475,11 @@ contract D4User is ID4User, D4Based {
     }
 
     function withdraw(address dest, uint128 value)
-        external view override onlyOwner
+        external override onlyOwner
     {
-        require(value <= withdrawable(), Errors.remainingBalanceTooLow);
+        // require(value <= withdrawable(), Errors.remainingBalanceTooLow);
+        sweepLocks();
+        require(value <= address(this).balance - Sys.MinimalUserBalance - totalLocked, Errors.remainingBalanceTooLow);
         emit withdrawn(address(this).balance, value);
         dest.transfer(value, true);
     }

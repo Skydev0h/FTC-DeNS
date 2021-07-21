@@ -206,7 +206,7 @@ contract D4Auct is ID4Auct, D4Based {
 
     function accountBid(address user)
         external override
-        // notFragile // startTime <= now < bidEnds
+        // notFragile // startTime <= Now() < bidEnds
     {
         verifyInteraction(Base.user, "", user);
         require(Now() >= startTime, Errors.bidWasMadeTooEarly);
@@ -219,7 +219,7 @@ contract D4Auct is ID4Auct, D4Based {
 
     function revealBid(address user, uint32 bid_time, uint128 amount, uint128 nonce, uint256 prover)
         external override
-        // notFragile // bidEnds <= now < revEnds
+        // notFragile // bidEnds <= Now() < revEnds
     {
         verifyInteraction(Base.user, "", user);
         require(bid_time >= startTime, Errors.bidWasMadeTooEarly);
@@ -330,18 +330,24 @@ contract D4Auct is ID4Auct, D4Based {
             }
         }
         emit auctionSucceded(top1, paid);
+        msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
         if (expiryBase > 0) {
-            msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
+            // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
             ID4Cert(_resolveContract(Base.cert, st_name, st_parent)).applyAuctionResult{
                 callback:  D4Auct.applyAuctionCallback,
                    value:  Sys.CallValue,
                     flag:  Flags.addTransactionFees
             }(top1, expiryTarget);
-        } else
+            ID4Root(st_root).onAuctionResult
+                {value: 0, bounce: false, flag: Flags.sendAllThenDestroy}
+                (top1, expiryTarget, st_name, st_parent, false);
+        } else {
+            // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
             applyAuctionFailed();
+        }
         // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
-        tvm.rawReserve(address(this).balance - msg.value, 0);
-        msg.sender.transfer({value: 0, bounce: false, flag: Flags.contractBalance});
+        // tvm.rawReserve(address(this).balance - msg.value, 0);
+        // msg.sender.transfer({value: 0, bounce: false, flag: Flags.contractBalance});
     }
 
     function applyAuctionCallback(bool success)
