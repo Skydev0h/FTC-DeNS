@@ -16,6 +16,7 @@ interface IDeNSDebotHelper {
     function setPubkey(uint256 value) external;
     function resolveCert(string name) external view;
     function getCertAddress() external view returns (address result);
+    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external;
 }
 
 contract DeNSDebotHelper {
@@ -125,6 +126,12 @@ contract DeNSDebotHelper {
 
     function getCertAddress() external view returns (address result) {
         return certificate;
+    }
+
+    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external {
+        tvm.accept();
+        TvmCell payload = tvm.encodeBody(ID4User.makeBid, b_auction, b_data, b_hash);
+        address(this).transfer(msg.value, true, 1, payload);
     }
 
 }

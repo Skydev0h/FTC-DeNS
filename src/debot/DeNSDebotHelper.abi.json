@@ -1,0 +1,141 @@
+{
+	"ABI version": 2,
+	"header": ["pubkey", "time", "expire"],
+	"functions": [
+		{
+			"name": "constructor",
+			"inputs": [
+				{"name":"_wallet","type":"address"},
+				{"name":"_root","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "setPubkey",
+			"inputs": [
+				{"name":"value","type":"uint256"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "resolveUserCallback",
+			"inputs": [
+				{"name":"user_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "checkStatus",
+			"inputs": [
+				{"name":"acc_type","type":"int8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "createD4User",
+			"inputs": [
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "deployUserCallback",
+			"inputs": [
+				{"name":"user_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "isD4Userdeployed",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"value0","type":"bool"}
+			]
+		},
+		{
+			"name": "getD4User",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"result","type":"address"}
+			]
+		},
+		{
+			"name": "createAuction",
+			"inputs": [
+				{"name":"name","type":"bytes"},
+				{"name":"duration","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "resolveAuction",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "resolveAuctionCallback",
+			"inputs": [
+				{"name":"auct_addr","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getAucAddress",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"result","type":"address"}
+			]
+		},
+		{
+			"name": "resolveCert",
+			"inputs": [
+				{"name":"name","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "resolveCertificateCallback",
+			"inputs": [
+				{"name":"res","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "getCertAddress",
+			"inputs": [
+			],
+			"outputs": [
+				{"name":"result","type":"address"}
+			]
+		},
+		{
+			"name": "makeBid",
+			"inputs": [
+				{"name":"b_auction","type":"address"},
+				{"name":"b_data","type":"bytes"},
+				{"name":"b_hash","type":"uint256"}
+			],
+			"outputs": [
+			]
+		}
+	],
+	"data": [
+	],
+	"events": [
+	]
+}

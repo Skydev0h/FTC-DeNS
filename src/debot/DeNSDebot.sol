@@ -5,7 +5,7 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
 import "./DeNSDebotHelper.sol";
-import "./Sdk.sol";
+import "../D4User.sol";
 
 interface IMultisig {
     function submitTransaction(
@@ -29,6 +29,8 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
     bool certificate_deployed;
     bool auction_deployed;
     uint256 user_pubkey;
+    uint256 bid_hash;
+    uint128 bid_amount;
     TvmCell helper_code;
     TvmCell helper_si;
     uint32 trueFollowUp;
@@ -251,7 +253,63 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
         Terminal.input(tvm.functionId(registerName), "Name to register:", false);
     }
 
-    function amiBid() public {}
+    function onBidPaymentSuccess(uint64 transId) public {
+        Terminal.print(0, "Bid payment processed.");
+        start();
+    }
+
+    function biddingChached(bytes output) public {
+        trueFollowUp = tvm.functionId(amiBid);
+        TvmCell payload = tvm.encodeBody(IDeNSDebotHelper.makeBid, auction, output, bid_hash);
+            IMultisig(user_wallet).submitTransaction{
+            abiVer: 2,
+            extMsg: true,
+            sign: true,
+            pubkey: user_pubkey,
+            time: uint64(now),
+            expire: 0,
+            callbackId: tvm.functionId(onBidPaymentSuccess),
+            onErrorId: tvm.functionId(onError)
+        }(helper, bid_amount, true, false, payload);
+    }
+
+    function secretBidKeyEntered(string value) public {
+        TvmBuilder b1;
+        b1.store(value, user_wallet, auction, auctInfo.startTime, d4user);
+        uint256 h = tvm.hash(b1.toCell());
+
+        TvmBuilder b2;
+        b2.store(h);
+        TvmBuilder bmain;
+        bmain.storeRef(b2);
+        bytes nonce = bmain.toSlice().decode(bytes);
+        delete bmain;
+
+        TvmBuilder b3;
+        b3.store(value, auction, d4user);
+        uint256 key = tvm.hash(b3.toCell());
+
+        TvmBuilder b4;
+        b4.store(bid_amount);
+        bmain.storeRef(b4);
+        bytes amount = bmain.toSlice().decode(bytes);
+
+        TvmBuilder b5;
+        b5.store(auction, auctInfo.startTime, d4user, bid_amount, nonce);
+        bid_hash = tvm.hash(b5.toCell());
+        
+        Sdk.chacha20(tvm.functionId(biddingChached), amount, nonce, key);
+        
+    }
+
+    function bidAmountSet(uint128 value)  public {
+        bid_amount = value;
+        Terminal.input(tvm.functionId(secretBidKeyEntered), "Enter master key. At least 32 symbols long.", false);
+    }
+
+    function amiBid() public {
+        AmountInput.get(tvm.functionId(bidAmountSet), "Enter desired bid amount" , 1, Sys.MinumumPossibleBid, 10000);
+    }
 
     function registerDuration(int256 value) public {
         durationToRegister = uint8(value % 2**8);
@@ -297,8 +355,49 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
         }
     }
 
-    function amiFinalize() public {}
-    function amiReveal() public {}
+    function amiFinalize() public {
+        if (now < auctInfo.revEnds) {
+            Terminal.print(0, "It's too early to finalize");
+        } else {
+            ID4User(d4user).finalize{
+            abiVer: 2,
+            extMsg: true,
+            sign: false,
+            pubkey: user_pubkey,
+            time: 0,
+            expire: 0,
+            callbackId: 0,
+            onErrorId: 0
+            }(auction);
+        }
+    }
+
+    function bidsBook(mapping(address => AuctBid ) auctBids) public {
+        if (auctBids.exists(auction)) {
+            //processing;
+        } else {
+            Terminal.print(0, "No bids found for specified auction.");
+            start();
+        }
+    }
+
+    function secretBidRevealKeyEntered(string value) public {
+        /*D4User(d4user).auctBids{
+            abiVer: 2,
+            extMsg: true,
+            sign: false,
+            pubkey: user_pubkey,
+            time: 0,
+            expire: 0,
+            callbackId: bidsBook,
+            onErrorId: 0
+            }();*/
+    }
+
+    function amiReveal() public {
+        Terminal.input(tvm.functionId(secretBidRevealKeyEntered), "Enter master key. Same as entered on bid creation.", false);
+    }
+
     function amiWithdraw() public {}
 
     function auctNameProcessing(string value) public {
