@@ -106,4 +106,8 @@ contract D4Test is ID4User {
 
     function upgradeNotNeeded() external a override { }
 
+    function hasBid(address) external a override returns (bool res) { return false; }
+
+    function getBid(address) external a override returns (AuctBid res) { return AuctBid(0,'',0); }
+
 }

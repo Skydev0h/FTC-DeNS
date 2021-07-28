@@ -327,6 +327,24 @@
 			]
 		},
 		{
+			"name": "hasBid",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+				{"name":"res","type":"bool"}
+			]
+		},
+		{
+			"name": "getBid",
+			"inputs": [
+				{"name":"value0","type":"address"}
+			],
+			"outputs": [
+				{"components":[{"name":"time","type":"uint32"},{"name":"data","type":"bytes"},{"name":"hash","type":"uint256"}],"name":"res","type":"tuple"}
+			]
+		},
+		{
 			"name": "_root",
 			"inputs": [
 			],

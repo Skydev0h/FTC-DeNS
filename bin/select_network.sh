@@ -42,7 +42,7 @@ fi
 
 function SelectNetwork() {
   PS3='Please select an option: '
-  options=("FreeTON DevNet (https://net.ton.dev)" "FreeTON MainNet (https://main.ton.dev)" \
+  options=("FreeTON DevNet (https://net.ton.dev)" "FreeTON MainNet (https://main.ton.dev)" "FreeTON RustNet (https://rustnet.ton.dev)" \
            "FloodNet (https://gql.custler.net)" "LocalNode (http://localhost)" "VM LocalNode (http://localnode)"
            "Custom URL" "Exit")
   select opt in "${options[@]}"
@@ -52,6 +52,8 @@ function SelectNetwork() {
             SetNet "https://net.ton.dev"; exit; ;;
           "FreeTON MainNet (https://main.ton.dev)")
             SetNet "https://main.ton.dev"; exit; ;;
+          "FreeTON RustNet (https://rustnet.ton.dev)")
+            SetNet "https://rustnet.ton.dev"; exit; ;;
           "FloodNet (https://gql.custler.net)")
             SetNet "https://gql.custler.net"; exit; ;;
           "LocalNode (http://localhost)")
