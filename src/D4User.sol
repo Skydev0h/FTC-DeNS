@@ -66,6 +66,14 @@ contract D4User is ID4User, D4Based {
         }
     }
 
+    function hasBid(address auction) external returns (bool res) external {
+        return auctBids.exists(auction)
+    }
+
+    function getBid(address auction) external returns (AuctBid res) external {
+        return auctBid[auction];
+    }
+
     function setMasterKey(bytes newMasterKey)
         external override
         onlyOwner

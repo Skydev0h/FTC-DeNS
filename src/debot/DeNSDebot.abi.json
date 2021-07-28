@@ -275,9 +275,25 @@
 			]
 		},
 		{
-			"name": "bidsBook",
+			"name": "bidRevelation",
 			"inputs": [
-				{"components":[{"name":"time","type":"uint32"},{"name":"data","type":"bytes"},{"name":"hash","type":"uint256"}],"name":"auctBids","type":"map(address,tuple)"}
+				{"name":"output","type":"bytes"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "bidReconstruction",
+			"inputs": [
+				{"components":[{"name":"time","type":"uint32"},{"name":"data","type":"bytes"},{"name":"hash","type":"uint256"}],"name":"res","type":"tuple"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "bidExists",
+			"inputs": [
+				{"name":"res","type":"bool"}
 			],
 			"outputs": [
 			]

@@ -4,8 +4,13 @@ import "./IUpgradable.sol";
 import "./IPasser.sol";
 import "../structures/AuctInfo.sol";
 import "../structures/CertInfo.sol";
+import "../structures/AuctBid.sol";
 
 interface ID4User is IUpgradable, IPasser {
+
+    function hasBid(address auction) external returns (bool res);
+
+    function getBid(address auction) external returns (AuctBid res);
 
     function addLocked(uint32 until, string name, address parent) external;
 

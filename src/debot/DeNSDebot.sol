@@ -5,7 +5,6 @@ pragma AbiHeader time;
 pragma AbiHeader pubkey;
 
 import "./DeNSDebotHelper.sol";
-import "../D4User.sol";
 
 interface IMultisig {
     function submitTransaction(
@@ -20,6 +19,7 @@ interface IMultisig {
 contract DeNSDebot is Debot, Upgradable, Transferable {
 
     bytes d_icon;
+    bytes nonce;
     address root;
     address helper;
     address user_wallet;
@@ -39,6 +39,7 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
     CertInfo certInfo;
     AuctInfo auctInfo;
     string nameToRegister;
+    string masterKey;
     uint8 durationToRegister;
     
     function setHelperCode(TvmCell c) external {
@@ -282,23 +283,19 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
         b2.store(h);
         TvmBuilder bmain;
         bmain.storeRef(b2);
-        bytes nonce = bmain.toSlice().decode(bytes);
+        nonce = bmain.toSlice().decode(bytes);
         delete bmain;
 
         TvmBuilder b3;
-        b3.store(value, auction, d4user);
-        uint256 key = tvm.hash(b3.toCell());
+        b3.store(auction, auctInfo.startTime, d4user, bid_amount, nonce);
+        bid_hash = tvm.hash(b3.toCell());  
 
         TvmBuilder b4;
         b4.store(bid_amount);
         bmain.storeRef(b4);
         bytes amount = bmain.toSlice().decode(bytes);
-
-        TvmBuilder b5;
-        b5.store(auction, auctInfo.startTime, d4user, bid_amount, nonce);
-        bid_hash = tvm.hash(b5.toCell());
         
-        Sdk.chacha20(tvm.functionId(biddingChached), amount, nonce, key);
+        Sdk.chacha20(tvm.functionId(biddingChached), amount, nonce, bid_hash);
         
     }
 
@@ -372,9 +369,64 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
         }
     }
 
-    function bidsBook(mapping(address => AuctBid ) auctBids) public {
-        if (auctBids.exists(auction)) {
-            //processing;
+    function bidRevelation(bytes output) public {
+        TvmBuilder b;
+        b.store(output);
+        TvmBuilder bmain;
+        bmain.storeRef(b);
+        bid_amount = bmain.toSlice().decode(uint128);
+        delete b;
+        delete bmain;
+        b.store(nonce);
+        bmain.storeRef(b);
+        uint128 b_nonce = bmain.toSlice().decode(uint128);
+
+        ID4User(d4user).revealBid{
+            abiVer: 2,
+            extMsg: true,
+            sign: false,
+            pubkey: user_pubkey,
+            time: 0,
+            expire: 0,
+            callbackId: 0,
+            onErrorId: 0
+            }( auction, bid_amount, b_nonce);
+    }
+
+    function bidReconstruction(AuctBid res) public {
+        bytes    b_data = res.data;
+        uint256  b_hash = res.hash;
+
+        TvmBuilder b1;
+        b1.store(masterKey, user_wallet, auction, auctInfo.startTime, d4user);
+        uint256 h = tvm.hash(b1.toCell());
+
+        TvmBuilder b2;
+        b2.store(h);
+        TvmBuilder bmain;
+        bmain.storeRef(b2);
+        nonce = bmain.toSlice().decode(bytes);
+        delete bmain;
+
+        TvmBuilder b3;
+        b3.store(masterKey, auction, d4user);
+        uint256 key = tvm.hash(b3.toCell());
+        
+        Sdk.chacha20(tvm.functionId(bidRevelation), b_data, nonce, b_hash);
+    }
+
+    function bidExists(bool res) public {
+        if (res) {
+            ID4User(d4user).getBid{
+            abiVer: 2,
+            extMsg: true,
+            sign: false,
+            pubkey: user_pubkey,
+            time: 0,
+            expire: 0,
+            callbackId: tvm.functionId(bidReconstruction),
+            onErrorId: 0
+            }(auction);
         } else {
             Terminal.print(0, "No bids found for specified auction.");
             start();
@@ -382,16 +434,17 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
     }
 
     function secretBidRevealKeyEntered(string value) public {
-        /*D4User(d4user).auctBids{
+        masterKey = value;
+        ID4User(d4user).hasBid{
             abiVer: 2,
             extMsg: true,
             sign: false,
             pubkey: user_pubkey,
             time: 0,
             expire: 0,
-            callbackId: bidsBook,
+            callbackId: tvm.functionId(bidExists),
             onErrorId: 0
-            }();*/
+            }(auction);
     }
 
     function amiReveal() public {
