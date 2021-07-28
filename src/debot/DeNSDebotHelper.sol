@@ -16,7 +16,8 @@ interface IDeNSDebotHelper {
     function setPubkey(uint256 value) external;
     function resolveCert(string name) external view;
     function getCertAddress() external view returns (address result);
-    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external;
+    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external pure;
+    function revealBid(address auction, uint128 amount, uint128 nonce) external view;
 }
 
 contract DeNSDebotHelper {
@@ -128,10 +129,23 @@ contract DeNSDebotHelper {
         return certificate;
     }
 
-    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external {
+    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external pure {
         tvm.accept();
         TvmCell payload = tvm.encodeBody(ID4User.makeBid, b_auction, b_data, b_hash);
         address(this).transfer(msg.value, true, 1, payload);
+    }
+
+    function revealBid(address b_auction, uint128 b_amount, uint128 b_nonce) external view {
+        ID4User(d4User).revealBid{
+            abiVer: 2,
+            extMsg: true,
+            sign: false,
+            pubkey: pubkey,
+            time: 0,
+            expire: 0,
+            callbackId: 0,
+            onErrorId: 0
+            }( b_auction, b_amount, b_nonce);
     }
 
 }

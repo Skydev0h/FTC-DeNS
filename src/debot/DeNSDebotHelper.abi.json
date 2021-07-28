@@ -132,6 +132,16 @@
 			],
 			"outputs": [
 			]
+		},
+		{
+			"name": "revealBid",
+			"inputs": [
+				{"name":"b_auction","type":"address"},
+				{"name":"b_amount","type":"uint128"},
+				{"name":"b_nonce","type":"uint128"}
+			],
+			"outputs": [
+			]
 		}
 	],
 	"data": [

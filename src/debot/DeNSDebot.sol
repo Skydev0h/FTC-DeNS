@@ -381,7 +381,7 @@ contract DeNSDebot is Debot, Upgradable, Transferable {
         bmain.storeRef(b);
         uint128 b_nonce = bmain.toSlice().decode(uint128);
 
-        ID4User(d4user).revealBid{
+        IDeNSDebotHelper(helper).revealBid{
             abiVer: 2,
             extMsg: true,
             sign: false,
