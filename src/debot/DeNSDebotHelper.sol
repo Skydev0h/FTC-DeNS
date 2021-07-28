@@ -65,7 +65,7 @@ contract DeNSDebotHelper {
     function createD4User() external pure {
         tvm.accept();
         TvmCell payload = tvm.encodeBody(ID4Root.deployUserForMe, deployUserCallback);
-        address(this).transfer(Sys.MinimalUserRegister, true, 1, payload);
+        root.transfer(Sys.MinimalUserRegister, true, 1, payload);
     }
 
     function deployUserCallback(address user_addr) public {
@@ -84,7 +84,7 @@ contract DeNSDebotHelper {
     function createAuction(string name, uint8 duration) external pure {
         tvm.accept();
         TvmCell payload = tvm.encodeBody(ID4User.createAuction, name, duration);
-        address(this).transfer(Sys.MinimalRegNameRequest, true, 1, payload);
+        d4User.transfer(Sys.MinimalRegNameRequest, true, 1, payload);
     }
 
     function resolveAuction(string name) external view {
@@ -132,7 +132,7 @@ contract DeNSDebotHelper {
     function makeBid(address b_auction, bytes b_data, uint256 b_hash) external pure {
         tvm.accept();
         TvmCell payload = tvm.encodeBody(ID4User.makeBid, b_auction, b_data, b_hash);
-        address(this).transfer(msg.value, true, 1, payload);
+        d4User.transfer(msg.value, true, 1, payload);
     }
 
     function revealBid(address b_auction, uint128 b_amount, uint128 b_nonce) external view {
