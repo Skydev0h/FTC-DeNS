@@ -8,16 +8,17 @@ import "../Imports.sol";
 
 interface IDeNSDebotHelper {
     function isD4Userdeployed() external view returns (bool result);
-    function createD4User() external;
+    function createD4User() external view;
     function getD4User() external view returns (address result);
-    function createAuction(string name, uint8 duration) external pure;
+    function createAuction(string name, uint8 duration) external view;
     function resolveAuction(string name) external view;
     function getAucAddress() external view returns (address result);
     function setPubkey(uint256 value) external;
     function resolveCert(string name) external view;
     function getCertAddress() external view returns (address result);
-    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external pure;
+    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external view;
     function revealBid(address auction, uint128 amount, uint128 nonce) external view;
+    function withdraw(address dest, uint128 value) external view;
 }
 
 contract DeNSDebotHelper {
@@ -62,7 +63,7 @@ contract DeNSDebotHelper {
         }
     }
 
-    function createD4User() external pure {
+    function createD4User() external view {
         tvm.accept();
         TvmCell payload = tvm.encodeBody(ID4Root.deployUserForMe, deployUserCallback);
         root.transfer(Sys.MinimalUserRegister, true, 1, payload);
@@ -81,7 +82,7 @@ contract DeNSDebotHelper {
         return d4User;
     }
 
-    function createAuction(string name, uint8 duration) external pure {
+    function createAuction(string name, uint8 duration) external view {
         tvm.accept();
         TvmCell payload = tvm.encodeBody(ID4User.createAuction, name, duration);
         d4User.transfer(Sys.MinimalRegNameRequest, true, 1, payload);
@@ -129,7 +130,7 @@ contract DeNSDebotHelper {
         return certificate;
     }
 
-    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external pure {
+    function makeBid(address b_auction, bytes b_data, uint256 b_hash) external view {
         tvm.accept();
         TvmCell payload = tvm.encodeBody(ID4User.makeBid, b_auction, b_data, b_hash);
         d4User.transfer(msg.value, true, 1, payload);
@@ -146,6 +147,19 @@ contract DeNSDebotHelper {
             callbackId: 0,
             onErrorId: 0
             }( b_auction, b_amount, b_nonce);
+    }
+
+    function withdraw(address dest, uint128 value) external view {
+        ID4User(d4User).withdraw{
+            abiVer: 2,
+            extMsg: true,
+            sign: false,
+            pubkey: pubkey,
+            time: 0,
+            expire: 0,
+            callbackId: 0,
+            onErrorId: 0
+            }( dest, value);
     }
 
 }

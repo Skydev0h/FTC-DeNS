@@ -142,6 +142,15 @@
 			],
 			"outputs": [
 			]
+		},
+		{
+			"name": "withdraw",
+			"inputs": [
+				{"name":"dest","type":"address"},
+				{"name":"value","type":"uint128"}
+			],
+			"outputs": [
+			]
 		}
 	],
 	"data": [
