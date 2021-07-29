@@ -66,11 +66,11 @@ contract D4User is ID4User, D4Based {
         }
     }
 
-    function hasBid(address auction) external returns (bool res) external {
-        return auctBids.exists(auction)
+    function hasBid(address auction) external returns (bool res) {
+        return auctBids.exists(auction);
     }
 
-    function getBid(address auction) external returns (AuctBid res) external {
+    function getBid(address auction) external returns (AuctBid res) {
         return auctBid[auction];
     }
 
