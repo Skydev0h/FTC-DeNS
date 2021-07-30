@@ -11,7 +11,7 @@ ts4.G_WARN_ON_UNEXPECTED_ANSWERS = True
 
 code = dict()
 for i in 'Auct, Base, Cert, Root, User'.split(', '):
-    code[i] = ts4.core.load_code_cell(codeFormat.format(i))
+    code[i] = ts4.load_code_cell(codeFormat.format(i))
     ts4.register_abi('D4' + i)
 
 static_key_pair = ('1b5d84f798478416f9e3c3914d85ffb4659bf28772115240e2b8c98c2caa1154b3982dc3a7ae6132b'
