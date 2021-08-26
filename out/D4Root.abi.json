@@ -710,6 +710,40 @@
 			],
 			"outputs": [
 			]
+		},
+		{
+			"name": "smvSetSmvAddress",
+			"inputs": [
+				{"name":"new_smv","type":"address"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvSetAuctRestrict",
+			"inputs": [
+				{"name":"new_until","type":"uint32"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvDropAdminFlags",
+			"inputs": [
+				{"name":"flags_dropped","type":"uint8"}
+			],
+			"outputs": [
+			]
+		},
+		{
+			"name": "smvWithdrawn",
+			"inputs": [
+				{"name":"to","type":"address"},
+				{"name":"oldBalance","type":"uint128"},
+				{"name":"withdrawn","type":"uint128"}
+			],
+			"outputs": [
+			]
 		}
 	]
 }

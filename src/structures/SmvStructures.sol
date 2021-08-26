@@ -7,7 +7,13 @@ enum ProposalType {
     SetCode,
     Reserve,
     SetOwner,
-    SetRootOwner
+    SetRootOwner,
+    // Additional proposals
+    SetRootOwnerInternal,
+    SetSmvAddress,
+    SetAuctRestrict,
+    DropAdminFlags,
+    Withdraw
 }
 
 enum ProposalState {
@@ -70,3 +76,26 @@ struct SetRootOwnerProposalSpecific {
 }
 
 //----------------------------------------------------------------------------------------------------------------//
+
+struct SetRootOwnerInternalProposalSpecific {
+    address owner;
+    string comment;
+}
+
+struct SetSmvAddressProposalSpecific {
+    address smv;
+    string comment;
+}
+
+struct SetAuctRestrictProposalSpecific {
+    uint32 ts;
+}
+
+struct DropAdminFlagsProposalSpecific {
+    uint8 flags;
+}
+
+struct WithdrawProposalSpecific {
+    address dest;
+    uint128 amount;
+}

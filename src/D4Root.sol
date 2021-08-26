@@ -277,6 +277,41 @@ contract D4Root is ID4Root {
             emit smvSetRootOwner(owner);
             return;
         }
+        // Additional new proposals
+        if (proposalInfo.proposalType == ProposalType.SetRootOwnerInternal) {
+            SetRootOwnerInternalProposalSpecific c_setownint = c.toSlice().decode(SetRootOwnerInternalProposalSpecific);
+            owner = c_setownint.owner;
+            pending_owner = address(0);
+            owner_transfer_deadline = 0;
+            relinquish_owner_deadline = 0;
+            emit smvSetRootOwner(owner);
+            return;
+        }
+        if (proposalInfo.proposalType == ProposalType.SetSmvAddress) {
+            SetSmvAddressProposalSpecific c_setsmv = c.toSlice().decode(SetSmvAddressProposalSpecific);
+            smv_root = c_setsmv.smv;
+            emit smvSetSmvAddress(smv_root);
+            return;
+        }
+        if (proposalInfo.proposalType == ProposalType.SetAuctRestrict) {
+            SetAuctRestrictProposalSpecific c_setar = c.toSlice().decode(SetAuctRestrictProposalSpecific);
+            no_auctions_until = c_setar.ts;
+            emit smvSetSmvAddress(smv_root);
+            return;
+        }
+        if (proposalInfo.proposalType == ProposalType.DropAdminFlags) {
+            DropAdminFlagsProposalSpecific c_daf = c.toSlice().decode(DropAdminFlagsProposalSpecific);
+            admin_enabled = (admin_enabled & (~c_daf.flags));
+            emit smvDropAdminFlags(c_daf.flags);
+            return;
+        }
+        if (proposalInfo.proposalType == ProposalType.Withdraw) {
+            WithdrawProposalSpecific c_wdr = c.toSlice().decode(WithdrawProposalSpecific);
+            require(c_wdr.amount <= withdrawable(), Errors.remainingBalanceTooLow);
+            emit smvWithdrawn(c_wdr.dest, address(this).balance, c_wdr.amount);
+            c_wdr.dest.transfer(c_wdr.amount, true);
+            return;
+        }
     }
 
     function onProposalRejected(ProposalInfo proposalInfo)
@@ -737,6 +772,12 @@ contract D4Root is ID4Root {
     event smvReserveCommit(string name, bool result);
     event smvSetOwner(string name, address set_owner, uint32 set_expiry);
     event smvSetRootOwner(address new_owner);
+
+    event smvSetSmvAddress(address new_smv);
+    event smvSetAuctRestrict(uint32 new_until);
+    event smvDropAdminFlags(uint8 flags_dropped);
+
+    event smvWithdrawn(address to, uint128 oldBalance, uint128 withdrawn);
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     // Now() for integration testing
