@@ -2,9 +2,9 @@ from AbstLayer import AbstLayer
 from Utils import Utils as ut
 import unittest
 
-################################
-# Tested with tonos-ts4==0.4.1 #
-################################
+##################################
+# Tested with tonos-ts4==0.5.0a1 #
+##################################
 
 
 class D4Tests(unittest.TestCase):
@@ -58,8 +58,8 @@ class D4Tests(unittest.TestCase):
             self.assertAlmostEqual(1.8 + (0 if i == 5 else bids[i]), al.users[i].withdrawable() / ut.gr())
 
         al.finalize_auction(5, 'test')
-        self.assertAlmostEqual(ut.b(al.tests[5]), 82.1 - 0.01)
-        self.assertAlmostEqual(ut.b(al.users[5]),  9.9 + 0.01)
+        self.assertAlmostEqual(ut.b(al.tests[5]), 82.1 - 0.1)
+        self.assertAlmostEqual(ut.b(al.users[5]),  9.9 + 0.1)
 
         cert, cow, cif = al.resolve_cert('test'), al.users[5], al.tests[5]
         self.assertEqual(cert.getOwner(), cow.A_)

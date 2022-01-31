@@ -45,19 +45,19 @@ contract D4Test is ID4User {
 
     function addLocked(uint32 until, string name, address parent) external a override {}
 
-    function requestUpgrade() external view a override { usr.requestUpgrade(); }
+    function requestUpgrade() external view a override { usr.requestUpgrade{value: Sys.CallValue}(); }
 
-    function sweepLocks() external a override { usr.sweepLocks(); }
+    function sweepLocks() external a override { usr.sweepLocks{value: Sys.CallValue}(); }
 
-    function withdraw(address dest, uint128 value) external a override { usr.withdraw(dest, value); }
+    function withdraw(address dest, uint128 value) external a override { usr.withdraw{value: Sys.CallValue}(dest, value); }
 
     function pull(uint128 value) external view a {
-        usr.withdraw(address(this), value);
+        usr.withdraw{value: Sys.CallValue}(address(this), value);
     }
 
     function withdrawable() external view override returns (uint128 avail) { return 0; }
 
-    function setMasterKey(bytes newMasterKey) external a override { usr.setMasterKey(newMasterKey); }
+    function setMasterKey(bytes newMasterKey) external a override { usr.setMasterKey{value: Sys.CallValue}(newMasterKey); }
 
     function createAuction(string name, uint8 duration) external view a override {
         usr.createAuction{value: Sys.MinimalRegNameRequest, flag: 1}(name, duration);
@@ -74,31 +74,31 @@ contract D4Test is ID4User {
     function bidRevealComplete() external a override { }
 
     function finalize(address auction) external a override {
-        usr.finalize(auction);
+        usr.finalize{value: Sys.CallValue}(auction);
     }
 
-    function queryCert(address target) external view a override { usr.queryCert(target); }
-    function queryAuct(address target) external view a override { usr.queryAuct(target); }
-    function forgetCert(address target) external a override { usr.forgetCert(target); }
-    function forgetAuct(address target) external a override { usr.forgetAuct(target); }
+    function queryCert(address target) external view a override { usr.queryCert{value: Sys.CallValue}(target); }
+    function queryAuct(address target) external view a override { usr.queryAuct{value: Sys.CallValue}(target); }
+    function forgetCert(address target) external a override { usr.forgetCert{value: Sys.CallValue}(target); }
+    function forgetAuct(address target) external a override { usr.forgetAuct{value: Sys.CallValue}(target); }
     function forgetMe(string name, address parent) external a override {}
 
-    function setValue(address target, int16 index, address new_value) external view a override { usr.setValue(target, index, new_value); }
-    function resetValue(address target, int16 index) external view a override { usr.resetValue(target, index); }
-    function clearValues(address target) external view a override { usr.clearValues(target); }
-    function certWithdrawExcess(address target, uint128 amount) external view a override { usr.certWithdrawExcess(target, amount); }
-    function certRequestUpgrade(address target) external view a override { usr.certRequestUpgrade(target); }
-    function requestProlong(address target) external view a override { usr.requestProlong(target); }
-    function deploySub(address target, string name) external view a override { usr.deploySub(target, name); }
-    function syncSub(address target, string name) external view a override { usr.syncSub(target, name); }
+    function setValue(address target, int16 index, address new_value) external view a override { usr.setValue{value: Sys.CallValue}(target, index, new_value); }
+    function resetValue(address target, int16 index) external view a override { usr.resetValue{value: Sys.CallValue}(target, index); }
+    function clearValues(address target) external view a override { usr.clearValues{value: Sys.CallValue}(target); }
+    function certWithdrawExcess(address target, uint128 amount) external view a override { usr.certWithdrawExcess{value: Sys.CallValue}(target, amount); }
+    function certRequestUpgrade(address target) external view a override { usr.certRequestUpgrade{value: Sys.CallValue}(target); }
+    function requestProlong(address target) external view a override { usr.requestProlong{value: Sys.CallValue}(target); }
+    function deploySub(address target, string name) external view a override { usr.deploySub{value: Sys.CallValue}(target, name); }
+    function syncSub(address target, string name) external view a override { usr.syncSub{value: Sys.CallValue}(target, name); }
 
     function queryCertCallback(CertInfo info) external a override { }
     function queryAuctCallback(AuctInfo info) external a override { }
 
-    function certTransferOwner(address target, address new_owner, uint32 deadline) external view a override { usr.certTransferOwner(target, new_owner, deadline); }
-    function certCancelTransferOwner(address target) external view a override { usr.certCancelTransferOwner(target); }
-    function certAcceptTransfer(address target) external view a override { usr.certAcceptTransfer(target); }
-    function certRelinquishOwner(address target) external view a override { usr.certRelinquishOwner(target); }
+    function certTransferOwner(address target, address new_owner, uint32 deadline) external view a override { usr.certTransferOwner{value: Sys.CallValue}(target, new_owner, deadline); }
+    function certCancelTransferOwner(address target) external view a override { usr.certCancelTransferOwner{value: Sys.CallValue}(target); }
+    function certAcceptTransfer(address target) external view a override { usr.certAcceptTransfer{value: Sys.CallValue}(target); }
+    function certRelinquishOwner(address target) external view a override { usr.certRelinquishOwner{value: Sys.CallValue}(target); }
 
     function passToOwner() external a override { }
 
