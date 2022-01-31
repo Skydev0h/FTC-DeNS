@@ -49,13 +49,13 @@ for fname in os.listdir("out"):
         otypes = []
         aid = False
         for inp in fn['inputs']:
-            if inp['name'] == '_answer_id':
+            if inp['name'] == 'answerId':
                 aid = True
             else:
                 inputs.append(inp['name'])
             iregals.append('\'' + inp['name'] + '\': ' + inp['name'])
         if aid:
-            inputs.append('_answer_id=0')
+            inputs.append('answerId=0')
         for oup in fn['outputs']:
             otypes.append(oup['type'])
 

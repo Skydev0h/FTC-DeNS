@@ -56,10 +56,11 @@ contract D4Root is ID4Root {
 
     modifier onlyOwner()
     {
+        // FIX: Full access of Root as owner after relinquishing
         if (owner.wid == Sys.ExternalMetaChain)
-            require(msg.pubkey() == owner.value, Errors.onlyOwnerAccepted);
+            require(msg.pubkey() == owner.value && msg.isExternal, Errors.onlyOwnerAccepted);
         else
-            require(msg.sender == owner, Errors.onlyOwnerAccepted);
+            require(msg.sender == owner && msg.isInternal, Errors.onlyOwnerAccepted);
         tvm.accept();
         _;
     }
@@ -68,16 +69,16 @@ contract D4Root is ID4Root {
     {
         require(Now() <= owner_transfer_deadline, Errors.ownerTransferMissDeadline);
         if (pending_owner.wid == Sys.ExternalMetaChain)
-            require(msg.pubkey() == pending_owner.value, Errors.onlyPendingOwnerAccepted);
+            require(msg.pubkey() == pending_owner.value && msg.isExternal, Errors.onlyPendingOwnerAccepted);
         else
-            require(msg.sender == pending_owner, Errors.onlyPendingOwnerAccepted);
+            require(msg.sender == pending_owner && msg.isInternal, Errors.onlyPendingOwnerAccepted);
         tvm.accept();
         _;
     }
 
     modifier onlySmvRoot()
     {
-        require(msg.sender == smv_root, Errors.onlySmvRootAccepted);
+        require(msg.sender == smv_root && msg.isInternal, Errors.onlySmvRootAccepted);
         tvm.accept();
         _;
     }
@@ -518,6 +519,12 @@ contract D4Root is ID4Root {
         internal view
         returns (address)
     {
+        // FIX: Broken resolve full method for names with slash
+        if (ct_type != Base.user) {
+            uint8 veres = _verifyName(name);
+            if (veres != 0)
+                revert(veres);
+        }
         TvmCell ncode; uint32 nrev;
         (ncode, nrev) = _retrieveCode(ct_type);
         D4Base p = new D4Base{
@@ -532,6 +539,25 @@ contract D4Root is ID4Root {
             flag: Flags.addTransactionFees
         }(ncode, nrev, param);
         return address(p);
+    }
+
+    // FIX: Broken resolve full method for names with slash
+    function _verifyName(string name)
+        internal pure
+        returns (uint8)
+    {
+        // Check forbidden characters . and /, also disallow control characters (< 32, 127 [<-])
+        TvmBuilder b; b.store(name); TvmSlice s = b.toSlice().loadRefAsSlice();
+        if (s.bits() % 8 != 0) return Errors.nameLengthInvalid;
+        if (s.bits() == 0)     return Errors.nameIsEmpty;
+        uint8 c = 0;
+        while (s.bits() > 0) {
+            c = s.loadUnsigned(8);
+            if (c == 46) return Errors.nameContainsDot;
+            if (c == 47) return Errors.nameContainsSlash;
+            if ((c < 32) || (c > 127)) return Errors.nameContainsInvalidChars;
+        }
+        return 0;
     }
 
     function _resolveContract(uint8 ct_type, string name, address parent)
@@ -629,8 +655,10 @@ contract D4Root is ID4Root {
             return;
         }
         emit subUpgraded(ct_type, msg.sender, my_revision, nrev, newhash);
+        // FIX: Possibility to burn Root balance
+        tvm.rawReserve(address(this).balance - msg.value, 0);
         IUpgradable(msg.sender).upgrade
-            {value: 0, bounce: false, flag: Flags.messageValue}
+            {value: 0, bounce: false, flag: Flags.contractBalance}
             (ncode, nrev);
     }
 

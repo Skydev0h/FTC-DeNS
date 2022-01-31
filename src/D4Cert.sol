@@ -47,7 +47,8 @@ contract D4Cert is ID4Cert, D4Based {
 
     modifier onlyOwner()
     {
-        require(msg.sender == owner, Errors.onlyOwnerAccepted);
+        // FIX: Full access of Certificate as owner after relinquishing
+        require(msg.sender == owner && msg.isInternal, Errors.onlyOwnerAccepted);
         tvm.accept();
         _;
     }
@@ -55,7 +56,7 @@ contract D4Cert is ID4Cert, D4Based {
     modifier onlyPendingOwner()
     {
         require(Now() <= owner_transfer_deadline, Errors.ownerTransferMissDeadline);
-        require(msg.sender == pending_owner, Errors.onlyPendingOwnerAccepted);
+        require(msg.sender == pending_owner && msg.isInternal, Errors.onlyPendingOwnerAccepted);
         tvm.accept();
         _;
     }
@@ -299,8 +300,9 @@ contract D4Cert is ID4Cert, D4Based {
         external override
         onlyOwner
     {
+        // It may bounce if name is not allowed
         ID4Root(st_root).subCertDepl
-            {value: 0, bounce: false, flag: Flags.messageValue}
+            {value: 0, bounce: true, flag: Flags.messageValue}
             (st_name, st_parent, name, owner, expires);
     }
 
@@ -319,13 +321,16 @@ contract D4Cert is ID4Cert, D4Based {
         onlyParent
     {
         if (owner != new_owner) {
+            // FIX: Improve sub synchronize for Certificates
+            owner = new_owner;
             pending_owner = address(0);
             owner_transfer_deadline = 0;
             relinquish_owner_deadline = 0;
         }
         expires = new_expiry;
         emit synchronized(new_owner, new_expiry);
-        ID4Cert(msg.sender).passToOwner{value: 0, bounce: false, flag: Flags.messageValue}();
+        // ID4Cert(msg.sender).passToOwner{value: 0, bounce: false, flag: Flags.messageValue}();
+        passToOwner(); // can now return directly
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -335,9 +340,9 @@ contract D4Cert is ID4Cert, D4Based {
         external
     {
         uint32 functionId = slice.decode(uint32);
-        if (functionId == tvm.functionId(ID4Auct.prolong)) {
-            passToOwner();
-        }
+        if (functionId == tvm.functionId(ID4Auct.prolong))        { passToOwner(); }
+        if (functionId == tvm.functionId(ID4Root.subCertDepl))    { passToOwner(); }
+        if (functionId == tvm.functionId(ID4Cert.subSynchronize)) { passToOwner(); }
     }
 
     function passToOwner()

@@ -4,9 +4,9 @@ class WrapperGlobal:
     auto_dispatch_messages: bool = True
 
 class WrapperParentClass:
-        def __init__(self):
-            self.C_: ts4.BaseContract = None
-            self.A_: ts4.Address = None
+    def __init__(self):
+        self.C_: ts4.BaseContract = None
+        self.A_: ts4.Address = None
 
 # noinspection PyDefaultArgument,PyPep8Naming,PyShadowingBuiltins
 class WrapD4Auct(WrapperParentClass):
@@ -108,46 +108,46 @@ class WrapD4Auct(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def getInfo(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def getInfo(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.getInfo
         :rtype: tuple
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_getInfo(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getInfo(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getInfo(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_getInfo(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.getInfo getter
         :rtype: tuple
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('getInfo', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_getInfo(self, _answer_id=0, ts4_expect_ec=0):
+    def R_getInfo(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.getInfo raw getter
         :rtype: tuple
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getInfo', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_getInfo(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getInfo(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.getInfo method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('getInfo', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getInfo', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getInfo(self, _answer_id=0, ts4_expect_ec=0):
+    def S_getInfo(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.getInfo signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getInfo', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -155,7 +155,7 @@ class WrapD4Auct(WrapperParentClass):
     def commit(self, result, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.commit
-        :rtype: 
+        :rtype:
         :param result: bool
         """
         if ts4_sign:
@@ -166,7 +166,7 @@ class WrapD4Auct(WrapperParentClass):
     def G_commit(self, result, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.commit getter
-        :rtype: 
+        :rtype:
         :param result: bool
         """
         return self.C_.call_getter('commit', {'result': result}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -174,7 +174,7 @@ class WrapD4Auct(WrapperParentClass):
     def R_commit(self, result, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.commit raw getter
-        :rtype: 
+        :rtype:
         :param result: bool
         """
         return self.C_.call_getter_raw('commit', {'result': result}, expect_ec=ts4_expect_ec)
@@ -202,7 +202,7 @@ class WrapD4Auct(WrapperParentClass):
     def accountBid(self, user, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.accountBid
-        :rtype: 
+        :rtype:
         :param user: address
         """
         if ts4_sign:
@@ -213,7 +213,7 @@ class WrapD4Auct(WrapperParentClass):
     def G_accountBid(self, user, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.accountBid getter
-        :rtype: 
+        :rtype:
         :param user: address
         """
         return self.C_.call_getter('accountBid', {'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -221,7 +221,7 @@ class WrapD4Auct(WrapperParentClass):
     def R_accountBid(self, user, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.accountBid raw getter
-        :rtype: 
+        :rtype:
         :param user: address
         """
         return self.C_.call_getter_raw('accountBid', {'user': user}, expect_ec=ts4_expect_ec)
@@ -249,7 +249,7 @@ class WrapD4Auct(WrapperParentClass):
     def revealBid(self, user, bid_time, amount, nonce, prover, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.revealBid
-        :rtype: 
+        :rtype:
         :param user: address
         :param bid_time: uint32
         :param amount: uint128
@@ -264,7 +264,7 @@ class WrapD4Auct(WrapperParentClass):
     def G_revealBid(self, user, bid_time, amount, nonce, prover, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.revealBid getter
-        :rtype: 
+        :rtype:
         :param user: address
         :param bid_time: uint32
         :param amount: uint128
@@ -276,7 +276,7 @@ class WrapD4Auct(WrapperParentClass):
     def R_revealBid(self, user, bid_time, amount, nonce, prover, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.revealBid raw getter
-        :rtype: 
+        :rtype:
         :param user: address
         :param bid_time: uint32
         :param amount: uint128
@@ -313,46 +313,46 @@ class WrapD4Auct(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def requiredAmountForProlong(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def requiredAmountForProlong(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.requiredAmountForProlong
         :rtype: uint128
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_requiredAmountForProlong(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_requiredAmountForProlong(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_requiredAmountForProlong(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_requiredAmountForProlong(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.requiredAmountForProlong getter
         :rtype: uint128
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('requiredAmountForProlong', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('requiredAmountForProlong', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_requiredAmountForProlong(self, _answer_id=0, ts4_expect_ec=0):
+    def R_requiredAmountForProlong(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.requiredAmountForProlong raw getter
         :rtype: uint128
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('requiredAmountForProlong', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('requiredAmountForProlong', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_requiredAmountForProlong(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_requiredAmountForProlong(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Auct.requiredAmountForProlong method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('requiredAmountForProlong', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('requiredAmountForProlong', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_requiredAmountForProlong(self, _answer_id=0, ts4_expect_ec=0):
+    def S_requiredAmountForProlong(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.requiredAmountForProlong signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('requiredAmountForProlong', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('requiredAmountForProlong', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -360,7 +360,7 @@ class WrapD4Auct(WrapperParentClass):
     def prolong(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.prolong
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_prolong(ts4_expect_ec=ts4_expect_ec)
@@ -370,14 +370,14 @@ class WrapD4Auct(WrapperParentClass):
     def G_prolong(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.prolong getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('prolong', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_prolong(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.prolong raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('prolong', {}, expect_ec=ts4_expect_ec)
 
@@ -402,7 +402,7 @@ class WrapD4Auct(WrapperParentClass):
     def finalize(self, user, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.finalize
-        :rtype: 
+        :rtype:
         :param user: address
         """
         if ts4_sign:
@@ -413,7 +413,7 @@ class WrapD4Auct(WrapperParentClass):
     def G_finalize(self, user, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.finalize getter
-        :rtype: 
+        :rtype:
         :param user: address
         """
         return self.C_.call_getter('finalize', {'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -421,7 +421,7 @@ class WrapD4Auct(WrapperParentClass):
     def R_finalize(self, user, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.finalize raw getter
-        :rtype: 
+        :rtype:
         :param user: address
         """
         return self.C_.call_getter_raw('finalize', {'user': user}, expect_ec=ts4_expect_ec)
@@ -449,7 +449,7 @@ class WrapD4Auct(WrapperParentClass):
     def applyAuctionCallback(self, success, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.applyAuctionCallback
-        :rtype: 
+        :rtype:
         :param success: bool
         """
         if ts4_sign:
@@ -460,7 +460,7 @@ class WrapD4Auct(WrapperParentClass):
     def G_applyAuctionCallback(self, success, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.applyAuctionCallback getter
-        :rtype: 
+        :rtype:
         :param success: bool
         """
         return self.C_.call_getter('applyAuctionCallback', {'success': success}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -468,7 +468,7 @@ class WrapD4Auct(WrapperParentClass):
     def R_applyAuctionCallback(self, success, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.applyAuctionCallback raw getter
-        :rtype: 
+        :rtype:
         :param success: bool
         """
         return self.C_.call_getter_raw('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
@@ -496,7 +496,7 @@ class WrapD4Auct(WrapperParentClass):
     def sink(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.sink
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_sink(ts4_expect_ec=ts4_expect_ec)
@@ -506,14 +506,14 @@ class WrapD4Auct(WrapperParentClass):
     def G_sink(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.sink getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_sink(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.sink raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
 
@@ -616,21 +616,21 @@ class WrapD4Auct(WrapperParentClass):
     def st_name(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Auct.st_name
-        :rtype: bytes
+        :rtype: string
         """
         return self.G_st_name(ts4_expect_ec=ts4_expect_ec)
 
     def G_st_name(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Auct.st_name getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4Auct.st_name raw getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
@@ -1363,7 +1363,7 @@ class WrapD4Base(WrapperParentClass):
     def constructor(self, code, revision, param, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Base.constructor
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         :param param: cell
@@ -1376,7 +1376,7 @@ class WrapD4Base(WrapperParentClass):
     def G_constructor(self, code, revision, param, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Base.constructor getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         :param param: cell
@@ -1386,7 +1386,7 @@ class WrapD4Base(WrapperParentClass):
     def R_constructor(self, code, revision, param, ts4_expect_ec=0):
         """
         Wrapper for D4Base.constructor raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         :param param: cell
@@ -1417,51 +1417,51 @@ class WrapD4Base(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def registrationPreflight(self, requestId, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Base.registrationPreflight
         :rtype: uint128, uint32
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        return self.G_registrationPreflight(requestId, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_registrationPreflight(requestId, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_registrationPreflight(self, requestId, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_registrationPreflight(self, requestId, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Base.registrationPreflight getter
         :rtype: uint128, uint32
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        return self.C_.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
+    def R_registrationPreflight(self, requestId, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Base.registrationPreflight raw getter
         :rtype: uint128, uint32
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        return self.C_.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, expect_ec=ts4_expect_ec)
 
-    def M_registrationPreflight(self, requestId, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_registrationPreflight(self, requestId, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Base.registrationPreflight method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        _r_ = self.C_.call_method('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
+    def S_registrationPreflight(self, requestId, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Base.registrationPreflight signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        _r_ = self.C_.call_method_signed('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -1469,7 +1469,7 @@ class WrapD4Base(WrapperParentClass):
     def destroy(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Base.destroy
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_destroy(ts4_expect_ec=ts4_expect_ec)
@@ -1479,14 +1479,14 @@ class WrapD4Base(WrapperParentClass):
     def G_destroy(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Base.destroy getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('destroy', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_destroy(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.destroy raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('destroy', {}, expect_ec=ts4_expect_ec)
 
@@ -1589,21 +1589,21 @@ class WrapD4Base(WrapperParentClass):
     def st_name(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Base.st_name
-        :rtype: bytes
+        :rtype: string
         """
         return self.G_st_name(ts4_expect_ec=ts4_expect_ec)
 
     def G_st_name(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Base.st_name getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4Base.st_name raw getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
@@ -1790,7 +1790,7 @@ class WrapD4Cert(WrapperParentClass):
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.constructor
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_constructor(ts4_expect_ec=ts4_expect_ec)
@@ -1800,14 +1800,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_constructor(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.constructor getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.constructor raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
@@ -1832,7 +1832,7 @@ class WrapD4Cert(WrapperParentClass):
     def requestUpgrade(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.requestUpgrade
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_requestUpgrade(ts4_expect_ec=ts4_expect_ec)
@@ -1842,14 +1842,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_requestUpgrade(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.requestUpgrade getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_requestUpgrade(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.requestUpgrade raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
 
@@ -1874,7 +1874,7 @@ class WrapD4Cert(WrapperParentClass):
     def upgrade(self, code, revision, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.upgrade
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -1886,7 +1886,7 @@ class WrapD4Cert(WrapperParentClass):
     def G_upgrade(self, code, revision, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.upgrade getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -1895,7 +1895,7 @@ class WrapD4Cert(WrapperParentClass):
     def R_upgrade(self, code, revision, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.upgrade raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -1926,7 +1926,7 @@ class WrapD4Cert(WrapperParentClass):
     def upgradeNotNeeded(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.upgradeNotNeeded
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_upgradeNotNeeded(ts4_expect_ec=ts4_expect_ec)
@@ -1936,14 +1936,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_upgradeNotNeeded(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.upgradeNotNeeded getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_upgradeNotNeeded(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.upgradeNotNeeded raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
 
@@ -1965,95 +1965,95 @@ class WrapD4Cert(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def getInfo(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def getInfo(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getInfo
         :rtype: tuple
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_getInfo(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getInfo(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getInfo(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_getInfo(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.getInfo getter
         :rtype: tuple
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('getInfo', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('getInfo', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_getInfo(self, _answer_id=0, ts4_expect_ec=0):
+    def R_getInfo(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getInfo raw getter
         :rtype: tuple
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getInfo', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_getInfo(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getInfo(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getInfo method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('getInfo', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getInfo', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getInfo(self, _answer_id=0, ts4_expect_ec=0):
+    def S_getInfo(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getInfo signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('getInfo', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getInfo', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def getValue(self, index, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def getValue(self, index, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getValue
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param index: int16
         """
-        return self.G_getValue(index, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getValue(index, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getValue(self, index, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_getValue(self, index, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.getValue getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param index: int16
         """
-        return self.C_.call_getter('getValue', {'_answer_id': _answer_id, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('getValue', {'answerId': answerId, 'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_getValue(self, index, _answer_id=0, ts4_expect_ec=0):
+    def R_getValue(self, index, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getValue raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param index: int16
         """
-        return self.C_.call_getter_raw('getValue', {'_answer_id': _answer_id, 'index': index}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getValue', {'answerId': answerId, 'index': index}, expect_ec=ts4_expect_ec)
 
-    def M_getValue(self, index, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getValue(self, index, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getValue method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param index: int16
         """
-        _r_ = self.C_.call_method('getValue', {'_answer_id': _answer_id, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getValue', {'answerId': answerId, 'index': index}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getValue(self, index, _answer_id=0, ts4_expect_ec=0):
+    def S_getValue(self, index, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getValue signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param index: int16
         """
-        _r_ = self.C_.call_method_signed('getValue', {'_answer_id': _answer_id, 'index': index}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getValue', {'answerId': answerId, 'index': index}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2061,7 +2061,7 @@ class WrapD4Cert(WrapperParentClass):
     def setValue(self, index, new_value, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.setValue
-        :rtype: 
+        :rtype:
         :param index: int16
         :param new_value: address
         """
@@ -2073,7 +2073,7 @@ class WrapD4Cert(WrapperParentClass):
     def G_setValue(self, index, new_value, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.setValue getter
-        :rtype: 
+        :rtype:
         :param index: int16
         :param new_value: address
         """
@@ -2082,7 +2082,7 @@ class WrapD4Cert(WrapperParentClass):
     def R_setValue(self, index, new_value, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.setValue raw getter
-        :rtype: 
+        :rtype:
         :param index: int16
         :param new_value: address
         """
@@ -2113,7 +2113,7 @@ class WrapD4Cert(WrapperParentClass):
     def resetValue(self, index, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.resetValue
-        :rtype: 
+        :rtype:
         :param index: int16
         """
         if ts4_sign:
@@ -2124,7 +2124,7 @@ class WrapD4Cert(WrapperParentClass):
     def G_resetValue(self, index, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.resetValue getter
-        :rtype: 
+        :rtype:
         :param index: int16
         """
         return self.C_.call_getter('resetValue', {'index': index}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -2132,7 +2132,7 @@ class WrapD4Cert(WrapperParentClass):
     def R_resetValue(self, index, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.resetValue raw getter
-        :rtype: 
+        :rtype:
         :param index: int16
         """
         return self.C_.call_getter_raw('resetValue', {'index': index}, expect_ec=ts4_expect_ec)
@@ -2160,7 +2160,7 @@ class WrapD4Cert(WrapperParentClass):
     def clearValues(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.clearValues
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_clearValues(ts4_expect_ec=ts4_expect_ec)
@@ -2170,14 +2170,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_clearValues(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.clearValues getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('clearValues', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_clearValues(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.clearValues raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('clearValues', {}, expect_ec=ts4_expect_ec)
 
@@ -2199,105 +2199,105 @@ class WrapD4Cert(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def registrationPreflight(self, requestId, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.registrationPreflight
         :rtype: uint128, uint32
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        return self.G_registrationPreflight(requestId, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_registrationPreflight(requestId, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_registrationPreflight(self, requestId, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_registrationPreflight(self, requestId, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.registrationPreflight getter
         :rtype: uint128, uint32
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        return self.C_.call_getter('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
+    def R_registrationPreflight(self, requestId, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.registrationPreflight raw getter
         :rtype: uint128, uint32
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        return self.C_.call_getter_raw('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, expect_ec=ts4_expect_ec)
 
-    def M_registrationPreflight(self, requestId, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_registrationPreflight(self, requestId, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.registrationPreflight method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        _r_ = self.C_.call_method('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_registrationPreflight(self, requestId, _answer_id=0, ts4_expect_ec=0):
+    def S_registrationPreflight(self, requestId, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.registrationPreflight signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param requestId: uint128
         """
-        _r_ = self.C_.call_method_signed('registrationPreflight', {'_answer_id': _answer_id, 'requestId': requestId}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('registrationPreflight', {'answerId': answerId, 'requestId': requestId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def applyAuctionResult(self, new_owner, new_expiry, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.applyAuctionResult
         :rtype: bool
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.G_applyAuctionResult(new_owner, new_expiry, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_applyAuctionResult(new_owner, new_expiry, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_applyAuctionResult(self, new_owner, new_expiry, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.applyAuctionResult getter
         :rtype: bool
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.C_.call_getter('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('applyAuctionResult', {'answerId': answerId, 'new_owner': new_owner, 'new_expiry': new_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_expect_ec=0):
+    def R_applyAuctionResult(self, new_owner, new_expiry, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.applyAuctionResult raw getter
         :rtype: bool
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param new_owner: address
         :param new_expiry: uint32
         """
-        return self.C_.call_getter_raw('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('applyAuctionResult', {'answerId': answerId, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
 
-    def M_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_applyAuctionResult(self, new_owner, new_expiry, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.applyAuctionResult method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param new_owner: address
         :param new_expiry: uint32
         """
-        _r_ = self.C_.call_method('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('applyAuctionResult', {'answerId': answerId, 'new_owner': new_owner, 'new_expiry': new_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_applyAuctionResult(self, new_owner, new_expiry, _answer_id=0, ts4_expect_ec=0):
+    def S_applyAuctionResult(self, new_owner, new_expiry, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.applyAuctionResult signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param new_owner: address
         :param new_expiry: uint32
         """
-        _r_ = self.C_.call_method_signed('applyAuctionResult', {'_answer_id': _answer_id, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('applyAuctionResult', {'answerId': answerId, 'new_owner': new_owner, 'new_expiry': new_expiry}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2305,7 +2305,7 @@ class WrapD4Cert(WrapperParentClass):
     def ensureExpiry(self, expiry, retval, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.ensureExpiry
-        :rtype: 
+        :rtype:
         :param expiry: uint32
         :param retval: bool
         """
@@ -2317,7 +2317,7 @@ class WrapD4Cert(WrapperParentClass):
     def G_ensureExpiry(self, expiry, retval, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.ensureExpiry getter
-        :rtype: 
+        :rtype:
         :param expiry: uint32
         :param retval: bool
         """
@@ -2326,7 +2326,7 @@ class WrapD4Cert(WrapperParentClass):
     def R_ensureExpiry(self, expiry, retval, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.ensureExpiry raw getter
-        :rtype: 
+        :rtype:
         :param expiry: uint32
         :param retval: bool
         """
@@ -2354,90 +2354,90 @@ class WrapD4Cert(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def getOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def getOwner(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getOwner
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_getOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getOwner(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_getOwner(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.getOwner getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('getOwner', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_getOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def R_getOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getOwner raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_getOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getOwner(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getOwner method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('getOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getOwner', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def S_getOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getOwner signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def getPendingOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def getPendingOwner(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.getPendingOwner
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_getPendingOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getPendingOwner(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getPendingOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_getPendingOwner(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.getPendingOwner getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('getPendingOwner', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def R_getPendingOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getPendingOwner raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getPendingOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_getPendingOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getPendingOwner(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.getPendingOwner method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('getPendingOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getPendingOwner', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def S_getPendingOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.getPendingOwner signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getPendingOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -2445,7 +2445,7 @@ class WrapD4Cert(WrapperParentClass):
     def transferOwner(self, new_owner, deadline, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.transferOwner
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param deadline: uint32
         """
@@ -2457,7 +2457,7 @@ class WrapD4Cert(WrapperParentClass):
     def G_transferOwner(self, new_owner, deadline, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.transferOwner getter
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param deadline: uint32
         """
@@ -2466,7 +2466,7 @@ class WrapD4Cert(WrapperParentClass):
     def R_transferOwner(self, new_owner, deadline, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.transferOwner raw getter
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param deadline: uint32
         """
@@ -2497,7 +2497,7 @@ class WrapD4Cert(WrapperParentClass):
     def cancelTransferOwner(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.cancelTransferOwner
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_cancelTransferOwner(ts4_expect_ec=ts4_expect_ec)
@@ -2507,14 +2507,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_cancelTransferOwner(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.cancelTransferOwner getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('cancelTransferOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_cancelTransferOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.cancelTransferOwner raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
 
@@ -2539,7 +2539,7 @@ class WrapD4Cert(WrapperParentClass):
     def acceptTransfer(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.acceptTransfer
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_acceptTransfer(ts4_expect_ec=ts4_expect_ec)
@@ -2549,14 +2549,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_acceptTransfer(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.acceptTransfer getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('acceptTransfer', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_acceptTransfer(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.acceptTransfer raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('acceptTransfer', {}, expect_ec=ts4_expect_ec)
 
@@ -2581,7 +2581,7 @@ class WrapD4Cert(WrapperParentClass):
     def relinquishOwner(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.relinquishOwner
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_relinquishOwner(ts4_expect_ec=ts4_expect_ec)
@@ -2591,14 +2591,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_relinquishOwner(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.relinquishOwner getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('relinquishOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_relinquishOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.relinquishOwner raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('relinquishOwner', {}, expect_ec=ts4_expect_ec)
 
@@ -2623,7 +2623,7 @@ class WrapD4Cert(WrapperParentClass):
     def requestProlong(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.requestProlong
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_requestProlong(ts4_expect_ec=ts4_expect_ec)
@@ -2633,14 +2633,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_requestProlong(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.requestProlong getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('requestProlong', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_requestProlong(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.requestProlong raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('requestProlong', {}, expect_ec=ts4_expect_ec)
 
@@ -2665,8 +2665,8 @@ class WrapD4Cert(WrapperParentClass):
     def deploySub(self, name, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.deploySub
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         if ts4_sign:
             return self.S_deploySub(name, ts4_expect_ec=ts4_expect_ec)
@@ -2676,23 +2676,23 @@ class WrapD4Cert(WrapperParentClass):
     def G_deploySub(self, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.deploySub getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         return self.C_.call_getter('deploySub', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_deploySub(self, name, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.deploySub raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         return self.C_.call_getter_raw('deploySub', {'name': name}, expect_ec=ts4_expect_ec)
 
     def M_deploySub(self, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.deploySub method call
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method('deploySub', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
@@ -2702,7 +2702,7 @@ class WrapD4Cert(WrapperParentClass):
     def S_deploySub(self, name, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.deploySub signed method call
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method_signed('deploySub', {'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
@@ -2712,8 +2712,8 @@ class WrapD4Cert(WrapperParentClass):
     def syncSub(self, name, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.syncSub
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         if ts4_sign:
             return self.S_syncSub(name, ts4_expect_ec=ts4_expect_ec)
@@ -2723,23 +2723,23 @@ class WrapD4Cert(WrapperParentClass):
     def G_syncSub(self, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.syncSub getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         return self.C_.call_getter('syncSub', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_syncSub(self, name, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.syncSub raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         return self.C_.call_getter_raw('syncSub', {'name': name}, expect_ec=ts4_expect_ec)
 
     def M_syncSub(self, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Cert.syncSub method call
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method('syncSub', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
@@ -2749,7 +2749,7 @@ class WrapD4Cert(WrapperParentClass):
     def S_syncSub(self, name, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.syncSub signed method call
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method_signed('syncSub', {'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
@@ -2759,7 +2759,7 @@ class WrapD4Cert(WrapperParentClass):
     def subSynchronize(self, new_owner, new_expiry, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.subSynchronize
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param new_expiry: uint32
         """
@@ -2771,7 +2771,7 @@ class WrapD4Cert(WrapperParentClass):
     def G_subSynchronize(self, new_owner, new_expiry, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.subSynchronize getter
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param new_expiry: uint32
         """
@@ -2780,7 +2780,7 @@ class WrapD4Cert(WrapperParentClass):
     def R_subSynchronize(self, new_owner, new_expiry, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.subSynchronize raw getter
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param new_expiry: uint32
         """
@@ -2811,7 +2811,7 @@ class WrapD4Cert(WrapperParentClass):
     def passToOwner(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.passToOwner
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_passToOwner(ts4_expect_ec=ts4_expect_ec)
@@ -2821,14 +2821,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_passToOwner(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.passToOwner getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_passToOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.passToOwner raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
 
@@ -2853,7 +2853,7 @@ class WrapD4Cert(WrapperParentClass):
     def withdrawExcess(self, dest, amount, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.withdrawExcess
-        :rtype: 
+        :rtype:
         :param dest: address
         :param amount: uint128
         """
@@ -2865,7 +2865,7 @@ class WrapD4Cert(WrapperParentClass):
     def G_withdrawExcess(self, dest, amount, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.withdrawExcess getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param amount: uint128
         """
@@ -2874,7 +2874,7 @@ class WrapD4Cert(WrapperParentClass):
     def R_withdrawExcess(self, dest, amount, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.withdrawExcess raw getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param amount: uint128
         """
@@ -2905,7 +2905,7 @@ class WrapD4Cert(WrapperParentClass):
     def sink(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.sink
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_sink(ts4_expect_ec=ts4_expect_ec)
@@ -2915,14 +2915,14 @@ class WrapD4Cert(WrapperParentClass):
     def G_sink(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.sink getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_sink(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.sink raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
 
@@ -3025,21 +3025,21 @@ class WrapD4Cert(WrapperParentClass):
     def st_name(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Cert.st_name
-        :rtype: bytes
+        :rtype: string
         """
         return self.G_st_name(ts4_expect_ec=ts4_expect_ec)
 
     def G_st_name(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Cert.st_name getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4Cert.st_name raw getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
@@ -3538,7 +3538,7 @@ class WrapD4DeBot(WrapperParentClass):
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4DeBot.constructor
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_constructor(ts4_expect_ec=ts4_expect_ec)
@@ -3548,14 +3548,14 @@ class WrapD4DeBot(WrapperParentClass):
     def G_constructor(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4DeBot.constructor getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4DeBot.constructor raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
@@ -3586,7 +3586,7 @@ class WrapD4MFT128(WrapperParentClass):
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4MFT128.constructor
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_constructor(ts4_expect_ec=ts4_expect_ec)
@@ -3596,14 +3596,14 @@ class WrapD4MFT128(WrapperParentClass):
     def G_constructor(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4MFT128.constructor getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4MFT128.constructor raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
@@ -3634,7 +3634,7 @@ class WrapD4Root(WrapperParentClass):
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.constructor
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_constructor(ts4_expect_ec=ts4_expect_ec)
@@ -3644,14 +3644,14 @@ class WrapD4Root(WrapperParentClass):
     def G_constructor(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.constructor getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.constructor raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
@@ -3676,7 +3676,7 @@ class WrapD4Root(WrapperParentClass):
     def dropAdminFlag(self, flags, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.dropAdminFlag
-        :rtype: 
+        :rtype:
         :param flags: uint8
         """
         if ts4_sign:
@@ -3687,7 +3687,7 @@ class WrapD4Root(WrapperParentClass):
     def G_dropAdminFlag(self, flags, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.dropAdminFlag getter
-        :rtype: 
+        :rtype:
         :param flags: uint8
         """
         return self.C_.call_getter('dropAdminFlag', {'flags': flags}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -3695,7 +3695,7 @@ class WrapD4Root(WrapperParentClass):
     def R_dropAdminFlag(self, flags, ts4_expect_ec=0):
         """
         Wrapper for D4Root.dropAdminFlag raw getter
-        :rtype: 
+        :rtype:
         :param flags: uint8
         """
         return self.C_.call_getter_raw('dropAdminFlag', {'flags': flags}, expect_ec=ts4_expect_ec)
@@ -3723,8 +3723,8 @@ class WrapD4Root(WrapperParentClass):
     def adminDeploy(self, name, set_owner, set_expiry, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.adminDeploy
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_owner: address
         :param set_expiry: uint32
         """
@@ -3736,8 +3736,8 @@ class WrapD4Root(WrapperParentClass):
     def G_adminDeploy(self, name, set_owner, set_expiry, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.adminDeploy getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_owner: address
         :param set_expiry: uint32
         """
@@ -3746,8 +3746,8 @@ class WrapD4Root(WrapperParentClass):
     def R_adminDeploy(self, name, set_owner, set_expiry, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminDeploy raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_owner: address
         :param set_expiry: uint32
         """
@@ -3756,7 +3756,7 @@ class WrapD4Root(WrapperParentClass):
     def M_adminDeploy(self, name, set_owner, set_expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.adminDeploy method call
-        :param name: bytes
+        :param name: string
         :param set_owner: address
         :param set_expiry: uint32
         """
@@ -3768,7 +3768,7 @@ class WrapD4Root(WrapperParentClass):
     def S_adminDeploy(self, name, set_owner, set_expiry, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminDeploy signed method call
-        :param name: bytes
+        :param name: string
         :param set_owner: address
         :param set_expiry: uint32
         """
@@ -3780,8 +3780,8 @@ class WrapD4Root(WrapperParentClass):
     def adminReserve(self, name, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.adminReserve
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         if ts4_sign:
             return self.S_adminReserve(name, ts4_expect_ec=ts4_expect_ec)
@@ -3791,23 +3791,23 @@ class WrapD4Root(WrapperParentClass):
     def G_adminReserve(self, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.adminReserve getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         return self.C_.call_getter('adminReserve', {'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_adminReserve(self, name, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminReserve raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         """
         return self.C_.call_getter_raw('adminReserve', {'name': name}, expect_ec=ts4_expect_ec)
 
     def M_adminReserve(self, name, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.adminReserve method call
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method('adminReserve', {'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
@@ -3817,7 +3817,7 @@ class WrapD4Root(WrapperParentClass):
     def S_adminReserve(self, name, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminReserve signed method call
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method_signed('adminReserve', {'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
@@ -3827,8 +3827,8 @@ class WrapD4Root(WrapperParentClass):
     def adminChown(self, name, set_owner, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.adminChown
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_owner: address
         """
         if ts4_sign:
@@ -3839,8 +3839,8 @@ class WrapD4Root(WrapperParentClass):
     def G_adminChown(self, name, set_owner, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.adminChown getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_owner: address
         """
         return self.C_.call_getter('adminChown', {'name': name, 'set_owner': set_owner}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -3848,8 +3848,8 @@ class WrapD4Root(WrapperParentClass):
     def R_adminChown(self, name, set_owner, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminChown raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_owner: address
         """
         return self.C_.call_getter_raw('adminChown', {'name': name, 'set_owner': set_owner}, expect_ec=ts4_expect_ec)
@@ -3857,7 +3857,7 @@ class WrapD4Root(WrapperParentClass):
     def M_adminChown(self, name, set_owner, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.adminChown method call
-        :param name: bytes
+        :param name: string
         :param set_owner: address
         """
         _r_ = self.C_.call_method('adminChown', {'name': name, 'set_owner': set_owner}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
@@ -3868,7 +3868,7 @@ class WrapD4Root(WrapperParentClass):
     def S_adminChown(self, name, set_owner, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminChown signed method call
-        :param name: bytes
+        :param name: string
         :param set_owner: address
         """
         _r_ = self.C_.call_method_signed('adminChown', {'name': name, 'set_owner': set_owner}, expect_ec=ts4_expect_ec)
@@ -3879,8 +3879,8 @@ class WrapD4Root(WrapperParentClass):
     def adminChexp(self, name, set_expiry, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.adminChexp
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_expiry: uint32
         """
         if ts4_sign:
@@ -3891,8 +3891,8 @@ class WrapD4Root(WrapperParentClass):
     def G_adminChexp(self, name, set_expiry, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.adminChexp getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_expiry: uint32
         """
         return self.C_.call_getter('adminChexp', {'name': name, 'set_expiry': set_expiry}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -3900,8 +3900,8 @@ class WrapD4Root(WrapperParentClass):
     def R_adminChexp(self, name, set_expiry, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminChexp raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param set_expiry: uint32
         """
         return self.C_.call_getter_raw('adminChexp', {'name': name, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
@@ -3909,7 +3909,7 @@ class WrapD4Root(WrapperParentClass):
     def M_adminChexp(self, name, set_expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.adminChexp method call
-        :param name: bytes
+        :param name: string
         :param set_expiry: uint32
         """
         _r_ = self.C_.call_method('adminChexp', {'name': name, 'set_expiry': set_expiry}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
@@ -3920,7 +3920,7 @@ class WrapD4Root(WrapperParentClass):
     def S_adminChexp(self, name, set_expiry, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminChexp signed method call
-        :param name: bytes
+        :param name: string
         :param set_expiry: uint32
         """
         _r_ = self.C_.call_method_signed('adminChexp', {'name': name, 'set_expiry': set_expiry}, expect_ec=ts4_expect_ec)
@@ -3931,7 +3931,7 @@ class WrapD4Root(WrapperParentClass):
     def adminUpgradeUser(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.adminUpgradeUser
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -3942,7 +3942,7 @@ class WrapD4Root(WrapperParentClass):
     def G_adminUpgradeUser(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.adminUpgradeUser getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('adminUpgradeUser', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -3950,7 +3950,7 @@ class WrapD4Root(WrapperParentClass):
     def R_adminUpgradeUser(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminUpgradeUser raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('adminUpgradeUser', {'target': target}, expect_ec=ts4_expect_ec)
@@ -3978,7 +3978,7 @@ class WrapD4Root(WrapperParentClass):
     def adminUpgradeCert(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.adminUpgradeCert
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -3989,7 +3989,7 @@ class WrapD4Root(WrapperParentClass):
     def G_adminUpgradeCert(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.adminUpgradeCert getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('adminUpgradeCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -3997,7 +3997,7 @@ class WrapD4Root(WrapperParentClass):
     def R_adminUpgradeCert(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Root.adminUpgradeCert raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('adminUpgradeCert', {'target': target}, expect_ec=ts4_expect_ec)
@@ -4025,7 +4025,7 @@ class WrapD4Root(WrapperParentClass):
     def onProposalPassed(self, proposalInfo, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.onProposalPassed
-        :rtype: 
+        :rtype:
         :param proposalInfo: tuple
         """
         if ts4_sign:
@@ -4036,7 +4036,7 @@ class WrapD4Root(WrapperParentClass):
     def G_onProposalPassed(self, proposalInfo, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.onProposalPassed getter
-        :rtype: 
+        :rtype:
         :param proposalInfo: tuple
         """
         return self.C_.call_getter('onProposalPassed', {'proposalInfo': proposalInfo}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4044,7 +4044,7 @@ class WrapD4Root(WrapperParentClass):
     def R_onProposalPassed(self, proposalInfo, ts4_expect_ec=0):
         """
         Wrapper for D4Root.onProposalPassed raw getter
-        :rtype: 
+        :rtype:
         :param proposalInfo: tuple
         """
         return self.C_.call_getter_raw('onProposalPassed', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
@@ -4072,7 +4072,7 @@ class WrapD4Root(WrapperParentClass):
     def onProposalRejected(self, proposalInfo, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.onProposalRejected
-        :rtype: 
+        :rtype:
         :param proposalInfo: tuple
         """
         if ts4_sign:
@@ -4083,7 +4083,7 @@ class WrapD4Root(WrapperParentClass):
     def G_onProposalRejected(self, proposalInfo, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.onProposalRejected getter
-        :rtype: 
+        :rtype:
         :param proposalInfo: tuple
         """
         return self.C_.call_getter('onProposalRejected', {'proposalInfo': proposalInfo}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4091,7 +4091,7 @@ class WrapD4Root(WrapperParentClass):
     def R_onProposalRejected(self, proposalInfo, ts4_expect_ec=0):
         """
         Wrapper for D4Root.onProposalRejected raw getter
-        :rtype: 
+        :rtype:
         :param proposalInfo: tuple
         """
         return self.C_.call_getter_raw('onProposalRejected', {'proposalInfo': proposalInfo}, expect_ec=ts4_expect_ec)
@@ -4119,7 +4119,7 @@ class WrapD4Root(WrapperParentClass):
     def onProposalDeploy(self, value0, proposalType, specific, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.onProposalDeploy
-        :rtype: 
+        :rtype:
         :param value0: address
         :param proposalType: uint8
         :param specific: cell
@@ -4132,7 +4132,7 @@ class WrapD4Root(WrapperParentClass):
     def G_onProposalDeploy(self, value0, proposalType, specific, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.onProposalDeploy getter
-        :rtype: 
+        :rtype:
         :param value0: address
         :param proposalType: uint8
         :param specific: cell
@@ -4142,7 +4142,7 @@ class WrapD4Root(WrapperParentClass):
     def R_onProposalDeploy(self, value0, proposalType, specific, ts4_expect_ec=0):
         """
         Wrapper for D4Root.onProposalDeploy raw getter
-        :rtype: 
+        :rtype:
         :param value0: address
         :param proposalType: uint8
         :param specific: cell
@@ -4173,370 +4173,370 @@ class WrapD4Root(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def deployUserForMe(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def deployUserForMe(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.deployUserForMe
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_deployUserForMe(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_deployUserForMe(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_deployUserForMe(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_deployUserForMe(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.deployUserForMe getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('deployUserForMe', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('deployUserForMe', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_deployUserForMe(self, _answer_id=0, ts4_expect_ec=0):
+    def R_deployUserForMe(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForMe raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('deployUserForMe', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('deployUserForMe', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_deployUserForMe(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_deployUserForMe(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.deployUserForMe method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('deployUserForMe', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('deployUserForMe', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_deployUserForMe(self, _answer_id=0, ts4_expect_ec=0):
+    def S_deployUserForMe(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForMe signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('deployUserForMe', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('deployUserForMe', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def deployUserForPubKey(self, pubkey, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def deployUserForPubKey(self, pubkey, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.deployUserForPubKey
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param pubkey: uint256
         """
-        return self.G_deployUserForPubKey(pubkey, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_deployUserForPubKey(pubkey, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_deployUserForPubKey(self, pubkey, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.deployUserForPubKey getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param pubkey: uint256
         """
-        return self.C_.call_getter('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('deployUserForPubKey', {'answerId': answerId, 'pubkey': pubkey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_expect_ec=0):
+    def R_deployUserForPubKey(self, pubkey, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForPubKey raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param pubkey: uint256
         """
-        return self.C_.call_getter_raw('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('deployUserForPubKey', {'answerId': answerId, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
 
-    def M_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_deployUserForPubKey(self, pubkey, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.deployUserForPubKey method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param pubkey: uint256
         """
-        _r_ = self.C_.call_method('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('deployUserForPubKey', {'answerId': answerId, 'pubkey': pubkey}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_deployUserForPubKey(self, pubkey, _answer_id=0, ts4_expect_ec=0):
+    def S_deployUserForPubKey(self, pubkey, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.deployUserForPubKey signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param pubkey: uint256
         """
-        _r_ = self.C_.call_method_signed('deployUserForPubKey', {'_answer_id': _answer_id, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('deployUserForPubKey', {'answerId': answerId, 'pubkey': pubkey}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def resolveUser(self, user, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def resolveUser(self, user, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolveUser
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param user: address
         """
-        return self.G_resolveUser(user, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolveUser(user, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolveUser(self, user, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_resolveUser(self, user, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.resolveUser getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param user: address
         """
-        return self.C_.call_getter('resolveUser', {'_answer_id': _answer_id, 'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('resolveUser', {'answerId': answerId, 'user': user}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_resolveUser(self, user, _answer_id=0, ts4_expect_ec=0):
+    def R_resolveUser(self, user, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveUser raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param user: address
         """
-        return self.C_.call_getter_raw('resolveUser', {'_answer_id': _answer_id, 'user': user}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolveUser', {'answerId': answerId, 'user': user}, expect_ec=ts4_expect_ec)
 
-    def M_resolveUser(self, user, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolveUser(self, user, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolveUser method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param user: address
         """
-        _r_ = self.C_.call_method('resolveUser', {'_answer_id': _answer_id, 'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolveUser', {'answerId': answerId, 'user': user}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolveUser(self, user, _answer_id=0, ts4_expect_ec=0):
+    def S_resolveUser(self, user, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveUser signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param user: address
         """
-        _r_ = self.C_.call_method_signed('resolveUser', {'_answer_id': _answer_id, 'user': user}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolveUser', {'answerId': answerId, 'user': user}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def resolve(self, ct_type, name, parent, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def resolve(self, ct_type, name, parent, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolve
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
-        return self.G_resolve(ct_type, name, parent, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolve(ct_type, name, parent, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolve(self, ct_type, name, parent, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_resolve(self, ct_type, name, parent, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.resolve getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
-        return self.C_.call_getter('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('resolve', {'answerId': answerId, 'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_resolve(self, ct_type, name, parent, _answer_id=0, ts4_expect_ec=0):
+    def R_resolve(self, ct_type, name, parent, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolve raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
-        return self.C_.call_getter_raw('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolve', {'answerId': answerId, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
 
-    def M_resolve(self, ct_type, name, parent, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolve(self, ct_type, name, parent, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolve method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
-        _r_ = self.C_.call_method('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolve', {'answerId': answerId, 'ct_type': ct_type, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolve(self, ct_type, name, parent, _answer_id=0, ts4_expect_ec=0):
+    def S_resolve(self, ct_type, name, parent, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolve signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
-        _r_ = self.C_.call_method_signed('resolve', {'_answer_id': _answer_id, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolve', {'answerId': answerId, 'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def resolveFull(self, ct_type, fullname, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def resolveFull(self, ct_type, fullname, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolveFull
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param fullname: bytes
+        :param fullname: string
         """
-        return self.G_resolveFull(ct_type, fullname, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolveFull(ct_type, fullname, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_resolveFull(self, ct_type, fullname, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.resolveFull getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param fullname: bytes
+        :param fullname: string
         """
-        return self.C_.call_getter('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('resolveFull', {'answerId': answerId, 'ct_type': ct_type, 'fullname': fullname}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_expect_ec=0):
+    def R_resolveFull(self, ct_type, fullname, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveFull raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param fullname: bytes
+        :param fullname: string
         """
-        return self.C_.call_getter_raw('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolveFull', {'answerId': answerId, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
 
-    def M_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolveFull(self, ct_type, fullname, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolveFull method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param fullname: bytes
+        :param fullname: string
         """
-        _r_ = self.C_.call_method('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolveFull', {'answerId': answerId, 'ct_type': ct_type, 'fullname': fullname}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolveFull(self, ct_type, fullname, _answer_id=0, ts4_expect_ec=0):
+    def S_resolveFull(self, ct_type, fullname, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveFull signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param ct_type: uint8
-        :param fullname: bytes
+        :param fullname: string
         """
-        _r_ = self.C_.call_method_signed('resolveFull', {'_answer_id': _answer_id, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolveFull', {'answerId': answerId, 'ct_type': ct_type, 'fullname': fullname}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def createAuction(self, origin, revision, name, duration, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.createAuction
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param origin: address
         :param revision: uint32
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
-        return self.G_createAuction(origin, revision, name, duration, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_createAuction(origin, revision, name, duration, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_createAuction(self, origin, revision, name, duration, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.createAuction getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param origin: address
         :param revision: uint32
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
-        return self.C_.call_getter('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('createAuction', {'answerId': answerId, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_expect_ec=0):
+    def R_createAuction(self, origin, revision, name, duration, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.createAuction raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param origin: address
         :param revision: uint32
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
-        return self.C_.call_getter_raw('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('createAuction', {'answerId': answerId, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
 
-    def M_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_createAuction(self, origin, revision, name, duration, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.createAuction method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param origin: address
         :param revision: uint32
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
-        _r_ = self.C_.call_method('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('createAuction', {'answerId': answerId, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_createAuction(self, origin, revision, name, duration, _answer_id=0, ts4_expect_ec=0):
+    def S_createAuction(self, origin, revision, name, duration, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.createAuction signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         :param origin: address
         :param revision: uint32
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
-        _r_ = self.C_.call_method_signed('createAuction', {'_answer_id': _answer_id, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('createAuction', {'answerId': answerId, 'origin': origin, 'revision': revision, 'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def resolveAuction(self, name, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def resolveAuction(self, name, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.resolveAuction
         :rtype: address
-        :param _answer_id: uint32
-        :param name: bytes
+        :param answerId: uint32
+        :param name: string
         """
-        return self.G_resolveAuction(name, _answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_resolveAuction(name, answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_resolveAuction(self, name, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_resolveAuction(self, name, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.resolveAuction getter
         :rtype: address
-        :param _answer_id: uint32
-        :param name: bytes
+        :param answerId: uint32
+        :param name: string
         """
-        return self.C_.call_getter('resolveAuction', {'_answer_id': _answer_id, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('resolveAuction', {'answerId': answerId, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_resolveAuction(self, name, _answer_id=0, ts4_expect_ec=0):
+    def R_resolveAuction(self, name, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveAuction raw getter
         :rtype: address
-        :param _answer_id: uint32
-        :param name: bytes
+        :param answerId: uint32
+        :param name: string
         """
-        return self.C_.call_getter_raw('resolveAuction', {'_answer_id': _answer_id, 'name': name}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('resolveAuction', {'answerId': answerId, 'name': name}, expect_ec=ts4_expect_ec)
 
-    def M_resolveAuction(self, name, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_resolveAuction(self, name, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.resolveAuction method call
-        :param _answer_id: uint32
-        :param name: bytes
+        :param answerId: uint32
+        :param name: string
         """
-        _r_ = self.C_.call_method('resolveAuction', {'_answer_id': _answer_id, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('resolveAuction', {'answerId': answerId, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_resolveAuction(self, name, _answer_id=0, ts4_expect_ec=0):
+    def S_resolveAuction(self, name, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.resolveAuction signed method call
-        :param _answer_id: uint32
-        :param name: bytes
+        :param answerId: uint32
+        :param name: string
         """
-        _r_ = self.C_.call_method_signed('resolveAuction', {'_answer_id': _answer_id, 'name': name}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('resolveAuction', {'answerId': answerId, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -4544,10 +4544,10 @@ class WrapD4Root(WrapperParentClass):
     def onAuctionResult(self, winner, exp, name, parent, deploy, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.onAuctionResult
-        :rtype: 
+        :rtype:
         :param winner: address
         :param exp: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         :param deploy: bool
         """
@@ -4559,10 +4559,10 @@ class WrapD4Root(WrapperParentClass):
     def G_onAuctionResult(self, winner, exp, name, parent, deploy, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.onAuctionResult getter
-        :rtype: 
+        :rtype:
         :param winner: address
         :param exp: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         :param deploy: bool
         """
@@ -4571,10 +4571,10 @@ class WrapD4Root(WrapperParentClass):
     def R_onAuctionResult(self, winner, exp, name, parent, deploy, ts4_expect_ec=0):
         """
         Wrapper for D4Root.onAuctionResult raw getter
-        :rtype: 
+        :rtype:
         :param winner: address
         :param exp: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         :param deploy: bool
         """
@@ -4585,7 +4585,7 @@ class WrapD4Root(WrapperParentClass):
         Wrapper for D4Root.onAuctionResult method call
         :param winner: address
         :param exp: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         :param deploy: bool
         """
@@ -4599,7 +4599,7 @@ class WrapD4Root(WrapperParentClass):
         Wrapper for D4Root.onAuctionResult signed method call
         :param winner: address
         :param exp: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         :param deploy: bool
         """
@@ -4611,7 +4611,7 @@ class WrapD4Root(WrapperParentClass):
     def applyAuctionCallback(self, success, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.applyAuctionCallback
-        :rtype: 
+        :rtype:
         :param success: bool
         """
         if ts4_sign:
@@ -4622,7 +4622,7 @@ class WrapD4Root(WrapperParentClass):
     def G_applyAuctionCallback(self, success, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.applyAuctionCallback getter
-        :rtype: 
+        :rtype:
         :param success: bool
         """
         return self.C_.call_getter('applyAuctionCallback', {'success': success}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4630,7 +4630,7 @@ class WrapD4Root(WrapperParentClass):
     def R_applyAuctionCallback(self, success, ts4_expect_ec=0):
         """
         Wrapper for D4Root.applyAuctionCallback raw getter
-        :rtype: 
+        :rtype:
         :param success: bool
         """
         return self.C_.call_getter_raw('applyAuctionCallback', {'success': success}, expect_ec=ts4_expect_ec)
@@ -4658,10 +4658,10 @@ class WrapD4Root(WrapperParentClass):
     def subCertDepl(self, name, parent, subname, new_owner, expiry, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.subCertDepl
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param parent: address
-        :param subname: bytes
+        :param subname: string
         :param new_owner: address
         :param expiry: uint32
         """
@@ -4673,10 +4673,10 @@ class WrapD4Root(WrapperParentClass):
     def G_subCertDepl(self, name, parent, subname, new_owner, expiry, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.subCertDepl getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param parent: address
-        :param subname: bytes
+        :param subname: string
         :param new_owner: address
         :param expiry: uint32
         """
@@ -4685,10 +4685,10 @@ class WrapD4Root(WrapperParentClass):
     def R_subCertDepl(self, name, parent, subname, new_owner, expiry, ts4_expect_ec=0):
         """
         Wrapper for D4Root.subCertDepl raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param parent: address
-        :param subname: bytes
+        :param subname: string
         :param new_owner: address
         :param expiry: uint32
         """
@@ -4697,9 +4697,9 @@ class WrapD4Root(WrapperParentClass):
     def M_subCertDepl(self, name, parent, subname, new_owner, expiry, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.subCertDepl method call
-        :param name: bytes
+        :param name: string
         :param parent: address
-        :param subname: bytes
+        :param subname: string
         :param new_owner: address
         :param expiry: uint32
         """
@@ -4711,9 +4711,9 @@ class WrapD4Root(WrapperParentClass):
     def S_subCertDepl(self, name, parent, subname, new_owner, expiry, ts4_expect_ec=0):
         """
         Wrapper for D4Root.subCertDepl signed method call
-        :param name: bytes
+        :param name: string
         :param parent: address
-        :param subname: bytes
+        :param subname: string
         :param new_owner: address
         :param expiry: uint32
         """
@@ -4725,9 +4725,9 @@ class WrapD4Root(WrapperParentClass):
     def receiveShards(self, ct_type, name, parent, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.receiveShards
-        :rtype: 
+        :rtype:
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         if ts4_sign:
@@ -4738,9 +4738,9 @@ class WrapD4Root(WrapperParentClass):
     def G_receiveShards(self, ct_type, name, parent, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.receiveShards getter
-        :rtype: 
+        :rtype:
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         return self.C_.call_getter('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4748,9 +4748,9 @@ class WrapD4Root(WrapperParentClass):
     def R_receiveShards(self, ct_type, name, parent, ts4_expect_ec=0):
         """
         Wrapper for D4Root.receiveShards raw getter
-        :rtype: 
+        :rtype:
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         return self.C_.call_getter_raw('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
@@ -4759,7 +4759,7 @@ class WrapD4Root(WrapperParentClass):
         """
         Wrapper for D4Root.receiveShards method call
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         _r_ = self.C_.call_method('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
@@ -4771,7 +4771,7 @@ class WrapD4Root(WrapperParentClass):
         """
         Wrapper for D4Root.receiveShards signed method call
         :param ct_type: uint8
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         _r_ = self.C_.call_method_signed('receiveShards', {'ct_type': ct_type, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
@@ -4782,7 +4782,7 @@ class WrapD4Root(WrapperParentClass):
     def setBaseCode(self, code, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.setBaseCode
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         if ts4_sign:
@@ -4793,7 +4793,7 @@ class WrapD4Root(WrapperParentClass):
     def G_setBaseCode(self, code, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.setBaseCode getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter('setBaseCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4801,7 +4801,7 @@ class WrapD4Root(WrapperParentClass):
     def R_setBaseCode(self, code, ts4_expect_ec=0):
         """
         Wrapper for D4Root.setBaseCode raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter_raw('setBaseCode', {'code': code}, expect_ec=ts4_expect_ec)
@@ -4829,7 +4829,7 @@ class WrapD4Root(WrapperParentClass):
     def setCertificateCode(self, code, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.setCertificateCode
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         if ts4_sign:
@@ -4840,7 +4840,7 @@ class WrapD4Root(WrapperParentClass):
     def G_setCertificateCode(self, code, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.setCertificateCode getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter('setCertificateCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4848,7 +4848,7 @@ class WrapD4Root(WrapperParentClass):
     def R_setCertificateCode(self, code, ts4_expect_ec=0):
         """
         Wrapper for D4Root.setCertificateCode raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter_raw('setCertificateCode', {'code': code}, expect_ec=ts4_expect_ec)
@@ -4876,7 +4876,7 @@ class WrapD4Root(WrapperParentClass):
     def setAuctionCode(self, code, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.setAuctionCode
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         if ts4_sign:
@@ -4887,7 +4887,7 @@ class WrapD4Root(WrapperParentClass):
     def G_setAuctionCode(self, code, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.setAuctionCode getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter('setAuctionCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4895,7 +4895,7 @@ class WrapD4Root(WrapperParentClass):
     def R_setAuctionCode(self, code, ts4_expect_ec=0):
         """
         Wrapper for D4Root.setAuctionCode raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter_raw('setAuctionCode', {'code': code}, expect_ec=ts4_expect_ec)
@@ -4923,7 +4923,7 @@ class WrapD4Root(WrapperParentClass):
     def setUserCode(self, code, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.setUserCode
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         if ts4_sign:
@@ -4934,7 +4934,7 @@ class WrapD4Root(WrapperParentClass):
     def G_setUserCode(self, code, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.setUserCode getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter('setUserCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4942,7 +4942,7 @@ class WrapD4Root(WrapperParentClass):
     def R_setUserCode(self, code, ts4_expect_ec=0):
         """
         Wrapper for D4Root.setUserCode raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter_raw('setUserCode', {'code': code}, expect_ec=ts4_expect_ec)
@@ -4970,7 +4970,7 @@ class WrapD4Root(WrapperParentClass):
     def setRootCode(self, code, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.setRootCode
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         if ts4_sign:
@@ -4981,7 +4981,7 @@ class WrapD4Root(WrapperParentClass):
     def G_setRootCode(self, code, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.setRootCode getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter('setRootCode', {'code': code}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -4989,7 +4989,7 @@ class WrapD4Root(WrapperParentClass):
     def R_setRootCode(self, code, ts4_expect_ec=0):
         """
         Wrapper for D4Root.setRootCode raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         """
         return self.C_.call_getter_raw('setRootCode', {'code': code}, expect_ec=ts4_expect_ec)
@@ -5017,7 +5017,7 @@ class WrapD4Root(WrapperParentClass):
     def upgradeMeRequest(self, ct_type, my_revision, my_hash, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.upgradeMeRequest
-        :rtype: 
+        :rtype:
         :param ct_type: uint8
         :param my_revision: uint32
         :param my_hash: uint256
@@ -5030,7 +5030,7 @@ class WrapD4Root(WrapperParentClass):
     def G_upgradeMeRequest(self, ct_type, my_revision, my_hash, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.upgradeMeRequest getter
-        :rtype: 
+        :rtype:
         :param ct_type: uint8
         :param my_revision: uint32
         :param my_hash: uint256
@@ -5040,7 +5040,7 @@ class WrapD4Root(WrapperParentClass):
     def R_upgradeMeRequest(self, ct_type, my_revision, my_hash, ts4_expect_ec=0):
         """
         Wrapper for D4Root.upgradeMeRequest raw getter
-        :rtype: 
+        :rtype:
         :param ct_type: uint8
         :param my_revision: uint32
         :param my_hash: uint256
@@ -5074,7 +5074,7 @@ class WrapD4Root(WrapperParentClass):
     def assignSmvContract(self, smv_addr, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.assignSmvContract
-        :rtype: 
+        :rtype:
         :param smv_addr: address
         """
         if ts4_sign:
@@ -5085,7 +5085,7 @@ class WrapD4Root(WrapperParentClass):
     def G_assignSmvContract(self, smv_addr, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.assignSmvContract getter
-        :rtype: 
+        :rtype:
         :param smv_addr: address
         """
         return self.C_.call_getter('assignSmvContract', {'smv_addr': smv_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -5093,7 +5093,7 @@ class WrapD4Root(WrapperParentClass):
     def R_assignSmvContract(self, smv_addr, ts4_expect_ec=0):
         """
         Wrapper for D4Root.assignSmvContract raw getter
-        :rtype: 
+        :rtype:
         :param smv_addr: address
         """
         return self.C_.call_getter_raw('assignSmvContract', {'smv_addr': smv_addr}, expect_ec=ts4_expect_ec)
@@ -5121,7 +5121,7 @@ class WrapD4Root(WrapperParentClass):
     def restrictAuctions(self, until, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.restrictAuctions
-        :rtype: 
+        :rtype:
         :param until: uint32
         """
         if ts4_sign:
@@ -5132,7 +5132,7 @@ class WrapD4Root(WrapperParentClass):
     def G_restrictAuctions(self, until, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.restrictAuctions getter
-        :rtype: 
+        :rtype:
         :param until: uint32
         """
         return self.C_.call_getter('restrictAuctions', {'until': until}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -5140,7 +5140,7 @@ class WrapD4Root(WrapperParentClass):
     def R_restrictAuctions(self, until, ts4_expect_ec=0):
         """
         Wrapper for D4Root.restrictAuctions raw getter
-        :rtype: 
+        :rtype:
         :param until: uint32
         """
         return self.C_.call_getter_raw('restrictAuctions', {'until': until}, expect_ec=ts4_expect_ec)
@@ -5165,90 +5165,90 @@ class WrapD4Root(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
-    def getOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def getOwner(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.getOwner
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_getOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getOwner(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_getOwner(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.getOwner getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('getOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('getOwner', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_getOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def R_getOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getOwner raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_getOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getOwner(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.getOwner method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('getOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getOwner', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def S_getOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getOwner signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('getOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def getPendingOwner(self, _answer_id=0, ts4_expect_ec=0, ts4_sign=False):
+    def getPendingOwner(self, answerId=0, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.getPendingOwner
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.G_getPendingOwner(_answer_id=0, ts4_expect_ec=ts4_expect_ec)
+        return self.G_getPendingOwner(answerId=0, ts4_expect_ec=ts4_expect_ec)
 
-    def G_getPendingOwner(self, _answer_id=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+    def G_getPendingOwner(self, answerId=0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.getPendingOwner getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter('getPendingOwner', {'_answer_id': _answer_id}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+        return self.C_.call_getter('getPendingOwner', {'answerId': answerId}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
-    def R_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def R_getPendingOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getPendingOwner raw getter
         :rtype: address
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        return self.C_.call_getter_raw('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        return self.C_.call_getter_raw('getPendingOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
 
-    def M_getPendingOwner(self, _answer_id=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+    def M_getPendingOwner(self, answerId=0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Root.getPendingOwner method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method('getPendingOwner', {'_answer_id': _answer_id}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        _r_ = self.C_.call_method('getPendingOwner', {'answerId': answerId}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
 
-    def S_getPendingOwner(self, _answer_id=0, ts4_expect_ec=0):
+    def S_getPendingOwner(self, answerId=0, ts4_expect_ec=0):
         """
         Wrapper for D4Root.getPendingOwner signed method call
-        :param _answer_id: uint32
+        :param answerId: uint32
         """
-        _r_ = self.C_.call_method_signed('getPendingOwner', {'_answer_id': _answer_id}, expect_ec=ts4_expect_ec)
+        _r_ = self.C_.call_method_signed('getPendingOwner', {'answerId': answerId}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -5256,7 +5256,7 @@ class WrapD4Root(WrapperParentClass):
     def transferOwner(self, new_owner, deadline, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.transferOwner
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param deadline: uint32
         """
@@ -5268,7 +5268,7 @@ class WrapD4Root(WrapperParentClass):
     def G_transferOwner(self, new_owner, deadline, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.transferOwner getter
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param deadline: uint32
         """
@@ -5277,7 +5277,7 @@ class WrapD4Root(WrapperParentClass):
     def R_transferOwner(self, new_owner, deadline, ts4_expect_ec=0):
         """
         Wrapper for D4Root.transferOwner raw getter
-        :rtype: 
+        :rtype:
         :param new_owner: address
         :param deadline: uint32
         """
@@ -5308,7 +5308,7 @@ class WrapD4Root(WrapperParentClass):
     def cancelTransferOwner(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.cancelTransferOwner
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_cancelTransferOwner(ts4_expect_ec=ts4_expect_ec)
@@ -5318,14 +5318,14 @@ class WrapD4Root(WrapperParentClass):
     def G_cancelTransferOwner(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.cancelTransferOwner getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('cancelTransferOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_cancelTransferOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.cancelTransferOwner raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('cancelTransferOwner', {}, expect_ec=ts4_expect_ec)
 
@@ -5350,7 +5350,7 @@ class WrapD4Root(WrapperParentClass):
     def acceptTransfer(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.acceptTransfer
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_acceptTransfer(ts4_expect_ec=ts4_expect_ec)
@@ -5360,14 +5360,14 @@ class WrapD4Root(WrapperParentClass):
     def G_acceptTransfer(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.acceptTransfer getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('acceptTransfer', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_acceptTransfer(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.acceptTransfer raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('acceptTransfer', {}, expect_ec=ts4_expect_ec)
 
@@ -5392,7 +5392,7 @@ class WrapD4Root(WrapperParentClass):
     def relinquishOwner(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.relinquishOwner
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_relinquishOwner(ts4_expect_ec=ts4_expect_ec)
@@ -5402,14 +5402,14 @@ class WrapD4Root(WrapperParentClass):
     def G_relinquishOwner(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.relinquishOwner getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('relinquishOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_relinquishOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Root.relinquishOwner raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('relinquishOwner', {}, expect_ec=ts4_expect_ec)
 
@@ -5473,7 +5473,7 @@ class WrapD4Root(WrapperParentClass):
     def withdraw(self, dest, value, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Root.withdraw
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -5485,7 +5485,7 @@ class WrapD4Root(WrapperParentClass):
     def G_withdraw(self, dest, value, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Root.withdraw getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -5494,7 +5494,7 @@ class WrapD4Root(WrapperParentClass):
     def R_withdraw(self, dest, value, ts4_expect_ec=0):
         """
         Wrapper for D4Root.withdraw raw getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -6155,7 +6155,7 @@ class WrapD4Test(WrapperParentClass):
     def constructor(self, root, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.constructor
-        :rtype: 
+        :rtype:
         :param root: address
         """
         if ts4_sign:
@@ -6166,7 +6166,7 @@ class WrapD4Test(WrapperParentClass):
     def G_constructor(self, root, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.constructor getter
-        :rtype: 
+        :rtype:
         :param root: address
         """
         return self.C_.call_getter('constructor', {'root': root}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6174,7 +6174,7 @@ class WrapD4Test(WrapperParentClass):
     def R_constructor(self, root, ts4_expect_ec=0):
         """
         Wrapper for D4Test.constructor raw getter
-        :rtype: 
+        :rtype:
         :param root: address
         """
         return self.C_.call_getter_raw('constructor', {'root': root}, expect_ec=ts4_expect_ec)
@@ -6202,7 +6202,7 @@ class WrapD4Test(WrapperParentClass):
     def makeIntUser(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.makeIntUser
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_makeIntUser(ts4_expect_ec=ts4_expect_ec)
@@ -6212,14 +6212,14 @@ class WrapD4Test(WrapperParentClass):
     def G_makeIntUser(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.makeIntUser getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('makeIntUser', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_makeIntUser(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.makeIntUser raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('makeIntUser', {}, expect_ec=ts4_expect_ec)
 
@@ -6244,7 +6244,7 @@ class WrapD4Test(WrapperParentClass):
     def makeExtUser(self, pk, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.makeExtUser
-        :rtype: 
+        :rtype:
         :param pk: uint256
         """
         if ts4_sign:
@@ -6255,7 +6255,7 @@ class WrapD4Test(WrapperParentClass):
     def G_makeExtUser(self, pk, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.makeExtUser getter
-        :rtype: 
+        :rtype:
         :param pk: uint256
         """
         return self.C_.call_getter('makeExtUser', {'pk': pk}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6263,7 +6263,7 @@ class WrapD4Test(WrapperParentClass):
     def R_makeExtUser(self, pk, ts4_expect_ec=0):
         """
         Wrapper for D4Test.makeExtUser raw getter
-        :rtype: 
+        :rtype:
         :param pk: uint256
         """
         return self.C_.call_getter_raw('makeExtUser', {'pk': pk}, expect_ec=ts4_expect_ec)
@@ -6291,7 +6291,7 @@ class WrapD4Test(WrapperParentClass):
     def addressCallbackInt(self, user_addr, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.addressCallbackInt
-        :rtype: 
+        :rtype:
         :param user_addr: address
         """
         if ts4_sign:
@@ -6302,7 +6302,7 @@ class WrapD4Test(WrapperParentClass):
     def G_addressCallbackInt(self, user_addr, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.addressCallbackInt getter
-        :rtype: 
+        :rtype:
         :param user_addr: address
         """
         return self.C_.call_getter('addressCallbackInt', {'user_addr': user_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6310,7 +6310,7 @@ class WrapD4Test(WrapperParentClass):
     def R_addressCallbackInt(self, user_addr, ts4_expect_ec=0):
         """
         Wrapper for D4Test.addressCallbackInt raw getter
-        :rtype: 
+        :rtype:
         :param user_addr: address
         """
         return self.C_.call_getter_raw('addressCallbackInt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
@@ -6338,7 +6338,7 @@ class WrapD4Test(WrapperParentClass):
     def addressCallbackExt(self, user_addr, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.addressCallbackExt
-        :rtype: 
+        :rtype:
         :param user_addr: address
         """
         if ts4_sign:
@@ -6349,7 +6349,7 @@ class WrapD4Test(WrapperParentClass):
     def G_addressCallbackExt(self, user_addr, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.addressCallbackExt getter
-        :rtype: 
+        :rtype:
         :param user_addr: address
         """
         return self.C_.call_getter('addressCallbackExt', {'user_addr': user_addr}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6357,7 +6357,7 @@ class WrapD4Test(WrapperParentClass):
     def R_addressCallbackExt(self, user_addr, ts4_expect_ec=0):
         """
         Wrapper for D4Test.addressCallbackExt raw getter
-        :rtype: 
+        :rtype:
         :param user_addr: address
         """
         return self.C_.call_getter_raw('addressCallbackExt', {'user_addr': user_addr}, expect_ec=ts4_expect_ec)
@@ -6385,9 +6385,9 @@ class WrapD4Test(WrapperParentClass):
     def addLocked(self, until, name, parent, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.addLocked
-        :rtype: 
+        :rtype:
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         if ts4_sign:
@@ -6398,9 +6398,9 @@ class WrapD4Test(WrapperParentClass):
     def G_addLocked(self, until, name, parent, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.addLocked getter
-        :rtype: 
+        :rtype:
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         return self.C_.call_getter('addLocked', {'until': until, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6408,9 +6408,9 @@ class WrapD4Test(WrapperParentClass):
     def R_addLocked(self, until, name, parent, ts4_expect_ec=0):
         """
         Wrapper for D4Test.addLocked raw getter
-        :rtype: 
+        :rtype:
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         return self.C_.call_getter_raw('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
@@ -6419,7 +6419,7 @@ class WrapD4Test(WrapperParentClass):
         """
         Wrapper for D4Test.addLocked method call
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         _r_ = self.C_.call_method('addLocked', {'until': until, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
@@ -6431,7 +6431,7 @@ class WrapD4Test(WrapperParentClass):
         """
         Wrapper for D4Test.addLocked signed method call
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         _r_ = self.C_.call_method_signed('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
@@ -6442,7 +6442,7 @@ class WrapD4Test(WrapperParentClass):
     def requestUpgrade(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.requestUpgrade
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_requestUpgrade(ts4_expect_ec=ts4_expect_ec)
@@ -6452,14 +6452,14 @@ class WrapD4Test(WrapperParentClass):
     def G_requestUpgrade(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.requestUpgrade getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_requestUpgrade(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.requestUpgrade raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
 
@@ -6484,7 +6484,7 @@ class WrapD4Test(WrapperParentClass):
     def sweepLocks(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.sweepLocks
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_sweepLocks(ts4_expect_ec=ts4_expect_ec)
@@ -6494,14 +6494,14 @@ class WrapD4Test(WrapperParentClass):
     def G_sweepLocks(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.sweepLocks getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('sweepLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_sweepLocks(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.sweepLocks raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('sweepLocks', {}, expect_ec=ts4_expect_ec)
 
@@ -6526,7 +6526,7 @@ class WrapD4Test(WrapperParentClass):
     def withdraw(self, dest, value, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.withdraw
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -6538,7 +6538,7 @@ class WrapD4Test(WrapperParentClass):
     def G_withdraw(self, dest, value, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.withdraw getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -6547,7 +6547,7 @@ class WrapD4Test(WrapperParentClass):
     def R_withdraw(self, dest, value, ts4_expect_ec=0):
         """
         Wrapper for D4Test.withdraw raw getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -6578,7 +6578,7 @@ class WrapD4Test(WrapperParentClass):
     def pull(self, value, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.pull
-        :rtype: 
+        :rtype:
         :param value: uint128
         """
         if ts4_sign:
@@ -6589,7 +6589,7 @@ class WrapD4Test(WrapperParentClass):
     def G_pull(self, value, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.pull getter
-        :rtype: 
+        :rtype:
         :param value: uint128
         """
         return self.C_.call_getter('pull', {'value': value}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6597,7 +6597,7 @@ class WrapD4Test(WrapperParentClass):
     def R_pull(self, value, ts4_expect_ec=0):
         """
         Wrapper for D4Test.pull raw getter
-        :rtype: 
+        :rtype:
         :param value: uint128
         """
         return self.C_.call_getter_raw('pull', {'value': value}, expect_ec=ts4_expect_ec)
@@ -6664,7 +6664,7 @@ class WrapD4Test(WrapperParentClass):
     def setMasterKey(self, newMasterKey, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.setMasterKey
-        :rtype: 
+        :rtype:
         :param newMasterKey: bytes
         """
         if ts4_sign:
@@ -6675,7 +6675,7 @@ class WrapD4Test(WrapperParentClass):
     def G_setMasterKey(self, newMasterKey, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.setMasterKey getter
-        :rtype: 
+        :rtype:
         :param newMasterKey: bytes
         """
         return self.C_.call_getter('setMasterKey', {'newMasterKey': newMasterKey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6683,7 +6683,7 @@ class WrapD4Test(WrapperParentClass):
     def R_setMasterKey(self, newMasterKey, ts4_expect_ec=0):
         """
         Wrapper for D4Test.setMasterKey raw getter
-        :rtype: 
+        :rtype:
         :param newMasterKey: bytes
         """
         return self.C_.call_getter_raw('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
@@ -6711,8 +6711,8 @@ class WrapD4Test(WrapperParentClass):
     def createAuction(self, name, duration, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.createAuction
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param duration: uint8
         """
         if ts4_sign:
@@ -6723,8 +6723,8 @@ class WrapD4Test(WrapperParentClass):
     def G_createAuction(self, name, duration, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.createAuction getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param duration: uint8
         """
         return self.C_.call_getter('createAuction', {'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6732,8 +6732,8 @@ class WrapD4Test(WrapperParentClass):
     def R_createAuction(self, name, duration, ts4_expect_ec=0):
         """
         Wrapper for D4Test.createAuction raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param duration: uint8
         """
         return self.C_.call_getter_raw('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
@@ -6741,7 +6741,7 @@ class WrapD4Test(WrapperParentClass):
     def M_createAuction(self, name, duration, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4Test.createAuction method call
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
         _r_ = self.C_.call_method('createAuction', {'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
@@ -6752,7 +6752,7 @@ class WrapD4Test(WrapperParentClass):
     def S_createAuction(self, name, duration, ts4_expect_ec=0):
         """
         Wrapper for D4Test.createAuction signed method call
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
         _r_ = self.C_.call_method_signed('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
@@ -6763,7 +6763,7 @@ class WrapD4Test(WrapperParentClass):
     def makeBid(self, auction, data, hash, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.makeBid
-        :rtype: 
+        :rtype:
         :param auction: address
         :param data: bytes
         :param hash: uint256
@@ -6776,7 +6776,7 @@ class WrapD4Test(WrapperParentClass):
     def G_makeBid(self, auction, data, hash, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.makeBid getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param data: bytes
         :param hash: uint256
@@ -6786,7 +6786,7 @@ class WrapD4Test(WrapperParentClass):
     def R_makeBid(self, auction, data, hash, ts4_expect_ec=0):
         """
         Wrapper for D4Test.makeBid raw getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param data: bytes
         :param hash: uint256
@@ -6820,7 +6820,7 @@ class WrapD4Test(WrapperParentClass):
     def revealBid(self, auction, amount, nonce, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.revealBid
-        :rtype: 
+        :rtype:
         :param auction: address
         :param amount: uint128
         :param nonce: uint128
@@ -6833,7 +6833,7 @@ class WrapD4Test(WrapperParentClass):
     def G_revealBid(self, auction, amount, nonce, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.revealBid getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param amount: uint128
         :param nonce: uint128
@@ -6843,7 +6843,7 @@ class WrapD4Test(WrapperParentClass):
     def R_revealBid(self, auction, amount, nonce, ts4_expect_ec=0):
         """
         Wrapper for D4Test.revealBid raw getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param amount: uint128
         :param nonce: uint128
@@ -6877,7 +6877,7 @@ class WrapD4Test(WrapperParentClass):
     def bidRevealComplete(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.bidRevealComplete
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_bidRevealComplete(ts4_expect_ec=ts4_expect_ec)
@@ -6887,14 +6887,14 @@ class WrapD4Test(WrapperParentClass):
     def G_bidRevealComplete(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.bidRevealComplete getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('bidRevealComplete', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_bidRevealComplete(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.bidRevealComplete raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
 
@@ -6919,7 +6919,7 @@ class WrapD4Test(WrapperParentClass):
     def finalize(self, auction, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.finalize
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         if ts4_sign:
@@ -6930,7 +6930,7 @@ class WrapD4Test(WrapperParentClass):
     def G_finalize(self, auction, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.finalize getter
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         return self.C_.call_getter('finalize', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6938,7 +6938,7 @@ class WrapD4Test(WrapperParentClass):
     def R_finalize(self, auction, ts4_expect_ec=0):
         """
         Wrapper for D4Test.finalize raw getter
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         return self.C_.call_getter_raw('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
@@ -6966,7 +6966,7 @@ class WrapD4Test(WrapperParentClass):
     def queryCert(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.queryCert
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -6977,7 +6977,7 @@ class WrapD4Test(WrapperParentClass):
     def G_queryCert(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.queryCert getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('queryCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -6985,7 +6985,7 @@ class WrapD4Test(WrapperParentClass):
     def R_queryCert(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.queryCert raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7013,7 +7013,7 @@ class WrapD4Test(WrapperParentClass):
     def queryAuct(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.queryAuct
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7024,7 +7024,7 @@ class WrapD4Test(WrapperParentClass):
     def G_queryAuct(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.queryAuct getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('queryAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7032,7 +7032,7 @@ class WrapD4Test(WrapperParentClass):
     def R_queryAuct(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.queryAuct raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7060,7 +7060,7 @@ class WrapD4Test(WrapperParentClass):
     def forgetCert(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.forgetCert
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7071,7 +7071,7 @@ class WrapD4Test(WrapperParentClass):
     def G_forgetCert(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.forgetCert getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('forgetCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7079,7 +7079,7 @@ class WrapD4Test(WrapperParentClass):
     def R_forgetCert(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.forgetCert raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7107,7 +7107,7 @@ class WrapD4Test(WrapperParentClass):
     def forgetAuct(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.forgetAuct
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7118,7 +7118,7 @@ class WrapD4Test(WrapperParentClass):
     def G_forgetAuct(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.forgetAuct getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('forgetAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7126,7 +7126,7 @@ class WrapD4Test(WrapperParentClass):
     def R_forgetAuct(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.forgetAuct raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7151,10 +7151,62 @@ class WrapD4Test(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
+    def forgetMe(self, name, parent, ts4_expect_ec=0, ts4_sign=False):
+        """
+        Wrapper for D4Test.forgetMe
+        :rtype:
+        :param name: string
+        :param parent: address
+        """
+        if ts4_sign:
+            return self.S_forgetMe(name, parent, ts4_expect_ec=ts4_expect_ec)
+        else:
+            return self.M_forgetMe(name, parent, ts4_expect_ec=ts4_expect_ec)
+
+    def G_forgetMe(self, name, parent, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+        """
+        Wrapper for D4Test.forgetMe getter
+        :rtype:
+        :param name: string
+        :param parent: address
+        """
+        return self.C_.call_getter('forgetMe', {'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+
+    def R_forgetMe(self, name, parent, ts4_expect_ec=0):
+        """
+        Wrapper for D4Test.forgetMe raw getter
+        :rtype:
+        :param name: string
+        :param parent: address
+        """
+        return self.C_.call_getter_raw('forgetMe', {'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+
+    def M_forgetMe(self, name, parent, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+        """
+        Wrapper for D4Test.forgetMe method call
+        :param name: string
+        :param parent: address
+        """
+        _r_ = self.C_.call_method('forgetMe', {'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def S_forgetMe(self, name, parent, ts4_expect_ec=0):
+        """
+        Wrapper for D4Test.forgetMe signed method call
+        :param name: string
+        :param parent: address
+        """
+        _r_ = self.C_.call_method_signed('forgetMe', {'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
     def setValue(self, target, index, new_value, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.setValue
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         :param new_value: address
@@ -7167,7 +7219,7 @@ class WrapD4Test(WrapperParentClass):
     def G_setValue(self, target, index, new_value, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.setValue getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         :param new_value: address
@@ -7177,7 +7229,7 @@ class WrapD4Test(WrapperParentClass):
     def R_setValue(self, target, index, new_value, ts4_expect_ec=0):
         """
         Wrapper for D4Test.setValue raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         :param new_value: address
@@ -7211,7 +7263,7 @@ class WrapD4Test(WrapperParentClass):
     def resetValue(self, target, index, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.resetValue
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         """
@@ -7223,7 +7275,7 @@ class WrapD4Test(WrapperParentClass):
     def G_resetValue(self, target, index, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.resetValue getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         """
@@ -7232,7 +7284,7 @@ class WrapD4Test(WrapperParentClass):
     def R_resetValue(self, target, index, ts4_expect_ec=0):
         """
         Wrapper for D4Test.resetValue raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         """
@@ -7263,7 +7315,7 @@ class WrapD4Test(WrapperParentClass):
     def clearValues(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.clearValues
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7274,7 +7326,7 @@ class WrapD4Test(WrapperParentClass):
     def G_clearValues(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.clearValues getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('clearValues', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7282,7 +7334,7 @@ class WrapD4Test(WrapperParentClass):
     def R_clearValues(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.clearValues raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7310,7 +7362,7 @@ class WrapD4Test(WrapperParentClass):
     def certWithdrawExcess(self, target, amount, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.certWithdrawExcess
-        :rtype: 
+        :rtype:
         :param target: address
         :param amount: uint128
         """
@@ -7322,7 +7374,7 @@ class WrapD4Test(WrapperParentClass):
     def G_certWithdrawExcess(self, target, amount, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.certWithdrawExcess getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param amount: uint128
         """
@@ -7331,7 +7383,7 @@ class WrapD4Test(WrapperParentClass):
     def R_certWithdrawExcess(self, target, amount, ts4_expect_ec=0):
         """
         Wrapper for D4Test.certWithdrawExcess raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param amount: uint128
         """
@@ -7362,7 +7414,7 @@ class WrapD4Test(WrapperParentClass):
     def certRequestUpgrade(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.certRequestUpgrade
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7373,7 +7425,7 @@ class WrapD4Test(WrapperParentClass):
     def G_certRequestUpgrade(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.certRequestUpgrade getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certRequestUpgrade', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7381,7 +7433,7 @@ class WrapD4Test(WrapperParentClass):
     def R_certRequestUpgrade(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.certRequestUpgrade raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7409,7 +7461,7 @@ class WrapD4Test(WrapperParentClass):
     def requestProlong(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.requestProlong
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7420,7 +7472,7 @@ class WrapD4Test(WrapperParentClass):
     def G_requestProlong(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.requestProlong getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('requestProlong', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7428,7 +7480,7 @@ class WrapD4Test(WrapperParentClass):
     def R_requestProlong(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.requestProlong raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7456,9 +7508,9 @@ class WrapD4Test(WrapperParentClass):
     def deploySub(self, target, name, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.deploySub
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         if ts4_sign:
             return self.S_deploySub(target, name, ts4_expect_ec=ts4_expect_ec)
@@ -7468,18 +7520,18 @@ class WrapD4Test(WrapperParentClass):
     def G_deploySub(self, target, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.deploySub getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter('deploySub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_deploySub(self, target, name, ts4_expect_ec=0):
         """
         Wrapper for D4Test.deploySub raw getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter_raw('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
@@ -7487,7 +7539,7 @@ class WrapD4Test(WrapperParentClass):
         """
         Wrapper for D4Test.deploySub method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method('deploySub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
@@ -7498,7 +7550,7 @@ class WrapD4Test(WrapperParentClass):
         """
         Wrapper for D4Test.deploySub signed method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method_signed('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
@@ -7508,9 +7560,9 @@ class WrapD4Test(WrapperParentClass):
     def syncSub(self, target, name, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.syncSub
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         if ts4_sign:
             return self.S_syncSub(target, name, ts4_expect_ec=ts4_expect_ec)
@@ -7520,18 +7572,18 @@ class WrapD4Test(WrapperParentClass):
     def G_syncSub(self, target, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.syncSub getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter('syncSub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_syncSub(self, target, name, ts4_expect_ec=0):
         """
         Wrapper for D4Test.syncSub raw getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter_raw('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
@@ -7539,7 +7591,7 @@ class WrapD4Test(WrapperParentClass):
         """
         Wrapper for D4Test.syncSub method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method('syncSub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
@@ -7550,7 +7602,7 @@ class WrapD4Test(WrapperParentClass):
         """
         Wrapper for D4Test.syncSub signed method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method_signed('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
@@ -7560,7 +7612,7 @@ class WrapD4Test(WrapperParentClass):
     def queryCertCallback(self, info, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.queryCertCallback
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         if ts4_sign:
@@ -7571,7 +7623,7 @@ class WrapD4Test(WrapperParentClass):
     def G_queryCertCallback(self, info, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.queryCertCallback getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter('queryCertCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7579,7 +7631,7 @@ class WrapD4Test(WrapperParentClass):
     def R_queryCertCallback(self, info, ts4_expect_ec=0):
         """
         Wrapper for D4Test.queryCertCallback raw getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter_raw('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
@@ -7607,7 +7659,7 @@ class WrapD4Test(WrapperParentClass):
     def queryAuctCallback(self, info, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.queryAuctCallback
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         if ts4_sign:
@@ -7618,7 +7670,7 @@ class WrapD4Test(WrapperParentClass):
     def G_queryAuctCallback(self, info, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.queryAuctCallback getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter('queryAuctCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7626,7 +7678,7 @@ class WrapD4Test(WrapperParentClass):
     def R_queryAuctCallback(self, info, ts4_expect_ec=0):
         """
         Wrapper for D4Test.queryAuctCallback raw getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter_raw('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
@@ -7654,7 +7706,7 @@ class WrapD4Test(WrapperParentClass):
     def certTransferOwner(self, target, new_owner, deadline, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.certTransferOwner
-        :rtype: 
+        :rtype:
         :param target: address
         :param new_owner: address
         :param deadline: uint32
@@ -7667,7 +7719,7 @@ class WrapD4Test(WrapperParentClass):
     def G_certTransferOwner(self, target, new_owner, deadline, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.certTransferOwner getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param new_owner: address
         :param deadline: uint32
@@ -7677,7 +7729,7 @@ class WrapD4Test(WrapperParentClass):
     def R_certTransferOwner(self, target, new_owner, deadline, ts4_expect_ec=0):
         """
         Wrapper for D4Test.certTransferOwner raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param new_owner: address
         :param deadline: uint32
@@ -7711,7 +7763,7 @@ class WrapD4Test(WrapperParentClass):
     def certCancelTransferOwner(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.certCancelTransferOwner
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7722,7 +7774,7 @@ class WrapD4Test(WrapperParentClass):
     def G_certCancelTransferOwner(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.certCancelTransferOwner getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certCancelTransferOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7730,7 +7782,7 @@ class WrapD4Test(WrapperParentClass):
     def R_certCancelTransferOwner(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.certCancelTransferOwner raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7758,7 +7810,7 @@ class WrapD4Test(WrapperParentClass):
     def certAcceptTransfer(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.certAcceptTransfer
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7769,7 +7821,7 @@ class WrapD4Test(WrapperParentClass):
     def G_certAcceptTransfer(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.certAcceptTransfer getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certAcceptTransfer', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7777,7 +7829,7 @@ class WrapD4Test(WrapperParentClass):
     def R_certAcceptTransfer(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.certAcceptTransfer raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7805,7 +7857,7 @@ class WrapD4Test(WrapperParentClass):
     def certRelinquishOwner(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.certRelinquishOwner
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -7816,7 +7868,7 @@ class WrapD4Test(WrapperParentClass):
     def G_certRelinquishOwner(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.certRelinquishOwner getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certRelinquishOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -7824,7 +7876,7 @@ class WrapD4Test(WrapperParentClass):
     def R_certRelinquishOwner(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4Test.certRelinquishOwner raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
@@ -7852,7 +7904,7 @@ class WrapD4Test(WrapperParentClass):
     def passToOwner(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.passToOwner
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_passToOwner(ts4_expect_ec=ts4_expect_ec)
@@ -7862,14 +7914,14 @@ class WrapD4Test(WrapperParentClass):
     def G_passToOwner(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.passToOwner getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_passToOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.passToOwner raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
 
@@ -7894,7 +7946,7 @@ class WrapD4Test(WrapperParentClass):
     def upgrade(self, code, revision, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.upgrade
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -7906,7 +7958,7 @@ class WrapD4Test(WrapperParentClass):
     def G_upgrade(self, code, revision, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.upgrade getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -7915,7 +7967,7 @@ class WrapD4Test(WrapperParentClass):
     def R_upgrade(self, code, revision, ts4_expect_ec=0):
         """
         Wrapper for D4Test.upgrade raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -7946,7 +7998,7 @@ class WrapD4Test(WrapperParentClass):
     def upgradeNotNeeded(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4Test.upgradeNotNeeded
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_upgradeNotNeeded(ts4_expect_ec=ts4_expect_ec)
@@ -7956,14 +8008,14 @@ class WrapD4Test(WrapperParentClass):
     def G_upgradeNotNeeded(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4Test.upgradeNotNeeded getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_upgradeNotNeeded(self, ts4_expect_ec=0):
         """
         Wrapper for D4Test.upgradeNotNeeded raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
 
@@ -7981,6 +8033,94 @@ class WrapD4Test(WrapperParentClass):
         Wrapper for D4Test.upgradeNotNeeded signed method call
         """
         _r_ = self.C_.call_method_signed('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def hasBid(self, value0, ts4_expect_ec=0, ts4_sign=False):
+        """
+        Wrapper for D4Test.hasBid
+        :rtype: bool
+        :param value0: address
+        """
+        return self.G_hasBid(value0, ts4_expect_ec=ts4_expect_ec)
+
+    def G_hasBid(self, value0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+        """
+        Wrapper for D4Test.hasBid getter
+        :rtype: bool
+        :param value0: address
+        """
+        return self.C_.call_getter('hasBid', {'value0': value0}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+
+    def R_hasBid(self, value0, ts4_expect_ec=0):
+        """
+        Wrapper for D4Test.hasBid raw getter
+        :rtype: bool
+        :param value0: address
+        """
+        return self.C_.call_getter_raw('hasBid', {'value0': value0}, expect_ec=ts4_expect_ec)
+
+    def M_hasBid(self, value0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+        """
+        Wrapper for D4Test.hasBid method call
+        :param value0: address
+        """
+        _r_ = self.C_.call_method('hasBid', {'value0': value0}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def S_hasBid(self, value0, ts4_expect_ec=0):
+        """
+        Wrapper for D4Test.hasBid signed method call
+        :param value0: address
+        """
+        _r_ = self.C_.call_method_signed('hasBid', {'value0': value0}, expect_ec=ts4_expect_ec)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def getBid(self, value0, ts4_expect_ec=0, ts4_sign=False):
+        """
+        Wrapper for D4Test.getBid
+        :rtype: tuple
+        :param value0: address
+        """
+        return self.G_getBid(value0, ts4_expect_ec=ts4_expect_ec)
+
+    def G_getBid(self, value0, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+        """
+        Wrapper for D4Test.getBid getter
+        :rtype: tuple
+        :param value0: address
+        """
+        return self.C_.call_getter('getBid', {'value0': value0}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+
+    def R_getBid(self, value0, ts4_expect_ec=0):
+        """
+        Wrapper for D4Test.getBid raw getter
+        :rtype: tuple
+        :param value0: address
+        """
+        return self.C_.call_getter_raw('getBid', {'value0': value0}, expect_ec=ts4_expect_ec)
+
+    def M_getBid(self, value0, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+        """
+        Wrapper for D4Test.getBid method call
+        :param value0: address
+        """
+        _r_ = self.C_.call_method('getBid', {'value0': value0}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def S_getBid(self, value0, ts4_expect_ec=0):
+        """
+        Wrapper for D4Test.getBid signed method call
+        :param value0: address
+        """
+        _r_ = self.C_.call_method_signed('getBid', {'value0': value0}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
@@ -8111,7 +8251,7 @@ class WrapD4User(WrapperParentClass):
     def constructor(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.constructor
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_constructor(ts4_expect_ec=ts4_expect_ec)
@@ -8121,14 +8261,14 @@ class WrapD4User(WrapperParentClass):
     def G_constructor(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.constructor getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('constructor', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_constructor(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.constructor raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('constructor', {}, expect_ec=ts4_expect_ec)
 
@@ -8150,10 +8290,98 @@ class WrapD4User(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
+    def hasBid(self, auction, ts4_expect_ec=0, ts4_sign=False):
+        """
+        Wrapper for D4User.hasBid
+        :rtype: bool
+        :param auction: address
+        """
+        return self.G_hasBid(auction, ts4_expect_ec=ts4_expect_ec)
+
+    def G_hasBid(self, auction, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+        """
+        Wrapper for D4User.hasBid getter
+        :rtype: bool
+        :param auction: address
+        """
+        return self.C_.call_getter('hasBid', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+
+    def R_hasBid(self, auction, ts4_expect_ec=0):
+        """
+        Wrapper for D4User.hasBid raw getter
+        :rtype: bool
+        :param auction: address
+        """
+        return self.C_.call_getter_raw('hasBid', {'auction': auction}, expect_ec=ts4_expect_ec)
+
+    def M_hasBid(self, auction, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+        """
+        Wrapper for D4User.hasBid method call
+        :param auction: address
+        """
+        _r_ = self.C_.call_method('hasBid', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def S_hasBid(self, auction, ts4_expect_ec=0):
+        """
+        Wrapper for D4User.hasBid signed method call
+        :param auction: address
+        """
+        _r_ = self.C_.call_method_signed('hasBid', {'auction': auction}, expect_ec=ts4_expect_ec)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def getBid(self, auction, ts4_expect_ec=0, ts4_sign=False):
+        """
+        Wrapper for D4User.getBid
+        :rtype: tuple
+        :param auction: address
+        """
+        return self.G_getBid(auction, ts4_expect_ec=ts4_expect_ec)
+
+    def G_getBid(self, auction, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+        """
+        Wrapper for D4User.getBid getter
+        :rtype: tuple
+        :param auction: address
+        """
+        return self.C_.call_getter('getBid', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+
+    def R_getBid(self, auction, ts4_expect_ec=0):
+        """
+        Wrapper for D4User.getBid raw getter
+        :rtype: tuple
+        :param auction: address
+        """
+        return self.C_.call_getter_raw('getBid', {'auction': auction}, expect_ec=ts4_expect_ec)
+
+    def M_getBid(self, auction, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+        """
+        Wrapper for D4User.getBid method call
+        :param auction: address
+        """
+        _r_ = self.C_.call_method('getBid', {'auction': auction}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def S_getBid(self, auction, ts4_expect_ec=0):
+        """
+        Wrapper for D4User.getBid signed method call
+        :param auction: address
+        """
+        _r_ = self.C_.call_method_signed('getBid', {'auction': auction}, expect_ec=ts4_expect_ec)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
     def setMasterKey(self, newMasterKey, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.setMasterKey
-        :rtype: 
+        :rtype:
         :param newMasterKey: bytes
         """
         if ts4_sign:
@@ -8164,7 +8392,7 @@ class WrapD4User(WrapperParentClass):
     def G_setMasterKey(self, newMasterKey, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.setMasterKey getter
-        :rtype: 
+        :rtype:
         :param newMasterKey: bytes
         """
         return self.C_.call_getter('setMasterKey', {'newMasterKey': newMasterKey}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8172,7 +8400,7 @@ class WrapD4User(WrapperParentClass):
     def R_setMasterKey(self, newMasterKey, ts4_expect_ec=0):
         """
         Wrapper for D4User.setMasterKey raw getter
-        :rtype: 
+        :rtype:
         :param newMasterKey: bytes
         """
         return self.C_.call_getter_raw('setMasterKey', {'newMasterKey': newMasterKey}, expect_ec=ts4_expect_ec)
@@ -8200,7 +8428,7 @@ class WrapD4User(WrapperParentClass):
     def requestUpgrade(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.requestUpgrade
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_requestUpgrade(ts4_expect_ec=ts4_expect_ec)
@@ -8210,14 +8438,14 @@ class WrapD4User(WrapperParentClass):
     def G_requestUpgrade(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.requestUpgrade getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('requestUpgrade', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_requestUpgrade(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.requestUpgrade raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('requestUpgrade', {}, expect_ec=ts4_expect_ec)
 
@@ -8242,7 +8470,7 @@ class WrapD4User(WrapperParentClass):
     def upgrade(self, code, revision, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.upgrade
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -8254,7 +8482,7 @@ class WrapD4User(WrapperParentClass):
     def G_upgrade(self, code, revision, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.upgrade getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -8263,7 +8491,7 @@ class WrapD4User(WrapperParentClass):
     def R_upgrade(self, code, revision, ts4_expect_ec=0):
         """
         Wrapper for D4User.upgrade raw getter
-        :rtype: 
+        :rtype:
         :param code: cell
         :param revision: uint32
         """
@@ -8294,7 +8522,7 @@ class WrapD4User(WrapperParentClass):
     def upgradeNotNeeded(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.upgradeNotNeeded
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_upgradeNotNeeded(ts4_expect_ec=ts4_expect_ec)
@@ -8304,14 +8532,14 @@ class WrapD4User(WrapperParentClass):
     def G_upgradeNotNeeded(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.upgradeNotNeeded getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('upgradeNotNeeded', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_upgradeNotNeeded(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.upgradeNotNeeded raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('upgradeNotNeeded', {}, expect_ec=ts4_expect_ec)
 
@@ -8336,8 +8564,8 @@ class WrapD4User(WrapperParentClass):
     def createAuction(self, name, duration, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.createAuction
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param duration: uint8
         """
         if ts4_sign:
@@ -8348,8 +8576,8 @@ class WrapD4User(WrapperParentClass):
     def G_createAuction(self, name, duration, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.createAuction getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param duration: uint8
         """
         return self.C_.call_getter('createAuction', {'name': name, 'duration': duration}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8357,8 +8585,8 @@ class WrapD4User(WrapperParentClass):
     def R_createAuction(self, name, duration, ts4_expect_ec=0):
         """
         Wrapper for D4User.createAuction raw getter
-        :rtype: 
-        :param name: bytes
+        :rtype:
+        :param name: string
         :param duration: uint8
         """
         return self.C_.call_getter_raw('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
@@ -8366,7 +8594,7 @@ class WrapD4User(WrapperParentClass):
     def M_createAuction(self, name, duration, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
         """
         Wrapper for D4User.createAuction method call
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
         _r_ = self.C_.call_method('createAuction', {'name': name, 'duration': duration}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
@@ -8377,7 +8605,7 @@ class WrapD4User(WrapperParentClass):
     def S_createAuction(self, name, duration, ts4_expect_ec=0):
         """
         Wrapper for D4User.createAuction signed method call
-        :param name: bytes
+        :param name: string
         :param duration: uint8
         """
         _r_ = self.C_.call_method_signed('createAuction', {'name': name, 'duration': duration}, expect_ec=ts4_expect_ec)
@@ -8388,7 +8616,7 @@ class WrapD4User(WrapperParentClass):
     def createAuctionCallback(self, auction, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.createAuctionCallback
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         if ts4_sign:
@@ -8399,7 +8627,7 @@ class WrapD4User(WrapperParentClass):
     def G_createAuctionCallback(self, auction, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.createAuctionCallback getter
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         return self.C_.call_getter('createAuctionCallback', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8407,7 +8635,7 @@ class WrapD4User(WrapperParentClass):
     def R_createAuctionCallback(self, auction, ts4_expect_ec=0):
         """
         Wrapper for D4User.createAuctionCallback raw getter
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         return self.C_.call_getter_raw('createAuctionCallback', {'auction': auction}, expect_ec=ts4_expect_ec)
@@ -8435,7 +8663,7 @@ class WrapD4User(WrapperParentClass):
     def makeBid(self, auction, data, hash, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.makeBid
-        :rtype: 
+        :rtype:
         :param auction: address
         :param data: bytes
         :param hash: uint256
@@ -8448,7 +8676,7 @@ class WrapD4User(WrapperParentClass):
     def G_makeBid(self, auction, data, hash, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.makeBid getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param data: bytes
         :param hash: uint256
@@ -8458,7 +8686,7 @@ class WrapD4User(WrapperParentClass):
     def R_makeBid(self, auction, data, hash, ts4_expect_ec=0):
         """
         Wrapper for D4User.makeBid raw getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param data: bytes
         :param hash: uint256
@@ -8492,7 +8720,7 @@ class WrapD4User(WrapperParentClass):
     def revealBid(self, auction, amount, nonce, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.revealBid
-        :rtype: 
+        :rtype:
         :param auction: address
         :param amount: uint128
         :param nonce: uint128
@@ -8505,7 +8733,7 @@ class WrapD4User(WrapperParentClass):
     def G_revealBid(self, auction, amount, nonce, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.revealBid getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param amount: uint128
         :param nonce: uint128
@@ -8515,7 +8743,7 @@ class WrapD4User(WrapperParentClass):
     def R_revealBid(self, auction, amount, nonce, ts4_expect_ec=0):
         """
         Wrapper for D4User.revealBid raw getter
-        :rtype: 
+        :rtype:
         :param auction: address
         :param amount: uint128
         :param nonce: uint128
@@ -8549,7 +8777,7 @@ class WrapD4User(WrapperParentClass):
     def bidRevealComplete(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.bidRevealComplete
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_bidRevealComplete(ts4_expect_ec=ts4_expect_ec)
@@ -8559,14 +8787,14 @@ class WrapD4User(WrapperParentClass):
     def G_bidRevealComplete(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.bidRevealComplete getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('bidRevealComplete', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_bidRevealComplete(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.bidRevealComplete raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('bidRevealComplete', {}, expect_ec=ts4_expect_ec)
 
@@ -8591,7 +8819,7 @@ class WrapD4User(WrapperParentClass):
     def finalize(self, auction, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.finalize
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         if ts4_sign:
@@ -8602,7 +8830,7 @@ class WrapD4User(WrapperParentClass):
     def G_finalize(self, auction, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.finalize getter
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         return self.C_.call_getter('finalize', {'auction': auction}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8610,7 +8838,7 @@ class WrapD4User(WrapperParentClass):
     def R_finalize(self, auction, ts4_expect_ec=0):
         """
         Wrapper for D4User.finalize raw getter
-        :rtype: 
+        :rtype:
         :param auction: address
         """
         return self.C_.call_getter_raw('finalize', {'auction': auction}, expect_ec=ts4_expect_ec)
@@ -8702,7 +8930,7 @@ class WrapD4User(WrapperParentClass):
     def queryCert(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.queryCert
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -8713,7 +8941,7 @@ class WrapD4User(WrapperParentClass):
     def G_queryCert(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.queryCert getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('queryCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8721,7 +8949,7 @@ class WrapD4User(WrapperParentClass):
     def R_queryCert(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.queryCert raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('queryCert', {'target': target}, expect_ec=ts4_expect_ec)
@@ -8749,7 +8977,7 @@ class WrapD4User(WrapperParentClass):
     def queryAuct(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.queryAuct
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -8760,7 +8988,7 @@ class WrapD4User(WrapperParentClass):
     def G_queryAuct(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.queryAuct getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('queryAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8768,7 +8996,7 @@ class WrapD4User(WrapperParentClass):
     def R_queryAuct(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.queryAuct raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('queryAuct', {'target': target}, expect_ec=ts4_expect_ec)
@@ -8796,7 +9024,7 @@ class WrapD4User(WrapperParentClass):
     def forgetCert(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.forgetCert
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -8807,7 +9035,7 @@ class WrapD4User(WrapperParentClass):
     def G_forgetCert(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.forgetCert getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('forgetCert', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8815,7 +9043,7 @@ class WrapD4User(WrapperParentClass):
     def R_forgetCert(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.forgetCert raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('forgetCert', {'target': target}, expect_ec=ts4_expect_ec)
@@ -8843,7 +9071,7 @@ class WrapD4User(WrapperParentClass):
     def forgetAuct(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.forgetAuct
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -8854,7 +9082,7 @@ class WrapD4User(WrapperParentClass):
     def G_forgetAuct(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.forgetAuct getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('forgetAuct', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8862,7 +9090,7 @@ class WrapD4User(WrapperParentClass):
     def R_forgetAuct(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.forgetAuct raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('forgetAuct', {'target': target}, expect_ec=ts4_expect_ec)
@@ -8887,10 +9115,62 @@ class WrapD4User(WrapperParentClass):
             ts4.dispatch_messages()
         return _r_
 
+    def forgetMe(self, name, parent, ts4_expect_ec=0, ts4_sign=False):
+        """
+        Wrapper for D4User.forgetMe
+        :rtype:
+        :param name: string
+        :param parent: address
+        """
+        if ts4_sign:
+            return self.S_forgetMe(name, parent, ts4_expect_ec=ts4_expect_ec)
+        else:
+            return self.M_forgetMe(name, parent, ts4_expect_ec=ts4_expect_ec)
+
+    def G_forgetMe(self, name, parent, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
+        """
+        Wrapper for D4User.forgetMe getter
+        :rtype:
+        :param name: string
+        :param parent: address
+        """
+        return self.C_.call_getter('forgetMe', {'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
+
+    def R_forgetMe(self, name, parent, ts4_expect_ec=0):
+        """
+        Wrapper for D4User.forgetMe raw getter
+        :rtype:
+        :param name: string
+        :param parent: address
+        """
+        return self.C_.call_getter_raw('forgetMe', {'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+
+    def M_forgetMe(self, name, parent, ts4_private_key=None, ts4_expect_ec=0, ts4_is_debot=False):
+        """
+        Wrapper for D4User.forgetMe method call
+        :param name: string
+        :param parent: address
+        """
+        _r_ = self.C_.call_method('forgetMe', {'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
+    def S_forgetMe(self, name, parent, ts4_expect_ec=0):
+        """
+        Wrapper for D4User.forgetMe signed method call
+        :param name: string
+        :param parent: address
+        """
+        _r_ = self.C_.call_method_signed('forgetMe', {'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
+        if WrapperGlobal.auto_dispatch_messages:
+            ts4.dispatch_messages()
+        return _r_
+
     def queryCertCallback(self, info, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.queryCertCallback
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         if ts4_sign:
@@ -8901,7 +9181,7 @@ class WrapD4User(WrapperParentClass):
     def G_queryCertCallback(self, info, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.queryCertCallback getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter('queryCertCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8909,7 +9189,7 @@ class WrapD4User(WrapperParentClass):
     def R_queryCertCallback(self, info, ts4_expect_ec=0):
         """
         Wrapper for D4User.queryCertCallback raw getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter_raw('queryCertCallback', {'info': info}, expect_ec=ts4_expect_ec)
@@ -8937,7 +9217,7 @@ class WrapD4User(WrapperParentClass):
     def queryAuctCallback(self, info, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.queryAuctCallback
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         if ts4_sign:
@@ -8948,7 +9228,7 @@ class WrapD4User(WrapperParentClass):
     def G_queryAuctCallback(self, info, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.queryAuctCallback getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter('queryAuctCallback', {'info': info}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -8956,7 +9236,7 @@ class WrapD4User(WrapperParentClass):
     def R_queryAuctCallback(self, info, ts4_expect_ec=0):
         """
         Wrapper for D4User.queryAuctCallback raw getter
-        :rtype: 
+        :rtype:
         :param info: tuple
         """
         return self.C_.call_getter_raw('queryAuctCallback', {'info': info}, expect_ec=ts4_expect_ec)
@@ -8984,7 +9264,7 @@ class WrapD4User(WrapperParentClass):
     def setValue(self, target, index, new_value, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.setValue
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         :param new_value: address
@@ -8997,7 +9277,7 @@ class WrapD4User(WrapperParentClass):
     def G_setValue(self, target, index, new_value, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.setValue getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         :param new_value: address
@@ -9007,7 +9287,7 @@ class WrapD4User(WrapperParentClass):
     def R_setValue(self, target, index, new_value, ts4_expect_ec=0):
         """
         Wrapper for D4User.setValue raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         :param new_value: address
@@ -9041,7 +9321,7 @@ class WrapD4User(WrapperParentClass):
     def resetValue(self, target, index, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.resetValue
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         """
@@ -9053,7 +9333,7 @@ class WrapD4User(WrapperParentClass):
     def G_resetValue(self, target, index, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.resetValue getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         """
@@ -9062,7 +9342,7 @@ class WrapD4User(WrapperParentClass):
     def R_resetValue(self, target, index, ts4_expect_ec=0):
         """
         Wrapper for D4User.resetValue raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param index: int16
         """
@@ -9093,7 +9373,7 @@ class WrapD4User(WrapperParentClass):
     def clearValues(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.clearValues
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -9104,7 +9384,7 @@ class WrapD4User(WrapperParentClass):
     def G_clearValues(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.clearValues getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('clearValues', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -9112,7 +9392,7 @@ class WrapD4User(WrapperParentClass):
     def R_clearValues(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.clearValues raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('clearValues', {'target': target}, expect_ec=ts4_expect_ec)
@@ -9140,7 +9420,7 @@ class WrapD4User(WrapperParentClass):
     def certWithdrawExcess(self, target, amount, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.certWithdrawExcess
-        :rtype: 
+        :rtype:
         :param target: address
         :param amount: uint128
         """
@@ -9152,7 +9432,7 @@ class WrapD4User(WrapperParentClass):
     def G_certWithdrawExcess(self, target, amount, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.certWithdrawExcess getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param amount: uint128
         """
@@ -9161,7 +9441,7 @@ class WrapD4User(WrapperParentClass):
     def R_certWithdrawExcess(self, target, amount, ts4_expect_ec=0):
         """
         Wrapper for D4User.certWithdrawExcess raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param amount: uint128
         """
@@ -9192,7 +9472,7 @@ class WrapD4User(WrapperParentClass):
     def certRequestUpgrade(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.certRequestUpgrade
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -9203,7 +9483,7 @@ class WrapD4User(WrapperParentClass):
     def G_certRequestUpgrade(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.certRequestUpgrade getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certRequestUpgrade', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -9211,7 +9491,7 @@ class WrapD4User(WrapperParentClass):
     def R_certRequestUpgrade(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.certRequestUpgrade raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certRequestUpgrade', {'target': target}, expect_ec=ts4_expect_ec)
@@ -9239,7 +9519,7 @@ class WrapD4User(WrapperParentClass):
     def requestProlong(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.requestProlong
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -9250,7 +9530,7 @@ class WrapD4User(WrapperParentClass):
     def G_requestProlong(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.requestProlong getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('requestProlong', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -9258,7 +9538,7 @@ class WrapD4User(WrapperParentClass):
     def R_requestProlong(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.requestProlong raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('requestProlong', {'target': target}, expect_ec=ts4_expect_ec)
@@ -9286,9 +9566,9 @@ class WrapD4User(WrapperParentClass):
     def deploySub(self, target, name, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.deploySub
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         if ts4_sign:
             return self.S_deploySub(target, name, ts4_expect_ec=ts4_expect_ec)
@@ -9298,18 +9578,18 @@ class WrapD4User(WrapperParentClass):
     def G_deploySub(self, target, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.deploySub getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter('deploySub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_deploySub(self, target, name, ts4_expect_ec=0):
         """
         Wrapper for D4User.deploySub raw getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter_raw('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
@@ -9317,7 +9597,7 @@ class WrapD4User(WrapperParentClass):
         """
         Wrapper for D4User.deploySub method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method('deploySub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
@@ -9328,7 +9608,7 @@ class WrapD4User(WrapperParentClass):
         """
         Wrapper for D4User.deploySub signed method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method_signed('deploySub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
@@ -9338,9 +9618,9 @@ class WrapD4User(WrapperParentClass):
     def syncSub(self, target, name, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.syncSub
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         if ts4_sign:
             return self.S_syncSub(target, name, ts4_expect_ec=ts4_expect_ec)
@@ -9350,18 +9630,18 @@ class WrapD4User(WrapperParentClass):
     def G_syncSub(self, target, name, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.syncSub getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter('syncSub', {'target': target, 'name': name}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_syncSub(self, target, name, ts4_expect_ec=0):
         """
         Wrapper for D4User.syncSub raw getter
-        :rtype: 
+        :rtype:
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         return self.C_.call_getter_raw('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
 
@@ -9369,7 +9649,7 @@ class WrapD4User(WrapperParentClass):
         """
         Wrapper for D4User.syncSub method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method('syncSub', {'target': target, 'name': name}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
         if WrapperGlobal.auto_dispatch_messages:
@@ -9380,7 +9660,7 @@ class WrapD4User(WrapperParentClass):
         """
         Wrapper for D4User.syncSub signed method call
         :param target: address
-        :param name: bytes
+        :param name: string
         """
         _r_ = self.C_.call_method_signed('syncSub', {'target': target, 'name': name}, expect_ec=ts4_expect_ec)
         if WrapperGlobal.auto_dispatch_messages:
@@ -9390,7 +9670,7 @@ class WrapD4User(WrapperParentClass):
     def certTransferOwner(self, target, new_owner, deadline, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.certTransferOwner
-        :rtype: 
+        :rtype:
         :param target: address
         :param new_owner: address
         :param deadline: uint32
@@ -9403,7 +9683,7 @@ class WrapD4User(WrapperParentClass):
     def G_certTransferOwner(self, target, new_owner, deadline, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.certTransferOwner getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param new_owner: address
         :param deadline: uint32
@@ -9413,7 +9693,7 @@ class WrapD4User(WrapperParentClass):
     def R_certTransferOwner(self, target, new_owner, deadline, ts4_expect_ec=0):
         """
         Wrapper for D4User.certTransferOwner raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         :param new_owner: address
         :param deadline: uint32
@@ -9447,7 +9727,7 @@ class WrapD4User(WrapperParentClass):
     def certCancelTransferOwner(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.certCancelTransferOwner
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -9458,7 +9738,7 @@ class WrapD4User(WrapperParentClass):
     def G_certCancelTransferOwner(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.certCancelTransferOwner getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certCancelTransferOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -9466,7 +9746,7 @@ class WrapD4User(WrapperParentClass):
     def R_certCancelTransferOwner(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.certCancelTransferOwner raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certCancelTransferOwner', {'target': target}, expect_ec=ts4_expect_ec)
@@ -9494,7 +9774,7 @@ class WrapD4User(WrapperParentClass):
     def certAcceptTransfer(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.certAcceptTransfer
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -9505,7 +9785,7 @@ class WrapD4User(WrapperParentClass):
     def G_certAcceptTransfer(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.certAcceptTransfer getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certAcceptTransfer', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -9513,7 +9793,7 @@ class WrapD4User(WrapperParentClass):
     def R_certAcceptTransfer(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.certAcceptTransfer raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certAcceptTransfer', {'target': target}, expect_ec=ts4_expect_ec)
@@ -9541,7 +9821,7 @@ class WrapD4User(WrapperParentClass):
     def certRelinquishOwner(self, target, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.certRelinquishOwner
-        :rtype: 
+        :rtype:
         :param target: address
         """
         if ts4_sign:
@@ -9552,7 +9832,7 @@ class WrapD4User(WrapperParentClass):
     def G_certRelinquishOwner(self, target, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.certRelinquishOwner getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter('certRelinquishOwner', {'target': target}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -9560,7 +9840,7 @@ class WrapD4User(WrapperParentClass):
     def R_certRelinquishOwner(self, target, ts4_expect_ec=0):
         """
         Wrapper for D4User.certRelinquishOwner raw getter
-        :rtype: 
+        :rtype:
         :param target: address
         """
         return self.C_.call_getter_raw('certRelinquishOwner', {'target': target}, expect_ec=ts4_expect_ec)
@@ -9588,9 +9868,9 @@ class WrapD4User(WrapperParentClass):
     def addLocked(self, until, name, parent, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.addLocked
-        :rtype: 
+        :rtype:
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         if ts4_sign:
@@ -9601,9 +9881,9 @@ class WrapD4User(WrapperParentClass):
     def G_addLocked(self, until, name, parent, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.addLocked getter
-        :rtype: 
+        :rtype:
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         return self.C_.call_getter('addLocked', {'until': until, 'name': name, 'parent': parent}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
@@ -9611,9 +9891,9 @@ class WrapD4User(WrapperParentClass):
     def R_addLocked(self, until, name, parent, ts4_expect_ec=0):
         """
         Wrapper for D4User.addLocked raw getter
-        :rtype: 
+        :rtype:
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         return self.C_.call_getter_raw('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
@@ -9622,7 +9902,7 @@ class WrapD4User(WrapperParentClass):
         """
         Wrapper for D4User.addLocked method call
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         _r_ = self.C_.call_method('addLocked', {'until': until, 'name': name, 'parent': parent}, private_key=ts4_private_key, expect_ec=ts4_expect_ec, is_debot=ts4_is_debot)
@@ -9634,7 +9914,7 @@ class WrapD4User(WrapperParentClass):
         """
         Wrapper for D4User.addLocked signed method call
         :param until: uint32
-        :param name: bytes
+        :param name: string
         :param parent: address
         """
         _r_ = self.C_.call_method_signed('addLocked', {'until': until, 'name': name, 'parent': parent}, expect_ec=ts4_expect_ec)
@@ -9684,7 +9964,7 @@ class WrapD4User(WrapperParentClass):
     def sweepLocks(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.sweepLocks
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_sweepLocks(ts4_expect_ec=ts4_expect_ec)
@@ -9694,14 +9974,14 @@ class WrapD4User(WrapperParentClass):
     def G_sweepLocks(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.sweepLocks getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('sweepLocks', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_sweepLocks(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.sweepLocks raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('sweepLocks', {}, expect_ec=ts4_expect_ec)
 
@@ -9726,7 +10006,7 @@ class WrapD4User(WrapperParentClass):
     def withdraw(self, dest, value, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.withdraw
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -9738,7 +10018,7 @@ class WrapD4User(WrapperParentClass):
     def G_withdraw(self, dest, value, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.withdraw getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -9747,7 +10027,7 @@ class WrapD4User(WrapperParentClass):
     def R_withdraw(self, dest, value, ts4_expect_ec=0):
         """
         Wrapper for D4User.withdraw raw getter
-        :rtype: 
+        :rtype:
         :param dest: address
         :param value: uint128
         """
@@ -9778,7 +10058,7 @@ class WrapD4User(WrapperParentClass):
     def passToOwner(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.passToOwner
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_passToOwner(ts4_expect_ec=ts4_expect_ec)
@@ -9788,14 +10068,14 @@ class WrapD4User(WrapperParentClass):
     def G_passToOwner(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.passToOwner getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('passToOwner', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_passToOwner(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.passToOwner raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('passToOwner', {}, expect_ec=ts4_expect_ec)
 
@@ -9820,7 +10100,7 @@ class WrapD4User(WrapperParentClass):
     def sink(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.sink
-        :rtype: 
+        :rtype:
         """
         if ts4_sign:
             return self.S_sink(ts4_expect_ec=ts4_expect_ec)
@@ -9830,14 +10110,14 @@ class WrapD4User(WrapperParentClass):
     def G_sink(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.sink getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter('sink', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_sink(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.sink raw getter
-        :rtype: 
+        :rtype:
         """
         return self.C_.call_getter_raw('sink', {}, expect_ec=ts4_expect_ec)
 
@@ -9940,21 +10220,21 @@ class WrapD4User(WrapperParentClass):
     def st_name(self, ts4_expect_ec=0, ts4_sign=False):
         """
         Wrapper for D4User.st_name
-        :rtype: bytes
+        :rtype: string
         """
         return self.G_st_name(ts4_expect_ec=ts4_expect_ec)
 
     def G_st_name(self, ts4_key=None, ts4_expect_ec=0, ts4_decode=False, ts4_decoder=None):
         """
         Wrapper for D4User.st_name getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter('st_name', {}, key=ts4_key, expect_ec=ts4_expect_ec, decode=ts4_decode, decoder=ts4_decoder)
 
     def R_st_name(self, ts4_expect_ec=0):
         """
         Wrapper for D4User.st_name raw getter
-        :rtype: bytes
+        :rtype: string
         """
         return self.C_.call_getter_raw('st_name', {}, expect_ec=ts4_expect_ec)
 
@@ -10599,4 +10879,3 @@ class WrapD4User(WrapperParentClass):
         if WrapperGlobal.auto_dispatch_messages:
             ts4.dispatch_messages()
         return _r_
-

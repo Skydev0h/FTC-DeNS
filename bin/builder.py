@@ -10,9 +10,14 @@ os.chdir(dname + "/../")
 visited = set()
 
 rt = len(sys.argv) > 1 and sys.argv[1] == 'rt'
+al = len(sys.argv) > 1 and sys.argv[1] == 'all'
 
 if rt:
     print("------- Continous build -------")
+
+if al:
+    print('------- Build all -------')
+
 
 def walker(path):
     s5 = 0
@@ -55,7 +60,7 @@ while True:
         s4 = walker(os.path.realpath(p1))
         # print("{0}: Contract {1}, ABI {2}, TVC {3}, Deps {4}".format(cname, s1, s2, s3, s4))
         lb = last[fname] if fname in last.keys() else 0
-        if (s1 > s2 or s1 > s3 or s4 > s2 or s4 > s3) and (s1 > lb or s4 > lb):
+        if ((s1 > s2 or s1 > s3 or s4 > s2 or s4 > s3) and (s1 > lb or s4 > lb)) or al:
             tobuild.append((fname, cname, p1, p2, p3))
         else:
             if not rt:

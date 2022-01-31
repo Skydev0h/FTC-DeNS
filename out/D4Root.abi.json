@@ -1,5 +1,6 @@
 {
 	"ABI version": 2,
+	"version": "2.2",
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
@@ -20,7 +21,7 @@
 		{
 			"name": "adminDeploy",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"set_owner","type":"address"},
 				{"name":"set_expiry","type":"uint32"}
 			],
@@ -30,7 +31,7 @@
 		{
 			"name": "adminReserve",
 			"inputs": [
-				{"name":"name","type":"bytes"}
+				{"name":"name","type":"string"}
 			],
 			"outputs": [
 			]
@@ -38,7 +39,7 @@
 		{
 			"name": "adminChown",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"set_owner","type":"address"}
 			],
 			"outputs": [
@@ -47,7 +48,7 @@
 		{
 			"name": "adminChexp",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"set_expiry","type":"uint32"}
 			],
 			"outputs": [
@@ -72,7 +73,7 @@
 		{
 			"name": "onProposalPassed",
 			"inputs": [
-				{"components":[{"name":"start","type":"uint32"},{"name":"end","type":"uint32"},{"name":"title","type":"bytes"},{"name":"proposalType","type":"uint8"},{"name":"specific","type":"cell"},{"name":"state","type":"uint8"},{"name":"votesFor","type":"uint32"},{"name":"votesAgainst","type":"uint32"}],"name":"proposalInfo","type":"tuple"}
+				{"components":[{"name":"start","type":"uint32"},{"name":"end","type":"uint32"},{"name":"title","type":"string"},{"name":"proposalType","type":"uint8"},{"name":"specific","type":"cell"},{"name":"state","type":"uint8"},{"name":"votesFor","type":"uint32"},{"name":"votesAgainst","type":"uint32"}],"name":"proposalInfo","type":"tuple"}
 			],
 			"outputs": [
 			]
@@ -80,7 +81,7 @@
 		{
 			"name": "onProposalRejected",
 			"inputs": [
-				{"components":[{"name":"start","type":"uint32"},{"name":"end","type":"uint32"},{"name":"title","type":"bytes"},{"name":"proposalType","type":"uint8"},{"name":"specific","type":"cell"},{"name":"state","type":"uint8"},{"name":"votesFor","type":"uint32"},{"name":"votesAgainst","type":"uint32"}],"name":"proposalInfo","type":"tuple"}
+				{"components":[{"name":"start","type":"uint32"},{"name":"end","type":"uint32"},{"name":"title","type":"string"},{"name":"proposalType","type":"uint8"},{"name":"specific","type":"cell"},{"name":"state","type":"uint8"},{"name":"votesFor","type":"uint32"},{"name":"votesAgainst","type":"uint32"}],"name":"proposalInfo","type":"tuple"}
 			],
 			"outputs": [
 			]
@@ -98,7 +99,7 @@
 		{
 			"name": "deployUserForMe",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"}
+				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"user_addr","type":"address"}
@@ -107,7 +108,7 @@
 		{
 			"name": "deployUserForPubKey",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"},
+				{"name":"answerId","type":"uint32"},
 				{"name":"pubkey","type":"uint256"}
 			],
 			"outputs": [
@@ -117,7 +118,7 @@
 		{
 			"name": "resolveUser",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"},
+				{"name":"answerId","type":"uint32"},
 				{"name":"user","type":"address"}
 			],
 			"outputs": [
@@ -127,9 +128,9 @@
 		{
 			"name": "resolve",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"},
+				{"name":"answerId","type":"uint32"},
 				{"name":"ct_type","type":"uint8"},
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"}
 			],
 			"outputs": [
@@ -139,9 +140,9 @@
 		{
 			"name": "resolveFull",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"},
+				{"name":"answerId","type":"uint32"},
 				{"name":"ct_type","type":"uint8"},
-				{"name":"fullname","type":"bytes"}
+				{"name":"fullname","type":"string"}
 			],
 			"outputs": [
 				{"name":"res","type":"address"}
@@ -150,10 +151,10 @@
 		{
 			"name": "createAuction",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"},
+				{"name":"answerId","type":"uint32"},
 				{"name":"origin","type":"address"},
 				{"name":"revision","type":"uint32"},
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"duration","type":"uint8"}
 			],
 			"outputs": [
@@ -163,8 +164,8 @@
 		{
 			"name": "resolveAuction",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"},
-				{"name":"name","type":"bytes"}
+				{"name":"answerId","type":"uint32"},
+				{"name":"name","type":"string"}
 			],
 			"outputs": [
 				{"name":"auct_addr","type":"address"}
@@ -175,7 +176,7 @@
 			"inputs": [
 				{"name":"winner","type":"address"},
 				{"name":"exp","type":"uint32"},
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"},
 				{"name":"deploy","type":"bool"}
 			],
@@ -193,9 +194,9 @@
 		{
 			"name": "subCertDepl",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"},
-				{"name":"subname","type":"bytes"},
+				{"name":"subname","type":"string"},
 				{"name":"new_owner","type":"address"},
 				{"name":"expiry","type":"uint32"}
 			],
@@ -206,7 +207,7 @@
 			"name": "receiveShards",
 			"inputs": [
 				{"name":"ct_type","type":"uint8"},
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"}
 			],
 			"outputs": [
@@ -281,7 +282,7 @@
 		{
 			"name": "getOwner",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"}
+				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"owner_","type":"address"}
@@ -290,7 +291,7 @@
 		{
 			"name": "getPendingOwner",
 			"inputs": [
-				{"name":"_answer_id","type":"uint32"}
+				{"name":"answerId","type":"uint32"}
 			],
 			"outputs": [
 				{"name":"pending_owner_","type":"address"}
@@ -580,7 +581,7 @@
 			"inputs": [
 				{"name":"ct_type","type":"uint8"},
 				{"name":"ct_addr","type":"address"},
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"}
 			],
 			"outputs": [
@@ -589,7 +590,7 @@
 		{
 			"name": "auctionResult",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"},
 				{"name":"winner","type":"address"},
 				{"name":"deploy","type":"bool"}
@@ -600,7 +601,7 @@
 		{
 			"name": "certReserved",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"}
 			],
 			"outputs": [
@@ -618,7 +619,7 @@
 		{
 			"name": "adminDeployed",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"set_owner","type":"address"},
 				{"name":"set_expiry","type":"uint32"}
 			],
@@ -628,7 +629,7 @@
 		{
 			"name": "adminReserved",
 			"inputs": [
-				{"name":"name","type":"bytes"}
+				{"name":"name","type":"string"}
 			],
 			"outputs": [
 			]
@@ -636,7 +637,7 @@
 		{
 			"name": "adminChowned",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"set_owner","type":"address"}
 			],
 			"outputs": [
@@ -645,7 +646,7 @@
 		{
 			"name": "adminChexped",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"set_expiry","type":"uint32"}
 			],
 			"outputs": [
@@ -679,7 +680,7 @@
 		{
 			"name": "smvReserveStart",
 			"inputs": [
-				{"name":"name","type":"bytes"}
+				{"name":"name","type":"string"}
 			],
 			"outputs": [
 			]
@@ -687,7 +688,7 @@
 		{
 			"name": "smvReserveCommit",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"result","type":"bool"}
 			],
 			"outputs": [
@@ -696,7 +697,7 @@
 		{
 			"name": "smvSetOwner",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"set_owner","type":"address"},
 				{"name":"set_expiry","type":"uint32"}
 			],
@@ -745,5 +746,26 @@
 			"outputs": [
 			]
 		}
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"m_version","type":"uint16"},
+		{"name":"base_code","type":"cell"},
+		{"name":"certificate_code","type":"cell"},
+		{"name":"auction_code","type":"cell"},
+		{"name":"user_code","type":"cell"},
+		{"name":"base_revision","type":"uint32"},
+		{"name":"certificate_revision","type":"uint32"},
+		{"name":"auction_revision","type":"uint32"},
+		{"name":"user_revision","type":"uint32"},
+		{"name":"owner","type":"address"},
+		{"name":"pending_owner","type":"address"},
+		{"name":"owner_transfer_deadline","type":"uint32"},
+		{"name":"relinquish_owner_deadline","type":"uint32"},
+		{"name":"smv_root","type":"address"},
+		{"name":"no_auctions_until","type":"uint32"},
+		{"name":"admin_enabled","type":"uint8"}
 	]
 }

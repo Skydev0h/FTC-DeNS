@@ -20,7 +20,7 @@ interface ID4Auct {
 
     function commit(bool result) external view;
 
-    function finalize(address user) external view;
+    function finalize(address user) external;
 
     function getInfo()
         external responsible view

@@ -16,6 +16,7 @@ library Sys {
     uint128 constant MinimalUserRegister = 5 ton;
 
     uint128 constant CallValue = 0.1 ton;
+    uint128 constant TempReserve = 0.5 ton;
 
     uint32 constant ExpiringAuctionPermit = 28 days;
 

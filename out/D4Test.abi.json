@@ -1,5 +1,6 @@
 {
 	"ABI version": 2,
+	"version": "2.2",
 	"header": ["pubkey", "time", "expire"],
 	"functions": [
 		{
@@ -45,7 +46,7 @@
 			"name": "addLocked",
 			"inputs": [
 				{"name":"until","type":"uint32"},
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"}
 			],
 			"outputs": [
@@ -101,7 +102,7 @@
 		{
 			"name": "createAuction",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"duration","type":"uint8"}
 			],
 			"outputs": [
@@ -177,7 +178,7 @@
 		{
 			"name": "forgetMe",
 			"inputs": [
-				{"name":"name","type":"bytes"},
+				{"name":"name","type":"string"},
 				{"name":"parent","type":"address"}
 			],
 			"outputs": [
@@ -239,7 +240,7 @@
 			"name": "deploySub",
 			"inputs": [
 				{"name":"target","type":"address"},
-				{"name":"name","type":"bytes"}
+				{"name":"name","type":"string"}
 			],
 			"outputs": [
 			]
@@ -248,7 +249,7 @@
 			"name": "syncSub",
 			"inputs": [
 				{"name":"target","type":"address"},
-				{"name":"name","type":"bytes"}
+				{"name":"name","type":"string"}
 			],
 			"outputs": [
 			]
@@ -256,7 +257,7 @@
 		{
 			"name": "queryCertCallback",
 			"inputs": [
-				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"registered","type":"uint32"},{"name":"auctioned","type":"uint32"},{"name":"expires","type":"uint32"},{"name":"owner","type":"address"}],"name":"info","type":"tuple"}
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"string"},{"name":"parent","type":"address"},{"name":"registered","type":"uint32"},{"name":"auctioned","type":"uint32"},{"name":"expires","type":"uint32"},{"name":"owner","type":"address"}],"name":"info","type":"tuple"}
 			],
 			"outputs": [
 			]
@@ -264,7 +265,7 @@
 		{
 			"name": "queryAuctCallback",
 			"inputs": [
-				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"bytes"},{"name":"parent","type":"address"},{"name":"durationYears","type":"uint8"},{"name":"startTime","type":"uint32"},{"name":"bidEnds","type":"uint32"},{"name":"revEnds","type":"uint32"},{"name":"finalizeAfter","type":"uint32"},{"name":"expiryTarget","type":"uint32"}],"name":"info","type":"tuple"}
+				{"components":[{"name":"id","type":"uint32"},{"name":"sync","type":"uint32"},{"name":"name","type":"string"},{"name":"parent","type":"address"},{"name":"durationYears","type":"uint8"},{"name":"startTime","type":"uint32"},{"name":"bidEnds","type":"uint32"},{"name":"revEnds","type":"uint32"},{"name":"finalizeAfter","type":"uint32"},{"name":"expiryTarget","type":"uint32"}],"name":"info","type":"tuple"}
 			],
 			"outputs": [
 			]
@@ -372,5 +373,14 @@
 	"data": [
 	],
 	"events": [
+	],
+	"fields": [
+		{"name":"_pubkey","type":"uint256"},
+		{"name":"_timestamp","type":"uint64"},
+		{"name":"_constructorFlag","type":"bool"},
+		{"name":"_root","type":"address"},
+		{"name":"iaddr","type":"address"},
+		{"name":"eaddr","type":"address"},
+		{"name":"usr","type":"address"}
 	]
 }

@@ -1,4 +1,4 @@
-    pragma ton-solidity >=0.45.0;
+pragma ton-solidity >=0.45.0;
 pragma AbiHeader time;
 pragma AbiHeader pubkey;
 pragma AbiHeader expire;
@@ -106,7 +106,7 @@ contract D4Auct is ID4Auct, D4Based {
             uint32 callbackFunctionId = slice.loadUnsigned(32);
             verifyInteraction(Base.cert, st_name, st_parent);
             if (callbackFunctionId == tvm.functionId(D4Auct.applyAuctionCallback))
-                applyAuctionFailed();
+                requestCertificateDeploy();
         }
     }
 
@@ -254,6 +254,8 @@ contract D4Auct is ID4Auct, D4Based {
             return;
         }
         if (amt1 != 0) {
+            // XXX: Break auction using a small bid
+            // Audit suggests call flag: 1, why? It should not error out code 37!
             ID4User(top1).addLocked{value: amt1, bounce: false}(revEnds, st_name, st_parent);
             top2 = top1;
             amt2 = amt1;
@@ -306,7 +308,7 @@ contract D4Auct is ID4Auct, D4Based {
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     function finalize(address user)
-        external view override
+        external override
         // notFragile
     {
         if (msg.sender != st_root)
@@ -329,21 +331,24 @@ contract D4Auct is ID4Auct, D4Based {
                 top1.transfer({value: rem, bounce: true});
             }
         }
+        finalizeAfter = Sys.MaxU32;  // prevent re-entry while waiting for response
         emit auctionSucceded(top1, paid);
         msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
         if (expiryBase > 0) {
+            // Updating an existing contract
             // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
             ID4Cert(_resolveContract(Base.cert, st_name, st_parent)).applyAuctionResult{
                 callback:  D4Auct.applyAuctionCallback,
                    value:  Sys.CallValue,
                     flag:  Flags.addTransactionFees
             }(top1, expiryTarget);
-            ID4Root(st_root).onAuctionResult
-                {value: 0, bounce: false, flag: Flags.sendAllThenDestroy}
-                (top1, expiryTarget, st_name, st_parent, false);
+            // ID4Root(st_root).onAuctionResult
+            //     {value: 0, bounce: false, flag: Flags.sendAllThenDestroy}
+            //     (top1, expiryTarget, st_name, st_parent, false);
         } else {
+            // Deploying a new contract
             // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
-            applyAuctionFailed();
+            requestCertificateDeploy();
         }
         // msg.sender.transfer({value: 0, bounce: true, flag: Flags.messageValue});
         // tvm.rawReserve(address(this).balance - msg.value, 0);
@@ -369,7 +374,7 @@ contract D4Auct is ID4Auct, D4Based {
             (top1, expiryTarget, st_name, st_parent, false);
     }
 
-    function applyAuctionFailed()
+    function requestCertificateDeploy()
         internal view // bounce
     {
         ID4Root(st_root).onAuctionResult

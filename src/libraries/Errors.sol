@@ -40,4 +40,9 @@ library Errors {
 
     uint8 constant baseCannotBeChanged       =  171;
 
+    uint8 constant nameIsEmpty               =  181;
+    uint8 constant nameContainsSlash         =  182;
+    uint8 constant nameContainsDot           =  183;
+    uint8 constant nameLengthInvalid         =  184;
+    uint8 constant nameContainsInvalidChars  =  185;
 }

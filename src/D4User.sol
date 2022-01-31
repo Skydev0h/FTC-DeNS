@@ -37,9 +37,9 @@ contract D4User is ID4User, D4Based {
 
     modifier onlyOwner {
         if (st_parent.wid == Sys.ExternalMetaChain)
-            require(msg.pubkey() == st_parent.value, Errors.onlyOwnerAccepted);
+            require(msg.pubkey() == st_parent.value && msg.isExternal, Errors.onlyOwnerAccepted);
         else
-            require(msg.sender == st_parent, Errors.onlyOwnerAccepted);
+            require(msg.sender == st_parent && msg.isInternal, Errors.onlyOwnerAccepted);
         tvm.accept();
         _;
     }
@@ -126,6 +126,9 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
+        uint8 veres = _verifyName(name);
+        if (veres != 0)
+            revert(veres);
         ID4Root(st_root).createAuction{
             callback:  D4User.createAuctionCallback,
                value:  call_value,
@@ -143,6 +146,24 @@ contract D4User is ID4User, D4Based {
                value:  0,
                 flag:  Flags.messageValue
         }();
+    }
+
+    function _verifyName(string name)
+        internal pure
+        returns (uint8)
+    {
+        // Check forbidden characters . and /, also disallow control characters (< 32, 127 [<-])
+        TvmBuilder b; b.store(name); TvmSlice s = b.toSlice().loadRefAsSlice();
+        if (s.bits() % 8 != 0) return Errors.nameLengthInvalid;
+        if (s.bits() == 0)     return Errors.nameIsEmpty;
+        uint8 c = 0;
+        while (s.bits() > 0) {
+            c = s.loadUnsigned(8);
+            if (c == 46) return Errors.nameContainsDot;
+            if (c == 47) return Errors.nameContainsSlash;
+            if ((c < 32) || (c > 127)) return Errors.nameContainsInvalidChars;
+        }
+        return 0;
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -369,6 +390,8 @@ contract D4User is ID4User, D4Based {
         external view override
         onlyOwner
     {
+        uint8 veres = _verifyName(name);
+        require(veres == 0, veres);
         ID4Cert(target).deploySub {value: call_value, bounce: true, flag: call_flag}
                         (name);
     }
