@@ -258,7 +258,8 @@ contract D4Root is ID4Root {
         }
         if (proposalInfo.proposalType == ProposalType.Reserve) {
             ReserveProposalSpecific c_reserve = c.toSlice().decode(ReserveProposalSpecific);
-            ID4Auct(_resolveContract(Base.auct, c_reserve.name, address(this))).commit(true);
+            // FIX: Sys.CallValue instead of default 0.01 value (that would be enough anyway)
+            ID4Auct(_resolveContract(Base.auct, c_reserve.name, address(this))).commit{value: Sys.CallValue}(true);
             emit smvReserveCommit(c_reserve.name, true);
             return;
         }
@@ -322,7 +323,7 @@ contract D4Root is ID4Root {
         TvmCell c = proposalInfo.specific;
         if (proposalInfo.proposalType == ProposalType.Reserve) {
             ReserveProposalSpecific c_reserve = c.toSlice().decode(ReserveProposalSpecific);
-            ID4Auct(_resolveContract(Base.auct, c_reserve.name, address(this))).commit(false);
+            ID4Auct(_resolveContract(Base.auct, c_reserve.name, address(this))).commit{value: Sys.CallValue}(false);
             emit smvReserveCommit(c_reserve.name, false);
         }
     }
@@ -344,8 +345,9 @@ contract D4Root is ID4Root {
     function setReservedOwner(string name, address new_owner, uint32 new_expiry)
         internal view
     {
+        // FIX: Sys.CallValue instead of message value (that would be not deterministic)
         ID4Cert(_resolveContract(Base.cert, name, address(this))).transferOwner
-            {value: 0, bounce: false, flag: Flags.messageValue}
+            {value: Sys.CallValue, bounce: false, flag: 0}
             (new_owner, new_expiry);
     }
 

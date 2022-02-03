@@ -235,6 +235,7 @@ contract D4Cert is ID4Cert, D4Based {
             owner = new_owner;
             expires = deadline;
             emit reservedOwnerSet(new_owner, deadline);
+            ID4User(owner).queryCertCallback{value:Sys.CallValue}(getInfo()); // register in new user (if exists)
             return;
         }
         require(Now() < deadline, Errors.ownerTransferMissDeadline);

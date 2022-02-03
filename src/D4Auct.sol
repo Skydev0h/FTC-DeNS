@@ -214,7 +214,9 @@ contract D4Auct is ID4Auct, D4Based {
         bids += 1;
         emit bidPlaced(msg.sender);
         // msg.sender.transfer({value: 0, bounce: false, flag: Flags.messageValue});
-        IPasser(msg.sender).passToOwner{value: 0, bounce: false, flag: Flags.messageValue}();
+        // FIX: Possibility to burn Auct balance
+        tvm.rawReserve(address(this).balance - msg.value, 0);
+        IPasser(msg.sender).passToOwner{value: 0, bounce: false, flag: Flags.contractBalance}();
     }
 
     function revealBid(address user, uint32 bid_time, uint128 amount, uint128 nonce, uint256 prover)
